@@ -1,0 +1,1407 @@
+openapi: 3.1.0
+info:
+  title: Adobe Photoshop API
+  description: >-
+    A cloud-based REST API that provides programmatic access to Photoshop's
+    image editing capabilities without requiring a local installation. Part of
+    Adobe Firefly Services, the API supports PSD document operations including
+    layer editing, Smart Object replacement, text layer editing, rendition
+    creation, and artboard management. It also provides AI-powered features
+    such as background removal, mask creation, product crop, and depth blur.
+    All operations are asynchronous, returning a polling URL to check job
+    status.
+  version: 2.0.0
+  contact:
+    name: Adobe Developer Support
+    url: https://developer.adobe.com/
+  license:
+    name: Proprietary
+    url: https://www.adobe.com/legal/terms.html
+  x-logo:
+    url: https://www.adobe.com/content/dam/cc/icons/photoshop-appicon-256.png
+externalDocs:
+  description: Adobe Photoshop API Documentation
+  url: https://developer.adobe.com/firefly-services/docs/photoshop/
+servers:
+  - url: https://image.adobe.io
+    description: Adobe Photoshop API Production
+tags:
+  - name: Background Removal
+    description: >-
+      Remove backgrounds from images and create masks using AI-powered
+      subject detection.
+  - name: Document Operations
+    description: >-
+      Create, modify, and inspect PSD documents including layer editing,
+      adjustments, and metadata retrieval.
+  - name: Renditions
+    description: >-
+      Generate flat image renditions from PSD files in various formats
+      including JPEG, PNG, and TIFF.
+  - name: Smart Objects
+    description: >-
+      Replace and manage embedded Smart Object layers within PSD documents.
+  - name: Text
+    description: >-
+      Edit text layer content, character styles, and paragraph styles in
+      PSD documents.
+  - name: Actions
+    description: >-
+      Execute Photoshop Action files (.atn) and Action JSON descriptors
+      on images programmatically.
+  - name: Crop and Effects
+    description: >-
+      Apply AI-powered product crop and depth blur effects to images.
+  - name: Generative
+    description: >-
+      Fill masked areas of images using generative AI capabilities.
+  - name: Status
+    description: >-
+      Poll for the status of asynchronous jobs.
+  - name: Health
+    description: >-
+      Service health check endpoint.
+paths:
+  /v2/remove-background:
+    post:
+      operationId: removeBackgroundV2
+      summary: Remove background from an image
+      description: >-
+        Removes the background from an image using AI-powered subject
+        detection. Supports cutout mode (transparent background) and mask
+        mode (grayscale mask output). Can optionally apply a background
+        color, trim whitespace, and perform color decontamination.
+      tags:
+        - Background Removal
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RemoveBackgroundRequest'
+      responses:
+        '202':
+          $ref: '#/components/responses/AsyncJobAccepted'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/QuotaExceeded'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /v1/fill-masked-areas:
+    post:
+      operationId: fillMaskedAreas
+      summary: Fill masked areas with generative AI
+      description: >-
+        Fills masked areas of an image using generative AI. Provide a source
+        image and one or more mask images defining the areas to fill. The
+        API generates content to seamlessly fill the masked regions.
+      tags:
+        - Generative
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FillMaskedAreasRequest'
+      responses:
+        '202':
+          $ref: '#/components/responses/AsyncJobAccepted'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /pie/psdService/documentManifest:
+    post:
+      operationId: getDocumentManifest
+      summary: Get PSD document manifest
+      description: >-
+        Retrieves the manifest (metadata) of a PSD document including the
+        complete layer tree with layer types, names, bounds, visibility,
+        text content, and Smart Object information. Optionally generates
+        layer thumbnails.
+      tags:
+        - Document Operations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentManifestRequest'
+      responses:
+        '202':
+          $ref: '#/components/responses/AsyncJobAccepted'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /pie/psdService/documentOperations:
+    post:
+      operationId: modifyDocument
+      summary: Edit a PSD document
+      description: >-
+        Performs layer-level edits on a PSD document. Supports adding,
+        editing, moving, and deleting layers. Can apply adjustments such as
+        brightness and contrast, modify layer bounds and visibility, edit
+        text layers, and replace Smart Object content. Outputs can be saved
+        as PSD, JPEG, PNG, or TIFF.
+      tags:
+        - Document Operations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentOperationsRequest'
+      responses:
+        '202':
+          $ref: '#/components/responses/AsyncJobAccepted'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /pie/psdService/documentCreate:
+    post:
+      operationId: createDocument
+      summary: Create a new PSD document
+      description: >-
+        Creates a new PSD document with specified dimensions, resolution,
+        color mode, and bit depth. Layers can be added during creation
+        including image layers, text layers, and adjustment layers.
+      tags:
+        - Document Operations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentCreateRequest'
+      responses:
+        '202':
+          $ref: '#/components/responses/AsyncJobAccepted'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /pie/psdService/renditionCreate:
+    post:
+      operationId: createRendition
+      summary: Create image renditions from a PSD
+      description: >-
+        Generates flat image renditions from a PSD file. Supports output
+        formats including JPEG, PNG, TIFF, and PSD. Can optionally resize
+        the output by specifying a target width.
+      tags:
+        - Renditions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RenditionCreateRequest'
+      responses:
+        '202':
+          $ref: '#/components/responses/AsyncJobAccepted'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /pie/psdService/smartObject:
+    post:
+      operationId: replaceSmartObject
+      summary: Replace Smart Object content
+      description: >-
+        Replaces the embedded content of Smart Object layers in a PSD
+        document. Allows updating linked or embedded images within Smart
+        Object layers while preserving transformations and effects.
+      tags:
+        - Smart Objects
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SmartObjectRequest'
+      responses:
+        '202':
+          $ref: '#/components/responses/AsyncJobAccepted'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /pie/psdService/text:
+    post:
+      operationId: editTextLayer
+      summary: Edit text layers in a PSD
+      description: >-
+        Edits text layer content and styling in a PSD document. Supports
+        changing text content, character styles (font, size, color, tracking,
+        leading), and paragraph styles (alignment). Custom fonts can be
+        provided via URL, with configurable fallback behavior for missing
+        fonts.
+      tags:
+        - Text
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TextEditRequest'
+      responses:
+        '202':
+          $ref: '#/components/responses/AsyncJobAccepted'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /pie/psdService/photoshopActions:
+    post:
+      operationId: playPhotoshopActions
+      summary: Execute Photoshop Action files
+      description: >-
+        Executes Photoshop Action (.atn) files on an input image. Actions
+        are sequences of recorded Photoshop operations that can be replayed
+        programmatically. A specific action within the .atn file can be
+        targeted by name.
+      tags:
+        - Actions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PhotoshopActionsRequest'
+      responses:
+        '202':
+          $ref: '#/components/responses/AsyncJobAccepted'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /pie/psdService/actionJSON:
+    post:
+      operationId: playActionJSON
+      summary: Execute Photoshop actions via JSON descriptors
+      description: >-
+        Executes Photoshop operations defined as JSON action descriptors on
+        an input image. More flexible than .atn files, action JSON allows
+        programmatic construction of action sequences. Supports referencing
+        additional images for compositing operations.
+      tags:
+        - Actions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActionJSONRequest'
+      responses:
+        '202':
+          $ref: '#/components/responses/AsyncJobAccepted'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /pie/psdService/actionJsonCreate:
+    post:
+      operationId: createWithActionJSON
+      summary: Create documents using Action JSON descriptors
+      description: >-
+        Creates new documents from scratch using Action JSON descriptors.
+        Similar to the actionJSON endpoint but does not require an input
+        document, enabling document creation through action sequences.
+      tags:
+        - Actions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActionJSONRequest'
+      responses:
+        '202':
+          $ref: '#/components/responses/AsyncJobAccepted'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /pie/psdService/productCrop:
+    post:
+      operationId: productCrop
+      summary: Smart crop to product subject
+      description: >-
+        Applies AI-powered smart cropping that identifies the main product
+        or subject in an image and crops to keep it centered with
+        configurable padding.
+      tags:
+        - Crop and Effects
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductCropRequest'
+      responses:
+        '202':
+          $ref: '#/components/responses/AsyncJobAccepted'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /pie/psdService/depthBlur:
+    post:
+      operationId: depthBlur
+      summary: Apply depth blur effect
+      description: >-
+        Applies an AI-powered depth blur (bokeh) effect to an image,
+        simulating a shallow depth of field. Configurable focal point,
+        blur strength, focal range, grain, and haze parameters.
+      tags:
+        - Crop and Effects
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DepthBlurRequest'
+      responses:
+        '202':
+          $ref: '#/components/responses/AsyncJobAccepted'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /pie/psdService/artboardCreate:
+    post:
+      operationId: createArtboard
+      summary: Create artboards from PSD inputs
+      description: >-
+        Creates a PSD document containing multiple artboards from one or
+        more input PSD files.
+      tags:
+        - Document Operations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtboardCreateRequest'
+      responses:
+        '202':
+          $ref: '#/components/responses/AsyncJobAccepted'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /pie/psdService/status/{jobId}:
+    get:
+      operationId: getPsdJobStatus
+      summary: Get PSD service job status
+      description: >-
+        Polls the status of an asynchronous PSD service job. Returns the
+        current status (pending, running, succeeded, failed) along with
+        output details upon completion.
+      tags:
+        - Status
+      parameters:
+        - $ref: '#/components/parameters/JobId'
+      responses:
+        '200':
+          description: Job status retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /sensei/status/{jobId}:
+    get:
+      operationId: getSenseiJobStatus
+      summary: Get Sensei service job status
+      description: >-
+        Polls the status of an asynchronous Sensei AI service job such as
+        background removal or mask creation.
+      tags:
+        - Status
+      parameters:
+        - $ref: '#/components/parameters/JobId'
+      responses:
+        '200':
+          description: Job status retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /pie/psdService/hello:
+    get:
+      operationId: healthCheck
+      summary: Service health check
+      description: >-
+        Returns a welcome message confirming the Photoshop API service is
+        available.
+      tags:
+        - Health
+      responses:
+        '200':
+          description: Service is healthy.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Welcome to the Photoshop API!
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: >-
+        OAuth Server-to-Server access token obtained from Adobe IMS at
+        https://ims-na1.adobelogin.com/ims/token/v3 using client_credentials
+        grant type.
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Your Adobe Developer Console Client ID.
+  parameters:
+    JobId:
+      name: jobId
+      in: path
+      required: true
+      description: The unique job identifier returned when the job was created.
+      schema:
+        type: string
+        format: uuid
+  schemas:
+    StorageInput:
+      type: object
+      required:
+        - href
+        - storage
+      properties:
+        href:
+          type: string
+          description: Pre-signed GET URL or Creative Cloud asset path.
+        storage:
+          type: string
+          enum:
+            - external
+            - adobe
+            - azure
+            - dropbox
+          description: Storage type for the input file.
+    StorageOutput:
+      type: object
+      required:
+        - href
+        - storage
+        - type
+      properties:
+        href:
+          type: string
+          description: Pre-signed PUT URL or Creative Cloud asset path.
+        storage:
+          type: string
+          enum:
+            - external
+            - adobe
+            - azure
+            - dropbox
+          description: Storage type for the output file.
+        type:
+          type: string
+          enum:
+            - image/jpeg
+            - image/png
+            - image/tiff
+            - vnd.adobe.photoshop
+          description: Output file format.
+        width:
+          type: integer
+          description: Optional output width in pixels for resizing.
+        overwrite:
+          type: boolean
+          description: Whether to overwrite existing files.
+          default: true
+    RemoveBackgroundRequest:
+      type: object
+      required:
+        - image
+        - output
+      properties:
+        image:
+          type: object
+          required:
+            - source
+          properties:
+            source:
+              type: object
+              required:
+                - url
+              properties:
+                url:
+                  type: string
+                  description: Pre-signed GET URL of the source image.
+        mode:
+          type: string
+          enum:
+            - cutout
+            - mask
+          default: cutout
+          description: >-
+            cutout removes the background, mask returns a grayscale mask.
+        output:
+          type: object
+          properties:
+            mediaType:
+              type: string
+              enum:
+                - image/jpeg
+                - image/png
+              description: Output format.
+        trim:
+          type: boolean
+          default: false
+          description: Whether to trim whitespace around the subject.
+        backgroundColor:
+          type: object
+          description: Optional replacement background color.
+          properties:
+            red:
+              type: integer
+              minimum: 0
+              maximum: 255
+            green:
+              type: integer
+              minimum: 0
+              maximum: 255
+            blue:
+              type: integer
+              minimum: 0
+              maximum: 255
+            alpha:
+              type: number
+              minimum: 0
+              maximum: 1
+        colorDecontamination:
+          type: integer
+          minimum: 0
+          maximum: 1
+          description: Level of color decontamination to apply.
+    FillMaskedAreasRequest:
+      type: object
+      required:
+        - image
+        - masks
+      properties:
+        image:
+          type: object
+          required:
+            - source
+          properties:
+            source:
+              type: object
+              required:
+                - url
+              properties:
+                url:
+                  type: string
+                  description: Pre-signed URL of the source image.
+        masks:
+          type: array
+          items:
+            type: object
+            required:
+              - source
+            properties:
+              source:
+                type: object
+                required:
+                  - url
+                properties:
+                  url:
+                    type: string
+                    description: Pre-signed URL of the mask image.
+    DocumentManifestRequest:
+      type: object
+      required:
+        - inputs
+      properties:
+        inputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageInput'
+        options:
+          type: object
+          properties:
+            thumbnails:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                    - image/png
+                    - image/jpeg
+                  description: Format for layer thumbnails.
+    DocumentOperationsRequest:
+      type: object
+      required:
+        - inputs
+        - outputs
+      properties:
+        inputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageInput'
+        options:
+          type: object
+          properties:
+            layers:
+              type: array
+              items:
+                $ref: '#/components/schemas/LayerOperation'
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageOutput'
+    DocumentCreateRequest:
+      type: object
+      required:
+        - options
+        - outputs
+      properties:
+        options:
+          type: object
+          required:
+            - document
+          properties:
+            document:
+              type: object
+              required:
+                - width
+                - height
+              properties:
+                width:
+                  type: integer
+                  description: Document width in pixels.
+                height:
+                  type: integer
+                  description: Document height in pixels.
+                resolution:
+                  type: integer
+                  default: 72
+                  description: Document resolution in PPI.
+                fill:
+                  type: string
+                  enum:
+                    - white
+                    - transparent
+                    - backgroundColor
+                  default: white
+                mode:
+                  type: string
+                  enum:
+                    - rgb
+                    - cmyk
+                    - grayscale
+                  default: rgb
+                depth:
+                  type: integer
+                  enum:
+                    - 8
+                    - 16
+                    - 32
+                  default: 8
+                  description: Bit depth per channel.
+            layers:
+              type: array
+              items:
+                $ref: '#/components/schemas/LayerOperation'
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageOutput'
+    RenditionCreateRequest:
+      type: object
+      required:
+        - inputs
+        - outputs
+      properties:
+        inputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageInput'
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageOutput'
+    SmartObjectRequest:
+      type: object
+      required:
+        - inputs
+        - options
+        - outputs
+      properties:
+        inputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageInput'
+        options:
+          type: object
+          required:
+            - layers
+          properties:
+            layers:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: Layer name to target.
+                  id:
+                    type: integer
+                    description: Layer ID to target.
+                  type:
+                    type: string
+                    const: smartObject
+                  input:
+                    $ref: '#/components/schemas/StorageInput'
+                  smartObject:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        description: MIME type of the replacement content.
+                  attributes:
+                    $ref: '#/components/schemas/LayerBounds'
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageOutput'
+    TextEditRequest:
+      type: object
+      required:
+        - inputs
+        - options
+        - outputs
+      properties:
+        inputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageInput'
+        options:
+          type: object
+          properties:
+            manageMissingFonts:
+              type: string
+              enum:
+                - fail
+                - useDefault
+              description: Behavior when fonts are missing.
+            globalFont:
+              type: string
+              description: Fallback font name when using useDefault.
+            fonts:
+              type: array
+              description: Custom fonts provided via URL.
+              items:
+                $ref: '#/components/schemas/StorageInput'
+            layers:
+              type: array
+              items:
+                type: object
+                required:
+                  - name
+                  - text
+                properties:
+                  name:
+                    type: string
+                    description: Name of the text layer to edit.
+                  text:
+                    $ref: '#/components/schemas/TextContent'
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageOutput'
+    PhotoshopActionsRequest:
+      type: object
+      required:
+        - inputs
+        - options
+        - outputs
+      properties:
+        inputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageInput'
+        options:
+          type: object
+          required:
+            - actions
+          properties:
+            actions:
+              type: array
+              items:
+                type: object
+                required:
+                  - href
+                  - storage
+                properties:
+                  href:
+                    type: string
+                    description: URL to the .atn Action file.
+                  storage:
+                    type: string
+                    enum:
+                      - external
+                      - adobe
+                      - azure
+                      - dropbox
+                  actionName:
+                    type: string
+                    description: Specific action name to run within the set.
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageOutput'
+    ActionJSONRequest:
+      type: object
+      required:
+        - options
+        - outputs
+      properties:
+        inputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageInput'
+        options:
+          type: object
+          required:
+            - actionJSON
+          properties:
+            actionJSON:
+              type: array
+              description: Array of Photoshop action descriptor objects.
+              items:
+                type: object
+                required:
+                  - _obj
+                properties:
+                  _obj:
+                    type: string
+                    description: Photoshop action descriptor type.
+                additionalProperties: true
+            additionalImages:
+              type: array
+              description: >-
+                Additional images for compositing, referenced in actionJSON
+                as ACTION_JSON_OPTIONS_ADDITIONAL_IMAGES_0, etc.
+              items:
+                $ref: '#/components/schemas/StorageInput'
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageOutput'
+    ProductCropRequest:
+      type: object
+      required:
+        - inputs
+        - outputs
+      properties:
+        inputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageInput'
+        options:
+          type: object
+          properties:
+            padding:
+              type: number
+              description: Padding around the product subject.
+            unit:
+              type: string
+              enum:
+                - pixel
+                - percent
+              description: Unit for padding value.
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageOutput'
+    DepthBlurRequest:
+      type: object
+      required:
+        - inputs
+        - outputs
+      properties:
+        inputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageInput'
+        options:
+          type: object
+          properties:
+            focalSelector:
+              type: object
+              description: Coordinates of the focal point.
+            focalDistance:
+              type: number
+              description: Distance to the focal point.
+            blurStrength:
+              type: number
+              description: Intensity of the blur effect.
+            focalRange:
+              type: number
+              description: Range of the focal area.
+            grain:
+              type: number
+              description: Amount of film grain to add.
+            haze:
+              type: number
+              description: Amount of atmospheric haze to add.
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageOutput'
+    ArtboardCreateRequest:
+      type: object
+      required:
+        - options
+        - outputs
+      properties:
+        options:
+          type: object
+          required:
+            - artboards
+          properties:
+            artboards:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: Artboard name.
+                  width:
+                    type: integer
+                    description: Artboard width in pixels.
+                  height:
+                    type: integer
+                    description: Artboard height in pixels.
+                  layers:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LayerOperation'
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageOutput'
+    LayerOperation:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Layer ID.
+        name:
+          type: string
+          description: Layer name.
+        type:
+          type: string
+          enum:
+            - layer
+            - textLayer
+            - smartObject
+            - adjustmentLayer
+            - layerSection
+          description: Layer type.
+        visible:
+          type: boolean
+          description: Layer visibility.
+        locked:
+          type: boolean
+          description: Whether the layer is locked.
+        bounds:
+          $ref: '#/components/schemas/LayerBounds/properties/bounds'
+        add:
+          type: object
+          description: Add this layer relative to another.
+          properties:
+            insertAbove:
+              type: object
+              properties:
+                id:
+                  type: integer
+            insertBelow:
+              type: object
+              properties:
+                id:
+                  type: integer
+            insertInto:
+              type: object
+              properties:
+                id:
+                  type: integer
+            insertTop:
+              type: boolean
+            insertBottom:
+              type: boolean
+        edit:
+          type: object
+          description: Edit this existing layer.
+        move:
+          type: object
+          description: Move this layer relative to another.
+          properties:
+            insertAbove:
+              type: object
+              properties:
+                id:
+                  type: integer
+            insertBelow:
+              type: object
+              properties:
+                id:
+                  type: integer
+        delete:
+          type: object
+          description: Delete this layer.
+        input:
+          $ref: '#/components/schemas/StorageInput'
+        adjustments:
+          type: object
+          properties:
+            brightnessContrast:
+              type: object
+              properties:
+                brightness:
+                  type: number
+                contrast:
+                  type: number
+        text:
+          $ref: '#/components/schemas/TextContent'
+    LayerBounds:
+      type: object
+      properties:
+        bounds:
+          type: object
+          properties:
+            top:
+              type: number
+            left:
+              type: number
+            width:
+              type: number
+            height:
+              type: number
+    TextContent:
+      type: object
+      properties:
+        content:
+          type: string
+          description: Text string content.
+        orientation:
+          type: string
+          enum:
+            - horizontal
+            - vertical
+        characterStyles:
+          type: array
+          items:
+            type: object
+            properties:
+              fontPostScriptName:
+                type: string
+              size:
+                type: number
+              color:
+                type: object
+                properties:
+                  red:
+                    type: integer
+                  green:
+                    type: integer
+                  blue:
+                    type: integer
+              leading:
+                type: number
+              tracking:
+                type: number
+              syntheticBold:
+                type: boolean
+              syntheticItalic:
+                type: boolean
+              underline:
+                type: boolean
+              strikethrough:
+                type: boolean
+              from:
+                type: integer
+                description: Character range start index.
+              to:
+                type: integer
+                description: Character range end index.
+        paragraphStyles:
+          type: array
+          items:
+            type: object
+            properties:
+              alignment:
+                type: string
+                enum:
+                  - left
+                  - center
+                  - right
+                  - justify
+                  - justifyLeft
+                  - justifyCenter
+                  - justifyRight
+    JobStatusResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+          format: uuid
+          description: Unique job identifier.
+        created:
+          type: string
+          format: date-time
+          description: Job creation timestamp.
+        modified:
+          type: string
+          format: date-time
+          description: Last status update timestamp.
+        outputs:
+          type: array
+          items:
+            type: object
+            properties:
+              input:
+                type: string
+                description: Original input file path or URL.
+              status:
+                type: string
+                enum:
+                  - pending
+                  - running
+                  - succeeded
+                  - failed
+                description: Current job status.
+              _links:
+                type: object
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                      storage:
+                        type: string
+              errors:
+                type: object
+                description: Error details if status is failed.
+        _links:
+          type: object
+          properties:
+            self:
+              type: object
+              properties:
+                href:
+                  type: string
+                  description: URL to this status resource.
+    ErrorResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Error type code.
+        title:
+          type: string
+          description: Human-readable error description.
+        code:
+          type: integer
+          description: HTTP status code.
+        details:
+          type: object
+          properties:
+            reason:
+              type: string
+            name:
+              type: string
+              description: Parameter name causing the error.
+  responses:
+    AsyncJobAccepted:
+      description: Job accepted for asynchronous processing.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              _links:
+                type: object
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        description: URL to poll for job status.
+    BadRequest:
+      description: Invalid request parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication failed or token expired.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    QuotaExceeded:
+      description: Trial quota exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: Insufficient permissions.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Conflict:
+      description: File overwrite conflict.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    RateLimited:
+      description: Rate limit exceeded. Retry after the period in the retry-after header.
+      headers:
+        retry-after:
+          schema:
+            type: integer
+          description: Seconds to wait before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalError:
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+security:
+  - BearerAuth: []
+    ApiKeyAuth: []

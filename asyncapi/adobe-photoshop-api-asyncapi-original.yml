@@ -1,0 +1,266 @@
+asyncapi: 2.0.0
+info:
+  title: Adobe Photoshop API Webhook Events
+  description: >-
+    Event-driven notifications for Adobe Photoshop API asynchronous job
+    processing. When registered through Adobe I/O Events, webhooks deliver
+    real-time notifications when Photoshop API jobs complete or fail,
+    eliminating the need to poll status endpoints. Covers all asynchronous
+    operations including background removal, PSD document operations,
+    rendition creation, Smart Object replacement, text editing, Actions
+    execution, product crop, depth blur, and generative fill.
+  version: 1.0.0
+  contact:
+    name: Adobe Developer Support
+    url: https://developer.adobe.com/
+  license:
+    name: Proprietary
+    url: https://www.adobe.com/legal/terms.html
+servers:
+  production:
+    url: https://image.adobe.io
+    protocol: https
+    description: >-
+      Adobe Photoshop API production server. Webhook events are delivered
+      via Adobe I/O Events to your registered webhook URL when async jobs
+      complete or fail.
+channels:
+  photoshop/job/completed:
+    description: >-
+      Notification delivered when a Photoshop API job has completed
+      successfully. The event payload contains the job ID, output
+      locations, and job metadata. Applies to all PSD service operations
+      including document operations, renditions, Smart Objects, text
+      editing, and Actions execution.
+    subscribe:
+      summary: Receive job completion notifications
+      operationId: onJobCompleted
+      message:
+        $ref: '#/components/messages/JobCompletedEvent'
+      bindings:
+        http:
+          type: request
+          method: POST
+          headers:
+            type: object
+            properties:
+              Content-Type:
+                type: string
+                enum:
+                  - application/json
+  photoshop/job/failed:
+    description: >-
+      Notification delivered when a Photoshop API job has failed. The event
+      payload contains the job ID, error details, and failure reason.
+    subscribe:
+      summary: Receive job failure notifications
+      operationId: onJobFailed
+      message:
+        $ref: '#/components/messages/JobFailedEvent'
+      bindings:
+        http:
+          type: request
+          method: POST
+          headers:
+            type: object
+            properties:
+              Content-Type:
+                type: string
+                enum:
+                  - application/json
+  sensei/job/completed:
+    description: >-
+      Notification delivered when a Sensei AI service job has completed
+      successfully. Applies to background removal, mask creation, and
+      other AI-powered image operations.
+    subscribe:
+      summary: Receive Sensei AI job completion notifications
+      operationId: onSenseiJobCompleted
+      message:
+        $ref: '#/components/messages/JobCompletedEvent'
+      bindings:
+        http:
+          type: request
+          method: POST
+          headers:
+            type: object
+            properties:
+              Content-Type:
+                type: string
+                enum:
+                  - application/json
+  sensei/job/failed:
+    description: >-
+      Notification delivered when a Sensei AI service job has failed.
+    subscribe:
+      summary: Receive Sensei AI job failure notifications
+      operationId: onSenseiJobFailed
+      message:
+        $ref: '#/components/messages/JobFailedEvent'
+      bindings:
+        http:
+          type: request
+          method: POST
+          headers:
+            type: object
+            properties:
+              Content-Type:
+                type: string
+                enum:
+                  - application/json
+components:
+  messages:
+    JobCompletedEvent:
+      summary: Job completed successfully
+      description: >-
+        Webhook event payload delivered when an asynchronous Photoshop API
+        job has completed successfully. Contains the job identifier, output
+        details, and timestamps.
+      payload:
+        $ref: '#/components/schemas/JobCompletedPayload'
+    JobFailedEvent:
+      summary: Job failed
+      description: >-
+        Webhook event payload delivered when an asynchronous Photoshop API
+        job has failed. Contains the job identifier, error details, and
+        failure reason.
+      payload:
+        $ref: '#/components/schemas/JobFailedPayload'
+  schemas:
+    JobCompletedPayload:
+      type: object
+      properties:
+        jobId:
+          type: string
+          format: uuid
+          description: Unique identifier of the completed job.
+        created:
+          type: string
+          format: date-time
+          description: Timestamp when the job was created.
+        modified:
+          type: string
+          format: date-time
+          description: Timestamp when the job completed.
+        status:
+          type: string
+          const: succeeded
+          description: Job completion status.
+        outputs:
+          type: array
+          description: List of output files produced by the job.
+          items:
+            type: object
+            properties:
+              input:
+                type: string
+                description: Original input file reference.
+              status:
+                type: string
+                const: succeeded
+              _links:
+                type: object
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                        description: URL to the output file.
+                      storage:
+                        type: string
+                        enum:
+                          - external
+                          - adobe
+                          - azure
+                          - dropbox
+                        description: Storage type of the output.
+        _links:
+          type: object
+          properties:
+            self:
+              type: object
+              properties:
+                href:
+                  type: string
+                  format: uri
+                  description: URL to the job status resource.
+    JobFailedPayload:
+      type: object
+      properties:
+        jobId:
+          type: string
+          format: uuid
+          description: Unique identifier of the failed job.
+        created:
+          type: string
+          format: date-time
+          description: Timestamp when the job was created.
+        modified:
+          type: string
+          format: date-time
+          description: Timestamp when the job failed.
+        status:
+          type: string
+          const: failed
+          description: Job failure status.
+        outputs:
+          type: array
+          description: Output entries with failure details.
+          items:
+            type: object
+            properties:
+              input:
+                type: string
+                description: Original input file reference.
+              status:
+                type: string
+                const: failed
+              errors:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    description: Error type code.
+                  title:
+                    type: string
+                    description: Human-readable error description.
+                  code:
+                    type: integer
+                    description: Error code.
+                  details:
+                    type: object
+                    properties:
+                      reason:
+                        type: string
+                        description: Detailed failure reason.
+        _links:
+          type: object
+          properties:
+            self:
+              type: object
+              properties:
+                href:
+                  type: string
+                  format: uri
+                  description: URL to the job status resource.
+    EventMetadata:
+      type: object
+      description: Adobe I/O Events metadata wrapper.
+      properties:
+        eventId:
+          type: string
+          description: Unique event identifier from Adobe I/O Events.
+        eventType:
+          type: string
+          description: >-
+            Event type identifier (e.g., Photoshop API events, Imaging
+            API Events).
+        publishDate:
+          type: string
+          format: date-time
+          description: Timestamp when the event was published.
+        imsOrgId:
+          type: string
+          description: IMS Organization ID associated with the event.
