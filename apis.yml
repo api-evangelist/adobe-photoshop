@@ -17,10 +17,12 @@ tags:
   - Scripting
   - AI/ML
 created: '2025-02-28'
-modified: '2026-02-28'
+modified: '2026-03-16'
+specificationVersion: '0.19'
+type: Index
 maintainers:
-  - name: Kin Lane
-    email: info@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com
 apis:
   - aid: adobe-photoshop:photoshop-api
     name: Adobe Photoshop API
