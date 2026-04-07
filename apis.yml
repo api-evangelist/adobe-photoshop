@@ -7,16 +7,15 @@ description: >-
   for building desktop extensions with modern JavaScript, a C++ plugin SDK for
   native filters and file formats, and scripting interfaces for workflow
   automation.
-url: 
-  https://raw.githubusercontent.com/api-evangelist/adobe-photoshop/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/adobe-photoshop/refs/heads/main/apis.yml
 tags:
-  - Image Editing
-  - Creative Cloud
-  - Photoshop
-  - REST API
-  - Plugins
-  - Scripting
   - AI/ML
+  - Creative Cloud
+  - Image Editing
+  - Photoshop
+  - Plugins
+  - REST API
+  - Scripting
 created: '2025-02-28'
 modified: '2026-03-16'
 specificationVersion: '0.19'
@@ -28,15 +27,14 @@ apis:
   - aid: adobe-photoshop:photoshop-api
     name: Adobe Photoshop API
     tags:
-      - REST API
+      - AI/ML
+      - Asynchronous
+      - Background Removal
       - Cloud
       - Image Processing
       - PSD Editing
-      - Background Removal
-      - AI/ML
-      - Asynchronous
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - REST API
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://image.adobe.io
     humanURL: https://developer.adobe.com/firefly-services/docs/photoshop/
     properties:
@@ -48,8 +46,7 @@ apis:
         type: AsyncAPI
       - url: https://developer.adobe.com/firefly-services/docs/photoshop/api/
         type: APIReference
-      - url: 
-          https://developer.adobe.com/firefly-services/docs/photoshop/getting_started/
+      - url: https://developer.adobe.com/firefly-services/docs/photoshop/getting_started/
         type: GettingStarted
     description: >-
       A cloud-based REST API that provides programmatic access to Photoshop's image
@@ -61,13 +58,12 @@ apis:
   - aid: adobe-photoshop:firefly-services-sdk
     name: Adobe Firefly Services SDK for JavaScript
     tags:
-      - SDK
-      - Node.js
-      - TypeScript
-      - NPM
       - Client Library
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Node.js
+      - NPM
+      - SDK
+      - TypeScript
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://image.adobe.io
     humanURL: https://developer.adobe.com/firefly-services/docs/guides/sdks/
     properties:
@@ -86,14 +82,13 @@ apis:
   - aid: adobe-photoshop:uxp-plugin-api
     name: Adobe Photoshop UXP Plugin API
     tags:
-      - Plugin Platform
-      - JavaScript
-      - HTML/CSS
-      - DOM API
       - Desktop
+      - DOM API
+      - HTML/CSS
+      - JavaScript
+      - Plugin Platform
       - Spectrum UI
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://developer.adobe.com/photoshop/uxp/2022/
     properties:
@@ -118,19 +113,17 @@ apis:
   - aid: adobe-photoshop:uxp-scripting
     name: Adobe Photoshop UXP Scripting
     tags:
-      - Scripting
-      - JavaScript
       - Automation
+      - JavaScript
       - Modern JS
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Scripting
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://developer.adobe.com/photoshop/uxp/2022/scripting/
     properties:
       - url: https://developer.adobe.com/photoshop/uxp/2022/scripting/
         type: Documentation
-      - url: 
-          https://developer.adobe.com/photoshop/uxp/2022/ps_reference/media/uxpscripting/
+      - url: https://developer.adobe.com/photoshop/uxp/2022/ps_reference/media/uxpscripting/
         type: APIReference
     description: >-
       A modern scripting system for Photoshop that allows developers to execute standalone
@@ -140,26 +133,21 @@ apis:
   - aid: adobe-photoshop:uxp-hybrid-plugins
     name: Adobe Photoshop UXP Hybrid Plugins
     tags:
-      - Plugin
       - C++
+      - Filters
       - Hybrid
       - Native Code
       - Performance
-      - Filters
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Plugin
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
-    humanURL: 
-      https://developer.adobe.com/photoshop/uxp/2022/guides/hybrid-plugins/
+    humanURL: https://developer.adobe.com/photoshop/uxp/2022/guides/hybrid-plugins/
     properties:
-      - url: 
-          https://developer.adobe.com/photoshop/uxp/2022/guides/hybrid-plugins/
+      - url: https://developer.adobe.com/photoshop/uxp/2022/guides/hybrid-plugins/
         type: Documentation
-      - url: 
-          https://developer.adobe.com/photoshop/uxp/2022/guides/hybrid-plugins/getting-started/
+      - url: https://developer.adobe.com/photoshop/uxp/2022/guides/hybrid-plugins/getting-started/
         type: GettingStarted
-      - url: 
-          https://developer.adobe.com/photoshop/uxp/2022/ps_reference/media/cpp-pluginsdk/
+      - url: https://developer.adobe.com/photoshop/uxp/2022/ps_reference/media/cpp-pluginsdk/
         type: APIReference
     description: >-
       A specialized plugin type that combines UXP's JavaScript, HTML, and CSS
@@ -173,12 +161,11 @@ apis:
     name: Adobe Photoshop C++ Plugin SDK
     tags:
       - C++
-      - Native SDK
-      - Filters
-      - File Formats
       - Desktop
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - File Formats
+      - Filters
+      - Native SDK
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://developer.adobe.com/photoshop/
     properties:
@@ -196,20 +183,18 @@ apis:
   - aid: adobe-photoshop:extendscript-scripting
     name: Adobe Photoshop ExtendScript Scripting API
     tags:
-      - Legacy
-      - Scripting
+      - Automation
       - ExtendScript
       - JSX
-      - Automation
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Legacy
+      - Scripting
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://extendscript.docsforadobe.dev/
     properties:
       - url: https://extendscript.docsforadobe.dev/
         type: Documentation
-      - url: 
-          https://developer.adobe.com/photoshop/uxp/2022/guides/uxp_for_you/uxp_for_extendscript_devs/
+      - url: https://developer.adobe.com/photoshop/uxp/2022/guides/uxp_for_you/uxp_for_extendscript_devs/
         type: Documentation
       - url: https://github.com/adobe-uxp/ps-es-to-uxp
         type: GitHubRepository
@@ -235,8 +220,7 @@ common:
     description: >-
       UXP plugin and scripting documentation for Adobe Photoshop desktop
       development.
-  - url: 
-      https://developer.adobe.com/firefly-services/docs/photoshop/getting_started/
+  - url: https://developer.adobe.com/firefly-services/docs/photoshop/getting_started/
     type: GettingStarted
     description: >-
       Getting started guide for the Photoshop API including authentication
@@ -276,8 +260,7 @@ common:
     description: >-
       Adobe Developers blog with technical articles, API updates, and
       developer community news.
-  - url: 
-      https://community.adobe.com/t5/photoshop-ecosystem-discussions/bd-p/photoshop
+  - url: https://community.adobe.com/t5/photoshop-ecosystem-discussions/bd-p/photoshop
     type: Forum
     description: >-
       Adobe Community forum for Photoshop discussions, plugin development

@@ -26,14 +26,27 @@ servers:
   - url: https://image.adobe.io
     description: Adobe Photoshop API Production
 tags:
+  - name: Actions
+    description: >-
+      Execute Photoshop Action files (.atn) and Action JSON descriptors
+      on images programmatically.
   - name: Background Removal
     description: >-
       Remove backgrounds from images and create masks using AI-powered
       subject detection.
+  - name: Crop and Effects
+    description: >-
+      Apply AI-powered product crop and depth blur effects to images.
   - name: Document Operations
     description: >-
       Create, modify, and inspect PSD documents including layer editing,
       adjustments, and metadata retrieval.
+  - name: Generative
+    description: >-
+      Fill masked areas of images using generative AI capabilities.
+  - name: Health
+    description: >-
+      Service health check endpoint.
   - name: Renditions
     description: >-
       Generate flat image renditions from PSD files in various formats
@@ -41,26 +54,13 @@ tags:
   - name: Smart Objects
     description: >-
       Replace and manage embedded Smart Object layers within PSD documents.
+  - name: Status
+    description: >-
+      Poll for the status of asynchronous jobs.
   - name: Text
     description: >-
       Edit text layer content, character styles, and paragraph styles in
       PSD documents.
-  - name: Actions
-    description: >-
-      Execute Photoshop Action files (.atn) and Action JSON descriptors
-      on images programmatically.
-  - name: Crop and Effects
-    description: >-
-      Apply AI-powered product crop and depth blur effects to images.
-  - name: Generative
-    description: >-
-      Fill masked areas of images using generative AI capabilities.
-  - name: Status
-    description: >-
-      Poll for the status of asynchronous jobs.
-  - name: Health
-    description: >-
-      Service health check endpoint.
 paths:
   /v2/remove-background:
     post:
