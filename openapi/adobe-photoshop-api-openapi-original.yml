@@ -65,7 +65,7 @@ paths:
   /v2/remove-background:
     post:
       operationId: removeBackgroundV2
-      summary: Remove background from an image
+      summary: Adobe Photoshop Remove background from an image
       description: >-
         Removes the background from an image using AI-powered subject
         detection. Supports cutout mode (transparent background) and mask
@@ -97,7 +97,7 @@ paths:
   /v1/fill-masked-areas:
     post:
       operationId: fillMaskedAreas
-      summary: Fill masked areas with generative AI
+      summary: Adobe Photoshop Fill masked areas with generative AI
       description: >-
         Fills masked areas of an image using generative AI. Provide a source
         image and one or more mask images defining the areas to fill. The
@@ -126,7 +126,7 @@ paths:
   /pie/psdService/documentManifest:
     post:
       operationId: getDocumentManifest
-      summary: Get PSD document manifest
+      summary: Adobe Photoshop Get PSD document manifest
       description: >-
         Retrieves the manifest (metadata) of a PSD document including the
         complete layer tree with layer types, names, bounds, visibility,
@@ -156,7 +156,7 @@ paths:
   /pie/psdService/documentOperations:
     post:
       operationId: modifyDocument
-      summary: Edit a PSD document
+      summary: Adobe Photoshop Edit a PSD document
       description: >-
         Performs layer-level edits on a PSD document. Supports adding,
         editing, moving, and deleting layers. Can apply adjustments such as
@@ -189,7 +189,7 @@ paths:
   /pie/psdService/documentCreate:
     post:
       operationId: createDocument
-      summary: Create a new PSD document
+      summary: Adobe Photoshop Create a new PSD document
       description: >-
         Creates a new PSD document with specified dimensions, resolution,
         color mode, and bit depth. Layers can be added during creation
@@ -218,7 +218,7 @@ paths:
   /pie/psdService/renditionCreate:
     post:
       operationId: createRendition
-      summary: Create image renditions from a PSD
+      summary: Adobe Photoshop Create image renditions from a PSD
       description: >-
         Generates flat image renditions from a PSD file. Supports output
         formats including JPEG, PNG, TIFF, and PSD. Can optionally resize
@@ -249,7 +249,7 @@ paths:
   /pie/psdService/smartObject:
     post:
       operationId: replaceSmartObject
-      summary: Replace Smart Object content
+      summary: Adobe Photoshop Replace Smart Object content
       description: >-
         Replaces the embedded content of Smart Object layers in a PSD
         document. Allows updating linked or embedded images within Smart
@@ -280,7 +280,7 @@ paths:
   /pie/psdService/text:
     post:
       operationId: editTextLayer
-      summary: Edit text layers in a PSD
+      summary: Adobe Photoshop Edit text layers in a PSD
       description: >-
         Edits text layer content and styling in a PSD document. Supports
         changing text content, character styles (font, size, color, tracking,
@@ -313,7 +313,7 @@ paths:
   /pie/psdService/photoshopActions:
     post:
       operationId: playPhotoshopActions
-      summary: Execute Photoshop Action files
+      summary: Adobe Photoshop Execute Photoshop Action files
       description: >-
         Executes Photoshop Action (.atn) files on an input image. Actions
         are sequences of recorded Photoshop operations that can be replayed
@@ -343,7 +343,7 @@ paths:
   /pie/psdService/actionJSON:
     post:
       operationId: playActionJSON
-      summary: Execute Photoshop actions via JSON descriptors
+      summary: Adobe Photoshop Execute Photoshop actions via JSON descriptors
       description: >-
         Executes Photoshop operations defined as JSON action descriptors on
         an input image. More flexible than .atn files, action JSON allows
@@ -373,7 +373,7 @@ paths:
   /pie/psdService/actionJsonCreate:
     post:
       operationId: createWithActionJSON
-      summary: Create documents using Action JSON descriptors
+      summary: Adobe Photoshop Create documents using Action JSON descriptors
       description: >-
         Creates new documents from scratch using Action JSON descriptors.
         Similar to the actionJSON endpoint but does not require an input
@@ -402,7 +402,7 @@ paths:
   /pie/psdService/productCrop:
     post:
       operationId: productCrop
-      summary: Smart crop to product subject
+      summary: Adobe Photoshop Smart crop to product subject
       description: >-
         Applies AI-powered smart cropping that identifies the main product
         or subject in an image and crops to keep it centered with
@@ -431,7 +431,7 @@ paths:
   /pie/psdService/depthBlur:
     post:
       operationId: depthBlur
-      summary: Apply depth blur effect
+      summary: Adobe Photoshop Apply depth blur effect
       description: >-
         Applies an AI-powered depth blur (bokeh) effect to an image,
         simulating a shallow depth of field. Configurable focal point,
@@ -460,7 +460,7 @@ paths:
   /pie/psdService/artboardCreate:
     post:
       operationId: createArtboard
-      summary: Create artboards from PSD inputs
+      summary: Adobe Photoshop Create artboards from PSD inputs
       description: >-
         Creates a PSD document containing multiple artboards from one or
         more input PSD files.
@@ -488,7 +488,7 @@ paths:
   /pie/psdService/status/{jobId}:
     get:
       operationId: getPsdJobStatus
-      summary: Get PSD service job status
+      summary: Adobe Photoshop Get PSD service job status
       description: >-
         Polls the status of an asynchronous PSD service job. Returns the
         current status (pending, running, succeeded, failed) along with
@@ -513,7 +513,7 @@ paths:
   /sensei/status/{jobId}:
     get:
       operationId: getSenseiJobStatus
-      summary: Get Sensei service job status
+      summary: Adobe Photoshop Get Sensei service job status
       description: >-
         Polls the status of an asynchronous Sensei AI service job such as
         background removal or mask creation.
@@ -537,7 +537,7 @@ paths:
   /pie/psdService/hello:
     get:
       operationId: healthCheck
-      summary: Service health check
+      summary: Adobe Photoshop Service health check
       description: >-
         Returns a welcome message confirming the Photoshop API service is
         available.
