@@ -1,0 +1,84 @@
+vocabulary: 1.0.0
+info:
+  provider: Adobe Photoshop
+  description: Vocabulary for the Adobe Photoshop developer platform covering cloud
+    API, UXP plugins, C++ SDK, and scripting.
+  created: '2026-04-17'
+  modified: '2026-04-17'
+operational:
+  apis:
+  - name: Adobe Photoshop API
+    namespace: ps-api
+    baseUrl: https://image.adobe.io
+    status: active
+  - name: UXP Plugin API
+    namespace: ps-uxp
+    status: active
+  - name: C++ Plugin SDK
+    namespace: ps-cpp
+    status: active
+  - name: ExtendScript
+    namespace: ps-extendscript
+    status: active
+  resources:
+  - name: documents
+    description: PSD documents with layers and artboards.
+    actions:
+    - create
+    - get
+    - modify
+    - render
+  - name: layers
+    description: Individual layers within PSD documents.
+    actions:
+    - create
+    - get
+    - edit
+    - delete
+  - name: smart-objects
+    description: Embedded and linked Smart Objects.
+    actions:
+    - replace
+    - get
+  - name: images
+    description: Raster images for processing.
+    actions:
+    - remove-background
+    - crop
+    - blur
+    - resize
+  - name: actions
+    description: Recorded Photoshop Actions for batch automation.
+    actions:
+    - execute
+  - name: renditions
+    description: Output renders in various formats.
+    actions:
+    - create
+capability:
+  personas:
+  - id: creative-developer
+    name: Creative Developer
+  - id: automation-engineer
+    name: Automation Engineer
+  - id: plugin-developer
+    name: Plugin Developer
+  - id: photographer
+    name: Photographer
+  domains:
+  - name: cloud-processing
+    resources:
+    - documents
+    - images
+    - renditions
+  - name: psd-editing
+    resources:
+    - documents
+    - layers
+    - smart-objects
+  - name: ai-features
+    resources:
+    - images
+  - name: automation
+    resources:
+    - actions

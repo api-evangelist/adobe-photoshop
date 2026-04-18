@@ -1,0 +1,21 @@
+{
+  "inputs": [
+    "example_value"
+  ],
+  "options": {
+    "manageMissingFonts": "useDefault",
+    "globalFont": "example_value",
+    "fonts": [
+      "example_value"
+    ],
+    "layers": [
+      {
+        "name": {},
+        "text": {}
+      }
+    ]
+  },
+  "outputs": [
+    "example_value"
+  ]
+}

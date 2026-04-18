@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/adobe-photoshop/refs/heads/main/json-structure/adobe-photoshop-api-document-operations-request-structure.json",
+  "name": "DocumentOperationsRequest",
+  "description": "DocumentOperationsRequest from Adobe Photoshop API",
+  "type": "object",
+  "properties": {
+    "inputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/StorageInput"
+      }
+    },
+    "options": {
+      "type": "object",
+      "properties": {
+        "layers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/LayerOperation"
+          }
+        }
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/StorageOutput"
+      }
+    }
+  },
+  "required": [
+    "inputs",
+    "outputs"
+  ]
+}

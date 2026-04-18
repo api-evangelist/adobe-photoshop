@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/adobe-photoshop/refs/heads/main/json-structure/adobe-photoshop-api-document-manifest-request-structure.json",
+  "name": "DocumentManifestRequest",
+  "description": "DocumentManifestRequest from Adobe Photoshop API",
+  "type": "object",
+  "properties": {
+    "inputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/StorageInput"
+      }
+    },
+    "options": {
+      "type": "object",
+      "properties": {
+        "thumbnails": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "image/png",
+                "image/jpeg"
+              ],
+              "description": "Format for layer thumbnails."
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "inputs"
+  ]
+}

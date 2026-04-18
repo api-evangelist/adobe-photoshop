@@ -1,0 +1,90 @@
+{
+  "id": "job_abc123",
+  "name": "Background Layer",
+  "version": "example_value",
+  "manifestVersion": 6,
+  "main": "example_value",
+  "host": {
+    "app": "example_value",
+    "minVersion": "example_value",
+    "maxVersion": "example_value"
+  },
+  "entrypoints": [
+    {
+      "type": "panel",
+      "id": "job_abc123",
+      "label": {
+        "default": {}
+      },
+      "minimumSize": {
+        "width": {},
+        "height": {}
+      },
+      "maximumSize": {
+        "width": {},
+        "height": {}
+      },
+      "preferredDockedSize": {
+        "width": {},
+        "height": {}
+      },
+      "preferredFloatingSize": {
+        "width": {},
+        "height": {}
+      },
+      "shortcut": {
+        "mac": {},
+        "win": {}
+      }
+    }
+  ],
+  "icons": [
+    {
+      "width": 1920,
+      "height": 1920,
+      "path": "example_value",
+      "scale": [
+        {}
+      ],
+      "theme": [
+        {}
+      ]
+    }
+  ],
+  "requiredPermissions": {
+    "clipboard": "readAndWrite",
+    "network": {
+      "domains": [
+        {}
+      ]
+    },
+    "webview": {
+      "allow": "no",
+      "domains": [
+        {}
+      ]
+    },
+    "ipc": {
+      "enablePluginCommunication": true
+    },
+    "allowCodeGenerationFromStrings": true,
+    "localFileSystem": "request",
+    "launchProcess": {
+      "schemes": [
+        {}
+      ],
+      "extensions": [
+        {}
+      ]
+    },
+    "enableAddon": true
+  },
+  "addon": {
+    "cplugins": [
+      {
+        "type": {},
+        "path": {}
+      }
+    ]
+  }
+}

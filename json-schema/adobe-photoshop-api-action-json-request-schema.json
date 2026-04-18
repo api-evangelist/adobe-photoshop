@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/adobe-photoshop/refs/heads/main/json-schema/adobe-photoshop-api-action-json-request-schema.json",
+  "title": "ActionJSONRequest",
+  "description": "ActionJSONRequest from Adobe Photoshop API",
+  "type": "object",
+  "properties": {
+    "inputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/StorageInput"
+      }
+    },
+    "options": {
+      "type": "object",
+      "required": [
+        "actionJSON"
+      ],
+      "properties": {
+        "actionJSON": {
+          "type": "array",
+          "description": "Array of Photoshop action descriptor objects.",
+          "items": {
+            "type": "object",
+            "required": [
+              "_obj"
+            ],
+            "properties": {
+              "_obj": {
+                "type": "string",
+                "description": "Photoshop action descriptor type."
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "additionalImages": {
+          "type": "array",
+          "description": "Additional images for compositing, referenced in actionJSON as ACTION_JSON_OPTIONS_ADDITIONAL_IMAGES_0, etc.",
+          "items": {
+            "$ref": "#/components/schemas/StorageInput"
+          }
+        }
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/StorageOutput"
+      }
+    }
+  },
+  "required": [
+    "options",
+    "outputs"
+  ]
+}

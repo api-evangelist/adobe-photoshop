@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/adobe-photoshop/refs/heads/main/json-schema/adobe-photoshop-api-remove-background-request-schema.json",
+  "title": "RemoveBackgroundRequest",
+  "description": "RemoveBackgroundRequest from Adobe Photoshop API",
+  "type": "object",
+  "properties": {
+    "image": {
+      "type": "object",
+      "required": [
+        "source"
+      ],
+      "properties": {
+        "source": {
+          "type": "object",
+          "required": [
+            "url"
+          ],
+          "properties": {
+            "url": {
+              "type": "string",
+              "description": "Pre-signed GET URL of the source image."
+            }
+          }
+        }
+      }
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "cutout",
+        "mask"
+      ],
+      "default": "cutout",
+      "description": "cutout removes the background, mask returns a grayscale mask.",
+      "example": "cutout"
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "mediaType": {
+          "type": "string",
+          "enum": [
+            "image/jpeg",
+            "image/png"
+          ],
+          "description": "Output format."
+        }
+      }
+    },
+    "trim": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to trim whitespace around the subject.",
+      "example": true
+    },
+    "backgroundColor": {
+      "type": "object",
+      "description": "Optional replacement background color.",
+      "properties": {
+        "red": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "green": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "blue": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "alpha": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "colorDecontamination": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Level of color decontamination to apply.",
+      "example": 1920
+    }
+  },
+  "required": [
+    "image",
+    "output"
+  ]
+}

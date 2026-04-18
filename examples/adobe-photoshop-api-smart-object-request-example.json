@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    "example_value"
+  ],
+  "options": {
+    "layers": [
+      {
+        "name": {},
+        "id": {},
+        "type": {},
+        "input": {},
+        "smartObject": {},
+        "attributes": {}
+      }
+    ]
+  },
+  "outputs": [
+    "example_value"
+  ]
+}

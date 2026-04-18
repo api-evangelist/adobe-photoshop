@@ -1,0 +1,10 @@
+{
+  "inputs": [
+    "example_value"
+  ],
+  "options": {
+    "thumbnails": {
+      "type": "image/jpeg"
+    }
+  }
+}

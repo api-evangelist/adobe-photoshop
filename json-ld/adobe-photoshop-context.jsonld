@@ -1,0 +1,142 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "ps": "https://developer.adobe.com/photoshop/schema/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ActionJSONRequest": "ps:ActionJSONRequest",
+    "Adobe Photoshop UXP Plugin Manifest": "ps:Adobe Photoshop UXP Plugin Manifest",
+    "ArtboardCreateRequest": "ps:ArtboardCreateRequest",
+    "DepthBlurRequest": "ps:DepthBlurRequest",
+    "DocumentCreateRequest": "ps:DocumentCreateRequest",
+    "DocumentManifestRequest": "ps:DocumentManifestRequest",
+    "DocumentOperationsRequest": "ps:DocumentOperationsRequest",
+    "FillMaskedAreasRequest": "ps:FillMaskedAreasRequest",
+    "PhotoshopActionsRequest": "ps:PhotoshopActionsRequest",
+    "ProductCropRequest": "ps:ProductCropRequest",
+    "RemoveBackgroundRequest": "ps:RemoveBackgroundRequest",
+    "RenditionCreateRequest": "ps:RenditionCreateRequest",
+    "SmartObjectRequest": "ps:SmartObjectRequest",
+    "StorageInput": "ps:StorageInput",
+    "StorageOutput": "ps:StorageOutput",
+    "TextEditRequest": "ps:TextEditRequest",
+    "addon": {
+      "@id": "ps:addon",
+      "@type": "@id"
+    },
+    "author": {
+      "@id": "ps:author",
+      "@type": "xsd:string"
+    },
+    "backgroundColor": {
+      "@id": "ps:backgroundColor",
+      "@type": "@id"
+    },
+    "colorDecontamination": {
+      "@id": "ps:colorDecontamination",
+      "@type": "xsd:integer"
+    },
+    "description": {
+      "@id": "ps:description",
+      "@type": "xsd:string"
+    },
+    "entrypoints": {
+      "@id": "ps:entrypoints",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "host": {
+      "@id": "ps:host",
+      "@type": "@id"
+    },
+    "href": {
+      "@id": "ps:href",
+      "@type": "xsd:string"
+    },
+    "icons": {
+      "@id": "ps:icons",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "id": {
+      "@id": "ps:id",
+      "@type": "xsd:string"
+    },
+    "image": {
+      "@id": "ps:image",
+      "@type": "@id"
+    },
+    "inputs": {
+      "@id": "ps:inputs",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "keywords": {
+      "@id": "ps:keywords",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "main": {
+      "@id": "ps:main",
+      "@type": "xsd:string"
+    },
+    "manifestVersion": {
+      "@id": "ps:manifestVersion",
+      "@type": "xsd:integer"
+    },
+    "masks": {
+      "@id": "ps:masks",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "mode": {
+      "@id": "ps:mode",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "ps:name",
+      "@type": "xsd:string"
+    },
+    "options": {
+      "@id": "ps:options",
+      "@type": "@id"
+    },
+    "output": {
+      "@id": "ps:output",
+      "@type": "@id"
+    },
+    "outputs": {
+      "@id": "ps:outputs",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "overwrite": {
+      "@id": "ps:overwrite",
+      "@type": "xsd:boolean"
+    },
+    "requiredPermissions": {
+      "@id": "ps:requiredPermissions",
+      "@type": "@id"
+    },
+    "storage": {
+      "@id": "ps:storage",
+      "@type": "xsd:string"
+    },
+    "trim": {
+      "@id": "ps:trim",
+      "@type": "xsd:boolean"
+    },
+    "type": {
+      "@id": "ps:type",
+      "@type": "xsd:string"
+    },
+    "version": {
+      "@id": "ps:version",
+      "@type": "xsd:string"
+    },
+    "width": {
+      "@id": "ps:width",
+      "@type": "xsd:integer"
+    }
+  }
+}

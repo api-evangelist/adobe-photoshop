@@ -1,0 +1,18 @@
+{
+  "inputs": [
+    "example_value"
+  ],
+  "options": {
+    "actionJSON": [
+      {
+        "_obj": {}
+      }
+    ],
+    "additionalImages": [
+      "example_value"
+    ]
+  },
+  "outputs": [
+    "example_value"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/adobe-photoshop/refs/heads/main/json-structure/adobe-photoshop-api-artboard-create-request-structure.json",
+  "name": "ArtboardCreateRequest",
+  "description": "ArtboardCreateRequest from Adobe Photoshop API",
+  "type": "object",
+  "properties": {
+    "options": {
+      "type": "object",
+      "required": [
+        "artboards"
+      ],
+      "properties": {
+        "artboards": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Artboard name."
+              },
+              "width": {
+                "type": "int32",
+                "description": "Artboard width in pixels."
+              },
+              "height": {
+                "type": "int32",
+                "description": "Artboard height in pixels."
+              },
+              "layers": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/LayerOperation"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/StorageOutput"
+      }
+    }
+  },
+  "required": [
+    "options",
+    "outputs"
+  ]
+}

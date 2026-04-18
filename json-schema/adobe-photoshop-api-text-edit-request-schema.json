@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/adobe-photoshop/refs/heads/main/json-schema/adobe-photoshop-api-text-edit-request-schema.json",
+  "title": "TextEditRequest",
+  "description": "TextEditRequest from Adobe Photoshop API",
+  "type": "object",
+  "properties": {
+    "inputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/StorageInput"
+      }
+    },
+    "options": {
+      "type": "object",
+      "properties": {
+        "manageMissingFonts": {
+          "type": "string",
+          "enum": [
+            "fail",
+            "useDefault"
+          ],
+          "description": "Behavior when fonts are missing."
+        },
+        "globalFont": {
+          "type": "string",
+          "description": "Fallback font name when using useDefault."
+        },
+        "fonts": {
+          "type": "array",
+          "description": "Custom fonts provided via URL.",
+          "items": {
+            "$ref": "#/components/schemas/StorageInput"
+          }
+        },
+        "layers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "text"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name of the text layer to edit."
+              },
+              "text": {
+                "$ref": "#/components/schemas/TextContent"
+              }
+            }
+          }
+        }
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/StorageOutput"
+      }
+    }
+  },
+  "required": [
+    "inputs",
+    "options",
+    "outputs"
+  ]
+}

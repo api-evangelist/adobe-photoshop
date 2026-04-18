@@ -1,0 +1,13 @@
+{
+  "inputs": [
+    "example_value"
+  ],
+  "options": {
+    "layers": [
+      "example_value"
+    ]
+  },
+  "outputs": [
+    "example_value"
+  ]
+}

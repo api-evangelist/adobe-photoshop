@@ -1,0 +1,14 @@
+{
+  "image": {
+    "source": {
+      "url": "https://image.adobe.io/example.jpg"
+    }
+  },
+  "masks": [
+    {
+      "source": {
+        "url": {}
+      }
+    }
+  ]
+}

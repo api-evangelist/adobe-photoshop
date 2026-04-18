@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/adobe-photoshop/refs/heads/main/json-structure/adobe-photoshop-api-document-create-request-structure.json",
+  "name": "DocumentCreateRequest",
+  "description": "DocumentCreateRequest from Adobe Photoshop API",
+  "type": "object",
+  "properties": {
+    "options": {
+      "type": "object",
+      "required": [
+        "document"
+      ],
+      "properties": {
+        "document": {
+          "type": "object",
+          "required": [
+            "width",
+            "height"
+          ],
+          "properties": {
+            "width": {
+              "type": "int32",
+              "description": "Document width in pixels."
+            },
+            "height": {
+              "type": "int32",
+              "description": "Document height in pixels."
+            },
+            "resolution": {
+              "type": "int32",
+              "default": 72,
+              "description": "Document resolution in PPI."
+            },
+            "fill": {
+              "type": "string",
+              "enum": [
+                "white",
+                "transparent",
+                "backgroundColor"
+              ],
+              "default": "white"
+            },
+            "mode": {
+              "type": "string",
+              "enum": [
+                "rgb",
+                "cmyk",
+                "grayscale"
+              ],
+              "default": "rgb"
+            },
+            "depth": {
+              "type": "int32",
+              "enum": [
+                8,
+                16,
+                32
+              ],
+              "default": 8,
+              "description": "Bit depth per channel."
+            }
+          }
+        },
+        "layers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/LayerOperation"
+          }
+        }
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/StorageOutput"
+      }
+    }
+  },
+  "required": [
+    "options",
+    "outputs"
+  ]
+}

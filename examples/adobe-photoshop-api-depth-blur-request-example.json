@@ -1,0 +1,16 @@
+{
+  "inputs": [
+    "example_value"
+  ],
+  "options": {
+    "focalSelector": {},
+    "focalDistance": 72.0,
+    "blurStrength": 72.0,
+    "focalRange": 72.0,
+    "grain": 72.0,
+    "haze": 72.0
+  },
+  "outputs": [
+    "example_value"
+  ]
+}

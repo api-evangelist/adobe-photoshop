@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/adobe-photoshop/refs/heads/main/json-schema/adobe-photoshop-api-storage-output-schema.json",
+  "title": "StorageOutput",
+  "description": "StorageOutput from Adobe Photoshop API",
+  "type": "object",
+  "properties": {
+    "href": {
+      "type": "string",
+      "description": "Pre-signed PUT URL or Creative Cloud asset path.",
+      "example": "https://image.adobe.io/example"
+    },
+    "storage": {
+      "type": "string",
+      "enum": [
+        "external",
+        "adobe",
+        "azure",
+        "dropbox"
+      ],
+      "description": "Storage type for the output file.",
+      "example": "external"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "image/jpeg",
+        "image/png",
+        "image/tiff",
+        "vnd.adobe.photoshop"
+      ],
+      "description": "Output file format.",
+      "example": "image/jpeg"
+    },
+    "width": {
+      "type": "integer",
+      "description": "Optional output width in pixels for resizing.",
+      "example": 1920
+    },
+    "overwrite": {
+      "type": "boolean",
+      "description": "Whether to overwrite existing files.",
+      "default": true,
+      "example": true
+    }
+  },
+  "required": [
+    "href",
+    "storage",
+    "type"
+  ]
+}

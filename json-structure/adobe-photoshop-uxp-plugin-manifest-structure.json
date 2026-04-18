@@ -1,0 +1,344 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://developer.adobe.com/photoshop/uxp/plugin-manifest.schema.json",
+  "name": "Adobe Photoshop UXP Plugin Manifest",
+  "description": "Schema for the manifest.json file required by UXP plugins for Adobe Photoshop. The manifest defines plugin metadata, entry points, permissions, and host application requirements.",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "version",
+    "manifestVersion",
+    "host",
+    "entrypoints"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique plugin identifier. Use reverse domain notation (e.g., com.example.myplugin)."
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the plugin shown in the Photoshop UI."
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Plugin version in semver format (major.minor.patch)."
+    },
+    "manifestVersion": {
+      "type": "int32",
+      "enum": [
+        4,
+        5,
+        6
+      ],
+      "description": "UXP manifest schema version. Version 5 or 6 recommended for current Photoshop."
+    },
+    "main": {
+      "type": "string",
+      "description": "Path to the main JavaScript entry point file relative to the plugin root."
+    },
+    "host": {
+      "type": "object",
+      "description": "Host application requirements.",
+      "required": [
+        "app",
+        "minVersion"
+      ],
+      "properties": {
+        "app": {
+          "type": "string",
+          "const": "PS",
+          "description": "Host application identifier. PS for Adobe Photoshop."
+        },
+        "minVersion": {
+          "type": "string",
+          "description": "Minimum required Photoshop version (e.g., 22.0.0 for UXP support)."
+        },
+        "maxVersion": {
+          "type": "string",
+          "description": "Optional maximum supported Photoshop version."
+        }
+      }
+    },
+    "entrypoints": {
+      "type": "array",
+      "description": "Plugin entry points defining panels, commands, and other UI elements.",
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "id",
+          "label"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "panel",
+              "command"
+            ],
+            "description": "Entry point type. panel creates a dockable panel, command creates a menu item."
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for this entry point within the plugin."
+          },
+          "label": {
+            "type": "object",
+            "description": "Localized display labels for the entry point.",
+            "properties": {
+              "default": {
+                "type": "string",
+                "description": "Default display label."
+              }
+            },
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "minimumSize": {
+            "type": "object",
+            "description": "Minimum panel dimensions (panel type only).",
+            "properties": {
+              "width": {
+                "type": "int32"
+              },
+              "height": {
+                "type": "int32"
+              }
+            }
+          },
+          "maximumSize": {
+            "type": "object",
+            "description": "Maximum panel dimensions (panel type only).",
+            "properties": {
+              "width": {
+                "type": "int32"
+              },
+              "height": {
+                "type": "int32"
+              }
+            }
+          },
+          "preferredDockedSize": {
+            "type": "object",
+            "description": "Preferred panel dimensions when docked.",
+            "properties": {
+              "width": {
+                "type": "int32"
+              },
+              "height": {
+                "type": "int32"
+              }
+            }
+          },
+          "preferredFloatingSize": {
+            "type": "object",
+            "description": "Preferred panel dimensions when floating.",
+            "properties": {
+              "width": {
+                "type": "int32"
+              },
+              "height": {
+                "type": "int32"
+              }
+            }
+          },
+          "shortcut": {
+            "type": "object",
+            "description": "Keyboard shortcut for the entry point.",
+            "properties": {
+              "mac": {
+                "type": "string",
+                "description": "macOS keyboard shortcut."
+              },
+              "win": {
+                "type": "string",
+                "description": "Windows keyboard shortcut."
+              }
+            }
+          }
+        }
+      }
+    },
+    "icons": {
+      "type": "array",
+      "description": "Plugin icons at various sizes for different display contexts.",
+      "items": {
+        "type": "object",
+        "required": [
+          "width",
+          "height",
+          "path"
+        ],
+        "properties": {
+          "width": {
+            "type": "int32",
+            "description": "Icon width in pixels."
+          },
+          "height": {
+            "type": "int32",
+            "description": "Icon height in pixels."
+          },
+          "path": {
+            "type": "string",
+            "description": "Path to the icon file relative to the plugin root."
+          },
+          "scale": {
+            "type": "array",
+            "items": {
+              "type": "double"
+            },
+            "description": "Display scale factors (e.g., [1, 2] for standard and Retina)."
+          },
+          "theme": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "lightest",
+                "light",
+                "medium",
+                "dark",
+                "darkest",
+                "all"
+              ]
+            },
+            "description": "UI themes this icon supports."
+          }
+        }
+      }
+    },
+    "requiredPermissions": {
+      "type": "object",
+      "description": "Permissions the plugin requires to function.",
+      "properties": {
+        "clipboard": {
+          "type": "string",
+          "enum": [
+            "read",
+            "readAndWrite"
+          ],
+          "description": "Clipboard access level."
+        },
+        "network": {
+          "type": "object",
+          "description": "Network access permissions.",
+          "properties": {
+            "domains": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Allowed network domains. Use 'all' for unrestricted access."
+            }
+          }
+        },
+        "webview": {
+          "type": "object",
+          "description": "WebView permissions for embedded web content.",
+          "properties": {
+            "allow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no"
+              ]
+            },
+            "domains": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "ipc": {
+          "type": "object",
+          "description": "Inter-plugin communication permissions.",
+          "properties": {
+            "enablePluginCommunication": {
+              "type": "boolean"
+            }
+          }
+        },
+        "allowCodeGenerationFromStrings": {
+          "type": "boolean",
+          "description": "Whether to allow eval() and Function() from strings."
+        },
+        "localFileSystem": {
+          "type": "string",
+          "enum": [
+            "plugin",
+            "request",
+            "fullAccess"
+          ],
+          "description": "File system access level. plugin = plugin sandbox only, request = user-prompted, fullAccess = unrestricted."
+        },
+        "launchProcess": {
+          "type": "object",
+          "description": "Permission to launch external processes (hybrid plugins).",
+          "properties": {
+            "schemes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "extensions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "enableAddon": {
+          "type": "boolean",
+          "description": "Whether to enable native C++ addon loading (hybrid plugins)."
+        }
+      }
+    },
+    "addon": {
+      "type": "object",
+      "description": "Configuration for hybrid plugin native C++ addon.",
+      "properties": {
+        "cplugins": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "filter"
+                ]
+              },
+              "path": {
+                "type": "string",
+                "description": "Relative path to the .uxpaddon file."
+              }
+            }
+          }
+        }
+      }
+    },
+    "description": {
+      "type": "string",
+      "description": "Short description of the plugin's purpose."
+    },
+    "author": {
+      "type": "string",
+      "description": "Plugin author or company name."
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Keywords for plugin discovery in the Adobe Marketplace."
+    }
+  }
+}

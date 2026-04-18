@@ -23,56 +23,56 @@ externalDocs:
   description: Adobe Photoshop API Documentation
   url: https://developer.adobe.com/firefly-services/docs/photoshop/
 servers:
-  - url: https://image.adobe.io
-    description: Adobe Photoshop API Production
+- url: https://image.adobe.io
+  description: Adobe Photoshop API Production
 tags:
-  - name: Actions
-    description: >-
-      Execute Photoshop Action files (.atn) and Action JSON descriptors
-      on images programmatically.
-  - name: Background Removal
-    description: >-
-      Remove backgrounds from images and create masks using AI-powered
-      subject detection.
-  - name: Crop and Effects
-    description: >-
-      Apply AI-powered product crop and depth blur effects to images.
-  - name: Document Operations
-    description: >-
-      Create, modify, and inspect PSD documents including layer editing,
-      adjustments, and metadata retrieval.
-  - name: Generative
-    description: >-
-      Fill masked areas of images using generative AI capabilities.
-  - name: Health
-    description: >-
-      Service health check endpoint.
-  - name: Renditions
-    description: >-
-      Generate flat image renditions from PSD files in various formats
-      including JPEG, PNG, and TIFF.
-  - name: Smart Objects
-    description: >-
-      Replace and manage embedded Smart Object layers within PSD documents.
-  - name: Status
-    description: >-
-      Poll for the status of asynchronous jobs.
-  - name: Text
-    description: >-
-      Edit text layer content, character styles, and paragraph styles in
-      PSD documents.
+- name: Actions
+  description: >-
+    Execute Photoshop Action files (.atn) and Action JSON descriptors
+    on images programmatically.
+- name: Background Removal
+  description: >-
+    Remove backgrounds from images and create masks using AI-powered
+    subject detection.
+- name: Crop and Effects
+  description: >-
+    Apply AI-powered product crop and depth blur effects to images.
+- name: Document Operations
+  description: >-
+    Create, modify, and inspect PSD documents including layer editing,
+    adjustments, and metadata retrieval.
+- name: Generative
+  description: >-
+    Fill masked areas of images using generative AI capabilities.
+- name: Health
+  description: >-
+    Service health check endpoint.
+- name: Renditions
+  description: >-
+    Generate flat image renditions from PSD files in various formats
+    including JPEG, PNG, and TIFF.
+- name: Smart Objects
+  description: >-
+    Replace and manage embedded Smart Object layers within PSD documents.
+- name: Status
+  description: >-
+    Poll for the status of asynchronous jobs.
+- name: Text
+  description: >-
+    Edit text layer content, character styles, and paragraph styles in
+    PSD documents.
 paths:
   /v2/remove-background:
     post:
       operationId: removeBackgroundV2
-      summary: Adobe Photoshop Remove background from an image
+      summary: Adobe Photoshop Remove Background from an Image
       description: >-
         Removes the background from an image using AI-powered subject
         detection. Supports cutout mode (transparent background) and mask
         mode (grayscale mask output). Can optionally apply a background
         color, trim whitespace, and perform color decontamination.
       tags:
-        - Background Removal
+      - Background Removal
       requestBody:
         required: true
         content:
@@ -94,16 +94,19 @@ paths:
           $ref: '#/components/responses/RateLimited'
         '500':
           $ref: '#/components/responses/InternalError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /v1/fill-masked-areas:
     post:
       operationId: fillMaskedAreas
-      summary: Adobe Photoshop Fill masked areas with generative AI
+      summary: Adobe Photoshop Fill Masked Areas with Generative AI
       description: >-
         Fills masked areas of an image using generative AI. Provide a source
         image and one or more mask images defining the areas to fill. The
         API generates content to seamlessly fill the masked regions.
       tags:
-        - Generative
+      - Generative
       requestBody:
         required: true
         content:
@@ -123,17 +126,20 @@ paths:
           $ref: '#/components/responses/RateLimited'
         '500':
           $ref: '#/components/responses/InternalError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /pie/psdService/documentManifest:
     post:
       operationId: getDocumentManifest
-      summary: Adobe Photoshop Get PSD document manifest
+      summary: Adobe Photoshop Get PSD Document Manifest
       description: >-
         Retrieves the manifest (metadata) of a PSD document including the
         complete layer tree with layer types, names, bounds, visibility,
         text content, and Smart Object information. Optionally generates
         layer thumbnails.
       tags:
-        - Document Operations
+      - Document Operations
       requestBody:
         required: true
         content:
@@ -153,10 +159,13 @@ paths:
           $ref: '#/components/responses/RateLimited'
         '500':
           $ref: '#/components/responses/InternalError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /pie/psdService/documentOperations:
     post:
       operationId: modifyDocument
-      summary: Adobe Photoshop Edit a PSD document
+      summary: Adobe Photoshop Edit a PSD Document
       description: >-
         Performs layer-level edits on a PSD document. Supports adding,
         editing, moving, and deleting layers. Can apply adjustments such as
@@ -164,7 +173,7 @@ paths:
         text layers, and replace Smart Object content. Outputs can be saved
         as PSD, JPEG, PNG, or TIFF.
       tags:
-        - Document Operations
+      - Document Operations
       requestBody:
         required: true
         content:
@@ -186,16 +195,19 @@ paths:
           $ref: '#/components/responses/RateLimited'
         '500':
           $ref: '#/components/responses/InternalError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /pie/psdService/documentCreate:
     post:
       operationId: createDocument
-      summary: Adobe Photoshop Create a new PSD document
+      summary: Adobe Photoshop Create a New PSD Document
       description: >-
         Creates a new PSD document with specified dimensions, resolution,
         color mode, and bit depth. Layers can be added during creation
         including image layers, text layers, and adjustment layers.
       tags:
-        - Document Operations
+      - Document Operations
       requestBody:
         required: true
         content:
@@ -215,16 +227,19 @@ paths:
           $ref: '#/components/responses/RateLimited'
         '500':
           $ref: '#/components/responses/InternalError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /pie/psdService/renditionCreate:
     post:
       operationId: createRendition
-      summary: Adobe Photoshop Create image renditions from a PSD
+      summary: Adobe Photoshop Create Image Renditions from a PSD
       description: >-
         Generates flat image renditions from a PSD file. Supports output
         formats including JPEG, PNG, TIFF, and PSD. Can optionally resize
         the output by specifying a target width.
       tags:
-        - Renditions
+      - Renditions
       requestBody:
         required: true
         content:
@@ -246,16 +261,19 @@ paths:
           $ref: '#/components/responses/RateLimited'
         '500':
           $ref: '#/components/responses/InternalError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /pie/psdService/smartObject:
     post:
       operationId: replaceSmartObject
-      summary: Adobe Photoshop Replace Smart Object content
+      summary: Adobe Photoshop Replace Smart Object Content
       description: >-
         Replaces the embedded content of Smart Object layers in a PSD
         document. Allows updating linked or embedded images within Smart
         Object layers while preserving transformations and effects.
       tags:
-        - Smart Objects
+      - Smart Objects
       requestBody:
         required: true
         content:
@@ -277,10 +295,13 @@ paths:
           $ref: '#/components/responses/RateLimited'
         '500':
           $ref: '#/components/responses/InternalError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /pie/psdService/text:
     post:
       operationId: editTextLayer
-      summary: Adobe Photoshop Edit text layers in a PSD
+      summary: Adobe Photoshop Edit Text Layers in a PSD
       description: >-
         Edits text layer content and styling in a PSD document. Supports
         changing text content, character styles (font, size, color, tracking,
@@ -288,7 +309,7 @@ paths:
         provided via URL, with configurable fallback behavior for missing
         fonts.
       tags:
-        - Text
+      - Text
       requestBody:
         required: true
         content:
@@ -310,17 +331,20 @@ paths:
           $ref: '#/components/responses/RateLimited'
         '500':
           $ref: '#/components/responses/InternalError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /pie/psdService/photoshopActions:
     post:
       operationId: playPhotoshopActions
-      summary: Adobe Photoshop Execute Photoshop Action files
+      summary: Adobe Photoshop Execute Photoshop Action Files
       description: >-
         Executes Photoshop Action (.atn) files on an input image. Actions
         are sequences of recorded Photoshop operations that can be replayed
         programmatically. A specific action within the .atn file can be
         targeted by name.
       tags:
-        - Actions
+      - Actions
       requestBody:
         required: true
         content:
@@ -340,17 +364,20 @@ paths:
           $ref: '#/components/responses/RateLimited'
         '500':
           $ref: '#/components/responses/InternalError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /pie/psdService/actionJSON:
     post:
       operationId: playActionJSON
-      summary: Adobe Photoshop Execute Photoshop actions via JSON descriptors
+      summary: Adobe Photoshop Execute Photoshop Actions via JSON Descriptors
       description: >-
         Executes Photoshop operations defined as JSON action descriptors on
         an input image. More flexible than .atn files, action JSON allows
         programmatic construction of action sequences. Supports referencing
         additional images for compositing operations.
       tags:
-        - Actions
+      - Actions
       requestBody:
         required: true
         content:
@@ -370,16 +397,19 @@ paths:
           $ref: '#/components/responses/RateLimited'
         '500':
           $ref: '#/components/responses/InternalError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /pie/psdService/actionJsonCreate:
     post:
       operationId: createWithActionJSON
-      summary: Adobe Photoshop Create documents using Action JSON descriptors
+      summary: Adobe Photoshop Create Documents Using Action JSON Descriptors
       description: >-
         Creates new documents from scratch using Action JSON descriptors.
         Similar to the actionJSON endpoint but does not require an input
         document, enabling document creation through action sequences.
       tags:
-        - Actions
+      - Actions
       requestBody:
         required: true
         content:
@@ -399,16 +429,19 @@ paths:
           $ref: '#/components/responses/RateLimited'
         '500':
           $ref: '#/components/responses/InternalError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /pie/psdService/productCrop:
     post:
       operationId: productCrop
-      summary: Adobe Photoshop Smart crop to product subject
+      summary: Adobe Photoshop Smart Crop to Product Subject
       description: >-
         Applies AI-powered smart cropping that identifies the main product
         or subject in an image and crops to keep it centered with
         configurable padding.
       tags:
-        - Crop and Effects
+      - Crop and Effects
       requestBody:
         required: true
         content:
@@ -428,16 +461,19 @@ paths:
           $ref: '#/components/responses/RateLimited'
         '500':
           $ref: '#/components/responses/InternalError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /pie/psdService/depthBlur:
     post:
       operationId: depthBlur
-      summary: Adobe Photoshop Apply depth blur effect
+      summary: Adobe Photoshop Apply Depth Blur Effect
       description: >-
         Applies an AI-powered depth blur (bokeh) effect to an image,
         simulating a shallow depth of field. Configurable focal point,
         blur strength, focal range, grain, and haze parameters.
       tags:
-        - Crop and Effects
+      - Crop and Effects
       requestBody:
         required: true
         content:
@@ -457,15 +493,18 @@ paths:
           $ref: '#/components/responses/RateLimited'
         '500':
           $ref: '#/components/responses/InternalError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /pie/psdService/artboardCreate:
     post:
       operationId: createArtboard
-      summary: Adobe Photoshop Create artboards from PSD inputs
+      summary: Adobe Photoshop Create Artboards from PSD Inputs
       description: >-
         Creates a PSD document containing multiple artboards from one or
         more input PSD files.
       tags:
-        - Document Operations
+      - Document Operations
       requestBody:
         required: true
         content:
@@ -485,18 +524,21 @@ paths:
           $ref: '#/components/responses/RateLimited'
         '500':
           $ref: '#/components/responses/InternalError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /pie/psdService/status/{jobId}:
     get:
       operationId: getPsdJobStatus
-      summary: Adobe Photoshop Get PSD service job status
+      summary: Adobe Photoshop Get PSD Service Job Status
       description: >-
         Polls the status of an asynchronous PSD service job. Returns the
         current status (pending, running, succeeded, failed) along with
         output details upon completion.
       tags:
-        - Status
+      - Status
       parameters:
-        - $ref: '#/components/parameters/JobId'
+      - $ref: '#/components/parameters/JobId'
       responses:
         '200':
           description: Job status retrieved.
@@ -510,17 +552,20 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /sensei/status/{jobId}:
     get:
       operationId: getSenseiJobStatus
-      summary: Adobe Photoshop Get Sensei service job status
+      summary: Adobe Photoshop Get Sensei Service Job Status
       description: >-
         Polls the status of an asynchronous Sensei AI service job such as
         background removal or mask creation.
       tags:
-        - Status
+      - Status
       parameters:
-        - $ref: '#/components/parameters/JobId'
+      - $ref: '#/components/parameters/JobId'
       responses:
         '200':
           description: Job status retrieved.
@@ -534,15 +579,18 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /pie/psdService/hello:
     get:
       operationId: healthCheck
-      summary: Adobe Photoshop Service health check
+      summary: Adobe Photoshop Service Health Check
       description: >-
         Returns a welcome message confirming the Photoshop API service is
         available.
       tags:
-        - Health
+      - Health
       responses:
         '200':
           description: Service is healthy.
@@ -551,6 +599,9 @@ paths:
               schema:
                 type: string
                 example: Welcome to the Photoshop API!
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     BearerAuth:
@@ -579,68 +630,75 @@ components:
     StorageInput:
       type: object
       required:
-        - href
-        - storage
+      - href
+      - storage
       properties:
         href:
           type: string
           description: Pre-signed GET URL or Creative Cloud asset path.
+          example: https://image.adobe.io/example
         storage:
           type: string
           enum:
-            - external
-            - adobe
-            - azure
-            - dropbox
+          - external
+          - adobe
+          - azure
+          - dropbox
           description: Storage type for the input file.
+          example: external
     StorageOutput:
       type: object
       required:
-        - href
-        - storage
-        - type
+      - href
+      - storage
+      - type
       properties:
         href:
           type: string
           description: Pre-signed PUT URL or Creative Cloud asset path.
+          example: https://image.adobe.io/example
         storage:
           type: string
           enum:
-            - external
-            - adobe
-            - azure
-            - dropbox
+          - external
+          - adobe
+          - azure
+          - dropbox
           description: Storage type for the output file.
+          example: external
         type:
           type: string
           enum:
-            - image/jpeg
-            - image/png
-            - image/tiff
-            - vnd.adobe.photoshop
+          - image/jpeg
+          - image/png
+          - image/tiff
+          - vnd.adobe.photoshop
           description: Output file format.
+          example: image/jpeg
         width:
           type: integer
           description: Optional output width in pixels for resizing.
+          example: 1920
         overwrite:
           type: boolean
           description: Whether to overwrite existing files.
           default: true
+          example: true
     RemoveBackgroundRequest:
       type: object
       required:
-        - image
-        - output
+      - image
+      - output
       properties:
         image:
           type: object
           required:
-            - source
+          - source
           properties:
             source:
               type: object
               required:
-                - url
+              - url
               properties:
                 url:
                   type: string
@@ -648,24 +706,26 @@ components:
         mode:
           type: string
           enum:
-            - cutout
-            - mask
+          - cutout
+          - mask
           default: cutout
           description: >-
             cutout removes the background, mask returns a grayscale mask.
+          example: cutout
         output:
           type: object
           properties:
             mediaType:
               type: string
               enum:
-                - image/jpeg
-                - image/png
+              - image/jpeg
+              - image/png
               description: Output format.
         trim:
           type: boolean
           default: false
           description: Whether to trim whitespace around the subject.
+          example: true
         backgroundColor:
           type: object
           description: Optional replacement background color.
@@ -691,21 +751,22 @@ components:
           minimum: 0
           maximum: 1
           description: Level of color decontamination to apply.
+          example: 1920
     FillMaskedAreasRequest:
       type: object
       required:
-        - image
-        - masks
+      - image
+      - masks
       properties:
         image:
           type: object
           required:
-            - source
+          - source
           properties:
             source:
               type: object
               required:
-                - url
+              - url
               properties:
                 url:
                   type: string
@@ -715,12 +776,12 @@ components:
           items:
             type: object
             required:
-              - source
+            - source
             properties:
               source:
                 type: object
                 required:
-                  - url
+                - url
                 properties:
                   url:
                     type: string
@@ -728,7 +789,7 @@ components:
     DocumentManifestRequest:
       type: object
       required:
-        - inputs
+      - inputs
       properties:
         inputs:
           type: array
@@ -743,14 +804,14 @@ components:
                 type:
                   type: string
                   enum:
-                    - image/png
-                    - image/jpeg
+                  - image/png
+                  - image/jpeg
                   description: Format for layer thumbnails.
     DocumentOperationsRequest:
       type: object
       required:
-        - inputs
-        - outputs
+      - inputs
+      - outputs
       properties:
         inputs:
           type: array
@@ -770,19 +831,19 @@ components:
     DocumentCreateRequest:
       type: object
       required:
-        - options
-        - outputs
+      - options
+      - outputs
       properties:
         options:
           type: object
           required:
-            - document
+          - document
           properties:
             document:
               type: object
               required:
-                - width
-                - height
+              - width
+              - height
               properties:
                 width:
                   type: integer
@@ -797,23 +858,23 @@ components:
                 fill:
                   type: string
                   enum:
-                    - white
-                    - transparent
-                    - backgroundColor
+                  - white
+                  - transparent
+                  - backgroundColor
                   default: white
                 mode:
                   type: string
                   enum:
-                    - rgb
-                    - cmyk
-                    - grayscale
+                  - rgb
+                  - cmyk
+                  - grayscale
                   default: rgb
                 depth:
                   type: integer
                   enum:
-                    - 8
-                    - 16
-                    - 32
+                  - 8
+                  - 16
+                  - 32
                   default: 8
                   description: Bit depth per channel.
             layers:
@@ -827,8 +888,8 @@ components:
     RenditionCreateRequest:
       type: object
       required:
-        - inputs
-        - outputs
+      - inputs
+      - outputs
       properties:
         inputs:
           type: array
@@ -841,9 +902,9 @@ components:
     SmartObjectRequest:
       type: object
       required:
-        - inputs
-        - options
-        - outputs
+      - inputs
+      - options
+      - outputs
       properties:
         inputs:
           type: array
@@ -852,7 +913,7 @@ components:
         options:
           type: object
           required:
-            - layers
+          - layers
           properties:
             layers:
               type: array
@@ -885,9 +946,9 @@ components:
     TextEditRequest:
       type: object
       required:
-        - inputs
-        - options
-        - outputs
+      - inputs
+      - options
+      - outputs
       properties:
         inputs:
           type: array
@@ -899,8 +960,8 @@ components:
             manageMissingFonts:
               type: string
               enum:
-                - fail
-                - useDefault
+              - fail
+              - useDefault
               description: Behavior when fonts are missing.
             globalFont:
               type: string
@@ -915,8 +976,8 @@ components:
               items:
                 type: object
                 required:
-                  - name
-                  - text
+                - name
+                - text
                 properties:
                   name:
                     type: string
@@ -930,9 +991,9 @@ components:
     PhotoshopActionsRequest:
       type: object
       required:
-        - inputs
-        - options
-        - outputs
+      - inputs
+      - options
+      - outputs
       properties:
         inputs:
           type: array
@@ -941,15 +1002,15 @@ components:
         options:
           type: object
           required:
-            - actions
+          - actions
           properties:
             actions:
               type: array
               items:
                 type: object
                 required:
-                  - href
-                  - storage
+                - href
+                - storage
                 properties:
                   href:
                     type: string
@@ -957,10 +1018,10 @@ components:
                   storage:
                     type: string
                     enum:
-                      - external
-                      - adobe
-                      - azure
-                      - dropbox
+                    - external
+                    - adobe
+                    - azure
+                    - dropbox
                   actionName:
                     type: string
                     description: Specific action name to run within the set.
@@ -971,8 +1032,8 @@ components:
     ActionJSONRequest:
       type: object
       required:
-        - options
-        - outputs
+      - options
+      - outputs
       properties:
         inputs:
           type: array
@@ -981,7 +1042,7 @@ components:
         options:
           type: object
           required:
-            - actionJSON
+          - actionJSON
           properties:
             actionJSON:
               type: array
@@ -989,7 +1050,7 @@ components:
               items:
                 type: object
                 required:
-                  - _obj
+                - _obj
                 properties:
                   _obj:
                     type: string
@@ -1009,8 +1070,8 @@ components:
     ProductCropRequest:
       type: object
       required:
-        - inputs
-        - outputs
+      - inputs
+      - outputs
       properties:
         inputs:
           type: array
@@ -1025,8 +1086,8 @@ components:
             unit:
               type: string
               enum:
-                - pixel
-                - percent
+              - pixel
+              - percent
               description: Unit for padding value.
         outputs:
           type: array
@@ -1035,8 +1096,8 @@ components:
     DepthBlurRequest:
       type: object
       required:
-        - inputs
-        - outputs
+      - inputs
+      - outputs
       properties:
         inputs:
           type: array
@@ -1070,13 +1131,13 @@ components:
     ArtboardCreateRequest:
       type: object
       required:
-        - options
-        - outputs
+      - options
+      - outputs
       properties:
         options:
           type: object
           required:
-            - artboards
+          - artboards
           properties:
             artboards:
               type: array
@@ -1106,24 +1167,29 @@ components:
         id:
           type: integer
           description: Layer ID.
+          example: 1920
         name:
           type: string
           description: Layer name.
+          example: Example Layer
         type:
           type: string
           enum:
-            - layer
-            - textLayer
-            - smartObject
-            - adjustmentLayer
-            - layerSection
+          - layer
+          - textLayer
+          - smartObject
+          - adjustmentLayer
+          - layerSection
           description: Layer type.
+          example: layer
         visible:
           type: boolean
           description: Layer visibility.
+          example: true
         locked:
           type: boolean
           description: Whether the layer is locked.
+          example: true
         bounds:
           $ref: '#/components/schemas/LayerBounds/properties/bounds'
         add:
@@ -1203,11 +1269,13 @@ components:
         content:
           type: string
           description: Text string content.
+          example: example_value
         orientation:
           type: string
           enum:
-            - horizontal
-            - vertical
+          - horizontal
+          - vertical
+          example: horizontal
         characterStyles:
           type: array
           items:
@@ -1252,13 +1320,13 @@ components:
               alignment:
                 type: string
                 enum:
-                  - left
-                  - center
-                  - right
-                  - justify
-                  - justifyLeft
-                  - justifyCenter
-                  - justifyRight
+                - left
+                - center
+                - right
+                - justify
+                - justifyLeft
+                - justifyCenter
+                - justifyRight
     JobStatusResponse:
       type: object
       properties:
@@ -1266,14 +1334,17 @@ components:
           type: string
           format: uuid
           description: Unique job identifier.
+          example: job_abc123
         created:
           type: string
           format: date-time
           description: Job creation timestamp.
+          example: example_value
         modified:
           type: string
           format: date-time
           description: Last status update timestamp.
+          example: example_value
         outputs:
           type: array
           items:
@@ -1285,10 +1356,10 @@ components:
               status:
                 type: string
                 enum:
-                  - pending
-                  - running
-                  - succeeded
-                  - failed
+                - pending
+                - running
+                - succeeded
+                - failed
                 description: Current job status.
               _links:
                 type: object
@@ -1318,12 +1389,15 @@ components:
         type:
           type: string
           description: Error type code.
+          example: image
         title:
           type: string
           description: Human-readable error description.
+          example: example_value
         code:
           type: integer
           description: HTTP status code.
+          example: 1920
         details:
           type: object
           properties:
@@ -1403,5 +1477,5 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
 security:
-  - BearerAuth: []
-    ApiKeyAuth: []
+- BearerAuth: []
+  ApiKeyAuth: []

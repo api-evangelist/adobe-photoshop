@@ -1,0 +1,18 @@
+{
+  "options": {
+    "document": {
+      "width": 1920,
+      "height": 1920,
+      "resolution": 1920,
+      "fill": "transparent",
+      "mode": "rgb",
+      "depth": 32
+    },
+    "layers": [
+      "example_value"
+    ]
+  },
+  "outputs": [
+    "example_value"
+  ]
+}

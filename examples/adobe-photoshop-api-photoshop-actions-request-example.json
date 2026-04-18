@@ -1,0 +1,17 @@
+{
+  "inputs": [
+    "example_value"
+  ],
+  "options": {
+    "actions": [
+      {
+        "href": {},
+        "storage": {},
+        "actionName": {}
+      }
+    ]
+  },
+  "outputs": [
+    "example_value"
+  ]
+}

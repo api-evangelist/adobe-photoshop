@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/adobe-photoshop/refs/heads/main/json-structure/adobe-photoshop-api-photoshop-actions-request-structure.json",
+  "name": "PhotoshopActionsRequest",
+  "description": "PhotoshopActionsRequest from Adobe Photoshop API",
+  "type": "object",
+  "properties": {
+    "inputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/StorageInput"
+      }
+    },
+    "options": {
+      "type": "object",
+      "required": [
+        "actions"
+      ],
+      "properties": {
+        "actions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "href",
+              "storage"
+            ],
+            "properties": {
+              "href": {
+                "type": "string",
+                "description": "URL to the .atn Action file."
+              },
+              "storage": {
+                "type": "string",
+                "enum": [
+                  "external",
+                  "adobe",
+                  "azure",
+                  "dropbox"
+                ]
+              },
+              "actionName": {
+                "type": "string",
+                "description": "Specific action name to run within the set."
+              }
+            }
+          }
+        }
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/StorageOutput"
+      }
+    }
+  },
+  "required": [
+    "inputs",
+    "options",
+    "outputs"
+  ]
+}

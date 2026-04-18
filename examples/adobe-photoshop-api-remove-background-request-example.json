@@ -1,0 +1,19 @@
+{
+  "image": {
+    "source": {
+      "url": "https://image.adobe.io/example.jpg"
+    }
+  },
+  "mode": "cutout",
+  "output": {
+    "mediaType": "image/png"
+  },
+  "trim": true,
+  "backgroundColor": {
+    "red": 1920,
+    "green": 1920,
+    "blue": 1920,
+    "alpha": 72.0
+  },
+  "colorDecontamination": 1920
+}

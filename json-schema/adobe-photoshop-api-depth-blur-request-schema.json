@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/adobe-photoshop/refs/heads/main/json-schema/adobe-photoshop-api-depth-blur-request-schema.json",
+  "title": "DepthBlurRequest",
+  "description": "DepthBlurRequest from Adobe Photoshop API",
+  "type": "object",
+  "properties": {
+    "inputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/StorageInput"
+      }
+    },
+    "options": {
+      "type": "object",
+      "properties": {
+        "focalSelector": {
+          "type": "object",
+          "description": "Coordinates of the focal point."
+        },
+        "focalDistance": {
+          "type": "number",
+          "description": "Distance to the focal point."
+        },
+        "blurStrength": {
+          "type": "number",
+          "description": "Intensity of the blur effect."
+        },
+        "focalRange": {
+          "type": "number",
+          "description": "Range of the focal area."
+        },
+        "grain": {
+          "type": "number",
+          "description": "Amount of film grain to add."
+        },
+        "haze": {
+          "type": "number",
+          "description": "Amount of atmospheric haze to add."
+        }
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/StorageOutput"
+      }
+    }
+  },
+  "required": [
+    "inputs",
+    "outputs"
+  ]
+}

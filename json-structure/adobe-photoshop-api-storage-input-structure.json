@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/adobe-photoshop/refs/heads/main/json-structure/adobe-photoshop-api-storage-input-structure.json",
+  "name": "StorageInput",
+  "description": "StorageInput from Adobe Photoshop API",
+  "type": "object",
+  "properties": {
+    "href": {
+      "type": "string",
+      "description": "Pre-signed GET URL or Creative Cloud asset path.",
+      "example": "https://image.adobe.io/example"
+    },
+    "storage": {
+      "type": "string",
+      "enum": [
+        "external",
+        "adobe",
+        "azure",
+        "dropbox"
+      ],
+      "description": "Storage type for the input file.",
+      "example": "external"
+    }
+  },
+  "required": [
+    "href",
+    "storage"
+  ]
+}
