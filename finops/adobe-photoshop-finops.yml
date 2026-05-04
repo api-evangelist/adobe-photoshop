@@ -1,0 +1,199 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+provider: Adobe Photoshop
+providerId: adobe-photoshop
+publisherName: Adobe Photoshop
+serviceCategory: API
+created: '2026-05-04'
+modified: '2026-05-04'
+tags:
+  - AI/ML
+  - Creative Cloud
+  - Image Editing
+  - Photoshop
+  - Plugins
+  - REST API
+  - Scripting
+  - FinOps
+  - Cost Management
+  - FOCUS
+description: FinOps framework definition for the Adobe Photoshop API surface. Provides a FOCUS-aligned
+  mapping for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
+principles:
+  - name: Visibility
+    description: Make API consumption costs visible to engineering, product, and finance teams in near
+      real-time.
+  - name: Allocation
+    description: Tag every chargeable API call with the consuming team, environment, application, and
+      feature so cost can be allocated.
+  - name: Optimization
+    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
+      cost per useful unit of work.
+  - name: Accountability
+    description: Establish budget owners and chargeback or showback flows for each consuming team.
+domains:
+  - name: Understand Usage and Cost
+    capabilities:
+      - Data Ingestion
+      - Allocation
+      - Reporting and Analytics
+      - Anomaly Management
+  - name: Quantify Business Value
+    capabilities:
+      - Planning and Estimating
+      - Forecasting
+      - Budgeting
+      - Benchmarking
+      - Unit Economics
+  - name: Optimize Usage and Cost
+    capabilities:
+      - Architecting for Cloud
+      - Rate Optimization
+      - Workload Optimization
+      - Cloud Sustainability
+      - Licensing and SaaS
+  - name: Manage the FinOps Practice
+    capabilities:
+      - FinOps Practice Operations
+      - FinOps Education and Enablement
+      - Invoicing and Chargeback
+      - Onboarding Workloads
+      - Intersecting Disciplines
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+    - Purchase
+    - Tax
+    - Credit
+    - Adjustment
+  chargeFrequency: Recurring
+focusColumns:
+  ServiceName: Adobe Photoshop
+  ServiceCategory: Developer Tools / API
+  ProviderName: Adobe Photoshop
+  PublisherName: Adobe Photoshop
+  InvoiceIssuerName: Adobe Photoshop
+  PricingCategory: Usage-Based
+  PricingUnit: request
+  BillingCurrency: USD
+  ChargeCategory: Usage
+meters:
+  - name: api_requests
+    description: Count of billable API requests
+    unit: request
+    aggregation: sum
+    dimensions:
+      - api
+      - endpoint
+      - tier
+      - region
+      - consumer
+  - name: data_egress
+    description: Bytes returned over the network in API responses
+    unit: GB
+    aggregation: sum
+    dimensions:
+      - api
+      - region
+      - consumer
+  - name: compute_seconds
+    description: Server-side compute consumed by the request, where applicable
+    unit: second
+    aggregation: sum
+    dimensions:
+      - api
+      - endpoint
+      - tier
+apis:
+  - name: Adobe Photoshop API
+    baseURL: https://image.adobe.io
+    tags:
+      - AI/ML
+      - Asynchronous
+      - Background Removal
+      - Cloud
+      - Image Processing
+      - PSD Editing
+      - REST API
+    serviceName: Adobe Photoshop API
+    serviceCategory: API
+  - name: Adobe Firefly Services SDK for JavaScript
+    baseURL: https://image.adobe.io
+    tags:
+      - Client Library
+      - Node.js
+      - NPM
+      - SDK
+      - TypeScript
+    serviceName: Adobe Firefly Services SDK for JavaScript
+    serviceCategory: API
+  - name: Adobe Photoshop UXP Plugin API
+    baseURL: https://api.example.com
+    tags:
+      - Desktop
+      - DOM API
+      - HTML/CSS
+      - JavaScript
+      - Plugin Platform
+      - Spectrum UI
+    serviceName: Adobe Photoshop UXP Plugin API
+    serviceCategory: API
+  - name: Adobe Photoshop UXP Scripting
+    baseURL: https://api.example.com
+    tags:
+      - Automation
+      - JavaScript
+      - Modern JS
+      - Scripting
+    serviceName: Adobe Photoshop UXP Scripting
+    serviceCategory: API
+  - name: Adobe Photoshop UXP Hybrid Plugins
+    baseURL: https://api.example.com
+    tags:
+      - C++
+      - Filters
+      - Hybrid
+      - Native Code
+      - Performance
+      - Plugin
+    serviceName: Adobe Photoshop UXP Hybrid Plugins
+    serviceCategory: API
+  - name: Adobe Photoshop C++ Plugin SDK
+    baseURL: https://api.example.com
+    tags:
+      - C++
+      - Desktop
+      - File Formats
+      - Filters
+      - Native SDK
+    serviceName: Adobe Photoshop C++ Plugin SDK
+    serviceCategory: API
+  - name: Adobe Photoshop ExtendScript Scripting API
+    baseURL: https://api.example.com
+    tags:
+      - Automation
+      - ExtendScript
+      - JSX
+      - Legacy
+      - Scripting
+    serviceName: Adobe Photoshop ExtendScript Scripting API
+    serviceCategory: API
+unitEconomics:
+  - name: Cost per 1K Requests
+    metric: billed_cost / (api_requests / 1000)
+    target: TBD
+  - name: Cost per Active Consumer
+    metric: billed_cost / active_consumers
+    target: TBD
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
