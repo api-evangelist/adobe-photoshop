@@ -4,118 +4,55 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Adobe Photoshop
 providerId: adobe-photoshop
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - AI/ML
-  - Creative Cloud
-  - Image Editing
-  - Photoshop
-  - Plugins
-  - REST API
-  - Scripting
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Adobe Photoshop API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+  - Photo
+  - Image Editing
+  - Generative AI
+notes: >-
+  Photoshop desktop has no public REST API (scripting is local via UXP /
+  ExtendScript). Rate limits apply only to the Firefly Services Photoshop
+  APIs (generative fill, expand, remove background, smart object replace).
+  Numeric per-second / per-minute ceilings are not published publicly and
+  vary per endpoint.
+description: >-
+  Server-side rate limits for Photoshop-related APIs apply to the Firefly
+  Services Photoshop endpoints. Limits are governed by per-account
+  concurrency caps and the generative-credit balance; sustained excess
+  returns 429.
+sources:
+  - https://developer.adobe.com/firefly-services/docs/photoshop/
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
   serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
+  - name: Firefly Photoshop API (generative fill / expand / remove)
+    scope: account
     metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Adobe Photoshop API
-      - Adobe Firefly Services SDK for JavaScript
-      - Adobe Photoshop UXP Plugin API
-      - Adobe Photoshop UXP Scripting
-      - Adobe Photoshop UXP Hybrid Plugins
-      - Adobe Photoshop C++ Plugin SDK
-      - Adobe Photoshop ExtendScript Scripting API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Adobe Photoshop API
-      - Adobe Firefly Services SDK for JavaScript
-      - Adobe Photoshop UXP Plugin API
-      - Adobe Photoshop UXP Scripting
-      - Adobe Photoshop UXP Hybrid Plugins
-      - Adobe Photoshop C++ Plugin SDK
-      - Adobe Photoshop ExtendScript Scripting API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Adobe Photoshop API
-      - Adobe Firefly Services SDK for JavaScript
-      - Adobe Photoshop UXP Plugin API
-      - Adobe Photoshop UXP Scripting
-      - Adobe Photoshop UXP Hybrid Plugins
-      - Adobe Photoshop C++ Plugin SDK
-      - Adobe Photoshop ExtendScript Scripting API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Adobe Photoshop API
-      - Adobe Firefly Services SDK for JavaScript
-      - Adobe Photoshop UXP Plugin API
-      - Adobe Photoshop UXP Scripting
-      - Adobe Photoshop UXP Hybrid Plugins
-      - Adobe Photoshop C++ Plugin SDK
-      - Adobe Photoshop ExtendScript Scripting API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Adobe Photoshop API
-      - Adobe Firefly Services SDK for JavaScript
-      - Adobe Photoshop UXP Plugin API
-      - Adobe Photoshop UXP Scripting
-      - Adobe Photoshop UXP Hybrid Plugins
-      - Adobe Photoshop C++ Plugin SDK
-      - Adobe Photoshop ExtendScript Scripting API
+    limit: see https://developer.adobe.com/firefly-services/docs/photoshop/
+    notes: >-
+      Per-account throttle on the server-side image manipulation endpoints;
+      concurrent generation slots vary per Firefly Services plan.
+  - name: Photoshop API async jobs
+    scope: account
+    metric: concurrent_jobs
+    limit: see https://developer.adobe.com/firefly-services/docs/photoshop/
+    notes: >-
+      Long-running operations (high-resolution renders, batch jobs)
+      submit asynchronously; concurrency is gated per account.
 policies:
   - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+    description: Exponential backoff with jitter; honor Retry-After when present.
+  - name: Async-job pattern
+    description: >-
+      Submit long-running renders as async jobs and poll the status
+      endpoint; do not retry the create-job call to avoid duplicate work.
+  - name: Generative-credit pacing
+    description: >-
+      Calls decrement the generative-credit balance; depleted balance
+      returns a billing-state error rather than 429.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
