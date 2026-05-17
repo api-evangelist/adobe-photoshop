@@ -249,7 +249,7 @@ common:
   description: Creative Cloud developer forums for plugin and extension development
     discussions across Adobe products.
 - url: https://status.adobe.com/
-  type: Status
+  type: StatusPage
   description: Adobe service status dashboard showing availability for Photoshop API
     and other Adobe services.
 - url: https://helpx.adobe.com/security/products/photoshop.html
