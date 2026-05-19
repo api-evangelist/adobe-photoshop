@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Adobe Photoshop API — Text
+  description: 'Adobe Photoshop API — Text. 1 operations. Lead operation: Adobe Photoshop Edit Text Layers in a PSD. Self-contained
+    Naftiko capability covering one Adobe Photoshop business surface.'
+  tags:
+  - Adobe Photoshop
+  - Text
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ADOBE_PHOTOSHOP_API_KEY: ADOBE_PHOTOSHOP_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: adobe-photoshop-text
+    baseUri: https://image.adobe.io
+    description: Adobe Photoshop API — Text business capability. Self-contained, no shared references.
+    resources:
+    - name: pie-psdService-text
+      path: /pie/psdService/text
+      operations:
+      - name: edittextlayer
+        method: POST
+        description: Adobe Photoshop Edit Text Layers in a PSD
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.ADOBE_PHOTOSHOP_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: adobe-photoshop-text-rest
+    port: 8080
+    description: REST adapter for Adobe Photoshop API — Text. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/pie/psdservice/text
+      name: pie-psdservice-text
+      description: REST surface for pie-psdService-text.
+      operations:
+      - method: POST
+        name: edittextlayer
+        description: Adobe Photoshop Edit Text Layers in a PSD
+        call: adobe-photoshop-text.edittextlayer
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: adobe-photoshop-text-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Adobe Photoshop API — Text. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: adobe-photoshop-edit-text-layers
+      description: Adobe Photoshop Edit Text Layers in a PSD
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: adobe-photoshop-text.edittextlayer
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

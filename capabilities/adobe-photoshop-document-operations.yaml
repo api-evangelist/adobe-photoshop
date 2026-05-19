@@ -1,0 +1,206 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Adobe Photoshop API — Document Operations
+  description: 'Adobe Photoshop API — Document Operations. 4 operations. Lead operation: Adobe Photoshop Create Artboards
+    from PSD Inputs. Self-contained Naftiko capability covering one Adobe Photoshop business surface.'
+  tags:
+  - Adobe Photoshop
+  - Document Operations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ADOBE_PHOTOSHOP_API_KEY: ADOBE_PHOTOSHOP_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: adobe-photoshop-document-operations
+    baseUri: https://image.adobe.io
+    description: Adobe Photoshop API — Document Operations business capability. Self-contained, no shared references.
+    resources:
+    - name: pie-psdService-artboardCreate
+      path: /pie/psdService/artboardCreate
+      operations:
+      - name: createartboard
+        method: POST
+        description: Adobe Photoshop Create Artboards from PSD Inputs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: pie-psdService-documentCreate
+      path: /pie/psdService/documentCreate
+      operations:
+      - name: createdocument
+        method: POST
+        description: Adobe Photoshop Create a New PSD Document
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: pie-psdService-documentManifest
+      path: /pie/psdService/documentManifest
+      operations:
+      - name: getdocumentmanifest
+        method: POST
+        description: Adobe Photoshop Get PSD Document Manifest
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: pie-psdService-documentOperations
+      path: /pie/psdService/documentOperations
+      operations:
+      - name: modifydocument
+        method: POST
+        description: Adobe Photoshop Edit a PSD Document
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.ADOBE_PHOTOSHOP_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: adobe-photoshop-document-operations-rest
+    port: 8080
+    description: REST adapter for Adobe Photoshop API — Document Operations. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/pie/psdservice/artboardcreate
+      name: pie-psdservice-artboardcreate
+      description: REST surface for pie-psdService-artboardCreate.
+      operations:
+      - method: POST
+        name: createartboard
+        description: Adobe Photoshop Create Artboards from PSD Inputs
+        call: adobe-photoshop-document-operations.createartboard
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pie/psdservice/documentcreate
+      name: pie-psdservice-documentcreate
+      description: REST surface for pie-psdService-documentCreate.
+      operations:
+      - method: POST
+        name: createdocument
+        description: Adobe Photoshop Create a New PSD Document
+        call: adobe-photoshop-document-operations.createdocument
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pie/psdservice/documentmanifest
+      name: pie-psdservice-documentmanifest
+      description: REST surface for pie-psdService-documentManifest.
+      operations:
+      - method: POST
+        name: getdocumentmanifest
+        description: Adobe Photoshop Get PSD Document Manifest
+        call: adobe-photoshop-document-operations.getdocumentmanifest
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pie/psdservice/documentoperations
+      name: pie-psdservice-documentoperations
+      description: REST surface for pie-psdService-documentOperations.
+      operations:
+      - method: POST
+        name: modifydocument
+        description: Adobe Photoshop Edit a PSD Document
+        call: adobe-photoshop-document-operations.modifydocument
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: adobe-photoshop-document-operations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Adobe Photoshop API — Document Operations. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: adobe-photoshop-create-artboards-psd
+      description: Adobe Photoshop Create Artboards from PSD Inputs
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: adobe-photoshop-document-operations.createartboard
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: adobe-photoshop-create-new-psd
+      description: Adobe Photoshop Create a New PSD Document
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: adobe-photoshop-document-operations.createdocument
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: adobe-photoshop-get-psd-document
+      description: Adobe Photoshop Get PSD Document Manifest
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: adobe-photoshop-document-operations.getdocumentmanifest
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: adobe-photoshop-edit-psd-document
+      description: Adobe Photoshop Edit a PSD Document
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: adobe-photoshop-document-operations.modifydocument
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Adobe Photoshop API — Smart Objects
+  description: 'Adobe Photoshop API — Smart Objects. 1 operations. Lead operation: Adobe Photoshop Replace Smart Object Content.
+    Self-contained Naftiko capability covering one Adobe Photoshop business surface.'
+  tags:
+  - Adobe Photoshop
+  - Smart Objects
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ADOBE_PHOTOSHOP_API_KEY: ADOBE_PHOTOSHOP_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: adobe-photoshop-smart-objects
+    baseUri: https://image.adobe.io
+    description: Adobe Photoshop API — Smart Objects business capability. Self-contained, no shared references.
+    resources:
+    - name: pie-psdService-smartObject
+      path: /pie/psdService/smartObject
+      operations:
+      - name: replacesmartobject
+        method: POST
+        description: Adobe Photoshop Replace Smart Object Content
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.ADOBE_PHOTOSHOP_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: adobe-photoshop-smart-objects-rest
+    port: 8080
+    description: REST adapter for Adobe Photoshop API — Smart Objects. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/pie/psdservice/smartobject
+      name: pie-psdservice-smartobject
+      description: REST surface for pie-psdService-smartObject.
+      operations:
+      - method: POST
+        name: replacesmartobject
+        description: Adobe Photoshop Replace Smart Object Content
+        call: adobe-photoshop-smart-objects.replacesmartobject
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: adobe-photoshop-smart-objects-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Adobe Photoshop API — Smart Objects. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: adobe-photoshop-replace-smart-object
+      description: Adobe Photoshop Replace Smart Object Content
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: adobe-photoshop-smart-objects.replacesmartobject
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
