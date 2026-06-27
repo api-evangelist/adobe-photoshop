@@ -45,25 +45,25 @@ apis:
     type: APIReference
   - url: https://developer.adobe.com/firefly-services/docs/photoshop/getting_started/
     type: GettingStarted
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/adobe-photoshop-actions.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/adobe-photoshop-background-removal.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/adobe-photoshop-crop-and-effects.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/adobe-photoshop-document-operations.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/adobe-photoshop-generative.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/adobe-photoshop-health.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/adobe-photoshop-renditions.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/adobe-photoshop-smart-objects.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/adobe-photoshop-status.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/adobe-photoshop-text.yaml
   description: A cloud-based REST API that provides programmatic access to Photoshop's image editing capabilities without
     requiring a local installation. Part of Adobe Firefly Services, the API supports PSD document operations including layer
@@ -235,10 +235,10 @@ common:
   type: Blog
   description: Adobe Developers blog with technical articles, API updates, and developer community news.
 - url: https://community.adobe.com/t5/photoshop-ecosystem-discussions/bd-p/photoshop
-  type: Forum
+  type: Forums
   description: Adobe Community forum for Photoshop discussions, plugin development questions, and peer support.
 - url: https://forums.creativeclouddeveloper.com
-  type: Forum
+  type: Forums
   description: Creative Cloud developer forums for plugin and extension development discussions across Adobe products.
 - url: https://status.adobe.com/
   type: StatusPage
