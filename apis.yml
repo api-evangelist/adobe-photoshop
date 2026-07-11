@@ -201,6 +201,12 @@ apis:
     use the .jsx file extension and can automate nearly all Photoshop operations through a comprehensive Application, Document,
     and Layer object model. Scripts can also be written in AppleScript on macOS or VBScript on Windows.
 common:
+- type: VulnerabilityDisclosure
+  url: security/adobe-photoshop-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/adobe-photoshop-domain-security.yml
+- type: Authentication
+  url: authentication/adobe-photoshop-authentication.yml
 - url: https://developer.adobe.com/photoshop/
   type: Portal
   description: Adobe Photoshop developer landing page with links to all APIs, SDKs, plugins, and scripting resources.
