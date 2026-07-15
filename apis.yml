@@ -201,6 +201,8 @@ apis:
     use the .jsx file extension and can automate nearly all Photoshop operations through a comprehensive Application, Document,
     and Layer object model. Scripts can also be written in AppleScript on macOS or VBScript on Windows.
 common:
+- type: AgenticAccess
+  url: agentic-access/adobe-photoshop-agentic-access.yml
 - type: VulnerabilityDisclosure
   url: security/adobe-photoshop-vulnerability-disclosure.yml
 - type: DomainSecurity
