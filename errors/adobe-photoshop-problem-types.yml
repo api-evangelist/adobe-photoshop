@@ -1,0 +1,53 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/adobe-photoshop-api-openapi-original.yml
+format: custom-json
+envelope:
+  media_type: application/json
+  schema: "#/components/schemas/ErrorResponse"
+  fields:
+    type: Error type code (string, e.g. "image").
+    title: Human-readable error description (string).
+    code: HTTP-style status code (integer).
+    details: Optional object with reason and name (the parameter causing the error).
+notes: >-
+  The Photoshop API returns a custom ErrorResponse envelope (not RFC 9457
+  application/problem+json). Problems below are derived from the reusable
+  response components referenced across all operations.
+problems:
+- status: 400
+  name: BadRequest
+  title: Invalid request parameters.
+  source_response: "#/components/responses/BadRequest"
+- status: 401
+  name: Unauthorized
+  title: Authentication failed or token expired.
+  remediation: Refresh the Adobe IMS bearer token (client_credentials at https://ims-na1.adobelogin.com/ims/token/v3) and verify the x-api-key header.
+  source_response: "#/components/responses/Unauthorized"
+- status: 402
+  name: QuotaExceeded
+  title: Trial quota exceeded.
+  remediation: Upgrade from trial entitlement or contact Adobe to raise quota.
+  source_response: "#/components/responses/QuotaExceeded"
+- status: 403
+  name: Forbidden
+  title: Insufficient permissions.
+  source_response: "#/components/responses/Forbidden"
+- status: 404
+  name: NotFound
+  title: Resource not found.
+  source_response: "#/components/responses/NotFound"
+- status: 409
+  name: Conflict
+  title: File overwrite conflict.
+  remediation: Change the output href or enable overwrite so the target asset is not already present.
+  source_response: "#/components/responses/Conflict"
+- status: 429
+  name: RateLimited
+  title: Rate limit exceeded.
+  remediation: Honor the retry-after response header (seconds) before retrying.
+  source_response: "#/components/responses/RateLimited"
+- status: 500
+  name: InternalError
+  title: Internal server error.
+  source_response: "#/components/responses/InternalError"

@@ -1,0 +1,28 @@
+generated: '2026-06-20'
+method: searched
+source: https://github.com/Firefly-Services/firefly-services-sdk-js
+packages:
+- language: javascript
+  registry: npm
+  name: "@adobe/photoshop-apis"
+  url: https://www.npmjs.com/package/@adobe/photoshop-apis
+  install: npm install @adobe/photoshop-apis
+  official: true
+  description: Typed Node.js/TypeScript client for the Adobe Photoshop API (PhotoshopClient) — background removal, mask creation, PSD renditions, document create/modify, Smart Object replacement, text-layer editing, Photoshop Actions, product crop, depth blur.
+- language: javascript
+  registry: npm
+  name: "@adobe/firefly-services-common-apis"
+  url: https://www.npmjs.com/package/@adobe/firefly-services-common-apis
+  install: npm install @adobe/firefly-services-common-apis
+  official: true
+  description: Shared utility APIs for the Firefly Services SDK, including server-to-server (client_credentials) authentication that retrieves the Adobe IMS access token used by the Photoshop client.
+- language: javascript
+  registry: npm
+  name: "@adobe/firefly-apis"
+  url: https://www.npmjs.com/package/@adobe/firefly-apis
+  install: npm install @adobe/firefly-apis
+  official: true
+  description: Companion Firefly generative APIs client shipped from the same Firefly Services SDK monorepo; commonly used alongside the Photoshop client for generative fill/expand workflows.
+notes:
+- Adobe does not publish an official Python (PyPI) or other-language SDK for the Photoshop API; the documented Python path is direct REST calls with `requests`. Community libraries (e.g. pyfirefly) exist but are not first-party and are not listed here.
+- All first-party packages are published from the official Adobe monorepo Firefly-Services/firefly-services-sdk-js.

@@ -14,7 +14,7 @@ tags:
 - REST API
 - Scripting
 created: '2025-02-28'
-modified: '2026-05-19'
+modified: '2026-06-20'
 specificationVersion: '0.19'
 type: Index
 maintainers:
@@ -209,6 +209,30 @@ common:
   url: security/adobe-photoshop-domain-security.yml
 - type: Authentication
   url: authentication/adobe-photoshop-authentication.yml
+- type: Packages
+  url: packages/adobe-photoshop-packages.yml
+- type: WellKnown
+  url: well-known/adobe-photoshop-well-known.yml
+- type: SecurityTxt
+  url: well-known/adobe-photoshop-security.txt
+- type: MCPServer
+  url: mcp/adobe-photoshop-mcp.yml
+- type: LLMsTxt
+  url: llms/adobe-photoshop-llms.txt
+- type: Overlay
+  url: overlays/adobe-photoshop-api-overlay.yaml
+- type: Conformance
+  url: conformance/adobe-photoshop-conformance.yml
+- type: ErrorCatalog
+  url: errors/adobe-photoshop-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/adobe-photoshop-lifecycle.yml
+- type: Conventions
+  url: conventions/adobe-photoshop-conventions.yml
+- type: ChangeLog
+  url: changelog/adobe-photoshop-changelog.yml
+- type: DataModel
+  url: data-model/adobe-photoshop-data-model.yml
 - url: https://developer.adobe.com/photoshop/
   type: Portal
   description: Adobe Photoshop developer landing page with links to all APIs, SDKs, plugins, and scripting resources.

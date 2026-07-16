@@ -1,0 +1,52 @@
+generated: '2026-06-20'
+method: searched
+notes: >-
+  The Photoshop API base host (image.adobe.io) returns 404 for all
+  /.well-known/ discovery paths. developer.adobe.com returns 200 text/html for
+  every /.well-known/ path (single-page-app catch-all, not a real discovery
+  document) so those are treated as absent. The real, machine-readable
+  discovery surface lives on the Adobe IMS authorization host
+  (ims-na1.adobelogin.com) that issues the API's OAuth server-to-server tokens,
+  plus the corporate security.txt on adobe.com.
+hosts:
+- host: https://image.adobe.io
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://ims-na1.adobelogin.com
+  role: OAuth authorization server (Adobe IMS) — issues Photoshop API access tokens
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: adobe-photoshop-ims-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: adobe-photoshop-ims-oauth-authorization-server.json
+- host: https://www.adobe.com
+  role: Corporate RFC 9116 security contact
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: adobe-photoshop-security.txt
+- host: https://developer.adobe.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    note: text/html SPA shell, not a real security.txt — treated as absent
+  - path: /.well-known/openid-configuration
+    status: 200
+    note: text/html SPA shell, not a real OIDC document — treated as absent
+  - path: /.well-known/api-catalog
+    status: 200
+    note: text/html SPA shell — treated as absent
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    note: text/html SPA shell — treated as absent

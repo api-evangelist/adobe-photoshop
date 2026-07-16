@@ -1,0 +1,38 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/adobe-photoshop-api-openapi-original.yml
+standards:
+- id: oauth2
+  conforms: true
+  evidence: Access is an Adobe IMS OAuth server-to-server (client_credentials) bearer token; IMS publishes /.well-known/oauth-authorization-server and /.well-known/openid-configuration.
+- id: oidc-discovery
+  conforms: true
+  evidence: ims-na1.adobelogin.com serves a valid /.well-known/openid-configuration (issuer, authorization/token/userinfo endpoints, scopes_supported).
+- id: rfc9116-security-txt
+  conforms: true
+  evidence: adobe.com publishes a PGP-signed /.well-known/security.txt (Adobe PSIRT, HackerOne).
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Error responses use a custom ErrorResponse schema (type/title/code/details) served as application/json, not application/problem+json.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No Sunset/Deprecation response headers declared in the OpenAPI; deprecation is communicated via docs (v1 EOL 2026-07-31), not headers.
+- id: async-polling
+  conforms: true
+  evidence: Every write operation returns 202 with a self _links.href status URL; getPsdJobStatus and getSenseiJobStatus poll job state.
+- id: rate-limit-retry-after
+  conforms: true
+  evidence: 429 RateLimited responses declare a retry-after header (integer seconds).
+- id: uri-path-versioning
+  conforms: true
+  evidence: Versioned via URI path (/v1/, /v2/); current major is v2.
+- id: fhir-r4
+  conforms: false
+- id: fapi
+  conforms: false
+- id: scim2
+  conforms: false
+- id: odata
+  conforms: false
+- id: json-api
+  conforms: false

@@ -1,0 +1,28 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Adobe Photoshop API
+  version: 1.0.0
+extends: openapi/adobe-photoshop-api-openapi-original.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: adobe-photoshop
+    x-apievangelist-async: All operations are asynchronous — submit returns 202 with a status URL to poll (getPsdJobStatus / getSenseiJobStatus).
+    x-apievangelist-current-version: v2
+    x-apievangelist-v1-sunset: '2026-07-31'
+- target: $.info
+  update:
+    x-apievangelist-artifacts:
+      authentication: authentication/adobe-photoshop-authentication.yml
+      errors: errors/adobe-photoshop-problem-types.yml
+      lifecycle: lifecycle/adobe-photoshop-lifecycle.yml
+      conventions: conventions/adobe-photoshop-conventions.yml
+      data_model: data-model/adobe-photoshop-data-model.yml
+      packages: packages/adobe-photoshop-packages.yml
+- target: $.components.securitySchemes.BearerAuth
+  update:
+    x-token-endpoint: https://ims-na1.adobelogin.com/ims/token/v3
+    x-grant-type: client_credentials
+- target: $.info
+  update:
+    x-apievangelist-rate-limit-signal: 429 responses carry a retry-after header (seconds).

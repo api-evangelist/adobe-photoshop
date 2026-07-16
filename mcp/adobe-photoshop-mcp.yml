@@ -1,0 +1,68 @@
+generated: '2026-06-20'
+method: derived
+status: candidate
+source: openapi/adobe-photoshop-api-openapi-original.yml
+notes: >-
+  Adobe does not publish an official hosted/remote MCP server for the Photoshop
+  REST API. (An Adobe Express Add-on Dev MCP Server exists but targets the
+  Express add-on toolchain, not this cloud image-processing API.) Several
+  third-party MCP servers wrap the desktop Photoshop app over UXP/COM
+  (loonghao/photoshop-python-api-mcp-server, alisaitteke/photoshop-mcp,
+  loonghao/dcc-mcp-photoshop) — none are first-party and none front this API.
+  The tools below are a CANDIDATE surface derived one-per-operation from the
+  OpenAPI, suitable for generating an MCP server via forge_mcp_tools.
+server:
+  name: adobe-photoshop
+  transport: http
+tools:
+- name: remove_background
+  description: Remove the background from an image (cutout or mask mode) using AI subject detection.
+  source_operation: openapi/adobe-photoshop-api-openapi-original.yml#removeBackgroundV2
+- name: fill_masked_areas
+  description: Fill masked areas of an image using generative AI.
+  source_operation: openapi/adobe-photoshop-api-openapi-original.yml#fillMaskedAreas
+- name: get_document_manifest
+  description: Retrieve the layer/metadata manifest of a PSD document.
+  source_operation: openapi/adobe-photoshop-api-openapi-original.yml#getDocumentManifest
+- name: modify_document
+  description: Modify a PSD document (layer edits, adjustments, metadata).
+  source_operation: openapi/adobe-photoshop-api-openapi-original.yml#modifyDocument
+- name: create_document
+  description: Create a new PSD document.
+  source_operation: openapi/adobe-photoshop-api-openapi-original.yml#createDocument
+- name: create_rendition
+  description: Generate a flat image rendition (JPEG/PNG/TIFF) from a PSD.
+  source_operation: openapi/adobe-photoshop-api-openapi-original.yml#createRendition
+- name: replace_smart_object
+  description: Replace an embedded Smart Object layer's content in a PSD.
+  source_operation: openapi/adobe-photoshop-api-openapi-original.yml#replaceSmartObject
+- name: edit_text_layer
+  description: Edit text-layer content, character styles, and paragraph styles.
+  source_operation: openapi/adobe-photoshop-api-openapi-original.yml#editTextLayer
+- name: play_photoshop_actions
+  description: Run a recorded Photoshop Action (.atn) file on an image.
+  source_operation: openapi/adobe-photoshop-api-openapi-original.yml#playPhotoshopActions
+- name: play_action_json
+  description: Execute an Action JSON descriptor on an image.
+  source_operation: openapi/adobe-photoshop-api-openapi-original.yml#playActionJSON
+- name: create_with_action_json
+  description: Create output by executing an Action JSON descriptor.
+  source_operation: openapi/adobe-photoshop-api-openapi-original.yml#createWithActionJSON
+- name: product_crop
+  description: AI-powered automatic crop to isolate a product subject.
+  source_operation: openapi/adobe-photoshop-api-openapi-original.yml#productCrop
+- name: depth_blur
+  description: Apply an AI depth-of-field blur effect to an image.
+  source_operation: openapi/adobe-photoshop-api-openapi-original.yml#depthBlur
+- name: create_artboard
+  description: Create an artboard within a PSD document.
+  source_operation: openapi/adobe-photoshop-api-openapi-original.yml#createArtboard
+- name: get_psd_job_status
+  description: Poll the status of an asynchronous PSD-service job.
+  source_operation: openapi/adobe-photoshop-api-openapi-original.yml#getPsdJobStatus
+- name: get_sensei_job_status
+  description: Poll the status of an asynchronous Sensei (AI) job.
+  source_operation: openapi/adobe-photoshop-api-openapi-original.yml#getSenseiJobStatus
+- name: health_check
+  description: Service health check.
+  source_operation: openapi/adobe-photoshop-api-openapi-original.yml#healthCheck

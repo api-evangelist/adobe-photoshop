@@ -1,0 +1,28 @@
+generated: '2026-06-20'
+method: searched
+source: https://developer.adobe.com/firefly-services/docs/photoshop/getting-started/v2-ga/
+scheme: uri-path-major-version
+current_version: v2
+docs: https://developer.adobe.com/firefly-services/docs/photoshop/
+notes: >-
+  Adobe communicates Photoshop API changes through the Firefly Services docs and
+  the v2 GA / migration pages rather than a single dated per-endpoint changelog.
+  Recent, verifiable milestones are captured below.
+entries:
+- version: v2
+  status: general-availability
+  breaking: true
+  highlights:
+  - Linked Smart Objects (assets referenced rather than embedded).
+  - Maximum file size increased from 2GB to 5GB.
+  - UXP scripting (JavaScript automation) support.
+  - Artboards are first-class objects; embedded Smart Objects extractable without opening Photoshop; expanded layer metadata.
+  - Generative Fill / Generative Expand and customizable Adobe action files with runtime-generated outputs.
+  - SVG support in Smart Object workflows, enhanced multilingual text rendering, ICC profile support.
+- version: v1
+  status: deprecated
+  date: '2026-07-31'
+  breaking: true
+  highlights:
+  - End of life for Photoshop API v1 on 2026-07-31; migrate to v2.
+  - Topic-based migration guides published for edit, document, layer, actions, output, artboard, manifest, and status flows.

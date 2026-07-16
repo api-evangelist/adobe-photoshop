@@ -1,0 +1,70 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/adobe-photoshop-api-openapi-original.yml
+notes: >-
+  The Photoshop API is job-oriented rather than resource-CRUD. Every write
+  operation submits work referencing one or more StorageInput assets and one or
+  more StorageOutput targets, and returns an asynchronous Job (identified by
+  jobId) whose state is retrieved via JobStatusResponse. Entities and edges are
+  derived from OpenAPI schema $ref usage and shared parameters.
+entities:
+- name: Job
+  description: Asynchronous unit of work created by every processing operation; polled by jobId.
+  id_field: jobId
+  id_format: uuid
+  schema: JobStatusResponse
+- name: StorageInput
+  description: Source asset reference (pre-signed GET URL or Creative Cloud asset) with a storage type (external/adobe/azure/dropbox).
+  schema: StorageInput
+- name: StorageOutput
+  description: Destination asset reference (pre-signed PUT URL or Creative Cloud asset) with storage type and output format.
+  schema: StorageOutput
+- name: LayerOperation
+  description: A layer edit/adjustment applied within a document operation.
+  schema: LayerOperation
+- name: LayerBounds
+  description: Pixel bounds of a layer.
+  schema: LayerBounds
+- name: TextContent
+  description: Text-layer content and character/paragraph styling.
+  schema: TextContent
+- name: ErrorResponse
+  description: Custom error envelope (type/title/code/details).
+  schema: ErrorResponse
+relationships:
+- from: Job
+  type: belongs_to
+  to: StorageInput
+  via: inputs
+  note: A job is created from one or more input assets.
+- from: Job
+  type: has_many
+  to: StorageOutput
+  via: outputs
+  note: A job writes one or more output assets.
+- from: DocumentOperationsRequest
+  type: has_many
+  to: LayerOperation
+  via: layers
+- from: LayerOperation
+  type: has_one
+  to: LayerBounds
+  via: bounds
+- from: LayerOperation
+  type: has_one
+  to: TextContent
+  via: text
+request_schemas:
+- RemoveBackgroundRequest
+- FillMaskedAreasRequest
+- DocumentManifestRequest
+- DocumentOperationsRequest
+- DocumentCreateRequest
+- RenditionCreateRequest
+- SmartObjectRequest
+- TextEditRequest
+- PhotoshopActionsRequest
+- ActionJSONRequest
+- ProductCropRequest
+- DepthBlurRequest
+- ArtboardCreateRequest

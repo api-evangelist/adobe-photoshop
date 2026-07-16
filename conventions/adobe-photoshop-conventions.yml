@@ -1,0 +1,36 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/adobe-photoshop-api-openapi-original.yml
+authentication:
+  style: OAuth 2.0 bearer (Adobe IMS server-to-server, client_credentials) + API key
+  headers:
+  - Authorization: Bearer <IMS access token>
+  - x-api-key: <Adobe Developer Console Client ID>
+  token_endpoint: https://ims-na1.adobelogin.com/ims/token/v3
+  see: authentication/adobe-photoshop-authentication.yml
+async:
+  model: submit-and-poll
+  submit_response: 202 Accepted with _links.self.href pointing at the job status URL
+  poll_operations: [getPsdJobStatus, getSenseiJobStatus]
+  status_schema: JobStatusResponse
+  note: There is no synchronous processing path; all edit/generate operations are asynchronous jobs.
+pagination:
+  supported: false
+  note: The API exposes single-job operations, not collection listings — no cursor/offset pagination.
+idempotency:
+  header: null
+  note: No idempotency key documented in the OpenAPI; jobs are created per submission.
+versioning:
+  style: uri-path
+  current: v2
+  see: lifecycle/adobe-photoshop-lifecycle.yml
+error_envelope:
+  media_type: application/json
+  schema: ErrorResponse
+  fields: [type, title, code, details]
+  see: errors/adobe-photoshop-problem-types.yml
+rate_limiting:
+  signal: 429 response with retry-after header (integer seconds)
+  see: rate-limits/adobe-photoshop-rate-limits.yml
+storage:
+  note: Inputs and outputs are asset references (pre-signed URLs or Creative Cloud/Azure/Dropbox assets), not multipart bodies; storage type is declared per StorageInput/StorageOutput.

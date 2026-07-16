@@ -1,0 +1,21 @@
+generated: '2026-06-20'
+method: searched
+source: https://developer.adobe.com/firefly-services/docs/photoshop/getting-started/v2-ga/
+versioning:
+  scheme: uri-path
+  current: v2
+  observed: [v1, v2]
+  docs: https://developer.adobe.com/firefly-services/docs/photoshop/
+  notes: Photoshop API v2 is generally available and recommended for all new work; v2 adds linked Smart Objects, UXP scripting, 5GB max file size (up from 2GB), first-class artboards, and expanded generative/action workflows.
+deprecation:
+  policy_url: https://developer.adobe.com/firefly-services/docs/photoshop/getting-started/v2-ga/
+  sunset_header: false
+  announcements:
+  - version: v1
+    end_of_life: '2026-07-31'
+    guidance: Topic-based migration guides cover edit, document, layer, actions, output, artboard, manifest, and status flows.
+sla:
+  url: https://status.adobe.com/
+status_page: https://status.adobe.com/
+security_advisories: https://helpx.adobe.com/security/products/photoshop.html
+deprecated_operations: []
