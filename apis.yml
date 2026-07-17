@@ -233,6 +233,42 @@ common:
   url: changelog/adobe-photoshop-changelog.yml
 - type: DataModel
   url: data-model/adobe-photoshop-data-model.yml
+- type: Arazzo
+  url: arazzo/adobe-photoshop-remove-background-workflow.yml
+  name: Adobe Photoshop Remove Background
+- type: Arazzo
+  url: arazzo/adobe-photoshop-product-photo-pipeline-workflow.yml
+  name: Adobe Photoshop Product Photo Pipeline
+- type: Arazzo
+  url: arazzo/adobe-photoshop-smart-object-template-workflow.yml
+  name: Adobe Photoshop Smart Object Template Personalization
+- type: Arazzo
+  url: arazzo/adobe-photoshop-text-layer-personalization-workflow.yml
+  name: Adobe Photoshop Text Layer Personalization
+- type: Arazzo
+  url: arazzo/adobe-photoshop-generative-fill-workflow.yml
+  name: Adobe Photoshop Generative Fill from a Generated Mask
+- type: Arazzo
+  url: arazzo/adobe-photoshop-document-create-and-render-workflow.yml
+  name: Adobe Photoshop Create Document and Render
+- type: Arazzo
+  url: arazzo/adobe-photoshop-layer-edit-workflow.yml
+  name: Adobe Photoshop Inspect and Edit Layers
+- type: Arazzo
+  url: arazzo/adobe-photoshop-photoshop-action-batch-workflow.yml
+  name: Adobe Photoshop Run Action File and Render
+- type: Arazzo
+  url: arazzo/adobe-photoshop-action-json-composite-workflow.yml
+  name: Adobe Photoshop Run Action JSON Composite
+- type: Arazzo
+  url: arazzo/adobe-photoshop-action-json-document-create-workflow.yml
+  name: Adobe Photoshop Create Document with Action JSON
+- type: Arazzo
+  url: arazzo/adobe-photoshop-depth-blur-workflow.yml
+  name: Adobe Photoshop Depth Blur
+- type: Arazzo
+  url: arazzo/adobe-photoshop-artboard-create-workflow.yml
+  name: Adobe Photoshop Create Artboards and Render
 - url: https://developer.adobe.com/photoshop/
   type: Portal
   description: Adobe Photoshop developer landing page with links to all APIs, SDKs, plugins, and scripting resources.

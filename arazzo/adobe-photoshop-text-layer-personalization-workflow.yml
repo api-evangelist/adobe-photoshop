@@ -1,0 +1,234 @@
+arazzo: 1.0.1
+info:
+  title: Adobe Photoshop Text Layer Personalization
+  summary: Inspect a PSD's text layers, rewrite their content and styling, then render the result.
+  description: >-
+    The variable-copy half of template-driven design. A PSD is inspected to
+    resolve its text layers, the named layer's content is rewritten with new copy
+    and character styling using a caller-supplied font, and the updated document
+    is rendered to a flat image. Missing-font behaviour is set explicitly so a
+    batch run fails loudly rather than silently substituting a typeface. Every
+    step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI.
+  version: 1.0.0
+sourceDescriptions:
+- name: photoshopApi
+  url: ../openapi/adobe-photoshop-api-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: text-layer-personalization
+  summary: Rewrite a PSD text layer with new copy and styling, then render it.
+  description: >-
+    Retrieves the document manifest to confirm the text layer exists, edits the
+    layer content and character style, and creates a flat rendition of the
+    personalized document.
+  inputs:
+    type: object
+    required:
+    - templateUrl
+    - textLayerName
+    - textContent
+    - psdOutputUrl
+    - renditionOutputUrl
+    properties:
+      templateUrl:
+        type: string
+        description: Pre-signed GET URL of the source PSD.
+      textLayerName:
+        type: string
+        description: Name of the text layer to edit (e.g. "headline").
+      textContent:
+        type: string
+        description: The replacement text string to set on the layer.
+      fontPostScriptName:
+        type: string
+        description: PostScript name of the font to apply to the text.
+        default: SourceSansPro-Bold
+      fontSize:
+        type: number
+        description: Font size to apply to the text.
+        default: 48
+      alignment:
+        type: string
+        description: Paragraph alignment for the text layer.
+        default: center
+      manageMissingFonts:
+        type: string
+        description: Behavior when a font is unavailable, fail or useDefault.
+        default: fail
+      psdOutputUrl:
+        type: string
+        description: Pre-signed PUT URL where the edited PSD is written.
+      renditionOutputUrl:
+        type: string
+        description: Pre-signed PUT URL where the flat rendition is written.
+  steps:
+  - stepId: submitManifest
+    description: >-
+      Request the document manifest so the text layer names, ids, and existing
+      content can be confirmed before rewriting copy.
+    operationId: getDocumentManifest
+    requestBody:
+      contentType: application/json
+      payload:
+        inputs:
+        - href: $inputs.templateUrl
+          storage: external
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      statusHref: $response.body#/_links/self/href
+  - stepId: awaitManifest
+    description: >-
+      Poll the PSD service status endpoint until the manifest job completes. The
+      submit call returns the absolute status URL in _links.self.href; the jobId
+      this operation requires is the final path segment of that URL, so a runner
+      takes that segment from statusHref before issuing the request.
+    operationId: getPsdJobStatus
+    parameters:
+    - name: jobId
+      in: path
+      value: $steps.submitManifest.outputs.statusHref
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.outputs[0].status == 'succeeded'
+      type: jsonpath
+    onFailure:
+    - name: keepPolling
+      type: retry
+      retryAfter: 3
+      retryLimit: 20
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'pending' || $.outputs[0].status == 'running'
+        type: jsonpath
+    - name: manifestFailed
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'failed'
+        type: jsonpath
+    outputs:
+      manifestHref: $response.body#/outputs/0/_links/self/href
+  - stepId: submitTextEdit
+    description: >-
+      Rewrite the named text layer with the supplied copy, character style, and
+      paragraph alignment, writing the edited document out as a PSD.
+    operationId: editTextLayer
+    requestBody:
+      contentType: application/json
+      payload:
+        inputs:
+        - href: $inputs.templateUrl
+          storage: external
+        options:
+          manageMissingFonts: $inputs.manageMissingFonts
+          layers:
+          - name: $inputs.textLayerName
+            text:
+              content: $inputs.textContent
+              orientation: horizontal
+              characterStyles:
+              - fontPostScriptName: $inputs.fontPostScriptName
+                size: $inputs.fontSize
+              paragraphStyles:
+              - alignment: $inputs.alignment
+        outputs:
+        - href: $inputs.psdOutputUrl
+          storage: external
+          type: vnd.adobe.photoshop
+          overwrite: true
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      statusHref: $response.body#/_links/self/href
+  - stepId: awaitTextEdit
+    description: >-
+      Poll until the text edit job reports succeeded. A failed status here most
+      often means the requested font was unavailable and manageMissingFonts was
+      set to fail.
+    operationId: getPsdJobStatus
+    parameters:
+    - name: jobId
+      in: path
+      value: $steps.submitTextEdit.outputs.statusHref
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.outputs[0].status == 'succeeded'
+      type: jsonpath
+    onFailure:
+    - name: keepPolling
+      type: retry
+      retryAfter: 3
+      retryLimit: 20
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'pending' || $.outputs[0].status == 'running'
+        type: jsonpath
+    - name: textEditFailed
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'failed'
+        type: jsonpath
+    outputs:
+      psdHref: $response.body#/outputs/0/_links/self/href
+      errors: $response.body#/outputs/0/errors
+  - stepId: submitRendition
+    description: >-
+      Render the personalized PSD to a flat PNG for delivery.
+    operationId: createRendition
+    requestBody:
+      contentType: application/json
+      payload:
+        inputs:
+        - href: $steps.awaitTextEdit.outputs.psdHref
+          storage: external
+        outputs:
+        - href: $inputs.renditionOutputUrl
+          storage: external
+          type: image/png
+          overwrite: true
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      statusHref: $response.body#/_links/self/href
+  - stepId: awaitRendition
+    description: >-
+      Poll until the rendition job reports succeeded and the flat image has been
+      written to the output URL.
+    operationId: getPsdJobStatus
+    parameters:
+    - name: jobId
+      in: path
+      value: $steps.submitRendition.outputs.statusHref
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.outputs[0].status == 'succeeded'
+      type: jsonpath
+    onFailure:
+    - name: keepPolling
+      type: retry
+      retryAfter: 3
+      retryLimit: 20
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'pending' || $.outputs[0].status == 'running'
+        type: jsonpath
+    - name: renditionFailed
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'failed'
+        type: jsonpath
+    outputs:
+      status: $response.body#/outputs/0/status
+      renditionHref: $response.body#/outputs/0/_links/self/href
+  outputs:
+    manifestHref: $steps.awaitManifest.outputs.manifestHref
+    psdHref: $steps.awaitTextEdit.outputs.psdHref
+    renditionHref: $steps.awaitRendition.outputs.renditionHref
+    status: $steps.awaitRendition.outputs.status

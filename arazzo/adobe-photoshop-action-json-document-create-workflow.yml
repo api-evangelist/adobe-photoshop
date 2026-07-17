@@ -1,0 +1,120 @@
+arazzo: 1.0.1
+info:
+  title: Adobe Photoshop Create Document with Action JSON
+  summary: Build a document from scratch with Action JSON descriptors, no input file required.
+  description: >-
+    The document creation counterpart to the Action JSON endpoint. Unlike the
+    playActionJSON endpoint, this one needs no input document: the action
+    descriptor sequence itself makes the document, which suits generators that
+    compose creative entirely in code. This workflow creates a canvas at the
+    requested size and saves the result. Every step spells out its request inline
+    so the flow can be read and executed without opening the underlying OpenAPI.
+  version: 1.0.0
+sourceDescriptions:
+- name: photoshopApi
+  url: ../openapi/adobe-photoshop-api-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: action-json-document-create
+  summary: Create a new document using only Action JSON descriptors.
+  description: >-
+    Submits an Action JSON descriptor sequence that makes a new document at the
+    requested dimensions and resolution, then polls the PSD service job until the
+    document is written to the output URL.
+  inputs:
+    type: object
+    required:
+    - outputUrl
+    properties:
+      width:
+        type: integer
+        description: Width in pixels of the document the action sequence creates.
+        default: 1080
+      height:
+        type: integer
+        description: Height in pixels of the document the action sequence creates.
+        default: 1080
+      resolution:
+        type: integer
+        description: Resolution in PPI of the created document.
+        default: 72
+      outputUrl:
+        type: string
+        description: Pre-signed PUT URL where the created document is written.
+      outputType:
+        type: string
+        description: Output format for the created document.
+        default: vnd.adobe.photoshop
+  steps:
+  - stepId: submitActionJsonCreate
+    description: >-
+      Submit an action descriptor sequence that makes a new document at the
+      requested size. No inputs array is sent, since this endpoint creates the
+      document rather than operating on an existing one.
+    operationId: createWithActionJSON
+    requestBody:
+      contentType: application/json
+      payload:
+        options:
+          actionJSON:
+          - _obj: make
+            new:
+              _obj: document
+              width:
+                _unit: pixelsUnit
+                _value: $inputs.width
+              height:
+                _unit: pixelsUnit
+                _value: $inputs.height
+              resolution:
+                _unit: densityUnit
+                _value: $inputs.resolution
+              mode:
+                _class: RGBColorMode
+        outputs:
+        - href: $inputs.outputUrl
+          storage: external
+          type: $inputs.outputType
+          overwrite: true
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      statusHref: $response.body#/_links/self/href
+  - stepId: awaitActionJsonCreate
+    description: >-
+      Poll the PSD service status endpoint until the creation job completes. The
+      submit call returns the absolute status URL in _links.self.href; the jobId
+      this operation requires is the final path segment of that URL, so a runner
+      takes that segment from statusHref before issuing the request.
+    operationId: getPsdJobStatus
+    parameters:
+    - name: jobId
+      in: path
+      value: $steps.submitActionJsonCreate.outputs.statusHref
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.outputs[0].status == 'succeeded'
+      type: jsonpath
+    onFailure:
+    - name: keepPolling
+      type: retry
+      retryAfter: 3
+      retryLimit: 20
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'pending' || $.outputs[0].status == 'running'
+        type: jsonpath
+    - name: createFailed
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'failed'
+        type: jsonpath
+    outputs:
+      status: $response.body#/outputs/0/status
+      documentHref: $response.body#/outputs/0/_links/self/href
+      errors: $response.body#/outputs/0/errors
+  outputs:
+    documentHref: $steps.awaitActionJsonCreate.outputs.documentHref
+    status: $steps.awaitActionJsonCreate.outputs.status

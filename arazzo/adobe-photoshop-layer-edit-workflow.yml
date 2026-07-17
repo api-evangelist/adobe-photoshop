@@ -1,0 +1,175 @@
+arazzo: 1.0.1
+info:
+  title: Adobe Photoshop Inspect and Edit Layers
+  summary: Read a PSD's layer tree, then apply layer edits and adjustments to it.
+  description: >-
+    The read-before-write pattern for PSD editing. The document manifest is
+    retrieved first so the caller can resolve real layer ids and names from the
+    layer tree, and those ids are then used to toggle visibility and apply a
+    brightness and contrast adjustment through the document operations endpoint.
+    Reading the manifest before editing is what keeps a batch job from writing
+    against layer ids that no longer exist in a revised template. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI.
+  version: 1.0.0
+sourceDescriptions:
+- name: photoshopApi
+  url: ../openapi/adobe-photoshop-api-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: layer-edit
+  summary: Resolve a PSD's layer tree and apply visibility and adjustment edits.
+  description: >-
+    Submits a document manifest job to read the layer tree, polls it, then submits
+    a document operations job that edits the named layer and writes the result to
+    the output URL.
+  inputs:
+    type: object
+    required:
+    - documentUrl
+    - layerName
+    - outputUrl
+    properties:
+      documentUrl:
+        type: string
+        description: Pre-signed GET URL of the source PSD.
+      layerName:
+        type: string
+        description: Name of the layer to edit.
+      visible:
+        type: boolean
+        description: Visibility to set on the target layer.
+        default: true
+      brightness:
+        type: number
+        description: Brightness adjustment to apply to the layer.
+        default: 10
+      contrast:
+        type: number
+        description: Contrast adjustment to apply to the layer.
+        default: 15
+      outputUrl:
+        type: string
+        description: Pre-signed PUT URL where the edited document is written.
+      outputType:
+        type: string
+        description: Output format, e.g. vnd.adobe.photoshop or image/jpeg.
+        default: vnd.adobe.photoshop
+  steps:
+  - stepId: submitManifest
+    description: >-
+      Retrieve the manifest so the layer tree, layer ids, names, types, and
+      bounds are known before any edit is applied.
+    operationId: getDocumentManifest
+    requestBody:
+      contentType: application/json
+      payload:
+        inputs:
+        - href: $inputs.documentUrl
+          storage: external
+        options:
+          thumbnails:
+            type: image/png
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      statusHref: $response.body#/_links/self/href
+  - stepId: awaitManifest
+    description: >-
+      Poll the PSD service status endpoint until the manifest job completes. The
+      submit call returns the absolute status URL in _links.self.href; the jobId
+      this operation requires is the final path segment of that URL, so a runner
+      takes that segment from statusHref before issuing the request.
+    operationId: getPsdJobStatus
+    parameters:
+    - name: jobId
+      in: path
+      value: $steps.submitManifest.outputs.statusHref
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.outputs[0].status == 'succeeded'
+      type: jsonpath
+    onFailure:
+    - name: keepPolling
+      type: retry
+      retryAfter: 3
+      retryLimit: 20
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'pending' || $.outputs[0].status == 'running'
+        type: jsonpath
+    - name: manifestFailed
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'failed'
+        type: jsonpath
+    outputs:
+      manifestHref: $response.body#/outputs/0/_links/self/href
+  - stepId: submitLayerEdit
+    description: >-
+      Edit the named layer, setting its visibility and applying a brightness and
+      contrast adjustment, then write the modified document to the output URL.
+    operationId: modifyDocument
+    requestBody:
+      contentType: application/json
+      payload:
+        inputs:
+        - href: $inputs.documentUrl
+          storage: external
+        options:
+          layers:
+          - name: $inputs.layerName
+            visible: $inputs.visible
+            edit: {}
+            adjustments:
+              brightnessContrast:
+                brightness: $inputs.brightness
+                contrast: $inputs.contrast
+        outputs:
+        - href: $inputs.outputUrl
+          storage: external
+          type: $inputs.outputType
+          overwrite: true
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      statusHref: $response.body#/_links/self/href
+  - stepId: awaitLayerEdit
+    description: >-
+      Poll until the document operations job reports succeeded and the edited
+      document has been written to the output URL.
+    operationId: getPsdJobStatus
+    parameters:
+    - name: jobId
+      in: path
+      value: $steps.submitLayerEdit.outputs.statusHref
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.outputs[0].status == 'succeeded'
+      type: jsonpath
+    onFailure:
+    - name: keepPolling
+      type: retry
+      retryAfter: 3
+      retryLimit: 20
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'pending' || $.outputs[0].status == 'running'
+        type: jsonpath
+    - name: editFailed
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'failed'
+        type: jsonpath
+    outputs:
+      status: $response.body#/outputs/0/status
+      documentHref: $response.body#/outputs/0/_links/self/href
+      errors: $response.body#/outputs/0/errors
+  outputs:
+    manifestHref: $steps.awaitManifest.outputs.manifestHref
+    documentHref: $steps.awaitLayerEdit.outputs.documentHref
+    status: $steps.awaitLayerEdit.outputs.status

@@ -1,0 +1,194 @@
+arazzo: 1.0.1
+info:
+  title: Adobe Photoshop Create Artboards and Render
+  summary: Assemble a multi-artboard PSD from sized boards, then render it to a flat image.
+  description: >-
+    Builds the multi-size deliverable a campaign needs in one document. Several
+    artboards are defined with their own names, dimensions, and layers, collected
+    into a single PSD, and that document is then rendered flat. This is how a
+    team produces a set of ad sizes or device mockups side by side rather than
+    creating and tracking a separate document per size. Every step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI.
+  version: 1.0.0
+sourceDescriptions:
+- name: photoshopApi
+  url: ../openapi/adobe-photoshop-api-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: artboard-create
+  summary: Create a PSD holding multiple sized artboards and render a flat image of it.
+  description: >-
+    Submits an artboard creation job defining two sized boards that each carry the
+    supplied artwork, polls until the PSD is written, then renders that document
+    to a flat image and polls the rendition job to completion.
+  inputs:
+    type: object
+    required:
+    - artworkUrl
+    - psdOutputUrl
+    - renditionOutputUrl
+    properties:
+      artworkUrl:
+        type: string
+        description: Pre-signed GET URL of the artwork placed on each artboard.
+      firstBoardName:
+        type: string
+        description: Name of the first artboard.
+        default: leaderboard
+      firstBoardWidth:
+        type: integer
+        description: Width in pixels of the first artboard.
+        default: 728
+      firstBoardHeight:
+        type: integer
+        description: Height in pixels of the first artboard.
+        default: 90
+      secondBoardName:
+        type: string
+        description: Name of the second artboard.
+        default: square
+      secondBoardWidth:
+        type: integer
+        description: Width in pixels of the second artboard.
+        default: 1080
+      secondBoardHeight:
+        type: integer
+        description: Height in pixels of the second artboard.
+        default: 1080
+      psdOutputUrl:
+        type: string
+        description: Pre-signed PUT URL where the artboard PSD is written.
+      renditionOutputUrl:
+        type: string
+        description: Pre-signed PUT URL where the flat rendition is written.
+  steps:
+  - stepId: submitArtboardCreate
+    description: >-
+      Create a PSD containing two named artboards at their own dimensions, each
+      carrying the supplied artwork as a layer.
+    operationId: createArtboard
+    requestBody:
+      contentType: application/json
+      payload:
+        options:
+          artboards:
+          - name: $inputs.firstBoardName
+            width: $inputs.firstBoardWidth
+            height: $inputs.firstBoardHeight
+            layers:
+            - name: artwork
+              type: layer
+              visible: true
+              input:
+                href: $inputs.artworkUrl
+                storage: external
+          - name: $inputs.secondBoardName
+            width: $inputs.secondBoardWidth
+            height: $inputs.secondBoardHeight
+            layers:
+            - name: artwork
+              type: layer
+              visible: true
+              input:
+                href: $inputs.artworkUrl
+                storage: external
+        outputs:
+        - href: $inputs.psdOutputUrl
+          storage: external
+          type: vnd.adobe.photoshop
+          overwrite: true
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      statusHref: $response.body#/_links/self/href
+  - stepId: awaitArtboardCreate
+    description: >-
+      Poll the PSD service status endpoint until the artboard job completes. The
+      submit call returns the absolute status URL in _links.self.href; the jobId
+      this operation requires is the final path segment of that URL, so a runner
+      takes that segment from statusHref before issuing the request.
+    operationId: getPsdJobStatus
+    parameters:
+    - name: jobId
+      in: path
+      value: $steps.submitArtboardCreate.outputs.statusHref
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.outputs[0].status == 'succeeded'
+      type: jsonpath
+    onFailure:
+    - name: keepPolling
+      type: retry
+      retryAfter: 3
+      retryLimit: 20
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'pending' || $.outputs[0].status == 'running'
+        type: jsonpath
+    - name: artboardFailed
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'failed'
+        type: jsonpath
+    outputs:
+      psdHref: $response.body#/outputs/0/_links/self/href
+      errors: $response.body#/outputs/0/errors
+  - stepId: submitRendition
+    description: >-
+      Render the artboard document to a flat PNG so the assembled boards can be
+      reviewed as a single image.
+    operationId: createRendition
+    requestBody:
+      contentType: application/json
+      payload:
+        inputs:
+        - href: $steps.awaitArtboardCreate.outputs.psdHref
+          storage: external
+        outputs:
+        - href: $inputs.renditionOutputUrl
+          storage: external
+          type: image/png
+          overwrite: true
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      statusHref: $response.body#/_links/self/href
+  - stepId: awaitRendition
+    description: >-
+      Poll until the rendition job reports succeeded and the flat image has been
+      written to the output URL.
+    operationId: getPsdJobStatus
+    parameters:
+    - name: jobId
+      in: path
+      value: $steps.submitRendition.outputs.statusHref
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.outputs[0].status == 'succeeded'
+      type: jsonpath
+    onFailure:
+    - name: keepPolling
+      type: retry
+      retryAfter: 3
+      retryLimit: 20
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'pending' || $.outputs[0].status == 'running'
+        type: jsonpath
+    - name: renditionFailed
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'failed'
+        type: jsonpath
+    outputs:
+      status: $response.body#/outputs/0/status
+      renditionHref: $response.body#/outputs/0/_links/self/href
+  outputs:
+    psdHref: $steps.awaitArtboardCreate.outputs.psdHref
+    renditionHref: $steps.awaitRendition.outputs.renditionHref
+    status: $steps.awaitRendition.outputs.status

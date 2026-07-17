@@ -1,0 +1,110 @@
+arazzo: 1.0.1
+info:
+  title: Adobe Photoshop Remove Background
+  summary: Verify service access, submit an AI background removal job, and poll it to completion.
+  description: >-
+    The canonical first integration with the Photoshop API. The workflow confirms
+    the service is reachable and the credentials work before spending quota, then
+    submits an AI-powered background removal job and polls the Sensei status
+    endpoint until the cutout is written to the caller's storage. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI.
+  version: 1.0.0
+sourceDescriptions:
+- name: photoshopApi
+  url: ../openapi/adobe-photoshop-api-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: remove-background
+  summary: Remove the background from a single image and wait for the result.
+  description: >-
+    Calls the health endpoint as a credential preflight, submits the image to the
+    v2 background removal endpoint, and polls the asynchronous job until it
+    reports succeeded or failed.
+  inputs:
+    type: object
+    required:
+    - imageUrl
+    properties:
+      imageUrl:
+        type: string
+        description: Pre-signed GET URL of the source image to cut out.
+      mode:
+        type: string
+        description: cutout removes the background, mask returns a grayscale mask.
+        default: cutout
+      mediaType:
+        type: string
+        description: Output format for the result, image/png preserves transparency.
+        default: image/png
+      trim:
+        type: boolean
+        description: Whether to trim whitespace around the detected subject.
+        default: false
+  steps:
+  - stepId: preflight
+    description: >-
+      Confirm the Photoshop service is available and that the bearer token and
+      x-api-key are accepted before submitting a job that consumes quota.
+    operationId: healthCheck
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      greeting: $response.body
+  - stepId: submitRemoveBackground
+    description: >-
+      Submit the source image for AI subject detection and background removal.
+      The endpoint is asynchronous and returns 202 with the status URL to poll.
+    operationId: removeBackgroundV2
+    requestBody:
+      contentType: application/json
+      payload:
+        image:
+          source:
+            url: $inputs.imageUrl
+        mode: $inputs.mode
+        output:
+          mediaType: $inputs.mediaType
+        trim: $inputs.trim
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      statusHref: $response.body#/_links/self/href
+  - stepId: awaitRemoveBackground
+    description: >-
+      Poll the Sensei status endpoint until the job reports succeeded. The submit
+      call returns the absolute status URL in _links.self.href; the jobId this
+      operation requires is the final path segment of that URL, so a runner takes
+      that segment from statusHref before issuing the request.
+    operationId: getSenseiJobStatus
+    parameters:
+    - name: jobId
+      in: path
+      value: $steps.submitRemoveBackground.outputs.statusHref
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.outputs[0].status == 'succeeded'
+      type: jsonpath
+    onFailure:
+    - name: keepPolling
+      type: retry
+      retryAfter: 3
+      retryLimit: 20
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'pending' || $.outputs[0].status == 'running'
+        type: jsonpath
+    - name: jobFailed
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'failed'
+        type: jsonpath
+    outputs:
+      status: $response.body#/outputs/0/status
+      resultHref: $response.body#/outputs/0/_links/self/href
+      errors: $response.body#/outputs/0/errors
+  outputs:
+    status: $steps.awaitRemoveBackground.outputs.status
+    resultHref: $steps.awaitRemoveBackground.outputs.resultHref

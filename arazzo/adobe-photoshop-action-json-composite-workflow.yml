@@ -1,0 +1,117 @@
+arazzo: 1.0.1
+info:
+  title: Adobe Photoshop Run Action JSON Composite
+  summary: Composite an overlay onto an image using programmatic Action JSON descriptors.
+  description: >-
+    Action JSON is the programmatic alternative to a recorded .atn file: action
+    descriptors are constructed in code rather than captured in the Photoshop UI,
+    which lets a service vary the operation per request. This workflow places an
+    additional image onto a base document as a layer and flattens the result,
+    referencing the overlay through the additionalImages slot the endpoint exposes
+    as ACTION_JSON_OPTIONS_ADDITIONAL_IMAGES_0. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI.
+  version: 1.0.0
+sourceDescriptions:
+- name: photoshopApi
+  url: ../openapi/adobe-photoshop-api-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: action-json-composite
+  summary: Place an overlay image onto a base document via Action JSON and flatten it.
+  description: >-
+    Submits a base document plus an additional overlay image with an Action JSON
+    descriptor sequence that places and flattens the overlay, then polls the PSD
+    service job until the composited output is written.
+  inputs:
+    type: object
+    required:
+    - documentUrl
+    - overlayUrl
+    - outputUrl
+    properties:
+      documentUrl:
+        type: string
+        description: Pre-signed GET URL of the base document to composite onto.
+      overlayUrl:
+        type: string
+        description: >-
+          Pre-signed GET URL of the overlay image, referenced from the action
+          descriptors as ACTION_JSON_OPTIONS_ADDITIONAL_IMAGES_0.
+      outputUrl:
+        type: string
+        description: Pre-signed PUT URL where the composited image is written.
+      outputType:
+        type: string
+        description: Output format for the composited image.
+        default: image/jpeg
+  steps:
+  - stepId: submitActionJson
+    description: >-
+      Submit the base document and the overlay together with an action descriptor
+      sequence that places the additional image as a layer and then flattens the
+      document.
+    operationId: playActionJSON
+    requestBody:
+      contentType: application/json
+      payload:
+        inputs:
+        - href: $inputs.documentUrl
+          storage: external
+        options:
+          actionJSON:
+          - _obj: placeEvent
+            'null':
+              _path: ACTION_JSON_OPTIONS_ADDITIONAL_IMAGES_0
+            linked: false
+          - _obj: flattenImage
+          additionalImages:
+          - href: $inputs.overlayUrl
+            storage: external
+        outputs:
+        - href: $inputs.outputUrl
+          storage: external
+          type: $inputs.outputType
+          overwrite: true
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      statusHref: $response.body#/_links/self/href
+  - stepId: awaitActionJson
+    description: >-
+      Poll the PSD service status endpoint until the Action JSON job completes.
+      The submit call returns the absolute status URL in _links.self.href; the
+      jobId this operation requires is the final path segment of that URL, so a
+      runner takes that segment from statusHref before issuing the request.
+    operationId: getPsdJobStatus
+    parameters:
+    - name: jobId
+      in: path
+      value: $steps.submitActionJson.outputs.statusHref
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.outputs[0].status == 'succeeded'
+      type: jsonpath
+    onFailure:
+    - name: keepPolling
+      type: retry
+      retryAfter: 3
+      retryLimit: 20
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'pending' || $.outputs[0].status == 'running'
+        type: jsonpath
+    - name: actionJsonFailed
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'failed'
+        type: jsonpath
+    outputs:
+      status: $response.body#/outputs/0/status
+      compositeHref: $response.body#/outputs/0/_links/self/href
+      errors: $response.body#/outputs/0/errors
+  outputs:
+    compositeHref: $steps.awaitActionJson.outputs.compositeHref
+    status: $steps.awaitActionJson.outputs.status

@@ -1,0 +1,169 @@
+arazzo: 1.0.1
+info:
+  title: Adobe Photoshop Run Action File and Render
+  summary: Replay a recorded .atn Action on an image, then render the result to a flat deliverable.
+  description: >-
+    How a studio moves an existing desktop workflow to the cloud. A Photoshop
+    Action file recorded by a retoucher is replayed against an input image with a
+    named action targeted inside the set, and the processed document is then
+    rendered to a flat image for delivery. This is the lift-and-shift path for
+    teams with years of .atn files who want the same edits applied at scale
+    without a local Photoshop installation. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI.
+  version: 1.0.0
+sourceDescriptions:
+- name: photoshopApi
+  url: ../openapi/adobe-photoshop-api-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: photoshop-action-batch
+  summary: Play a recorded Photoshop Action against an image and render the output.
+  description: >-
+    Submits the input image and .atn Action file to the Photoshop Actions
+    endpoint, polls the job, then renders the processed document to a flat image
+    and polls that job to completion.
+  inputs:
+    type: object
+    required:
+    - imageUrl
+    - actionFileUrl
+    - psdOutputUrl
+    - renditionOutputUrl
+    properties:
+      imageUrl:
+        type: string
+        description: Pre-signed GET URL of the image to process.
+      actionFileUrl:
+        type: string
+        description: Pre-signed GET URL of the .atn Photoshop Action file.
+      actionName:
+        type: string
+        description: Name of the specific action to run within the .atn set.
+      psdOutputUrl:
+        type: string
+        description: Pre-signed PUT URL where the processed document is written.
+      renditionOutputUrl:
+        type: string
+        description: Pre-signed PUT URL where the flat rendition is written.
+      renditionWidth:
+        type: integer
+        description: Target width in pixels for the flat rendition.
+        default: 2048
+  steps:
+  - stepId: submitActions
+    description: >-
+      Replay the recorded Action file against the input image, targeting a
+      specific action by name inside the set, and save the processed document.
+    operationId: playPhotoshopActions
+    requestBody:
+      contentType: application/json
+      payload:
+        inputs:
+        - href: $inputs.imageUrl
+          storage: external
+        options:
+          actions:
+          - href: $inputs.actionFileUrl
+            storage: external
+            actionName: $inputs.actionName
+        outputs:
+        - href: $inputs.psdOutputUrl
+          storage: external
+          type: vnd.adobe.photoshop
+          overwrite: true
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      statusHref: $response.body#/_links/self/href
+  - stepId: awaitActions
+    description: >-
+      Poll the PSD service status endpoint until the Action job completes. The
+      submit call returns the absolute status URL in _links.self.href; the jobId
+      this operation requires is the final path segment of that URL, so a runner
+      takes that segment from statusHref before issuing the request.
+    operationId: getPsdJobStatus
+    parameters:
+    - name: jobId
+      in: path
+      value: $steps.submitActions.outputs.statusHref
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.outputs[0].status == 'succeeded'
+      type: jsonpath
+    onFailure:
+    - name: keepPolling
+      type: retry
+      retryAfter: 3
+      retryLimit: 20
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'pending' || $.outputs[0].status == 'running'
+        type: jsonpath
+    - name: actionFailed
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'failed'
+        type: jsonpath
+    outputs:
+      psdHref: $response.body#/outputs/0/_links/self/href
+      errors: $response.body#/outputs/0/errors
+  - stepId: submitRendition
+    description: >-
+      Render the document produced by the Action to a flat JPEG at the requested
+      width.
+    operationId: createRendition
+    requestBody:
+      contentType: application/json
+      payload:
+        inputs:
+        - href: $steps.awaitActions.outputs.psdHref
+          storage: external
+        outputs:
+        - href: $inputs.renditionOutputUrl
+          storage: external
+          type: image/jpeg
+          width: $inputs.renditionWidth
+          overwrite: true
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      statusHref: $response.body#/_links/self/href
+  - stepId: awaitRendition
+    description: >-
+      Poll until the rendition job reports succeeded and the flat image has been
+      written to the output URL.
+    operationId: getPsdJobStatus
+    parameters:
+    - name: jobId
+      in: path
+      value: $steps.submitRendition.outputs.statusHref
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.outputs[0].status == 'succeeded'
+      type: jsonpath
+    onFailure:
+    - name: keepPolling
+      type: retry
+      retryAfter: 3
+      retryLimit: 20
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'pending' || $.outputs[0].status == 'running'
+        type: jsonpath
+    - name: renditionFailed
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'failed'
+        type: jsonpath
+    outputs:
+      status: $response.body#/outputs/0/status
+      renditionHref: $response.body#/outputs/0/_links/self/href
+  outputs:
+    psdHref: $steps.awaitActions.outputs.psdHref
+    renditionHref: $steps.awaitRendition.outputs.renditionHref
+    status: $steps.awaitRendition.outputs.status

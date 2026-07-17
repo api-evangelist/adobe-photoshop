@@ -1,0 +1,227 @@
+arazzo: 1.0.1
+info:
+  title: Adobe Photoshop Smart Object Template Personalization
+  summary: Read a PSD template's layer tree, swap Smart Object artwork, then render a flat image.
+  description: >-
+    The flagship Photoshop API pattern for generating personalized creative at
+    scale. A PSD template is inspected to confirm the target Smart Object layer
+    exists, the embedded artwork inside that Smart Object is replaced with new
+    content while transformations and effects are preserved, and the updated PSD
+    is rendered to a flat JPEG for delivery. All three stages are asynchronous, so
+    the flow polls the PSD service status endpoint between them. Every step spells
+    out its request inline so the flow can be read and executed without opening
+    the underlying OpenAPI.
+  version: 1.0.0
+sourceDescriptions:
+- name: photoshopApi
+  url: ../openapi/adobe-photoshop-api-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: smart-object-template
+  summary: Personalize a PSD template by replacing Smart Object content and rendering it.
+  description: >-
+    Retrieves the document manifest to resolve the layer tree, replaces the named
+    Smart Object layer with the supplied artwork, and creates a flat rendition of
+    the resulting PSD.
+  inputs:
+    type: object
+    required:
+    - templateUrl
+    - smartObjectLayerName
+    - replacementArtworkUrl
+    - psdOutputUrl
+    - renditionOutputUrl
+    properties:
+      templateUrl:
+        type: string
+        description: Pre-signed GET URL of the source PSD template.
+      smartObjectLayerName:
+        type: string
+        description: Name of the Smart Object layer to replace (e.g. "product-shot").
+      replacementArtworkUrl:
+        type: string
+        description: Pre-signed GET URL of the artwork to embed in the Smart Object.
+      replacementMediaType:
+        type: string
+        description: MIME type of the replacement artwork.
+        default: image/png
+      psdOutputUrl:
+        type: string
+        description: Pre-signed PUT URL where the personalized PSD is written.
+      renditionOutputUrl:
+        type: string
+        description: Pre-signed PUT URL where the flat rendition is written.
+      renditionWidth:
+        type: integer
+        description: Target width in pixels for the flat rendition.
+        default: 1200
+  steps:
+  - stepId: submitManifest
+    description: >-
+      Request the manifest of the PSD template so the layer tree, layer ids, and
+      Smart Object layers can be confirmed before any write is attempted.
+    operationId: getDocumentManifest
+    requestBody:
+      contentType: application/json
+      payload:
+        inputs:
+        - href: $inputs.templateUrl
+          storage: external
+        options:
+          thumbnails:
+            type: image/png
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      statusHref: $response.body#/_links/self/href
+  - stepId: awaitManifest
+    description: >-
+      Poll the PSD service status endpoint until the manifest job completes. The
+      submit call returns the absolute status URL in _links.self.href; the jobId
+      this operation requires is the final path segment of that URL, so a runner
+      takes that segment from statusHref before issuing the request.
+    operationId: getPsdJobStatus
+    parameters:
+    - name: jobId
+      in: path
+      value: $steps.submitManifest.outputs.statusHref
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.outputs[0].status == 'succeeded'
+      type: jsonpath
+    onFailure:
+    - name: keepPolling
+      type: retry
+      retryAfter: 3
+      retryLimit: 20
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'pending' || $.outputs[0].status == 'running'
+        type: jsonpath
+    - name: manifestFailed
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'failed'
+        type: jsonpath
+    outputs:
+      manifestHref: $response.body#/outputs/0/_links/self/href
+  - stepId: submitSmartObjectReplace
+    description: >-
+      Replace the embedded content of the named Smart Object layer with the
+      supplied artwork, writing the personalized document out as a PSD.
+    operationId: replaceSmartObject
+    requestBody:
+      contentType: application/json
+      payload:
+        inputs:
+        - href: $inputs.templateUrl
+          storage: external
+        options:
+          layers:
+          - name: $inputs.smartObjectLayerName
+            type: smartObject
+            input:
+              href: $inputs.replacementArtworkUrl
+              storage: external
+            smartObject:
+              type: $inputs.replacementMediaType
+        outputs:
+        - href: $inputs.psdOutputUrl
+          storage: external
+          type: vnd.adobe.photoshop
+          overwrite: true
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      statusHref: $response.body#/_links/self/href
+  - stepId: awaitSmartObjectReplace
+    description: >-
+      Poll until the Smart Object replacement job reports succeeded. The jobId is
+      the final path segment of the returned status URL.
+    operationId: getPsdJobStatus
+    parameters:
+    - name: jobId
+      in: path
+      value: $steps.submitSmartObjectReplace.outputs.statusHref
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.outputs[0].status == 'succeeded'
+      type: jsonpath
+    onFailure:
+    - name: keepPolling
+      type: retry
+      retryAfter: 3
+      retryLimit: 20
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'pending' || $.outputs[0].status == 'running'
+        type: jsonpath
+    - name: replaceFailed
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'failed'
+        type: jsonpath
+    outputs:
+      psdHref: $response.body#/outputs/0/_links/self/href
+  - stepId: submitRendition
+    description: >-
+      Render the personalized PSD to a flat JPEG at the requested width so it can
+      be delivered to a catalog, ad slot, or email template.
+    operationId: createRendition
+    requestBody:
+      contentType: application/json
+      payload:
+        inputs:
+        - href: $steps.awaitSmartObjectReplace.outputs.psdHref
+          storage: external
+        outputs:
+        - href: $inputs.renditionOutputUrl
+          storage: external
+          type: image/jpeg
+          width: $inputs.renditionWidth
+          overwrite: true
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      statusHref: $response.body#/_links/self/href
+  - stepId: awaitRendition
+    description: >-
+      Poll until the rendition job reports succeeded and the flat image has been
+      written to the output URL.
+    operationId: getPsdJobStatus
+    parameters:
+    - name: jobId
+      in: path
+      value: $steps.submitRendition.outputs.statusHref
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.outputs[0].status == 'succeeded'
+      type: jsonpath
+    onFailure:
+    - name: keepPolling
+      type: retry
+      retryAfter: 3
+      retryLimit: 20
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'pending' || $.outputs[0].status == 'running'
+        type: jsonpath
+    - name: renditionFailed
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'failed'
+        type: jsonpath
+    outputs:
+      status: $response.body#/outputs/0/status
+      renditionHref: $response.body#/outputs/0/_links/self/href
+  outputs:
+    manifestHref: $steps.awaitManifest.outputs.manifestHref
+    psdHref: $steps.awaitSmartObjectReplace.outputs.psdHref
+    renditionHref: $steps.awaitRendition.outputs.renditionHref
+    status: $steps.awaitRendition.outputs.status

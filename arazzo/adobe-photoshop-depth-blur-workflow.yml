@@ -1,0 +1,125 @@
+arazzo: 1.0.1
+info:
+  title: Adobe Photoshop Depth Blur
+  summary: Apply an AI depth-of-field blur to an image and poll the job to completion.
+  description: >-
+    Simulates a shallow depth of field on an image that was shot flat. The
+    service estimates depth with AI and applies a bokeh blur around a chosen focal
+    point, with the focal distance, blur strength, focal range, grain, and haze
+    all set per request. This is the cloud path to the look that would otherwise
+    require a fast lens at capture time or manual masking afterward. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI.
+  version: 1.0.0
+sourceDescriptions:
+- name: photoshopApi
+  url: ../openapi/adobe-photoshop-api-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: depth-blur
+  summary: Submit a depth blur job for an image and wait for the rendered result.
+  description: >-
+    Submits the source image with focal point, blur strength, focal range, grain,
+    and haze options, then polls the PSD service job until the blurred image is
+    written to the output URL.
+  inputs:
+    type: object
+    required:
+    - imageUrl
+    - outputUrl
+    properties:
+      imageUrl:
+        type: string
+        description: Pre-signed GET URL of the source image.
+      outputUrl:
+        type: string
+        description: Pre-signed PUT URL where the blurred image is written.
+      outputType:
+        type: string
+        description: Output format for the blurred image.
+        default: image/jpeg
+      focalDistance:
+        type: number
+        description: Distance to the focal point, higher values focus further back.
+        default: 0.5
+      blurStrength:
+        type: number
+        description: Intensity of the blur effect.
+        default: 50
+      focalRange:
+        type: number
+        description: Range of the focal area that stays sharp.
+        default: 50
+      grain:
+        type: number
+        description: Amount of film grain to add to the result.
+        default: 0
+      haze:
+        type: number
+        description: Amount of atmospheric haze to add to the result.
+        default: 0
+  steps:
+  - stepId: submitDepthBlur
+    description: >-
+      Submit the image for AI depth estimation and bokeh blur using the supplied
+      focal and effect settings.
+    operationId: depthBlur
+    requestBody:
+      contentType: application/json
+      payload:
+        inputs:
+        - href: $inputs.imageUrl
+          storage: external
+        options:
+          focalDistance: $inputs.focalDistance
+          blurStrength: $inputs.blurStrength
+          focalRange: $inputs.focalRange
+          grain: $inputs.grain
+          haze: $inputs.haze
+        outputs:
+        - href: $inputs.outputUrl
+          storage: external
+          type: $inputs.outputType
+          overwrite: true
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      statusHref: $response.body#/_links/self/href
+  - stepId: awaitDepthBlur
+    description: >-
+      Poll the PSD service status endpoint until the depth blur job completes.
+      The submit call returns the absolute status URL in _links.self.href; the
+      jobId this operation requires is the final path segment of that URL, so a
+      runner takes that segment from statusHref before issuing the request.
+    operationId: getPsdJobStatus
+    parameters:
+    - name: jobId
+      in: path
+      value: $steps.submitDepthBlur.outputs.statusHref
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.outputs[0].status == 'succeeded'
+      type: jsonpath
+    onFailure:
+    - name: keepPolling
+      type: retry
+      retryAfter: 3
+      retryLimit: 20
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'pending' || $.outputs[0].status == 'running'
+        type: jsonpath
+    - name: blurFailed
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'failed'
+        type: jsonpath
+    outputs:
+      status: $response.body#/outputs/0/status
+      blurredHref: $response.body#/outputs/0/_links/self/href
+      errors: $response.body#/outputs/0/errors
+  outputs:
+    blurredHref: $steps.awaitDepthBlur.outputs.blurredHref
+    status: $steps.awaitDepthBlur.outputs.status

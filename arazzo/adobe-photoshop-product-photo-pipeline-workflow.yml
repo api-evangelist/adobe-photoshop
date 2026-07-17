@@ -1,0 +1,161 @@
+arazzo: 1.0.1
+info:
+  title: Adobe Photoshop Product Photo Pipeline
+  summary: Cut out a product, wait for the cutout, then smart-crop it to the subject.
+  description: >-
+    The e-commerce catalog pattern. A raw product photograph is stripped of its
+    background by the Sensei background removal service, and once that job lands
+    the resulting cutout is fed straight into the AI product crop endpoint, which
+    detects the subject and crops to it with configurable padding. Each stage is
+    asynchronous, so the flow polls the matching status endpoint between
+    submissions and passes the finished asset forward by href. Every step spells
+    out its request inline so the flow can be read and executed without opening
+    the underlying OpenAPI.
+  version: 1.0.0
+sourceDescriptions:
+- name: photoshopApi
+  url: ../openapi/adobe-photoshop-api-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: product-photo-pipeline
+  summary: Chain background removal into product crop for a catalog-ready image.
+  description: >-
+    Submits the source photo for background removal, polls the Sensei job, then
+    submits the cutout for AI product crop and polls the PSD service job until
+    the cropped asset is written to the output URL.
+  inputs:
+    type: object
+    required:
+    - imageUrl
+    - cutoutOutputUrl
+    - croppedOutputUrl
+    properties:
+      imageUrl:
+        type: string
+        description: Pre-signed GET URL of the raw product photograph.
+      cutoutOutputUrl:
+        type: string
+        description: Pre-signed PUT URL where the background-removed cutout is written.
+      croppedOutputUrl:
+        type: string
+        description: Pre-signed PUT URL where the final cropped image is written.
+      padding:
+        type: number
+        description: Padding to leave around the detected product subject.
+        default: 20
+      unit:
+        type: string
+        description: Unit for the padding value, pixel or percent.
+        default: pixel
+  steps:
+  - stepId: submitRemoveBackground
+    description: >-
+      Remove the background from the raw product photograph, returning a PNG
+      cutout with a transparent background.
+    operationId: removeBackgroundV2
+    requestBody:
+      contentType: application/json
+      payload:
+        image:
+          source:
+            url: $inputs.imageUrl
+        mode: cutout
+        output:
+          mediaType: image/png
+        trim: true
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      statusHref: $response.body#/_links/self/href
+  - stepId: awaitRemoveBackground
+    description: >-
+      Poll the Sensei status endpoint until the cutout is ready. The submit call
+      returns the absolute status URL in _links.self.href; the jobId this
+      operation requires is the final path segment of that URL, so a runner takes
+      that segment from statusHref before issuing the request.
+    operationId: getSenseiJobStatus
+    parameters:
+    - name: jobId
+      in: path
+      value: $steps.submitRemoveBackground.outputs.statusHref
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.outputs[0].status == 'succeeded'
+      type: jsonpath
+    onFailure:
+    - name: keepPolling
+      type: retry
+      retryAfter: 3
+      retryLimit: 20
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'pending' || $.outputs[0].status == 'running'
+        type: jsonpath
+    - name: cutoutFailed
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'failed'
+        type: jsonpath
+    outputs:
+      cutoutHref: $response.body#/outputs/0/_links/self/href
+  - stepId: submitProductCrop
+    description: >-
+      Feed the finished cutout into the AI product crop endpoint, which finds the
+      main subject and crops to it with the requested padding.
+    operationId: productCrop
+    requestBody:
+      contentType: application/json
+      payload:
+        inputs:
+        - href: $steps.awaitRemoveBackground.outputs.cutoutHref
+          storage: external
+        options:
+          padding: $inputs.padding
+          unit: $inputs.unit
+        outputs:
+        - href: $inputs.croppedOutputUrl
+          storage: external
+          type: image/png
+          overwrite: true
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      statusHref: $response.body#/_links/self/href
+  - stepId: awaitProductCrop
+    description: >-
+      Poll the PSD service status endpoint until the crop job reports succeeded.
+      The jobId is the final path segment of the returned status URL.
+    operationId: getPsdJobStatus
+    parameters:
+    - name: jobId
+      in: path
+      value: $steps.submitProductCrop.outputs.statusHref
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.outputs[0].status == 'succeeded'
+      type: jsonpath
+    onFailure:
+    - name: keepPolling
+      type: retry
+      retryAfter: 3
+      retryLimit: 20
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'pending' || $.outputs[0].status == 'running'
+        type: jsonpath
+    - name: cropFailed
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.outputs[0].status == 'failed'
+        type: jsonpath
+    outputs:
+      status: $response.body#/outputs/0/status
+      croppedHref: $response.body#/outputs/0/_links/self/href
+  outputs:
+    cutoutHref: $steps.awaitRemoveBackground.outputs.cutoutHref
+    croppedHref: $steps.awaitProductCrop.outputs.croppedHref
+    status: $steps.awaitProductCrop.outputs.status
