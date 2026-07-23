@@ -1,0 +1,222 @@
+openapi: 3.1.0
+info:
+  title: Adobe Photoshop Actions Renditions API
+  description: A cloud-based REST API that provides programmatic access to Photoshop's image editing capabilities without requiring a local installation. Part of Adobe Firefly Services, the API supports PSD document operations including layer editing, Smart Object replacement, text layer editing, rendition creation, and artboard management. It also provides AI-powered features such as background removal, mask creation, product crop, and depth blur. All operations are asynchronous, returning a polling URL to check job status.
+  version: 2.0.0
+  contact:
+    name: Adobe Developer Support
+    url: https://developer.adobe.com/
+  license:
+    name: Proprietary
+    url: https://www.adobe.com/legal/terms.html
+  x-logo:
+    url: https://www.adobe.com/content/dam/cc/icons/photoshop-appicon-256.png
+servers:
+- url: https://image.adobe.io
+  description: Adobe Photoshop API Production
+security:
+- BearerAuth: []
+  ApiKeyAuth: []
+tags:
+- name: Renditions
+  description: Generate flat image renditions from PSD files in various formats including JPEG, PNG, and TIFF.
+paths:
+  /pie/psdService/renditionCreate:
+    post:
+      operationId: createRendition
+      summary: Adobe Photoshop Create Image Renditions from a PSD
+      description: Generates flat image renditions from a PSD file. Supports output formats including JPEG, PNG, TIFF, and PSD. Can optionally resize the output by specifying a target width.
+      tags:
+      - Renditions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RenditionCreateRequest'
+      responses:
+        '202':
+          $ref: '#/components/responses/AsyncJobAccepted'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    StorageInput:
+      type: object
+      required:
+      - href
+      - storage
+      properties:
+        href:
+          type: string
+          description: Pre-signed GET URL or Creative Cloud asset path.
+          example: https://image.adobe.io/example
+        storage:
+          type: string
+          enum:
+          - external
+          - adobe
+          - azure
+          - dropbox
+          description: Storage type for the input file.
+          example: external
+    StorageOutput:
+      type: object
+      required:
+      - href
+      - storage
+      - type
+      properties:
+        href:
+          type: string
+          description: Pre-signed PUT URL or Creative Cloud asset path.
+          example: https://image.adobe.io/example
+        storage:
+          type: string
+          enum:
+          - external
+          - adobe
+          - azure
+          - dropbox
+          description: Storage type for the output file.
+          example: external
+        type:
+          type: string
+          enum:
+          - image/jpeg
+          - image/png
+          - image/tiff
+          - vnd.adobe.photoshop
+          description: Output file format.
+          example: image/jpeg
+        width:
+          type: integer
+          description: Optional output width in pixels for resizing.
+          example: 1920
+        overwrite:
+          type: boolean
+          description: Whether to overwrite existing files.
+          default: true
+          example: true
+    ErrorResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Error type code.
+          example: image
+        title:
+          type: string
+          description: Human-readable error description.
+          example: example_value
+        code:
+          type: integer
+          description: HTTP status code.
+          example: 1920
+        details:
+          type: object
+          properties:
+            reason:
+              type: string
+            name:
+              type: string
+              description: Parameter name causing the error.
+    RenditionCreateRequest:
+      type: object
+      required:
+      - inputs
+      - outputs
+      properties:
+        inputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageInput'
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageOutput'
+  responses:
+    InternalError:
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: Insufficient permissions.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication failed or token expired.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    AsyncJobAccepted:
+      description: Job accepted for asynchronous processing.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              _links:
+                type: object
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        description: URL to poll for job status.
+    BadRequest:
+      description: Invalid request parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    RateLimited:
+      description: Rate limit exceeded. Retry after the period in the retry-after header.
+      headers:
+        retry-after:
+          schema:
+            type: integer
+          description: Seconds to wait before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Conflict:
+      description: File overwrite conflict.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth Server-to-Server access token obtained from Adobe IMS at https://ims-na1.adobelogin.com/ims/token/v3 using client_credentials grant type.
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Your Adobe Developer Console Client ID.
+externalDocs:
+  description: Adobe Photoshop API Documentation
+  url: https://developer.adobe.com/firefly-services/docs/photoshop/

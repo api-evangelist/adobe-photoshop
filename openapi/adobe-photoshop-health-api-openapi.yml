@@ -1,0 +1,56 @@
+openapi: 3.1.0
+info:
+  title: Adobe Photoshop Actions Health API
+  description: A cloud-based REST API that provides programmatic access to Photoshop's image editing capabilities without requiring a local installation. Part of Adobe Firefly Services, the API supports PSD document operations including layer editing, Smart Object replacement, text layer editing, rendition creation, and artboard management. It also provides AI-powered features such as background removal, mask creation, product crop, and depth blur. All operations are asynchronous, returning a polling URL to check job status.
+  version: 2.0.0
+  contact:
+    name: Adobe Developer Support
+    url: https://developer.adobe.com/
+  license:
+    name: Proprietary
+    url: https://www.adobe.com/legal/terms.html
+  x-logo:
+    url: https://www.adobe.com/content/dam/cc/icons/photoshop-appicon-256.png
+servers:
+- url: https://image.adobe.io
+  description: Adobe Photoshop API Production
+security:
+- BearerAuth: []
+  ApiKeyAuth: []
+tags:
+- name: Health
+  description: Service health check endpoint.
+paths:
+  /pie/psdService/hello:
+    get:
+      operationId: healthCheck
+      summary: Adobe Photoshop Service Health Check
+      description: Returns a welcome message confirming the Photoshop API service is available.
+      tags:
+      - Health
+      responses:
+        '200':
+          description: Service is healthy.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Welcome to the Photoshop API!
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth Server-to-Server access token obtained from Adobe IMS at https://ims-na1.adobelogin.com/ims/token/v3 using client_credentials grant type.
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Your Adobe Developer Console Client ID.
+externalDocs:
+  description: Adobe Photoshop API Documentation
+  url: https://developer.adobe.com/firefly-services/docs/photoshop/
