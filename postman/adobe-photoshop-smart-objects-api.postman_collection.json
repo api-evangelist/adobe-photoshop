@@ -1,0 +1,519 @@
+{
+  "info": {
+    "_postman_id": "0cfbcd08-fd15-4fb9-9bce-3fb93820f1e0",
+    "name": "Adobe Photoshop Actions Smart Objects API",
+    "description": "A cloud-based REST API that provides programmatic access to Photoshop's image editing capabilities without requiring a local installation. Part of Adobe Firefly Services, the API supports PSD document operations including layer editing, Smart Object replacement, text layer editing, rendition creation, and artboard management. It also provides AI-powered features such as background removal, mask creation, product crop, and depth blur. All operations are asynchronous, returning a polling URL to check job status.\n\nContact Support:\n Name: Adobe Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:28:38.000Z",
+    "updatedAt": "2026-07-28T00:28:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0cfbcd08-fd15-4fb9-9bce-3fb93820f1e0"
+  },
+  "item": [
+    {
+      "name": "pie",
+      "item": [
+        {
+          "name": "psdService",
+          "item": [
+            {
+              "name": "smartObject",
+              "item": [
+                {
+                  "name": "Adobe Photoshop Replace Smart Object Content",
+                  "id": "bd239be8-742d-4862-a4fb-640abcf997b4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"dropbox\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\"\n    }\n  ],\n  \"options\": {\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"<string>\",\n          \"storage\": \"adobe\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": \"<number>\",\n            \"left\": \"<number>\",\n            \"width\": \"<number>\",\n            \"height\": \"<number>\"\n          }\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"<string>\",\n          \"storage\": \"external\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": \"<number>\",\n            \"left\": \"<number>\",\n            \"width\": \"<number>\",\n            \"height\": \"<number>\"\n          }\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/pie/psdService/smartObject",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pie",
+                        "psdService",
+                        "smartObject"
+                      ]
+                    },
+                    "description": "Replaces the embedded content of Smart Object layers in a PSD document. Allows updating linked or embedded images within Smart Object layers while preserving transformations and effects."
+                  },
+                  "response": [
+                    {
+                      "id": "010168c0-67c0-4e57-82c2-a97cf94149bb",
+                      "name": "Job accepted for asynchronous processing.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"dropbox\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\"\n    }\n  ],\n  \"options\": {\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"<string>\",\n          \"storage\": \"adobe\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": \"<number>\",\n            \"left\": \"<number>\",\n            \"width\": \"<number>\",\n            \"height\": \"<number>\"\n          }\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"<string>\",\n          \"storage\": \"external\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": \"<number>\",\n            \"left\": \"<number>\",\n            \"width\": \"<number>\",\n            \"height\": \"<number>\"\n          }\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/smartObject",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "smartObject"
+                          ]
+                        }
+                      },
+                      "status": "Accepted",
+                      "code": 202,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"_links\": {\n    \"self\": {\n      \"href\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:39.000Z",
+                      "updatedAt": "2026-07-28T00:28:39.000Z",
+                      "uid": "35240-010168c0-67c0-4e57-82c2-a97cf94149bb"
+                    },
+                    {
+                      "id": "5cede824-e4de-4837-9888-9d7b8bc64541",
+                      "name": "Invalid request parameters.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"dropbox\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\"\n    }\n  ],\n  \"options\": {\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"<string>\",\n          \"storage\": \"adobe\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": \"<number>\",\n            \"left\": \"<number>\",\n            \"width\": \"<number>\",\n            \"height\": \"<number>\"\n          }\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"<string>\",\n          \"storage\": \"external\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": \"<number>\",\n            \"left\": \"<number>\",\n            \"width\": \"<number>\",\n            \"height\": \"<number>\"\n          }\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/smartObject",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "smartObject"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:39.000Z",
+                      "updatedAt": "2026-07-28T00:28:39.000Z",
+                      "uid": "35240-5cede824-e4de-4837-9888-9d7b8bc64541"
+                    },
+                    {
+                      "id": "27b7004e-0bef-4dc9-9e7e-1104e683cf32",
+                      "name": "Authentication failed or token expired.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"dropbox\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\"\n    }\n  ],\n  \"options\": {\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"<string>\",\n          \"storage\": \"adobe\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": \"<number>\",\n            \"left\": \"<number>\",\n            \"width\": \"<number>\",\n            \"height\": \"<number>\"\n          }\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"<string>\",\n          \"storage\": \"external\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": \"<number>\",\n            \"left\": \"<number>\",\n            \"width\": \"<number>\",\n            \"height\": \"<number>\"\n          }\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/smartObject",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "smartObject"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:39.000Z",
+                      "updatedAt": "2026-07-28T00:28:39.000Z",
+                      "uid": "35240-27b7004e-0bef-4dc9-9e7e-1104e683cf32"
+                    },
+                    {
+                      "id": "c6af7927-c4e2-4042-a040-a0eaeab4bf71",
+                      "name": "Insufficient permissions.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"dropbox\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\"\n    }\n  ],\n  \"options\": {\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"<string>\",\n          \"storage\": \"adobe\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": \"<number>\",\n            \"left\": \"<number>\",\n            \"width\": \"<number>\",\n            \"height\": \"<number>\"\n          }\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"<string>\",\n          \"storage\": \"external\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": \"<number>\",\n            \"left\": \"<number>\",\n            \"width\": \"<number>\",\n            \"height\": \"<number>\"\n          }\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/smartObject",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "smartObject"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:39.000Z",
+                      "updatedAt": "2026-07-28T00:28:39.000Z",
+                      "uid": "35240-c6af7927-c4e2-4042-a040-a0eaeab4bf71"
+                    },
+                    {
+                      "id": "2c3c0c39-ccf5-456a-a4c2-83d3433786c0",
+                      "name": "File overwrite conflict.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"dropbox\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\"\n    }\n  ],\n  \"options\": {\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"<string>\",\n          \"storage\": \"adobe\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": \"<number>\",\n            \"left\": \"<number>\",\n            \"width\": \"<number>\",\n            \"height\": \"<number>\"\n          }\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"<string>\",\n          \"storage\": \"external\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": \"<number>\",\n            \"left\": \"<number>\",\n            \"width\": \"<number>\",\n            \"height\": \"<number>\"\n          }\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/smartObject",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "smartObject"
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:39.000Z",
+                      "updatedAt": "2026-07-28T00:28:39.000Z",
+                      "uid": "35240-2c3c0c39-ccf5-456a-a4c2-83d3433786c0"
+                    },
+                    {
+                      "id": "338acd3d-a4ad-4d72-b02b-500cc5953003",
+                      "name": "Rate limit exceeded. Retry after the period in the retry-after header.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"dropbox\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\"\n    }\n  ],\n  \"options\": {\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"<string>\",\n          \"storage\": \"adobe\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": \"<number>\",\n            \"left\": \"<number>\",\n            \"width\": \"<number>\",\n            \"height\": \"<number>\"\n          }\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"<string>\",\n          \"storage\": \"external\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": \"<number>\",\n            \"left\": \"<number>\",\n            \"width\": \"<number>\",\n            \"height\": \"<number>\"\n          }\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/smartObject",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "smartObject"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Seconds to wait before retrying.",
+                            "type": "text/plain"
+                          },
+                          "key": "retry-after",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:39.000Z",
+                      "updatedAt": "2026-07-28T00:28:39.000Z",
+                      "uid": "35240-338acd3d-a4ad-4d72-b02b-500cc5953003"
+                    },
+                    {
+                      "id": "76bcb1e4-a3d2-4f11-a444-17fd7e8f11bc",
+                      "name": "Internal server error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"dropbox\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\"\n    }\n  ],\n  \"options\": {\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"<string>\",\n          \"storage\": \"adobe\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": \"<number>\",\n            \"left\": \"<number>\",\n            \"width\": \"<number>\",\n            \"height\": \"<number>\"\n          }\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"<string>\",\n          \"storage\": \"external\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": \"<number>\",\n            \"left\": \"<number>\",\n            \"width\": \"<number>\",\n            \"height\": \"<number>\"\n          }\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/smartObject",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "smartObject"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:39.000Z",
+                      "updatedAt": "2026-07-28T00:28:39.000Z",
+                      "uid": "35240-76bcb1e4-a3d2-4f11-a444-17fd7e8f11bc"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:28:39.000Z",
+                  "updatedAt": "2026-07-28T00:28:39.000Z",
+                  "uid": "35240-bd239be8-742d-4862-a4fb-640abcf997b4"
+                }
+              ],
+              "id": "f5b3b653-8169-4497-a1da-33e497aced7f",
+              "createdAt": "2026-07-28T00:28:39.000Z",
+              "updatedAt": "2026-07-28T00:28:39.000Z",
+              "uid": "35240-f5b3b653-8169-4497-a1da-33e497aced7f"
+            }
+          ],
+          "id": "85c7d853-ef32-4b4c-8824-48f07d9b9800",
+          "createdAt": "2026-07-28T00:28:39.000Z",
+          "updatedAt": "2026-07-28T00:28:39.000Z",
+          "uid": "35240-85c7d853-ef32-4b4c-8824-48f07d9b9800"
+        }
+      ],
+      "id": "678c7044-6e8c-45a6-b069-cd3b6bb4a23d",
+      "createdAt": "2026-07-28T00:28:39.000Z",
+      "updatedAt": "2026-07-28T00:28:39.000Z",
+      "uid": "35240-678c7044-6e8c-45a6-b069-cd3b6bb4a23d"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://image.adobe.io"
+    }
+  ]
+}

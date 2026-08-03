@@ -1,0 +1,445 @@
+{
+  "info": {
+    "_postman_id": "74b392e3-1a23-46d1-9d59-a1ed4b796a7a",
+    "name": "Adobe Photoshop Actions Generative API",
+    "description": "A cloud-based REST API that provides programmatic access to Photoshop's image editing capabilities without requiring a local installation. Part of Adobe Firefly Services, the API supports PSD document operations including layer editing, Smart Object replacement, text layer editing, rendition creation, and artboard management. It also provides AI-powered features such as background removal, mask creation, product crop, and depth blur. All operations are asynchronous, returning a polling URL to check job status.\n\nContact Support:\n Name: Adobe Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:28:36.000Z",
+    "updatedAt": "2026-07-28T00:28:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-74b392e3-1a23-46d1-9d59-a1ed4b796a7a"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "fill-masked-areas",
+          "item": [
+            {
+              "name": "Adobe Photoshop Fill Masked Areas with Generative AI",
+              "id": "0e58bccc-f12f-4beb-bad1-9bfe3dfd3526",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"image\": {\n    \"source\": {\n      \"url\": \"<string>\"\n    }\n  },\n  \"masks\": [\n    {\n      \"source\": {\n        \"url\": \"<string>\"\n      }\n    },\n    {\n      \"source\": {\n        \"url\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/fill-masked-areas",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "fill-masked-areas"
+                  ]
+                },
+                "description": "Fills masked areas of an image using generative AI. Provide a source image and one or more mask images defining the areas to fill. The API generates content to seamlessly fill the masked regions."
+              },
+              "response": [
+                {
+                  "id": "8f57ea05-f997-48ca-9116-87843bec9174",
+                  "name": "Job accepted for asynchronous processing.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"image\": {\n    \"source\": {\n      \"url\": \"<string>\"\n    }\n  },\n  \"masks\": [\n    {\n      \"source\": {\n        \"url\": \"<string>\"\n      }\n    },\n    {\n      \"source\": {\n        \"url\": \"<string>\"\n      }\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/fill-masked-areas",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "fill-masked-areas"
+                      ]
+                    }
+                  },
+                  "status": "Accepted",
+                  "code": 202,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"_links\": {\n    \"self\": {\n      \"href\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-07-28T00:28:36.000Z",
+                  "updatedAt": "2026-07-28T00:28:36.000Z",
+                  "uid": "35240-8f57ea05-f997-48ca-9116-87843bec9174"
+                },
+                {
+                  "id": "9e2ebbb6-2233-455c-82fb-95ea213eb4e4",
+                  "name": "Invalid request parameters.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"image\": {\n    \"source\": {\n      \"url\": \"<string>\"\n    }\n  },\n  \"masks\": [\n    {\n      \"source\": {\n        \"url\": \"<string>\"\n      }\n    },\n    {\n      \"source\": {\n        \"url\": \"<string>\"\n      }\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/fill-masked-areas",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "fill-masked-areas"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T00:28:36.000Z",
+                  "updatedAt": "2026-07-28T00:28:36.000Z",
+                  "uid": "35240-9e2ebbb6-2233-455c-82fb-95ea213eb4e4"
+                },
+                {
+                  "id": "f719063c-2a7c-43de-9d5d-28a5fc01de41",
+                  "name": "Authentication failed or token expired.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"image\": {\n    \"source\": {\n      \"url\": \"<string>\"\n    }\n  },\n  \"masks\": [\n    {\n      \"source\": {\n        \"url\": \"<string>\"\n      }\n    },\n    {\n      \"source\": {\n        \"url\": \"<string>\"\n      }\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/fill-masked-areas",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "fill-masked-areas"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T00:28:36.000Z",
+                  "updatedAt": "2026-07-28T00:28:36.000Z",
+                  "uid": "35240-f719063c-2a7c-43de-9d5d-28a5fc01de41"
+                },
+                {
+                  "id": "d0a6f162-600e-46c1-82a0-9b26799e8fc8",
+                  "name": "Insufficient permissions.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"image\": {\n    \"source\": {\n      \"url\": \"<string>\"\n    }\n  },\n  \"masks\": [\n    {\n      \"source\": {\n        \"url\": \"<string>\"\n      }\n    },\n    {\n      \"source\": {\n        \"url\": \"<string>\"\n      }\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/fill-masked-areas",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "fill-masked-areas"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T00:28:36.000Z",
+                  "updatedAt": "2026-07-28T00:28:36.000Z",
+                  "uid": "35240-d0a6f162-600e-46c1-82a0-9b26799e8fc8"
+                },
+                {
+                  "id": "519d679e-a606-4f30-b68f-57e0fcb633b9",
+                  "name": "Rate limit exceeded. Retry after the period in the retry-after header.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"image\": {\n    \"source\": {\n      \"url\": \"<string>\"\n    }\n  },\n  \"masks\": [\n    {\n      \"source\": {\n        \"url\": \"<string>\"\n      }\n    },\n    {\n      \"source\": {\n        \"url\": \"<string>\"\n      }\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/fill-masked-areas",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "fill-masked-areas"
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Seconds to wait before retrying.",
+                        "type": "text/plain"
+                      },
+                      "key": "retry-after",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T00:28:36.000Z",
+                  "updatedAt": "2026-07-28T00:28:36.000Z",
+                  "uid": "35240-519d679e-a606-4f30-b68f-57e0fcb633b9"
+                },
+                {
+                  "id": "bb82f22d-70bb-4f18-966f-62dfce06517d",
+                  "name": "Internal server error.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"image\": {\n    \"source\": {\n      \"url\": \"<string>\"\n    }\n  },\n  \"masks\": [\n    {\n      \"source\": {\n        \"url\": \"<string>\"\n      }\n    },\n    {\n      \"source\": {\n        \"url\": \"<string>\"\n      }\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/fill-masked-areas",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "fill-masked-areas"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T00:28:36.000Z",
+                  "updatedAt": "2026-07-28T00:28:36.000Z",
+                  "uid": "35240-bb82f22d-70bb-4f18-966f-62dfce06517d"
+                }
+              ],
+              "createdAt": "2026-07-28T00:28:36.000Z",
+              "updatedAt": "2026-07-28T00:28:36.000Z",
+              "uid": "35240-0e58bccc-f12f-4beb-bad1-9bfe3dfd3526"
+            }
+          ],
+          "id": "38d86ee6-102f-4dc7-868e-9a0c413232b3",
+          "createdAt": "2026-07-28T00:28:36.000Z",
+          "updatedAt": "2026-07-28T00:28:36.000Z",
+          "uid": "35240-38d86ee6-102f-4dc7-868e-9a0c413232b3"
+        }
+      ],
+      "id": "34bd2393-0b23-4c32-ad3d-45efd8a5ef17",
+      "createdAt": "2026-07-28T00:28:36.000Z",
+      "updatedAt": "2026-07-28T00:28:36.000Z",
+      "uid": "35240-34bd2393-0b23-4c32-ad3d-45efd8a5ef17"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://image.adobe.io"
+    }
+  ]
+}

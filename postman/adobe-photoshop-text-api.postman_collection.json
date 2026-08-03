@@ -1,0 +1,519 @@
+{
+  "info": {
+    "_postman_id": "0956d558-783c-41f9-b8ba-8e9e7ff79d02",
+    "name": "Adobe Photoshop Actions Text API",
+    "description": "A cloud-based REST API that provides programmatic access to Photoshop's image editing capabilities without requiring a local installation. Part of Adobe Firefly Services, the API supports PSD document operations including layer editing, Smart Object replacement, text layer editing, rendition creation, and artboard management. It also provides AI-powered features such as background removal, mask creation, product crop, and depth blur. All operations are asynchronous, returning a polling URL to check job status.\n\nContact Support:\n Name: Adobe Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:28:40.000Z",
+    "updatedAt": "2026-07-28T00:28:40.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0956d558-783c-41f9-b8ba-8e9e7ff79d02"
+  },
+  "item": [
+    {
+      "name": "pie",
+      "item": [
+        {
+          "name": "psdService",
+          "item": [
+            {
+              "name": "text",
+              "item": [
+                {
+                  "name": "Adobe Photoshop Edit Text Layers in a PSD",
+                  "id": "6ca8e342-15f5-4fd9-927c-1b5994b46292",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    }\n  ],\n  \"options\": {\n    \"manageMissingFonts\": \"fail\",\n    \"globalFont\": \"<string>\",\n    \"fonts\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"external\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"adobe\"\n      }\n    ],\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"<string>\",\n          \"orientation\": \"vertical\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            },\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"justifyCenter\"\n            },\n            {\n              \"alignment\": \"justifyCenter\"\n            }\n          ]\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"<string>\",\n          \"orientation\": \"horizontal\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            },\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"justifyLeft\"\n            },\n            {\n              \"alignment\": \"left\"\n            }\n          ]\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/pie/psdService/text",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pie",
+                        "psdService",
+                        "text"
+                      ]
+                    },
+                    "description": "Edits text layer content and styling in a PSD document. Supports changing text content, character styles (font, size, color, tracking, leading), and paragraph styles (alignment). Custom fonts can be provided via URL, with configurable fallback behavior for missing fonts."
+                  },
+                  "response": [
+                    {
+                      "id": "53d50916-c6a6-4dd8-8918-9a3db3a1f541",
+                      "name": "Job accepted for asynchronous processing.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    }\n  ],\n  \"options\": {\n    \"manageMissingFonts\": \"fail\",\n    \"globalFont\": \"<string>\",\n    \"fonts\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"external\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"adobe\"\n      }\n    ],\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"<string>\",\n          \"orientation\": \"vertical\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            },\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"justifyCenter\"\n            },\n            {\n              \"alignment\": \"justifyCenter\"\n            }\n          ]\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"<string>\",\n          \"orientation\": \"horizontal\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            },\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"justifyLeft\"\n            },\n            {\n              \"alignment\": \"left\"\n            }\n          ]\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/text",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "text"
+                          ]
+                        }
+                      },
+                      "status": "Accepted",
+                      "code": 202,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"_links\": {\n    \"self\": {\n      \"href\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:41.000Z",
+                      "updatedAt": "2026-07-28T00:28:41.000Z",
+                      "uid": "35240-53d50916-c6a6-4dd8-8918-9a3db3a1f541"
+                    },
+                    {
+                      "id": "c4ecad44-c78c-4929-9078-04c45a577db9",
+                      "name": "Invalid request parameters.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    }\n  ],\n  \"options\": {\n    \"manageMissingFonts\": \"fail\",\n    \"globalFont\": \"<string>\",\n    \"fonts\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"external\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"adobe\"\n      }\n    ],\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"<string>\",\n          \"orientation\": \"vertical\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            },\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"justifyCenter\"\n            },\n            {\n              \"alignment\": \"justifyCenter\"\n            }\n          ]\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"<string>\",\n          \"orientation\": \"horizontal\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            },\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"justifyLeft\"\n            },\n            {\n              \"alignment\": \"left\"\n            }\n          ]\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/text",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "text"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:41.000Z",
+                      "updatedAt": "2026-07-28T00:28:41.000Z",
+                      "uid": "35240-c4ecad44-c78c-4929-9078-04c45a577db9"
+                    },
+                    {
+                      "id": "94337523-ed83-4390-9ef0-c5bc5b9a1ca9",
+                      "name": "Authentication failed or token expired.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    }\n  ],\n  \"options\": {\n    \"manageMissingFonts\": \"fail\",\n    \"globalFont\": \"<string>\",\n    \"fonts\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"external\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"adobe\"\n      }\n    ],\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"<string>\",\n          \"orientation\": \"vertical\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            },\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"justifyCenter\"\n            },\n            {\n              \"alignment\": \"justifyCenter\"\n            }\n          ]\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"<string>\",\n          \"orientation\": \"horizontal\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            },\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"justifyLeft\"\n            },\n            {\n              \"alignment\": \"left\"\n            }\n          ]\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/text",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "text"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:41.000Z",
+                      "updatedAt": "2026-07-28T00:28:41.000Z",
+                      "uid": "35240-94337523-ed83-4390-9ef0-c5bc5b9a1ca9"
+                    },
+                    {
+                      "id": "8950967b-8210-4360-8efa-507fffb58ad0",
+                      "name": "Insufficient permissions.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    }\n  ],\n  \"options\": {\n    \"manageMissingFonts\": \"fail\",\n    \"globalFont\": \"<string>\",\n    \"fonts\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"external\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"adobe\"\n      }\n    ],\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"<string>\",\n          \"orientation\": \"vertical\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            },\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"justifyCenter\"\n            },\n            {\n              \"alignment\": \"justifyCenter\"\n            }\n          ]\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"<string>\",\n          \"orientation\": \"horizontal\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            },\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"justifyLeft\"\n            },\n            {\n              \"alignment\": \"left\"\n            }\n          ]\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/text",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "text"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:41.000Z",
+                      "updatedAt": "2026-07-28T00:28:41.000Z",
+                      "uid": "35240-8950967b-8210-4360-8efa-507fffb58ad0"
+                    },
+                    {
+                      "id": "8dd8613c-f9f3-4583-921c-c6207e470b21",
+                      "name": "File overwrite conflict.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    }\n  ],\n  \"options\": {\n    \"manageMissingFonts\": \"fail\",\n    \"globalFont\": \"<string>\",\n    \"fonts\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"external\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"adobe\"\n      }\n    ],\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"<string>\",\n          \"orientation\": \"vertical\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            },\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"justifyCenter\"\n            },\n            {\n              \"alignment\": \"justifyCenter\"\n            }\n          ]\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"<string>\",\n          \"orientation\": \"horizontal\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            },\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"justifyLeft\"\n            },\n            {\n              \"alignment\": \"left\"\n            }\n          ]\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/text",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "text"
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:41.000Z",
+                      "updatedAt": "2026-07-28T00:28:41.000Z",
+                      "uid": "35240-8dd8613c-f9f3-4583-921c-c6207e470b21"
+                    },
+                    {
+                      "id": "a1e1fb6c-3ca7-4d17-8fa6-ad33de2f8747",
+                      "name": "Rate limit exceeded. Retry after the period in the retry-after header.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    }\n  ],\n  \"options\": {\n    \"manageMissingFonts\": \"fail\",\n    \"globalFont\": \"<string>\",\n    \"fonts\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"external\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"adobe\"\n      }\n    ],\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"<string>\",\n          \"orientation\": \"vertical\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            },\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"justifyCenter\"\n            },\n            {\n              \"alignment\": \"justifyCenter\"\n            }\n          ]\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"<string>\",\n          \"orientation\": \"horizontal\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            },\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"justifyLeft\"\n            },\n            {\n              \"alignment\": \"left\"\n            }\n          ]\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/text",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "text"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Seconds to wait before retrying.",
+                            "type": "text/plain"
+                          },
+                          "key": "retry-after",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:41.000Z",
+                      "updatedAt": "2026-07-28T00:28:41.000Z",
+                      "uid": "35240-a1e1fb6c-3ca7-4d17-8fa6-ad33de2f8747"
+                    },
+                    {
+                      "id": "7fe728fc-e2fb-40e5-91ff-29ca74e4df44",
+                      "name": "Internal server error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    }\n  ],\n  \"options\": {\n    \"manageMissingFonts\": \"fail\",\n    \"globalFont\": \"<string>\",\n    \"fonts\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"external\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"adobe\"\n      }\n    ],\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"<string>\",\n          \"orientation\": \"vertical\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            },\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"justifyCenter\"\n            },\n            {\n              \"alignment\": \"justifyCenter\"\n            }\n          ]\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"<string>\",\n          \"orientation\": \"horizontal\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            },\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"justifyLeft\"\n            },\n            {\n              \"alignment\": \"left\"\n            }\n          ]\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/text",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "text"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:41.000Z",
+                      "updatedAt": "2026-07-28T00:28:41.000Z",
+                      "uid": "35240-7fe728fc-e2fb-40e5-91ff-29ca74e4df44"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:28:41.000Z",
+                  "updatedAt": "2026-07-28T00:28:41.000Z",
+                  "uid": "35240-6ca8e342-15f5-4fd9-927c-1b5994b46292"
+                }
+              ],
+              "id": "2733924e-ecec-499e-9fa5-f93371d3f76f",
+              "createdAt": "2026-07-28T00:28:41.000Z",
+              "updatedAt": "2026-07-28T00:28:41.000Z",
+              "uid": "35240-2733924e-ecec-499e-9fa5-f93371d3f76f"
+            }
+          ],
+          "id": "6353ca51-6501-4cb5-82ce-5f45be8b5045",
+          "createdAt": "2026-07-28T00:28:41.000Z",
+          "updatedAt": "2026-07-28T00:28:41.000Z",
+          "uid": "35240-6353ca51-6501-4cb5-82ce-5f45be8b5045"
+        }
+      ],
+      "id": "aeeb88cc-cdbd-40ca-9117-95186746e3a3",
+      "createdAt": "2026-07-28T00:28:41.000Z",
+      "updatedAt": "2026-07-28T00:28:41.000Z",
+      "uid": "35240-aeeb88cc-cdbd-40ca-9117-95186746e3a3"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://image.adobe.io"
+    }
+  ]
+}

@@ -1,0 +1,874 @@
+{
+  "info": {
+    "_postman_id": "4d1df16e-41e1-4268-b22d-00847ce1cb6e",
+    "name": "Adobe Photoshop Actions Crop and Effects API",
+    "description": "A cloud-based REST API that provides programmatic access to Photoshop's image editing capabilities without requiring a local installation. Part of Adobe Firefly Services, the API supports PSD document operations including layer editing, Smart Object replacement, text layer editing, rendition creation, and artboard management. It also provides AI-powered features such as background removal, mask creation, product crop, and depth blur. All operations are asynchronous, returning a polling URL to check job status.\n\nContact Support:\n Name: Adobe Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:28:33.000Z",
+    "updatedAt": "2026-07-28T00:28:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4d1df16e-41e1-4268-b22d-00847ce1cb6e"
+  },
+  "item": [
+    {
+      "name": "pie",
+      "item": [
+        {
+          "name": "psdService",
+          "item": [
+            {
+              "name": "productCrop",
+              "item": [
+                {
+                  "name": "Adobe Photoshop Smart Crop to Product Subject",
+                  "id": "288c3084-0ec3-4ca7-aaac-c7a944dbc842",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"options\": {\n    \"padding\": \"<number>\",\n    \"unit\": \"pixel\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/pie/psdService/productCrop",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pie",
+                        "psdService",
+                        "productCrop"
+                      ]
+                    },
+                    "description": "Applies AI-powered smart cropping that identifies the main product or subject in an image and crops to keep it centered with configurable padding."
+                  },
+                  "response": [
+                    {
+                      "id": "d5ee3f02-8e11-4d7d-afb9-651602f35fac",
+                      "name": "Job accepted for asynchronous processing.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"options\": {\n    \"padding\": \"<number>\",\n    \"unit\": \"pixel\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/productCrop",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "productCrop"
+                          ]
+                        }
+                      },
+                      "status": "Accepted",
+                      "code": 202,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"_links\": {\n    \"self\": {\n      \"href\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:34.000Z",
+                      "updatedAt": "2026-07-28T00:28:34.000Z",
+                      "uid": "35240-d5ee3f02-8e11-4d7d-afb9-651602f35fac"
+                    },
+                    {
+                      "id": "f4440947-6f1d-497c-815f-0897ed395904",
+                      "name": "Invalid request parameters.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"options\": {\n    \"padding\": \"<number>\",\n    \"unit\": \"pixel\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/productCrop",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "productCrop"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:34.000Z",
+                      "updatedAt": "2026-07-28T00:28:34.000Z",
+                      "uid": "35240-f4440947-6f1d-497c-815f-0897ed395904"
+                    },
+                    {
+                      "id": "a4bd9a4c-29f8-48a2-a7af-984c3b881655",
+                      "name": "Authentication failed or token expired.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"options\": {\n    \"padding\": \"<number>\",\n    \"unit\": \"pixel\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/productCrop",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "productCrop"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:34.000Z",
+                      "updatedAt": "2026-07-28T00:28:34.000Z",
+                      "uid": "35240-a4bd9a4c-29f8-48a2-a7af-984c3b881655"
+                    },
+                    {
+                      "id": "9fc26156-798e-4784-b729-21697623b8ad",
+                      "name": "Insufficient permissions.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"options\": {\n    \"padding\": \"<number>\",\n    \"unit\": \"pixel\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/productCrop",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "productCrop"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:34.000Z",
+                      "updatedAt": "2026-07-28T00:28:34.000Z",
+                      "uid": "35240-9fc26156-798e-4784-b729-21697623b8ad"
+                    },
+                    {
+                      "id": "0e6b02ed-1bd8-4b91-ab9c-5ec61577a799",
+                      "name": "Rate limit exceeded. Retry after the period in the retry-after header.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"options\": {\n    \"padding\": \"<number>\",\n    \"unit\": \"pixel\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/productCrop",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "productCrop"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Seconds to wait before retrying.",
+                            "type": "text/plain"
+                          },
+                          "key": "retry-after",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:34.000Z",
+                      "updatedAt": "2026-07-28T00:28:34.000Z",
+                      "uid": "35240-0e6b02ed-1bd8-4b91-ab9c-5ec61577a799"
+                    },
+                    {
+                      "id": "8bb7b08c-fdef-4c06-a69b-f9a87b48069d",
+                      "name": "Internal server error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"options\": {\n    \"padding\": \"<number>\",\n    \"unit\": \"pixel\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/productCrop",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "productCrop"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:34.000Z",
+                      "updatedAt": "2026-07-28T00:28:34.000Z",
+                      "uid": "35240-8bb7b08c-fdef-4c06-a69b-f9a87b48069d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:28:34.000Z",
+                  "updatedAt": "2026-07-28T00:28:34.000Z",
+                  "uid": "35240-288c3084-0ec3-4ca7-aaac-c7a944dbc842"
+                }
+              ],
+              "id": "cf43af08-8337-4618-9018-938be23e132f",
+              "createdAt": "2026-07-28T00:28:34.000Z",
+              "updatedAt": "2026-07-28T00:28:34.000Z",
+              "uid": "35240-cf43af08-8337-4618-9018-938be23e132f"
+            },
+            {
+              "name": "depthBlur",
+              "item": [
+                {
+                  "name": "Adobe Photoshop Apply Depth Blur Effect",
+                  "id": "e4846ebd-bf8a-430f-8dbc-56c5b850967a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"options\": {\n    \"focalSelector\": {},\n    \"focalDistance\": \"<number>\",\n    \"blurStrength\": \"<number>\",\n    \"focalRange\": \"<number>\",\n    \"grain\": \"<number>\",\n    \"haze\": \"<number>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/pie/psdService/depthBlur",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pie",
+                        "psdService",
+                        "depthBlur"
+                      ]
+                    },
+                    "description": "Applies an AI-powered depth blur (bokeh) effect to an image, simulating a shallow depth of field. Configurable focal point, blur strength, focal range, grain, and haze parameters."
+                  },
+                  "response": [
+                    {
+                      "id": "8b6eb942-0f91-4c1a-8b37-2c849a31e32c",
+                      "name": "Job accepted for asynchronous processing.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"options\": {\n    \"focalSelector\": {},\n    \"focalDistance\": \"<number>\",\n    \"blurStrength\": \"<number>\",\n    \"focalRange\": \"<number>\",\n    \"grain\": \"<number>\",\n    \"haze\": \"<number>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/depthBlur",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "depthBlur"
+                          ]
+                        }
+                      },
+                      "status": "Accepted",
+                      "code": 202,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"_links\": {\n    \"self\": {\n      \"href\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:34.000Z",
+                      "updatedAt": "2026-07-28T00:28:34.000Z",
+                      "uid": "35240-8b6eb942-0f91-4c1a-8b37-2c849a31e32c"
+                    },
+                    {
+                      "id": "d75ff4c6-e182-4a0a-b818-9f03f3758412",
+                      "name": "Invalid request parameters.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"options\": {\n    \"focalSelector\": {},\n    \"focalDistance\": \"<number>\",\n    \"blurStrength\": \"<number>\",\n    \"focalRange\": \"<number>\",\n    \"grain\": \"<number>\",\n    \"haze\": \"<number>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/depthBlur",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "depthBlur"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:34.000Z",
+                      "updatedAt": "2026-07-28T00:28:34.000Z",
+                      "uid": "35240-d75ff4c6-e182-4a0a-b818-9f03f3758412"
+                    },
+                    {
+                      "id": "dca1d052-382a-4c78-a84d-c9d8e8271534",
+                      "name": "Authentication failed or token expired.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"options\": {\n    \"focalSelector\": {},\n    \"focalDistance\": \"<number>\",\n    \"blurStrength\": \"<number>\",\n    \"focalRange\": \"<number>\",\n    \"grain\": \"<number>\",\n    \"haze\": \"<number>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/depthBlur",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "depthBlur"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:34.000Z",
+                      "updatedAt": "2026-07-28T00:28:34.000Z",
+                      "uid": "35240-dca1d052-382a-4c78-a84d-c9d8e8271534"
+                    },
+                    {
+                      "id": "b8db7f63-85dc-496f-8796-a78927e67f8d",
+                      "name": "Insufficient permissions.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"options\": {\n    \"focalSelector\": {},\n    \"focalDistance\": \"<number>\",\n    \"blurStrength\": \"<number>\",\n    \"focalRange\": \"<number>\",\n    \"grain\": \"<number>\",\n    \"haze\": \"<number>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/depthBlur",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "depthBlur"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:34.000Z",
+                      "updatedAt": "2026-07-28T00:28:34.000Z",
+                      "uid": "35240-b8db7f63-85dc-496f-8796-a78927e67f8d"
+                    },
+                    {
+                      "id": "53a419e8-bc57-4b68-b4b7-47f2310e129a",
+                      "name": "Rate limit exceeded. Retry after the period in the retry-after header.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"options\": {\n    \"focalSelector\": {},\n    \"focalDistance\": \"<number>\",\n    \"blurStrength\": \"<number>\",\n    \"focalRange\": \"<number>\",\n    \"grain\": \"<number>\",\n    \"haze\": \"<number>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/depthBlur",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "depthBlur"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Seconds to wait before retrying.",
+                            "type": "text/plain"
+                          },
+                          "key": "retry-after",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:34.000Z",
+                      "updatedAt": "2026-07-28T00:28:34.000Z",
+                      "uid": "35240-53a419e8-bc57-4b68-b4b7-47f2310e129a"
+                    },
+                    {
+                      "id": "893a374b-51ac-4bff-8c2c-a6509653e086",
+                      "name": "Internal server error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"options\": {\n    \"focalSelector\": {},\n    \"focalDistance\": \"<number>\",\n    \"blurStrength\": \"<number>\",\n    \"focalRange\": \"<number>\",\n    \"grain\": \"<number>\",\n    \"haze\": \"<number>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/depthBlur",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "depthBlur"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:34.000Z",
+                      "updatedAt": "2026-07-28T00:28:34.000Z",
+                      "uid": "35240-893a374b-51ac-4bff-8c2c-a6509653e086"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:28:34.000Z",
+                  "updatedAt": "2026-07-28T00:28:34.000Z",
+                  "uid": "35240-e4846ebd-bf8a-430f-8dbc-56c5b850967a"
+                }
+              ],
+              "id": "06a50e0f-ec64-40cd-8db5-cddd135ddfc3",
+              "createdAt": "2026-07-28T00:28:34.000Z",
+              "updatedAt": "2026-07-28T00:28:34.000Z",
+              "uid": "35240-06a50e0f-ec64-40cd-8db5-cddd135ddfc3"
+            }
+          ],
+          "id": "f07ebf9e-8b65-48f0-ac68-02c0d837b562",
+          "createdAt": "2026-07-28T00:28:34.000Z",
+          "updatedAt": "2026-07-28T00:28:34.000Z",
+          "uid": "35240-f07ebf9e-8b65-48f0-ac68-02c0d837b562"
+        }
+      ],
+      "id": "50521f9b-929e-4dbe-a1f1-f4cefc07181e",
+      "createdAt": "2026-07-28T00:28:34.000Z",
+      "updatedAt": "2026-07-28T00:28:34.000Z",
+      "uid": "35240-50521f9b-929e-4dbe-a1f1-f4cefc07181e"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://image.adobe.io"
+    }
+  ]
+}

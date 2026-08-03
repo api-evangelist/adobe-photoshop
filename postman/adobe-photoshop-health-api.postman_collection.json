@@ -1,0 +1,134 @@
+{
+  "info": {
+    "_postman_id": "b21e3308-ac35-43da-9da5-cced5503035b",
+    "name": "Adobe Photoshop Actions Health API",
+    "description": "A cloud-based REST API that provides programmatic access to Photoshop's image editing capabilities without requiring a local installation. Part of Adobe Firefly Services, the API supports PSD document operations including layer editing, Smart Object replacement, text layer editing, rendition creation, and artboard management. It also provides AI-powered features such as background removal, mask creation, product crop, and depth blur. All operations are asynchronous, returning a polling URL to check job status.\n\nContact Support:\n Name: Adobe Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:28:36.000Z",
+    "updatedAt": "2026-07-28T00:28:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b21e3308-ac35-43da-9da5-cced5503035b"
+  },
+  "item": [
+    {
+      "name": "pie",
+      "item": [
+        {
+          "name": "psdService",
+          "item": [
+            {
+              "name": "hello",
+              "item": [
+                {
+                  "name": "Adobe Photoshop Service Health Check",
+                  "id": "da341e9a-c522-4203-aa67-1132c326b089",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pie/psdService/hello",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pie",
+                        "psdService",
+                        "hello"
+                      ]
+                    },
+                    "description": "Returns a welcome message confirming the Photoshop API service is available."
+                  },
+                  "response": [
+                    {
+                      "id": "5be5a8c0-eb7e-4899-993b-bf4d83e3b16b",
+                      "name": "Service is healthy.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/hello",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "hello"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-07-28T00:28:37.000Z",
+                      "updatedAt": "2026-07-28T00:28:37.000Z",
+                      "uid": "35240-5be5a8c0-eb7e-4899-993b-bf4d83e3b16b"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:28:37.000Z",
+                  "updatedAt": "2026-07-28T00:28:37.000Z",
+                  "uid": "35240-da341e9a-c522-4203-aa67-1132c326b089"
+                }
+              ],
+              "id": "b17758da-83b4-4170-af86-42051eead33d",
+              "createdAt": "2026-07-28T00:28:37.000Z",
+              "updatedAt": "2026-07-28T00:28:37.000Z",
+              "uid": "35240-b17758da-83b4-4170-af86-42051eead33d"
+            }
+          ],
+          "id": "949a5eca-d422-4864-ba0c-6e822e241c46",
+          "createdAt": "2026-07-28T00:28:37.000Z",
+          "updatedAt": "2026-07-28T00:28:37.000Z",
+          "uid": "35240-949a5eca-d422-4864-ba0c-6e822e241c46"
+        }
+      ],
+      "id": "cdc0f96b-3efe-4831-be7d-061eccf01f39",
+      "createdAt": "2026-07-28T00:28:37.000Z",
+      "updatedAt": "2026-07-28T00:28:37.000Z",
+      "uid": "35240-cdc0f96b-3efe-4831-be7d-061eccf01f39"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://image.adobe.io"
+    }
+  ]
+}

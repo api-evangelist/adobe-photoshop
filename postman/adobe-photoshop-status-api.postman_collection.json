@@ -1,0 +1,572 @@
+{
+  "info": {
+    "_postman_id": "730c6c38-3888-4163-a813-6eed8bb5bf06",
+    "name": "Adobe Photoshop Actions Status API",
+    "description": "A cloud-based REST API that provides programmatic access to Photoshop's image editing capabilities without requiring a local installation. Part of Adobe Firefly Services, the API supports PSD document operations including layer editing, Smart Object replacement, text layer editing, rendition creation, and artboard management. It also provides AI-powered features such as background removal, mask creation, product crop, and depth blur. All operations are asynchronous, returning a polling URL to check job status.\n\nContact Support:\n Name: Adobe Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:28:39.000Z",
+    "updatedAt": "2026-07-28T00:28:39.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-730c6c38-3888-4163-a813-6eed8bb5bf06"
+  },
+  "item": [
+    {
+      "name": "pie",
+      "item": [
+        {
+          "name": "psdService",
+          "item": [
+            {
+              "name": "status",
+              "item": [
+                {
+                  "name": "{jobId}",
+                  "item": [
+                    {
+                      "name": "Adobe Photoshop Get PSD Service Job Status",
+                      "id": "7874f5f0-1ae2-453e-abee-75eadd2bcdba",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/status/:jobId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "status",
+                            ":jobId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "bf3ba425-6373-4ba0-9fcb-c64b89e52fd7",
+                              "key": "jobId",
+                              "value": "<uuid>",
+                              "description": "(Required) The unique job identifier returned when the job was created."
+                            }
+                          ]
+                        },
+                        "description": "Polls the status of an asynchronous PSD service job. Returns the current status (pending, running, succeeded, failed) along with output details upon completion."
+                      },
+                      "response": [
+                        {
+                          "id": "712f75a1-9a45-4787-b81e-d67140e70736",
+                          "name": "Job status retrieved.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/pie/psdService/status/:jobId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "pie",
+                                "psdService",
+                                "status",
+                                ":jobId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "jobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"jobId\": \"<uuid>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\",\n  \"outputs\": [\n    {\n      \"input\": \"<string>\",\n      \"status\": \"running\",\n      \"_links\": {\n        \"self\": {\n          \"href\": \"<string>\",\n          \"storage\": \"<string>\"\n        }\n      },\n      \"errors\": {}\n    },\n    {\n      \"input\": \"<string>\",\n      \"status\": \"succeeded\",\n      \"_links\": {\n        \"self\": {\n          \"href\": \"<string>\",\n          \"storage\": \"<string>\"\n        }\n      },\n      \"errors\": {}\n    }\n  ],\n  \"_links\": {\n    \"self\": {\n      \"href\": \"<string>\"\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T00:28:40.000Z",
+                          "updatedAt": "2026-07-28T00:28:40.000Z",
+                          "uid": "35240-712f75a1-9a45-4787-b81e-d67140e70736"
+                        },
+                        {
+                          "id": "fbd58bf2-ca4e-42fb-b084-43d8994f95c0",
+                          "name": "Authentication failed or token expired.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/pie/psdService/status/:jobId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "pie",
+                                "psdService",
+                                "status",
+                                ":jobId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "jobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T00:28:40.000Z",
+                          "updatedAt": "2026-07-28T00:28:40.000Z",
+                          "uid": "35240-fbd58bf2-ca4e-42fb-b084-43d8994f95c0"
+                        },
+                        {
+                          "id": "b035acbe-757a-409f-ac77-e3d17c6e5ed6",
+                          "name": "Resource not found.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/pie/psdService/status/:jobId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "pie",
+                                "psdService",
+                                "status",
+                                ":jobId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "jobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T00:28:40.000Z",
+                          "updatedAt": "2026-07-28T00:28:40.000Z",
+                          "uid": "35240-b035acbe-757a-409f-ac77-e3d17c6e5ed6"
+                        },
+                        {
+                          "id": "a04d07af-b3d8-4dee-a39c-94a0f601fb56",
+                          "name": "Internal server error.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/pie/psdService/status/:jobId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "pie",
+                                "psdService",
+                                "status",
+                                ":jobId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "jobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T00:28:40.000Z",
+                          "updatedAt": "2026-07-28T00:28:40.000Z",
+                          "uid": "35240-a04d07af-b3d8-4dee-a39c-94a0f601fb56"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T00:28:40.000Z",
+                      "updatedAt": "2026-07-28T00:28:40.000Z",
+                      "uid": "35240-7874f5f0-1ae2-453e-abee-75eadd2bcdba"
+                    }
+                  ],
+                  "id": "1acf815c-7a5e-4431-a827-90278bddf9e6",
+                  "createdAt": "2026-07-28T00:28:40.000Z",
+                  "updatedAt": "2026-07-28T00:28:40.000Z",
+                  "uid": "35240-1acf815c-7a5e-4431-a827-90278bddf9e6"
+                }
+              ],
+              "id": "2d37713a-74e2-49c9-a5d9-1d5b6e68776d",
+              "createdAt": "2026-07-28T00:28:40.000Z",
+              "updatedAt": "2026-07-28T00:28:40.000Z",
+              "uid": "35240-2d37713a-74e2-49c9-a5d9-1d5b6e68776d"
+            }
+          ],
+          "id": "372eabc2-2e21-47ad-a37a-e5e354828b1b",
+          "createdAt": "2026-07-28T00:28:40.000Z",
+          "updatedAt": "2026-07-28T00:28:40.000Z",
+          "uid": "35240-372eabc2-2e21-47ad-a37a-e5e354828b1b"
+        }
+      ],
+      "id": "ca28a1dc-f5ec-41ee-9726-fdf9d8bacb0f",
+      "createdAt": "2026-07-28T00:28:40.000Z",
+      "updatedAt": "2026-07-28T00:28:40.000Z",
+      "uid": "35240-ca28a1dc-f5ec-41ee-9726-fdf9d8bacb0f"
+    },
+    {
+      "name": "sensei",
+      "item": [
+        {
+          "name": "status",
+          "item": [
+            {
+              "name": "{jobId}",
+              "item": [
+                {
+                  "name": "Adobe Photoshop Get Sensei Service Job Status",
+                  "id": "c00af6d5-cbbf-4099-8ed7-6df0e7e23862",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sensei/status/:jobId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sensei",
+                        "status",
+                        ":jobId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "7170ef3b-07fe-4f42-aee8-91dd627dd482",
+                          "key": "jobId",
+                          "value": "<uuid>",
+                          "description": "(Required) The unique job identifier returned when the job was created."
+                        }
+                      ]
+                    },
+                    "description": "Polls the status of an asynchronous Sensei AI service job such as background removal or mask creation."
+                  },
+                  "response": [
+                    {
+                      "id": "2139d9e7-06cb-4c78-850b-14f783433f74",
+                      "name": "Job status retrieved.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sensei/status/:jobId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sensei",
+                            "status",
+                            ":jobId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "jobId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"jobId\": \"<uuid>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\",\n  \"outputs\": [\n    {\n      \"input\": \"<string>\",\n      \"status\": \"running\",\n      \"_links\": {\n        \"self\": {\n          \"href\": \"<string>\",\n          \"storage\": \"<string>\"\n        }\n      },\n      \"errors\": {}\n    },\n    {\n      \"input\": \"<string>\",\n      \"status\": \"succeeded\",\n      \"_links\": {\n        \"self\": {\n          \"href\": \"<string>\",\n          \"storage\": \"<string>\"\n        }\n      },\n      \"errors\": {}\n    }\n  ],\n  \"_links\": {\n    \"self\": {\n      \"href\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:40.000Z",
+                      "updatedAt": "2026-07-28T00:28:40.000Z",
+                      "uid": "35240-2139d9e7-06cb-4c78-850b-14f783433f74"
+                    },
+                    {
+                      "id": "38f1d735-933d-4c76-8f2e-f9eba0ce24af",
+                      "name": "Authentication failed or token expired.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sensei/status/:jobId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sensei",
+                            "status",
+                            ":jobId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "jobId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:40.000Z",
+                      "updatedAt": "2026-07-28T00:28:40.000Z",
+                      "uid": "35240-38f1d735-933d-4c76-8f2e-f9eba0ce24af"
+                    },
+                    {
+                      "id": "57ddb122-3b65-43be-9604-25986ecfd4d5",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sensei/status/:jobId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sensei",
+                            "status",
+                            ":jobId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "jobId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:40.000Z",
+                      "updatedAt": "2026-07-28T00:28:40.000Z",
+                      "uid": "35240-57ddb122-3b65-43be-9604-25986ecfd4d5"
+                    },
+                    {
+                      "id": "31caffba-c7bb-4d69-9c47-8d18fc55d411",
+                      "name": "Internal server error.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sensei/status/:jobId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sensei",
+                            "status",
+                            ":jobId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "jobId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:40.000Z",
+                      "updatedAt": "2026-07-28T00:28:40.000Z",
+                      "uid": "35240-31caffba-c7bb-4d69-9c47-8d18fc55d411"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:28:40.000Z",
+                  "updatedAt": "2026-07-28T00:28:40.000Z",
+                  "uid": "35240-c00af6d5-cbbf-4099-8ed7-6df0e7e23862"
+                }
+              ],
+              "id": "a4098bf3-5cac-4e05-9ab4-9f81e20e70e7",
+              "createdAt": "2026-07-28T00:28:40.000Z",
+              "updatedAt": "2026-07-28T00:28:40.000Z",
+              "uid": "35240-a4098bf3-5cac-4e05-9ab4-9f81e20e70e7"
+            }
+          ],
+          "id": "4877a8c2-b2e3-4592-8e24-f5d6dba94406",
+          "createdAt": "2026-07-28T00:28:40.000Z",
+          "updatedAt": "2026-07-28T00:28:40.000Z",
+          "uid": "35240-4877a8c2-b2e3-4592-8e24-f5d6dba94406"
+        }
+      ],
+      "id": "ad8a5e0c-6a6e-4528-8663-9d02e7176cbb",
+      "createdAt": "2026-07-28T00:28:40.000Z",
+      "updatedAt": "2026-07-28T00:28:40.000Z",
+      "uid": "35240-ad8a5e0c-6a6e-4528-8663-9d02e7176cbb"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://image.adobe.io"
+    }
+  ]
+}

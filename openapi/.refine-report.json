@@ -1,0 +1,32 @@
+{
+  "provider": "adobe-photoshop",
+  "sources": [
+    "adobe-photoshop-actions-api-openapi.yml",
+    "adobe-photoshop-background-removal-api-openapi.yml",
+    "adobe-photoshop-crop-and-effects-api-openapi.yml",
+    "adobe-photoshop-document-operations-api-openapi.yml",
+    "adobe-photoshop-generative-api-openapi.yml",
+    "adobe-photoshop-health-api-openapi.yml",
+    "adobe-photoshop-renditions-api-openapi.yml",
+    "adobe-photoshop-smart-objects-api-openapi.yml",
+    "adobe-photoshop-status-api-openapi.yml",
+    "adobe-photoshop-text-api-openapi.yml"
+  ],
+  "outputs": [
+    "adobe-photoshop-actions-api-openapi.yml",
+    "adobe-photoshop-background-removal-api-openapi.yml",
+    "adobe-photoshop-crop-and-effects-api-openapi.yml",
+    "adobe-photoshop-document-operations-api-openapi.yml",
+    "adobe-photoshop-generative-api-openapi.yml",
+    "adobe-photoshop-health-api-openapi.yml",
+    "adobe-photoshop-renditions-api-openapi.yml",
+    "adobe-photoshop-smart-objects-api-openapi.yml",
+    "adobe-photoshop-status-api-openapi.yml",
+    "adobe-photoshop-text-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

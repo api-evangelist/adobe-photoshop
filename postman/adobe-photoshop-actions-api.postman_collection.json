@@ -1,0 +1,1287 @@
+{
+  "info": {
+    "_postman_id": "70cd4a97-6c2c-42d0-8d9b-202b43d2bcc7",
+    "name": "Adobe Photoshop Actions API",
+    "description": "A cloud-based REST API that provides programmatic access to Photoshop's image editing capabilities without requiring a local installation. Part of Adobe Firefly Services, the API supports PSD document operations including layer editing, Smart Object replacement, text layer editing, rendition creation, and artboard management. It also provides AI-powered features such as background removal, mask creation, product crop, and depth blur. All operations are asynchronous, returning a polling URL to check job status.\n\nContact Support:\n Name: Adobe Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:28:14.000Z",
+    "updatedAt": "2026-07-28T00:28:14.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-70cd4a97-6c2c-42d0-8d9b-202b43d2bcc7"
+  },
+  "item": [
+    {
+      "name": "pie",
+      "item": [
+        {
+          "name": "psdService",
+          "item": [
+            {
+              "name": "photoshopActions",
+              "item": [
+                {
+                  "name": "Adobe Photoshop Execute Photoshop Action Files",
+                  "id": "0f3b3196-d29d-4ad8-b960-824fa2611d47",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\"\n    }\n  ],\n  \"options\": {\n    \"actions\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"adobe\",\n        \"actionName\": \"<string>\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"adobe\",\n        \"actionName\": \"<string>\"\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"dropbox\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/pie/psdService/photoshopActions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pie",
+                        "psdService",
+                        "photoshopActions"
+                      ]
+                    },
+                    "description": "Executes Photoshop Action (.atn) files on an input image. Actions are sequences of recorded Photoshop operations that can be replayed programmatically. A specific action within the .atn file can be targeted by name."
+                  },
+                  "response": [
+                    {
+                      "id": "8f9eccf9-30f1-45ab-aee3-8d11690d153b",
+                      "name": "Job accepted for asynchronous processing.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\"\n    }\n  ],\n  \"options\": {\n    \"actions\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"adobe\",\n        \"actionName\": \"<string>\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"adobe\",\n        \"actionName\": \"<string>\"\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"dropbox\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/photoshopActions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "photoshopActions"
+                          ]
+                        }
+                      },
+                      "status": "Accepted",
+                      "code": 202,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"_links\": {\n    \"self\": {\n      \"href\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:15.000Z",
+                      "updatedAt": "2026-07-28T00:28:15.000Z",
+                      "uid": "35240-8f9eccf9-30f1-45ab-aee3-8d11690d153b"
+                    },
+                    {
+                      "id": "5b057dce-b6ea-4967-b7b8-3911db8e0af2",
+                      "name": "Invalid request parameters.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\"\n    }\n  ],\n  \"options\": {\n    \"actions\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"adobe\",\n        \"actionName\": \"<string>\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"adobe\",\n        \"actionName\": \"<string>\"\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"dropbox\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/photoshopActions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "photoshopActions"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:15.000Z",
+                      "updatedAt": "2026-07-28T00:28:15.000Z",
+                      "uid": "35240-5b057dce-b6ea-4967-b7b8-3911db8e0af2"
+                    },
+                    {
+                      "id": "247be9f6-499c-449f-92d6-3f7133834052",
+                      "name": "Authentication failed or token expired.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\"\n    }\n  ],\n  \"options\": {\n    \"actions\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"adobe\",\n        \"actionName\": \"<string>\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"adobe\",\n        \"actionName\": \"<string>\"\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"dropbox\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/photoshopActions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "photoshopActions"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:15.000Z",
+                      "updatedAt": "2026-07-28T00:28:15.000Z",
+                      "uid": "35240-247be9f6-499c-449f-92d6-3f7133834052"
+                    },
+                    {
+                      "id": "de9e4c89-df3b-4bf1-9b94-76b716e1fc47",
+                      "name": "Insufficient permissions.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\"\n    }\n  ],\n  \"options\": {\n    \"actions\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"adobe\",\n        \"actionName\": \"<string>\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"adobe\",\n        \"actionName\": \"<string>\"\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"dropbox\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/photoshopActions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "photoshopActions"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:15.000Z",
+                      "updatedAt": "2026-07-28T00:28:15.000Z",
+                      "uid": "35240-de9e4c89-df3b-4bf1-9b94-76b716e1fc47"
+                    },
+                    {
+                      "id": "fc24b8fe-7930-48d9-a81b-c9342162dfd8",
+                      "name": "Rate limit exceeded. Retry after the period in the retry-after header.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\"\n    }\n  ],\n  \"options\": {\n    \"actions\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"adobe\",\n        \"actionName\": \"<string>\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"adobe\",\n        \"actionName\": \"<string>\"\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"dropbox\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/photoshopActions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "photoshopActions"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Seconds to wait before retrying.",
+                            "type": "text/plain"
+                          },
+                          "key": "retry-after",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:15.000Z",
+                      "updatedAt": "2026-07-28T00:28:15.000Z",
+                      "uid": "35240-fc24b8fe-7930-48d9-a81b-c9342162dfd8"
+                    },
+                    {
+                      "id": "7651b35b-b2d6-4a3c-ba37-6a3b06c31214",
+                      "name": "Internal server error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"adobe\"\n    }\n  ],\n  \"options\": {\n    \"actions\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"adobe\",\n        \"actionName\": \"<string>\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"adobe\",\n        \"actionName\": \"<string>\"\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"dropbox\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\",\n      \"type\": \"vnd.adobe.photoshop\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/photoshopActions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "photoshopActions"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:15.000Z",
+                      "updatedAt": "2026-07-28T00:28:15.000Z",
+                      "uid": "35240-7651b35b-b2d6-4a3c-ba37-6a3b06c31214"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:28:15.000Z",
+                  "updatedAt": "2026-07-28T00:28:15.000Z",
+                  "uid": "35240-0f3b3196-d29d-4ad8-b960-824fa2611d47"
+                }
+              ],
+              "id": "cf37c6a7-7895-4d4b-a58e-fb5ea7020ad8",
+              "createdAt": "2026-07-28T00:28:15.000Z",
+              "updatedAt": "2026-07-28T00:28:15.000Z",
+              "uid": "35240-cf37c6a7-7895-4d4b-a58e-fb5ea7020ad8"
+            },
+            {
+              "name": "actionJSON",
+              "item": [
+                {
+                  "name": "Adobe Photoshop Execute Photoshop Actions via JSON Descriptors",
+                  "id": "494b3e67-c533-43f3-ad51-db52db2b4c09",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"options\": {\n    \"actionJSON\": [\n      {\n        \"_obj\": \"<string>\"\n      },\n      {\n        \"_obj\": \"<string>\"\n      }\n    ],\n    \"additionalImages\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"azure\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"external\"\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/pie/psdService/actionJSON",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pie",
+                        "psdService",
+                        "actionJSON"
+                      ]
+                    },
+                    "description": "Executes Photoshop operations defined as JSON action descriptors on an input image. More flexible than .atn files, action JSON allows programmatic construction of action sequences. Supports referencing additional images for compositing operations."
+                  },
+                  "response": [
+                    {
+                      "id": "97aa39ba-ed54-47fe-aced-faf89bf4d3e0",
+                      "name": "Job accepted for asynchronous processing.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"options\": {\n    \"actionJSON\": [\n      {\n        \"_obj\": \"<string>\"\n      },\n      {\n        \"_obj\": \"<string>\"\n      }\n    ],\n    \"additionalImages\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"azure\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"external\"\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/actionJSON",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "actionJSON"
+                          ]
+                        }
+                      },
+                      "status": "Accepted",
+                      "code": 202,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"_links\": {\n    \"self\": {\n      \"href\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:15.000Z",
+                      "updatedAt": "2026-07-28T00:28:15.000Z",
+                      "uid": "35240-97aa39ba-ed54-47fe-aced-faf89bf4d3e0"
+                    },
+                    {
+                      "id": "c8a2e4b2-e3bb-4595-90d1-654bc9a41df7",
+                      "name": "Invalid request parameters.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"options\": {\n    \"actionJSON\": [\n      {\n        \"_obj\": \"<string>\"\n      },\n      {\n        \"_obj\": \"<string>\"\n      }\n    ],\n    \"additionalImages\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"azure\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"external\"\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/actionJSON",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "actionJSON"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:15.000Z",
+                      "updatedAt": "2026-07-28T00:28:15.000Z",
+                      "uid": "35240-c8a2e4b2-e3bb-4595-90d1-654bc9a41df7"
+                    },
+                    {
+                      "id": "63e748b5-a65b-4173-bbfe-9179f4a2defa",
+                      "name": "Authentication failed or token expired.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"options\": {\n    \"actionJSON\": [\n      {\n        \"_obj\": \"<string>\"\n      },\n      {\n        \"_obj\": \"<string>\"\n      }\n    ],\n    \"additionalImages\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"azure\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"external\"\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/actionJSON",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "actionJSON"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:15.000Z",
+                      "updatedAt": "2026-07-28T00:28:15.000Z",
+                      "uid": "35240-63e748b5-a65b-4173-bbfe-9179f4a2defa"
+                    },
+                    {
+                      "id": "262f1688-1f43-440d-8483-bab4957c58b1",
+                      "name": "Insufficient permissions.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"options\": {\n    \"actionJSON\": [\n      {\n        \"_obj\": \"<string>\"\n      },\n      {\n        \"_obj\": \"<string>\"\n      }\n    ],\n    \"additionalImages\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"azure\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"external\"\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/actionJSON",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "actionJSON"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:15.000Z",
+                      "updatedAt": "2026-07-28T00:28:15.000Z",
+                      "uid": "35240-262f1688-1f43-440d-8483-bab4957c58b1"
+                    },
+                    {
+                      "id": "ce530178-db0e-424a-98fd-8c6b77e49b51",
+                      "name": "Rate limit exceeded. Retry after the period in the retry-after header.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"options\": {\n    \"actionJSON\": [\n      {\n        \"_obj\": \"<string>\"\n      },\n      {\n        \"_obj\": \"<string>\"\n      }\n    ],\n    \"additionalImages\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"azure\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"external\"\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/actionJSON",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "actionJSON"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Seconds to wait before retrying.",
+                            "type": "text/plain"
+                          },
+                          "key": "retry-after",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:15.000Z",
+                      "updatedAt": "2026-07-28T00:28:15.000Z",
+                      "uid": "35240-ce530178-db0e-424a-98fd-8c6b77e49b51"
+                    },
+                    {
+                      "id": "9a463051-a3b6-47d7-997b-d39bf24cc1ef",
+                      "name": "Internal server error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"options\": {\n    \"actionJSON\": [\n      {\n        \"_obj\": \"<string>\"\n      },\n      {\n        \"_obj\": \"<string>\"\n      }\n    ],\n    \"additionalImages\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"azure\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"external\"\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/actionJSON",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "actionJSON"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:15.000Z",
+                      "updatedAt": "2026-07-28T00:28:15.000Z",
+                      "uid": "35240-9a463051-a3b6-47d7-997b-d39bf24cc1ef"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:28:15.000Z",
+                  "updatedAt": "2026-07-28T00:28:15.000Z",
+                  "uid": "35240-494b3e67-c533-43f3-ad51-db52db2b4c09"
+                }
+              ],
+              "id": "305a708e-d3d1-4c0c-93f3-5b7a79c47efc",
+              "createdAt": "2026-07-28T00:28:15.000Z",
+              "updatedAt": "2026-07-28T00:28:15.000Z",
+              "uid": "35240-305a708e-d3d1-4c0c-93f3-5b7a79c47efc"
+            },
+            {
+              "name": "actionJsonCreate",
+              "item": [
+                {
+                  "name": "Adobe Photoshop Create Documents Using Action JSON Descriptors",
+                  "id": "e458236c-0fba-43be-a18f-4df9f9aece2e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"options\": {\n    \"actionJSON\": [\n      {\n        \"_obj\": \"<string>\"\n      },\n      {\n        \"_obj\": \"<string>\"\n      }\n    ],\n    \"additionalImages\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"azure\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"external\"\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/pie/psdService/actionJsonCreate",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pie",
+                        "psdService",
+                        "actionJsonCreate"
+                      ]
+                    },
+                    "description": "Creates new documents from scratch using Action JSON descriptors. Similar to the actionJSON endpoint but does not require an input document, enabling document creation through action sequences."
+                  },
+                  "response": [
+                    {
+                      "id": "6345ec09-4137-49d1-a685-3d59e2df8abe",
+                      "name": "Job accepted for asynchronous processing.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"options\": {\n    \"actionJSON\": [\n      {\n        \"_obj\": \"<string>\"\n      },\n      {\n        \"_obj\": \"<string>\"\n      }\n    ],\n    \"additionalImages\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"azure\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"external\"\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/actionJsonCreate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "actionJsonCreate"
+                          ]
+                        }
+                      },
+                      "status": "Accepted",
+                      "code": 202,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"_links\": {\n    \"self\": {\n      \"href\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:15.000Z",
+                      "updatedAt": "2026-07-28T00:28:15.000Z",
+                      "uid": "35240-6345ec09-4137-49d1-a685-3d59e2df8abe"
+                    },
+                    {
+                      "id": "f040dbf0-e4cb-4552-b9a9-4ad1ba7851a3",
+                      "name": "Invalid request parameters.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"options\": {\n    \"actionJSON\": [\n      {\n        \"_obj\": \"<string>\"\n      },\n      {\n        \"_obj\": \"<string>\"\n      }\n    ],\n    \"additionalImages\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"azure\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"external\"\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/actionJsonCreate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "actionJsonCreate"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:15.000Z",
+                      "updatedAt": "2026-07-28T00:28:15.000Z",
+                      "uid": "35240-f040dbf0-e4cb-4552-b9a9-4ad1ba7851a3"
+                    },
+                    {
+                      "id": "779d832b-f22e-48e6-8b44-6cd08b7bfc2a",
+                      "name": "Authentication failed or token expired.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"options\": {\n    \"actionJSON\": [\n      {\n        \"_obj\": \"<string>\"\n      },\n      {\n        \"_obj\": \"<string>\"\n      }\n    ],\n    \"additionalImages\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"azure\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"external\"\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/actionJsonCreate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "actionJsonCreate"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:15.000Z",
+                      "updatedAt": "2026-07-28T00:28:15.000Z",
+                      "uid": "35240-779d832b-f22e-48e6-8b44-6cd08b7bfc2a"
+                    },
+                    {
+                      "id": "10399b3c-c5bf-427b-af4e-c7fc4d4e179b",
+                      "name": "Insufficient permissions.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"options\": {\n    \"actionJSON\": [\n      {\n        \"_obj\": \"<string>\"\n      },\n      {\n        \"_obj\": \"<string>\"\n      }\n    ],\n    \"additionalImages\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"azure\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"external\"\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/actionJsonCreate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "actionJsonCreate"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:15.000Z",
+                      "updatedAt": "2026-07-28T00:28:15.000Z",
+                      "uid": "35240-10399b3c-c5bf-427b-af4e-c7fc4d4e179b"
+                    },
+                    {
+                      "id": "8b20e791-ec57-48d7-9c6d-ab60ae88472d",
+                      "name": "Rate limit exceeded. Retry after the period in the retry-after header.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"options\": {\n    \"actionJSON\": [\n      {\n        \"_obj\": \"<string>\"\n      },\n      {\n        \"_obj\": \"<string>\"\n      }\n    ],\n    \"additionalImages\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"azure\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"external\"\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/actionJsonCreate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "actionJsonCreate"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Seconds to wait before retrying.",
+                            "type": "text/plain"
+                          },
+                          "key": "retry-after",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:15.000Z",
+                      "updatedAt": "2026-07-28T00:28:15.000Z",
+                      "uid": "35240-8b20e791-ec57-48d7-9c6d-ab60ae88472d"
+                    },
+                    {
+                      "id": "a7dfc133-a952-40a2-bdf2-2f2e21038357",
+                      "name": "Internal server error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"options\": {\n    \"actionJSON\": [\n      {\n        \"_obj\": \"<string>\"\n      },\n      {\n        \"_obj\": \"<string>\"\n      }\n    ],\n    \"additionalImages\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"azure\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"external\"\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\",\n      \"type\": \"image/png\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"azure\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"external\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/pie/psdService/actionJsonCreate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "pie",
+                            "psdService",
+                            "actionJsonCreate"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"details\": {\n    \"reason\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:28:15.000Z",
+                      "updatedAt": "2026-07-28T00:28:15.000Z",
+                      "uid": "35240-a7dfc133-a952-40a2-bdf2-2f2e21038357"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:28:15.000Z",
+                  "updatedAt": "2026-07-28T00:28:15.000Z",
+                  "uid": "35240-e458236c-0fba-43be-a18f-4df9f9aece2e"
+                }
+              ],
+              "id": "82d564e9-8c95-4209-a876-ee4119309973",
+              "createdAt": "2026-07-28T00:28:15.000Z",
+              "updatedAt": "2026-07-28T00:28:15.000Z",
+              "uid": "35240-82d564e9-8c95-4209-a876-ee4119309973"
+            }
+          ],
+          "id": "441baeb6-d4fc-4ded-8133-20382ee6b055",
+          "createdAt": "2026-07-28T00:28:15.000Z",
+          "updatedAt": "2026-07-28T00:28:15.000Z",
+          "uid": "35240-441baeb6-d4fc-4ded-8133-20382ee6b055"
+        }
+      ],
+      "id": "69017bf4-3066-4eb0-9329-82bc18b8e22c",
+      "createdAt": "2026-07-28T00:28:15.000Z",
+      "updatedAt": "2026-07-28T00:28:15.000Z",
+      "uid": "35240-69017bf4-3066-4eb0-9329-82bc18b8e22c"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://image.adobe.io"
+    }
+  ]
+}
