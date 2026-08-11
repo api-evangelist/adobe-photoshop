@@ -197,26 +197,6 @@ apis:
     url: https://developer.adobe.com/firefly-services/docs/photoshop/api/
   - type: GettingStarted
     url: https://developer.adobe.com/firefly-services/docs/photoshop/getting_started/
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-actions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-background-removal.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-crop-and-effects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-document-operations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-generative.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-health.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-renditions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-smart-objects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-status.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-text.yaml
 - aid: adobe-photoshop:adobe-photoshop-background-removal-api
   name: Adobe Photoshop Background Removal API
   description: Remove backgrounds from images and create masks using AI-powered subject detection.
@@ -235,26 +215,6 @@ apis:
     url: https://developer.adobe.com/firefly-services/docs/photoshop/api/
   - type: GettingStarted
     url: https://developer.adobe.com/firefly-services/docs/photoshop/getting_started/
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-actions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-background-removal.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-crop-and-effects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-document-operations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-generative.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-health.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-renditions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-smart-objects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-status.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-text.yaml
 - aid: adobe-photoshop:adobe-photoshop-crop-and-effects-api
   name: Adobe Photoshop Crop and Effects API
   description: Apply AI-powered product crop and depth blur effects to images.
@@ -273,26 +233,6 @@ apis:
     url: https://developer.adobe.com/firefly-services/docs/photoshop/api/
   - type: GettingStarted
     url: https://developer.adobe.com/firefly-services/docs/photoshop/getting_started/
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-actions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-background-removal.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-crop-and-effects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-document-operations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-generative.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-health.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-renditions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-smart-objects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-status.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-text.yaml
 - aid: adobe-photoshop:adobe-photoshop-document-operations-api
   name: Adobe Photoshop Document Operations API
   description: >-
@@ -312,26 +252,6 @@ apis:
     url: https://developer.adobe.com/firefly-services/docs/photoshop/api/
   - type: GettingStarted
     url: https://developer.adobe.com/firefly-services/docs/photoshop/getting_started/
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-actions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-background-removal.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-crop-and-effects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-document-operations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-generative.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-health.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-renditions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-smart-objects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-status.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-text.yaml
 - aid: adobe-photoshop:adobe-photoshop-generative-api
   name: Adobe Photoshop Generative API
   description: Fill masked areas of images using generative AI capabilities.
@@ -350,26 +270,6 @@ apis:
     url: https://developer.adobe.com/firefly-services/docs/photoshop/api/
   - type: GettingStarted
     url: https://developer.adobe.com/firefly-services/docs/photoshop/getting_started/
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-actions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-background-removal.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-crop-and-effects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-document-operations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-generative.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-health.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-renditions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-smart-objects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-status.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-text.yaml
 - aid: adobe-photoshop:adobe-photoshop-health-api
   name: Adobe Photoshop Health API
   description: Service health check endpoint.
@@ -388,26 +288,6 @@ apis:
     url: https://developer.adobe.com/firefly-services/docs/photoshop/api/
   - type: GettingStarted
     url: https://developer.adobe.com/firefly-services/docs/photoshop/getting_started/
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-actions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-background-removal.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-crop-and-effects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-document-operations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-generative.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-health.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-renditions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-smart-objects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-status.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-text.yaml
 - aid: adobe-photoshop:adobe-photoshop-renditions-api
   name: Adobe Photoshop Renditions API
   description: >-
@@ -427,26 +307,6 @@ apis:
     url: https://developer.adobe.com/firefly-services/docs/photoshop/api/
   - type: GettingStarted
     url: https://developer.adobe.com/firefly-services/docs/photoshop/getting_started/
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-actions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-background-removal.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-crop-and-effects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-document-operations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-generative.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-health.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-renditions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-smart-objects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-status.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-text.yaml
 - aid: adobe-photoshop:adobe-photoshop-smart-objects-api
   name: Adobe Photoshop Smart Objects API
   description: Replace and manage embedded Smart Object layers within PSD documents.
@@ -465,26 +325,6 @@ apis:
     url: https://developer.adobe.com/firefly-services/docs/photoshop/api/
   - type: GettingStarted
     url: https://developer.adobe.com/firefly-services/docs/photoshop/getting_started/
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-actions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-background-removal.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-crop-and-effects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-document-operations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-generative.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-health.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-renditions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-smart-objects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-status.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-text.yaml
 - aid: adobe-photoshop:adobe-photoshop-status-api
   name: Adobe Photoshop Status API
   description: Poll for the status of asynchronous jobs.
@@ -503,26 +343,6 @@ apis:
     url: https://developer.adobe.com/firefly-services/docs/photoshop/api/
   - type: GettingStarted
     url: https://developer.adobe.com/firefly-services/docs/photoshop/getting_started/
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-actions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-background-removal.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-crop-and-effects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-document-operations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-generative.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-health.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-renditions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-smart-objects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-status.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-text.yaml
 - aid: adobe-photoshop:adobe-photoshop-text-api
   name: Adobe Photoshop Text API
   description: Edit text layer content, character styles, and paragraph styles in PSD documents.
@@ -541,26 +361,6 @@ apis:
     url: https://developer.adobe.com/firefly-services/docs/photoshop/api/
   - type: GettingStarted
     url: https://developer.adobe.com/firefly-services/docs/photoshop/getting_started/
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-actions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-background-removal.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-crop-and-effects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-document-operations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-generative.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-health.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-renditions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-smart-objects.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-status.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/adobe-photoshop-text.yaml
 common:
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/adobe-photoshop/overview
