@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Adobe Photoshop Actions Status API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Status",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Adobe Photoshop Get PSD Service Job Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://image.adobe.io/pie/psdService/status/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "The unique job identifier returned when the job was created."
+              }
+            ]
+          },
+          "docs": "Polls the status of an asynchronous PSD service job. Returns the current status (pending, running, succeeded, failed) along with output details upon completion."
+        },
+        {
+          "info": {
+            "name": "Adobe Photoshop Get Sensei Service Job Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://image.adobe.io/sensei/status/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "The unique job identifier returned when the job was created."
+              }
+            ]
+          },
+          "docs": "Polls the status of an asynchronous Sensei AI service job such as background removal or mask creation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

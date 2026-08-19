@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Adobe Photoshop Actions API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Actions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Adobe Photoshop Execute Photoshop Action Files",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://image.adobe.io/pie/psdService/photoshopActions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Executes Photoshop Action (.atn) files on an input image. Actions are sequences of recorded Photoshop operations that can be replayed programmatically. A specific action within the .atn file can be targeted by name."
+        },
+        {
+          "info": {
+            "name": "Adobe Photoshop Execute Photoshop Actions via JSON Descriptors",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://image.adobe.io/pie/psdService/actionJSON",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Executes Photoshop operations defined as JSON action descriptors on an input image. More flexible than .atn files, action JSON allows programmatic construction of action sequences. Supports referencing additional images for compositing operations."
+        },
+        {
+          "info": {
+            "name": "Adobe Photoshop Create Documents Using Action JSON Descriptors",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://image.adobe.io/pie/psdService/actionJsonCreate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates new documents from scratch using Action JSON descriptors. Similar to the actionJSON endpoint but does not require an input document, enabling document creation through action sequences."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

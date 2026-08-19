@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Adobe Photoshop Actions Crop and Effects API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Crop and Effects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Adobe Photoshop Smart Crop to Product Subject",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://image.adobe.io/pie/psdService/productCrop",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Applies AI-powered smart cropping that identifies the main product or subject in an image and crops to keep it centered with configurable padding."
+        },
+        {
+          "info": {
+            "name": "Adobe Photoshop Apply Depth Blur Effect",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://image.adobe.io/pie/psdService/depthBlur",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Applies an AI-powered depth blur (bokeh) effect to an image, simulating a shallow depth of field. Configurable focal point, blur strength, focal range, grain, and haze parameters."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -2,15 +2,12 @@ generated: '2026-06-20'
 method: derived
 status: candidate
 source: openapi/adobe-photoshop-api-openapi-original.yml
-notes: >-
-  Adobe does not publish an official hosted/remote MCP server for the Photoshop
-  REST API. (An Adobe Express Add-on Dev MCP Server exists but targets the
-  Express add-on toolchain, not this cloud image-processing API.) Several
-  third-party MCP servers wrap the desktop Photoshop app over UXP/COM
-  (loonghao/photoshop-python-api-mcp-server, alisaitteke/photoshop-mcp,
-  loonghao/dcc-mcp-photoshop) — none are first-party and none front this API.
-  The tools below are a CANDIDATE surface derived one-per-operation from the
-  OpenAPI, suitable for generating an MCP server via forge_mcp_tools.
+notes: Adobe does not publish an official hosted/remote MCP server for the Photoshop REST API. (An Adobe
+  Express Add-on Dev MCP Server exists but targets the Express add-on toolchain, not this cloud image-processing
+  API.) Several third-party MCP servers wrap the desktop Photoshop app over UXP/COM (loonghao/photoshop-python-api-mcp-server,
+  alisaitteke/photoshop-mcp, loonghao/dcc-mcp-photoshop) — none are first-party and none front this API.
+  The tools below are a CANDIDATE surface derived one-per-operation from the OpenAPI, suitable for generating
+  an MCP server via forge_mcp_tools.
 server:
   name: adobe-photoshop
   transport: http
@@ -66,3 +63,9 @@ tools:
 - name: health_check
   description: Service health check.
   source_operation: openapi/adobe-photoshop-api-openapi-original.yml#healthCheck
+deployment:
+  mode: none
+  verified: derived
+  tools: 17
+  checked: '2026-08-12'
+  source: catalog MCP census

@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Adobe Photoshop Actions Renditions API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Renditions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Adobe Photoshop Create Image Renditions from a PSD",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://image.adobe.io/pie/psdService/renditionCreate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generates flat image renditions from a PSD file. Supports output formats including JPEG, PNG, TIFF, and PSD. Can optionally resize the output by specifying a target width."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

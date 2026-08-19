@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Adobe Photoshop Actions Document Operations API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Document Operations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Adobe Photoshop Get PSD Document Manifest",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://image.adobe.io/pie/psdService/documentManifest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves the manifest (metadata) of a PSD document including the complete layer tree with layer types, names, bounds, visibility, text content, and Smart Object information. Optionally generates layer thumbnails."
+        },
+        {
+          "info": {
+            "name": "Adobe Photoshop Edit a PSD Document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://image.adobe.io/pie/psdService/documentOperations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Performs layer-level edits on a PSD document. Supports adding, editing, moving, and deleting layers. Can apply adjustments such as brightness and contrast, modify layer bounds and visibility, edit text layers, and replace Smart Object content. Outputs can be saved as PSD, JPEG, PNG, or TIFF."
+        },
+        {
+          "info": {
+            "name": "Adobe Photoshop Create a New PSD Document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://image.adobe.io/pie/psdService/documentCreate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new PSD document with specified dimensions, resolution, color mode, and bit depth. Layers can be added during creation including image layers, text layers, and adjustment layers."
+        },
+        {
+          "info": {
+            "name": "Adobe Photoshop Create Artboards from PSD Inputs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://image.adobe.io/pie/psdService/artboardCreate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a PSD document containing multiple artboards from one or more input PSD files."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

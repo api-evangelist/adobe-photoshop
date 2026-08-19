@@ -1,0 +1,460 @@
+{
+  "item": [
+    {
+      "id": "14338725-dffd-473a-969a-bf95c8d1ff2f",
+      "name": "Background Removal",
+      "description": {
+        "content": "Remove backgrounds from images and create masks using AI-powered subject detection.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3769aa59-527e-4e14-a6a0-0468f67f3bab",
+          "name": "Adobe Photoshop Remove Background from an Image",
+          "request": {
+            "name": "Adobe Photoshop Remove Background from an Image",
+            "description": {
+              "content": "Removes the background from an image using AI-powered subject detection. Supports cutout mode (transparent background) and mask mode (grayscale mask output). Can optionally apply a background color, trim whitespace, and perform color decontamination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "remove-background"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"image\": {\n    \"source\": {\n      \"url\": \"<string>\"\n    }\n  },\n  \"output\": {\n    \"mediaType\": \"<string>\"\n  },\n  \"mode\": \"cutout\",\n  \"trim\": false,\n  \"backgroundColor\": {\n    \"red\": \"<integer>\",\n    \"green\": \"<integer>\",\n    \"blue\": \"<integer>\",\n    \"alpha\": \"<number>\"\n  },\n  \"colorDecontamination\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ccadd3e2-f327-4122-8fc0-f8fc4685f9cd",
+              "name": "Job accepted for asynchronous processing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "remove-background"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"image\": {\n    \"source\": {\n      \"url\": \"<string>\"\n    }\n  },\n  \"output\": {\n    \"mediaType\": \"<string>\"\n  },\n  \"mode\": \"cutout\",\n  \"trim\": true,\n  \"backgroundColor\": {\n    \"red\": \"<integer>\",\n    \"green\": \"<integer>\",\n    \"blue\": \"<integer>\",\n    \"alpha\": \"<number>\"\n  },\n  \"colorDecontamination\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"self\": {\n      \"href\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c5bd82f7-65ee-4e77-96b7-1578200073c7",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "remove-background"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"image\": {\n    \"source\": {\n      \"url\": \"<string>\"\n    }\n  },\n  \"output\": {\n    \"mediaType\": \"<string>\"\n  },\n  \"mode\": \"cutout\",\n  \"trim\": true,\n  \"backgroundColor\": {\n    \"red\": \"<integer>\",\n    \"green\": \"<integer>\",\n    \"blue\": \"<integer>\",\n    \"alpha\": \"<number>\"\n  },\n  \"colorDecontamination\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"image\",\n  \"title\": \"example_value\",\n  \"code\": 1920,\n  \"details\": {\n    \"reason\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a7c2b6a0-42a0-40a3-a52b-e1e131a351fe",
+              "name": "Authentication failed or token expired.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "remove-background"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"image\": {\n    \"source\": {\n      \"url\": \"<string>\"\n    }\n  },\n  \"output\": {\n    \"mediaType\": \"<string>\"\n  },\n  \"mode\": \"cutout\",\n  \"trim\": true,\n  \"backgroundColor\": {\n    \"red\": \"<integer>\",\n    \"green\": \"<integer>\",\n    \"blue\": \"<integer>\",\n    \"alpha\": \"<number>\"\n  },\n  \"colorDecontamination\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"image\",\n  \"title\": \"example_value\",\n  \"code\": 1920,\n  \"details\": {\n    \"reason\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "60e6cd55-67ef-4c8c-a9d9-5bd0a4ac8b0b",
+              "name": "Trial quota exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "remove-background"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"image\": {\n    \"source\": {\n      \"url\": \"<string>\"\n    }\n  },\n  \"output\": {\n    \"mediaType\": \"<string>\"\n  },\n  \"mode\": \"cutout\",\n  \"trim\": true,\n  \"backgroundColor\": {\n    \"red\": \"<integer>\",\n    \"green\": \"<integer>\",\n    \"blue\": \"<integer>\",\n    \"alpha\": \"<number>\"\n  },\n  \"colorDecontamination\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"image\",\n  \"title\": \"example_value\",\n  \"code\": 1920,\n  \"details\": {\n    \"reason\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5ac2d83-e6a2-4bb6-97aa-879b3fc359ec",
+              "name": "Insufficient permissions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "remove-background"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"image\": {\n    \"source\": {\n      \"url\": \"<string>\"\n    }\n  },\n  \"output\": {\n    \"mediaType\": \"<string>\"\n  },\n  \"mode\": \"cutout\",\n  \"trim\": true,\n  \"backgroundColor\": {\n    \"red\": \"<integer>\",\n    \"green\": \"<integer>\",\n    \"blue\": \"<integer>\",\n    \"alpha\": \"<number>\"\n  },\n  \"colorDecontamination\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"image\",\n  \"title\": \"example_value\",\n  \"code\": 1920,\n  \"details\": {\n    \"reason\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e26b683-e214-4523-940d-563e9e445bf5",
+              "name": "Rate limit exceeded. Retry after the period in the retry-after header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "remove-background"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"image\": {\n    \"source\": {\n      \"url\": \"<string>\"\n    }\n  },\n  \"output\": {\n    \"mediaType\": \"<string>\"\n  },\n  \"mode\": \"cutout\",\n  \"trim\": true,\n  \"backgroundColor\": {\n    \"red\": \"<integer>\",\n    \"green\": \"<integer>\",\n    \"blue\": \"<integer>\",\n    \"alpha\": \"<number>\"\n  },\n  \"colorDecontamination\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Seconds to wait before retrying.",
+                  "key": "retry-after",
+                  "value": "9785"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"image\",\n  \"title\": \"example_value\",\n  \"code\": 1920,\n  \"details\": {\n    \"reason\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac19944d-2789-4568-abb9-99fdd00a82df",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "remove-background"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"image\": {\n    \"source\": {\n      \"url\": \"<string>\"\n    }\n  },\n  \"output\": {\n    \"mediaType\": \"<string>\"\n  },\n  \"mode\": \"cutout\",\n  \"trim\": true,\n  \"backgroundColor\": {\n    \"red\": \"<integer>\",\n    \"green\": \"<integer>\",\n    \"blue\": \"<integer>\",\n    \"alpha\": \"<number>\"\n  },\n  \"colorDecontamination\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"image\",\n  \"title\": \"example_value\",\n  \"code\": 1920,\n  \"details\": {\n    \"reason\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://image.adobe.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c37b833f-013f-45dd-b3ee-71e7883b1544",
+    "name": "Adobe Photoshop Actions Background Removal API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A cloud-based REST API that provides programmatic access to Photoshop's image editing capabilities without requiring a local installation. Part of Adobe Firefly Services, the API supports PSD document operations including layer editing, Smart Object replacement, text layer editing, rendition creation, and artboard management. It also provides AI-powered features such as background removal, mask creation, product crop, and depth blur. All operations are asynchronous, returning a polling URL to check job status.\n\nContact Support:\n Name: Adobe Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

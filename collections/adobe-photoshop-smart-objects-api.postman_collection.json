@@ -1,0 +1,468 @@
+{
+  "item": [
+    {
+      "id": "26ba2248-7394-4c77-97a3-67de2b3ac90c",
+      "name": "Smart Objects",
+      "description": {
+        "content": "Replace and manage embedded Smart Object layers within PSD documents.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "34dda2d5-c239-49a8-bb28-7f2d5f365940",
+          "name": "Adobe Photoshop Replace Smart Object Content",
+          "request": {
+            "name": "Adobe Photoshop Replace Smart Object Content",
+            "description": {
+              "content": "Replaces the embedded content of Smart Object layers in a PSD document. Allows updating linked or embedded images within Smart Object layers while preserving transformations and effects.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pie",
+                "psdService",
+                "smartObject"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"<string>\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"<string>\"\n    }\n  ],\n  \"options\": {\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"<string>\",\n          \"storage\": \"<string>\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": \"<number>\",\n            \"left\": \"<number>\",\n            \"width\": \"<number>\",\n            \"height\": \"<number>\"\n          }\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"<string>\",\n          \"storage\": \"<string>\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": \"<number>\",\n            \"left\": \"<number>\",\n            \"width\": \"<number>\",\n            \"height\": \"<number>\"\n          }\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"<string>\",\n      \"type\": \"<string>\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"<string>\",\n      \"type\": \"<string>\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b6a8914f-a8d2-4105-bdb9-3384ff022815",
+              "name": "Job accepted for asynchronous processing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pie",
+                    "psdService",
+                    "smartObject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    }\n  ],\n  \"options\": {\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"https://image.adobe.io/example\",\n          \"storage\": \"external\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": 9836.758995507702,\n            \"left\": 891.6561037427962,\n            \"width\": 4991.459964335722,\n            \"height\": 7082.663423800094\n          }\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"https://image.adobe.io/example\",\n          \"storage\": \"external\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": 9724.175619544074,\n            \"left\": 7747.20310638938,\n            \"width\": 4282.69748573932,\n            \"height\": 7950.218257698599\n          }\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"self\": {\n      \"href\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0084c00e-29c9-40b4-b1a1-e5721719017d",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pie",
+                    "psdService",
+                    "smartObject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    }\n  ],\n  \"options\": {\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"https://image.adobe.io/example\",\n          \"storage\": \"external\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": 9836.758995507702,\n            \"left\": 891.6561037427962,\n            \"width\": 4991.459964335722,\n            \"height\": 7082.663423800094\n          }\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"https://image.adobe.io/example\",\n          \"storage\": \"external\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": 9724.175619544074,\n            \"left\": 7747.20310638938,\n            \"width\": 4282.69748573932,\n            \"height\": 7950.218257698599\n          }\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"image\",\n  \"title\": \"example_value\",\n  \"code\": 1920,\n  \"details\": {\n    \"reason\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "321bbd98-d5ed-408a-b991-bde2cef54cbd",
+              "name": "Authentication failed or token expired.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pie",
+                    "psdService",
+                    "smartObject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    }\n  ],\n  \"options\": {\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"https://image.adobe.io/example\",\n          \"storage\": \"external\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": 9836.758995507702,\n            \"left\": 891.6561037427962,\n            \"width\": 4991.459964335722,\n            \"height\": 7082.663423800094\n          }\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"https://image.adobe.io/example\",\n          \"storage\": \"external\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": 9724.175619544074,\n            \"left\": 7747.20310638938,\n            \"width\": 4282.69748573932,\n            \"height\": 7950.218257698599\n          }\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"image\",\n  \"title\": \"example_value\",\n  \"code\": 1920,\n  \"details\": {\n    \"reason\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0e3de730-df89-440e-8c83-ec6abe1caf90",
+              "name": "Insufficient permissions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pie",
+                    "psdService",
+                    "smartObject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    }\n  ],\n  \"options\": {\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"https://image.adobe.io/example\",\n          \"storage\": \"external\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": 9836.758995507702,\n            \"left\": 891.6561037427962,\n            \"width\": 4991.459964335722,\n            \"height\": 7082.663423800094\n          }\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"https://image.adobe.io/example\",\n          \"storage\": \"external\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": 9724.175619544074,\n            \"left\": 7747.20310638938,\n            \"width\": 4282.69748573932,\n            \"height\": 7950.218257698599\n          }\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"image\",\n  \"title\": \"example_value\",\n  \"code\": 1920,\n  \"details\": {\n    \"reason\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "447560ad-19cb-47c3-b078-6cfa655cb2fb",
+              "name": "File overwrite conflict.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pie",
+                    "psdService",
+                    "smartObject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    }\n  ],\n  \"options\": {\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"https://image.adobe.io/example\",\n          \"storage\": \"external\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": 9836.758995507702,\n            \"left\": 891.6561037427962,\n            \"width\": 4991.459964335722,\n            \"height\": 7082.663423800094\n          }\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"https://image.adobe.io/example\",\n          \"storage\": \"external\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": 9724.175619544074,\n            \"left\": 7747.20310638938,\n            \"width\": 4282.69748573932,\n            \"height\": 7950.218257698599\n          }\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"image\",\n  \"title\": \"example_value\",\n  \"code\": 1920,\n  \"details\": {\n    \"reason\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eb6bad97-0ea9-4bf9-b1c6-4f5cae161c11",
+              "name": "Rate limit exceeded. Retry after the period in the retry-after header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pie",
+                    "psdService",
+                    "smartObject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    }\n  ],\n  \"options\": {\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"https://image.adobe.io/example\",\n          \"storage\": \"external\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": 9836.758995507702,\n            \"left\": 891.6561037427962,\n            \"width\": 4991.459964335722,\n            \"height\": 7082.663423800094\n          }\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"https://image.adobe.io/example\",\n          \"storage\": \"external\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": 9724.175619544074,\n            \"left\": 7747.20310638938,\n            \"width\": 4282.69748573932,\n            \"height\": 7950.218257698599\n          }\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Seconds to wait before retrying.",
+                  "key": "retry-after",
+                  "value": "6625"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"image\",\n  \"title\": \"example_value\",\n  \"code\": 1920,\n  \"details\": {\n    \"reason\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a1ea69c-51ed-4003-ab86-a7763f0c06cb",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pie",
+                    "psdService",
+                    "smartObject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    }\n  ],\n  \"options\": {\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"https://image.adobe.io/example\",\n          \"storage\": \"external\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": 9836.758995507702,\n            \"left\": 891.6561037427962,\n            \"width\": 4991.459964335722,\n            \"height\": 7082.663423800094\n          }\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"type\": \"<string>\",\n        \"input\": {\n          \"href\": \"https://image.adobe.io/example\",\n          \"storage\": \"external\"\n        },\n        \"smartObject\": {\n          \"type\": \"<string>\"\n        },\n        \"attributes\": {\n          \"bounds\": {\n            \"top\": 9724.175619544074,\n            \"left\": 7747.20310638938,\n            \"width\": 4282.69748573932,\n            \"height\": 7950.218257698599\n          }\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"image\",\n  \"title\": \"example_value\",\n  \"code\": 1920,\n  \"details\": {\n    \"reason\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://image.adobe.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9e70b04a-f105-4d2c-856f-6f52e8aa5893",
+    "name": "Adobe Photoshop Actions Smart Objects API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A cloud-based REST API that provides programmatic access to Photoshop's image editing capabilities without requiring a local installation. Part of Adobe Firefly Services, the API supports PSD document operations including layer editing, Smart Object replacement, text layer editing, rendition creation, and artboard management. It also provides AI-powered features such as background removal, mask creation, product crop, and depth blur. All operations are asynchronous, returning a polling URL to check job status.\n\nContact Support:\n Name: Adobe Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

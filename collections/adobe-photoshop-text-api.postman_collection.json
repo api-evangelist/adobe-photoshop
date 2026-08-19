@@ -1,0 +1,468 @@
+{
+  "item": [
+    {
+      "id": "d18fb194-3316-4e9d-a24d-31ccf428e39b",
+      "name": "Text",
+      "description": {
+        "content": "Edit text layer content, character styles, and paragraph styles in PSD documents.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "21b7ea56-10e4-46ea-b57d-fd82b2ba8256",
+          "name": "Adobe Photoshop Edit Text Layers in a PSD",
+          "request": {
+            "name": "Adobe Photoshop Edit Text Layers in a PSD",
+            "description": {
+              "content": "Edits text layer content and styling in a PSD document. Supports changing text content, character styles (font, size, color, tracking, leading), and paragraph styles (alignment). Custom fonts can be provided via URL, with configurable fallback behavior for missing fonts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pie",
+                "psdService",
+                "text"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"<string>\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"<string>\"\n    }\n  ],\n  \"options\": {\n    \"manageMissingFonts\": \"<string>\",\n    \"globalFont\": \"<string>\",\n    \"fonts\": [\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"<string>\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"storage\": \"<string>\"\n      }\n    ],\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"<string>\",\n          \"orientation\": \"<string>\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            },\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"<string>\"\n            },\n            {\n              \"alignment\": \"<string>\"\n            }\n          ]\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"<string>\",\n          \"orientation\": \"<string>\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            },\n            {\n              \"fontPostScriptName\": \"<string>\",\n              \"size\": \"<number>\",\n              \"color\": {\n                \"red\": \"<integer>\",\n                \"green\": \"<integer>\",\n                \"blue\": \"<integer>\"\n              },\n              \"leading\": \"<number>\",\n              \"tracking\": \"<number>\",\n              \"syntheticBold\": \"<boolean>\",\n              \"syntheticItalic\": \"<boolean>\",\n              \"underline\": \"<boolean>\",\n              \"strikethrough\": \"<boolean>\",\n              \"from\": \"<integer>\",\n              \"to\": \"<integer>\"\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"<string>\"\n            },\n            {\n              \"alignment\": \"<string>\"\n            }\n          ]\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"<string>\",\n      \"type\": \"<string>\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"<string>\",\n      \"type\": \"<string>\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "54caf77b-52f1-4cc7-a99b-3ad488e0a89a",
+              "name": "Job accepted for asynchronous processing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pie",
+                    "psdService",
+                    "text"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    }\n  ],\n  \"options\": {\n    \"manageMissingFonts\": \"<string>\",\n    \"globalFont\": \"<string>\",\n    \"fonts\": [\n      {\n        \"href\": \"https://image.adobe.io/example\",\n        \"storage\": \"external\"\n      },\n      {\n        \"href\": \"https://image.adobe.io/example\",\n        \"storage\": \"external\"\n      }\n    ],\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"example_value\",\n          \"orientation\": \"horizontal\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"string\",\n              \"size\": 9546.482940243084,\n              \"color\": {\n                \"red\": 5000,\n                \"green\": 5633,\n                \"blue\": 2712\n              },\n              \"leading\": 2328.856361481515,\n              \"tracking\": 4081.9859716520978,\n              \"syntheticBold\": false,\n              \"syntheticItalic\": true,\n              \"underline\": false,\n              \"strikethrough\": true,\n              \"from\": 3226,\n              \"to\": 1088\n            },\n            {\n              \"fontPostScriptName\": \"string\",\n              \"size\": 4102.900909147866,\n              \"color\": {\n                \"red\": 8875,\n                \"green\": 5084,\n                \"blue\": 8967\n              },\n              \"leading\": 2904.0930613737346,\n              \"tracking\": 7492.622576250111,\n              \"syntheticBold\": false,\n              \"syntheticItalic\": true,\n              \"underline\": false,\n              \"strikethrough\": false,\n              \"from\": 7240,\n              \"to\": 3851\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"justifyCenter\"\n            },\n            {\n              \"alignment\": \"justifyLeft\"\n            }\n          ]\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"example_value\",\n          \"orientation\": \"horizontal\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"string\",\n              \"size\": 9159.794563145771,\n              \"color\": {\n                \"red\": 1933,\n                \"green\": 8435,\n                \"blue\": 2080\n              },\n              \"leading\": 2728.389203381909,\n              \"tracking\": 9931.137818717254,\n              \"syntheticBold\": false,\n              \"syntheticItalic\": true,\n              \"underline\": false,\n              \"strikethrough\": true,\n              \"from\": 961,\n              \"to\": 4291\n            },\n            {\n              \"fontPostScriptName\": \"string\",\n              \"size\": 7698.113108287931,\n              \"color\": {\n                \"red\": 5313,\n                \"green\": 8469,\n                \"blue\": 1093\n              },\n              \"leading\": 9340.108469382196,\n              \"tracking\": 7362.134001999133,\n              \"syntheticBold\": true,\n              \"syntheticItalic\": true,\n              \"underline\": true,\n              \"strikethrough\": true,\n              \"from\": 335,\n              \"to\": 1927\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"center\"\n            },\n            {\n              \"alignment\": \"justify\"\n            }\n          ]\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"self\": {\n      \"href\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b86df26c-159e-4d0b-9c64-e15ffca78214",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pie",
+                    "psdService",
+                    "text"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    }\n  ],\n  \"options\": {\n    \"manageMissingFonts\": \"<string>\",\n    \"globalFont\": \"<string>\",\n    \"fonts\": [\n      {\n        \"href\": \"https://image.adobe.io/example\",\n        \"storage\": \"external\"\n      },\n      {\n        \"href\": \"https://image.adobe.io/example\",\n        \"storage\": \"external\"\n      }\n    ],\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"example_value\",\n          \"orientation\": \"horizontal\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"string\",\n              \"size\": 9546.482940243084,\n              \"color\": {\n                \"red\": 5000,\n                \"green\": 5633,\n                \"blue\": 2712\n              },\n              \"leading\": 2328.856361481515,\n              \"tracking\": 4081.9859716520978,\n              \"syntheticBold\": false,\n              \"syntheticItalic\": true,\n              \"underline\": false,\n              \"strikethrough\": true,\n              \"from\": 3226,\n              \"to\": 1088\n            },\n            {\n              \"fontPostScriptName\": \"string\",\n              \"size\": 4102.900909147866,\n              \"color\": {\n                \"red\": 8875,\n                \"green\": 5084,\n                \"blue\": 8967\n              },\n              \"leading\": 2904.0930613737346,\n              \"tracking\": 7492.622576250111,\n              \"syntheticBold\": false,\n              \"syntheticItalic\": true,\n              \"underline\": false,\n              \"strikethrough\": false,\n              \"from\": 7240,\n              \"to\": 3851\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"justifyCenter\"\n            },\n            {\n              \"alignment\": \"justifyLeft\"\n            }\n          ]\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"example_value\",\n          \"orientation\": \"horizontal\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"string\",\n              \"size\": 9159.794563145771,\n              \"color\": {\n                \"red\": 1933,\n                \"green\": 8435,\n                \"blue\": 2080\n              },\n              \"leading\": 2728.389203381909,\n              \"tracking\": 9931.137818717254,\n              \"syntheticBold\": false,\n              \"syntheticItalic\": true,\n              \"underline\": false,\n              \"strikethrough\": true,\n              \"from\": 961,\n              \"to\": 4291\n            },\n            {\n              \"fontPostScriptName\": \"string\",\n              \"size\": 7698.113108287931,\n              \"color\": {\n                \"red\": 5313,\n                \"green\": 8469,\n                \"blue\": 1093\n              },\n              \"leading\": 9340.108469382196,\n              \"tracking\": 7362.134001999133,\n              \"syntheticBold\": true,\n              \"syntheticItalic\": true,\n              \"underline\": true,\n              \"strikethrough\": true,\n              \"from\": 335,\n              \"to\": 1927\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"center\"\n            },\n            {\n              \"alignment\": \"justify\"\n            }\n          ]\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"image\",\n  \"title\": \"example_value\",\n  \"code\": 1920,\n  \"details\": {\n    \"reason\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "19072140-daef-49b4-a2ad-7d1b2fd40047",
+              "name": "Authentication failed or token expired.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pie",
+                    "psdService",
+                    "text"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    }\n  ],\n  \"options\": {\n    \"manageMissingFonts\": \"<string>\",\n    \"globalFont\": \"<string>\",\n    \"fonts\": [\n      {\n        \"href\": \"https://image.adobe.io/example\",\n        \"storage\": \"external\"\n      },\n      {\n        \"href\": \"https://image.adobe.io/example\",\n        \"storage\": \"external\"\n      }\n    ],\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"example_value\",\n          \"orientation\": \"horizontal\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"string\",\n              \"size\": 9546.482940243084,\n              \"color\": {\n                \"red\": 5000,\n                \"green\": 5633,\n                \"blue\": 2712\n              },\n              \"leading\": 2328.856361481515,\n              \"tracking\": 4081.9859716520978,\n              \"syntheticBold\": false,\n              \"syntheticItalic\": true,\n              \"underline\": false,\n              \"strikethrough\": true,\n              \"from\": 3226,\n              \"to\": 1088\n            },\n            {\n              \"fontPostScriptName\": \"string\",\n              \"size\": 4102.900909147866,\n              \"color\": {\n                \"red\": 8875,\n                \"green\": 5084,\n                \"blue\": 8967\n              },\n              \"leading\": 2904.0930613737346,\n              \"tracking\": 7492.622576250111,\n              \"syntheticBold\": false,\n              \"syntheticItalic\": true,\n              \"underline\": false,\n              \"strikethrough\": false,\n              \"from\": 7240,\n              \"to\": 3851\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"justifyCenter\"\n            },\n            {\n              \"alignment\": \"justifyLeft\"\n            }\n          ]\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"example_value\",\n          \"orientation\": \"horizontal\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"string\",\n              \"size\": 9159.794563145771,\n              \"color\": {\n                \"red\": 1933,\n                \"green\": 8435,\n                \"blue\": 2080\n              },\n              \"leading\": 2728.389203381909,\n              \"tracking\": 9931.137818717254,\n              \"syntheticBold\": false,\n              \"syntheticItalic\": true,\n              \"underline\": false,\n              \"strikethrough\": true,\n              \"from\": 961,\n              \"to\": 4291\n            },\n            {\n              \"fontPostScriptName\": \"string\",\n              \"size\": 7698.113108287931,\n              \"color\": {\n                \"red\": 5313,\n                \"green\": 8469,\n                \"blue\": 1093\n              },\n              \"leading\": 9340.108469382196,\n              \"tracking\": 7362.134001999133,\n              \"syntheticBold\": true,\n              \"syntheticItalic\": true,\n              \"underline\": true,\n              \"strikethrough\": true,\n              \"from\": 335,\n              \"to\": 1927\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"center\"\n            },\n            {\n              \"alignment\": \"justify\"\n            }\n          ]\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"image\",\n  \"title\": \"example_value\",\n  \"code\": 1920,\n  \"details\": {\n    \"reason\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f0fe52d-a2e1-45d8-8bef-bec7c2595e42",
+              "name": "Insufficient permissions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pie",
+                    "psdService",
+                    "text"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    }\n  ],\n  \"options\": {\n    \"manageMissingFonts\": \"<string>\",\n    \"globalFont\": \"<string>\",\n    \"fonts\": [\n      {\n        \"href\": \"https://image.adobe.io/example\",\n        \"storage\": \"external\"\n      },\n      {\n        \"href\": \"https://image.adobe.io/example\",\n        \"storage\": \"external\"\n      }\n    ],\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"example_value\",\n          \"orientation\": \"horizontal\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"string\",\n              \"size\": 9546.482940243084,\n              \"color\": {\n                \"red\": 5000,\n                \"green\": 5633,\n                \"blue\": 2712\n              },\n              \"leading\": 2328.856361481515,\n              \"tracking\": 4081.9859716520978,\n              \"syntheticBold\": false,\n              \"syntheticItalic\": true,\n              \"underline\": false,\n              \"strikethrough\": true,\n              \"from\": 3226,\n              \"to\": 1088\n            },\n            {\n              \"fontPostScriptName\": \"string\",\n              \"size\": 4102.900909147866,\n              \"color\": {\n                \"red\": 8875,\n                \"green\": 5084,\n                \"blue\": 8967\n              },\n              \"leading\": 2904.0930613737346,\n              \"tracking\": 7492.622576250111,\n              \"syntheticBold\": false,\n              \"syntheticItalic\": true,\n              \"underline\": false,\n              \"strikethrough\": false,\n              \"from\": 7240,\n              \"to\": 3851\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"justifyCenter\"\n            },\n            {\n              \"alignment\": \"justifyLeft\"\n            }\n          ]\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"example_value\",\n          \"orientation\": \"horizontal\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"string\",\n              \"size\": 9159.794563145771,\n              \"color\": {\n                \"red\": 1933,\n                \"green\": 8435,\n                \"blue\": 2080\n              },\n              \"leading\": 2728.389203381909,\n              \"tracking\": 9931.137818717254,\n              \"syntheticBold\": false,\n              \"syntheticItalic\": true,\n              \"underline\": false,\n              \"strikethrough\": true,\n              \"from\": 961,\n              \"to\": 4291\n            },\n            {\n              \"fontPostScriptName\": \"string\",\n              \"size\": 7698.113108287931,\n              \"color\": {\n                \"red\": 5313,\n                \"green\": 8469,\n                \"blue\": 1093\n              },\n              \"leading\": 9340.108469382196,\n              \"tracking\": 7362.134001999133,\n              \"syntheticBold\": true,\n              \"syntheticItalic\": true,\n              \"underline\": true,\n              \"strikethrough\": true,\n              \"from\": 335,\n              \"to\": 1927\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"center\"\n            },\n            {\n              \"alignment\": \"justify\"\n            }\n          ]\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"image\",\n  \"title\": \"example_value\",\n  \"code\": 1920,\n  \"details\": {\n    \"reason\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "888ae663-a59c-4617-b8e3-d5f94af8f041",
+              "name": "File overwrite conflict.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pie",
+                    "psdService",
+                    "text"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    }\n  ],\n  \"options\": {\n    \"manageMissingFonts\": \"<string>\",\n    \"globalFont\": \"<string>\",\n    \"fonts\": [\n      {\n        \"href\": \"https://image.adobe.io/example\",\n        \"storage\": \"external\"\n      },\n      {\n        \"href\": \"https://image.adobe.io/example\",\n        \"storage\": \"external\"\n      }\n    ],\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"example_value\",\n          \"orientation\": \"horizontal\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"string\",\n              \"size\": 9546.482940243084,\n              \"color\": {\n                \"red\": 5000,\n                \"green\": 5633,\n                \"blue\": 2712\n              },\n              \"leading\": 2328.856361481515,\n              \"tracking\": 4081.9859716520978,\n              \"syntheticBold\": false,\n              \"syntheticItalic\": true,\n              \"underline\": false,\n              \"strikethrough\": true,\n              \"from\": 3226,\n              \"to\": 1088\n            },\n            {\n              \"fontPostScriptName\": \"string\",\n              \"size\": 4102.900909147866,\n              \"color\": {\n                \"red\": 8875,\n                \"green\": 5084,\n                \"blue\": 8967\n              },\n              \"leading\": 2904.0930613737346,\n              \"tracking\": 7492.622576250111,\n              \"syntheticBold\": false,\n              \"syntheticItalic\": true,\n              \"underline\": false,\n              \"strikethrough\": false,\n              \"from\": 7240,\n              \"to\": 3851\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"justifyCenter\"\n            },\n            {\n              \"alignment\": \"justifyLeft\"\n            }\n          ]\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"example_value\",\n          \"orientation\": \"horizontal\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"string\",\n              \"size\": 9159.794563145771,\n              \"color\": {\n                \"red\": 1933,\n                \"green\": 8435,\n                \"blue\": 2080\n              },\n              \"leading\": 2728.389203381909,\n              \"tracking\": 9931.137818717254,\n              \"syntheticBold\": false,\n              \"syntheticItalic\": true,\n              \"underline\": false,\n              \"strikethrough\": true,\n              \"from\": 961,\n              \"to\": 4291\n            },\n            {\n              \"fontPostScriptName\": \"string\",\n              \"size\": 7698.113108287931,\n              \"color\": {\n                \"red\": 5313,\n                \"green\": 8469,\n                \"blue\": 1093\n              },\n              \"leading\": 9340.108469382196,\n              \"tracking\": 7362.134001999133,\n              \"syntheticBold\": true,\n              \"syntheticItalic\": true,\n              \"underline\": true,\n              \"strikethrough\": true,\n              \"from\": 335,\n              \"to\": 1927\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"center\"\n            },\n            {\n              \"alignment\": \"justify\"\n            }\n          ]\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"image\",\n  \"title\": \"example_value\",\n  \"code\": 1920,\n  \"details\": {\n    \"reason\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3dba8466-03b2-4414-9ab6-95e97b05b192",
+              "name": "Rate limit exceeded. Retry after the period in the retry-after header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pie",
+                    "psdService",
+                    "text"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    }\n  ],\n  \"options\": {\n    \"manageMissingFonts\": \"<string>\",\n    \"globalFont\": \"<string>\",\n    \"fonts\": [\n      {\n        \"href\": \"https://image.adobe.io/example\",\n        \"storage\": \"external\"\n      },\n      {\n        \"href\": \"https://image.adobe.io/example\",\n        \"storage\": \"external\"\n      }\n    ],\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"example_value\",\n          \"orientation\": \"horizontal\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"string\",\n              \"size\": 9546.482940243084,\n              \"color\": {\n                \"red\": 5000,\n                \"green\": 5633,\n                \"blue\": 2712\n              },\n              \"leading\": 2328.856361481515,\n              \"tracking\": 4081.9859716520978,\n              \"syntheticBold\": false,\n              \"syntheticItalic\": true,\n              \"underline\": false,\n              \"strikethrough\": true,\n              \"from\": 3226,\n              \"to\": 1088\n            },\n            {\n              \"fontPostScriptName\": \"string\",\n              \"size\": 4102.900909147866,\n              \"color\": {\n                \"red\": 8875,\n                \"green\": 5084,\n                \"blue\": 8967\n              },\n              \"leading\": 2904.0930613737346,\n              \"tracking\": 7492.622576250111,\n              \"syntheticBold\": false,\n              \"syntheticItalic\": true,\n              \"underline\": false,\n              \"strikethrough\": false,\n              \"from\": 7240,\n              \"to\": 3851\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"justifyCenter\"\n            },\n            {\n              \"alignment\": \"justifyLeft\"\n            }\n          ]\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"example_value\",\n          \"orientation\": \"horizontal\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"string\",\n              \"size\": 9159.794563145771,\n              \"color\": {\n                \"red\": 1933,\n                \"green\": 8435,\n                \"blue\": 2080\n              },\n              \"leading\": 2728.389203381909,\n              \"tracking\": 9931.137818717254,\n              \"syntheticBold\": false,\n              \"syntheticItalic\": true,\n              \"underline\": false,\n              \"strikethrough\": true,\n              \"from\": 961,\n              \"to\": 4291\n            },\n            {\n              \"fontPostScriptName\": \"string\",\n              \"size\": 7698.113108287931,\n              \"color\": {\n                \"red\": 5313,\n                \"green\": 8469,\n                \"blue\": 1093\n              },\n              \"leading\": 9340.108469382196,\n              \"tracking\": 7362.134001999133,\n              \"syntheticBold\": true,\n              \"syntheticItalic\": true,\n              \"underline\": true,\n              \"strikethrough\": true,\n              \"from\": 335,\n              \"to\": 1927\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"center\"\n            },\n            {\n              \"alignment\": \"justify\"\n            }\n          ]\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Seconds to wait before retrying.",
+                  "key": "retry-after",
+                  "value": "6615"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"image\",\n  \"title\": \"example_value\",\n  \"code\": 1920,\n  \"details\": {\n    \"reason\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac82d8be-67a0-4e41-8fa4-a1100e46ad39",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pie",
+                    "psdService",
+                    "text"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    }\n  ],\n  \"options\": {\n    \"manageMissingFonts\": \"<string>\",\n    \"globalFont\": \"<string>\",\n    \"fonts\": [\n      {\n        \"href\": \"https://image.adobe.io/example\",\n        \"storage\": \"external\"\n      },\n      {\n        \"href\": \"https://image.adobe.io/example\",\n        \"storage\": \"external\"\n      }\n    ],\n    \"layers\": [\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"example_value\",\n          \"orientation\": \"horizontal\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"string\",\n              \"size\": 9546.482940243084,\n              \"color\": {\n                \"red\": 5000,\n                \"green\": 5633,\n                \"blue\": 2712\n              },\n              \"leading\": 2328.856361481515,\n              \"tracking\": 4081.9859716520978,\n              \"syntheticBold\": false,\n              \"syntheticItalic\": true,\n              \"underline\": false,\n              \"strikethrough\": true,\n              \"from\": 3226,\n              \"to\": 1088\n            },\n            {\n              \"fontPostScriptName\": \"string\",\n              \"size\": 4102.900909147866,\n              \"color\": {\n                \"red\": 8875,\n                \"green\": 5084,\n                \"blue\": 8967\n              },\n              \"leading\": 2904.0930613737346,\n              \"tracking\": 7492.622576250111,\n              \"syntheticBold\": false,\n              \"syntheticItalic\": true,\n              \"underline\": false,\n              \"strikethrough\": false,\n              \"from\": 7240,\n              \"to\": 3851\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"justifyCenter\"\n            },\n            {\n              \"alignment\": \"justifyLeft\"\n            }\n          ]\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"text\": {\n          \"content\": \"example_value\",\n          \"orientation\": \"horizontal\",\n          \"characterStyles\": [\n            {\n              \"fontPostScriptName\": \"string\",\n              \"size\": 9159.794563145771,\n              \"color\": {\n                \"red\": 1933,\n                \"green\": 8435,\n                \"blue\": 2080\n              },\n              \"leading\": 2728.389203381909,\n              \"tracking\": 9931.137818717254,\n              \"syntheticBold\": false,\n              \"syntheticItalic\": true,\n              \"underline\": false,\n              \"strikethrough\": true,\n              \"from\": 961,\n              \"to\": 4291\n            },\n            {\n              \"fontPostScriptName\": \"string\",\n              \"size\": 7698.113108287931,\n              \"color\": {\n                \"red\": 5313,\n                \"green\": 8469,\n                \"blue\": 1093\n              },\n              \"leading\": 9340.108469382196,\n              \"tracking\": 7362.134001999133,\n              \"syntheticBold\": true,\n              \"syntheticItalic\": true,\n              \"underline\": true,\n              \"strikethrough\": true,\n              \"from\": 335,\n              \"to\": 1927\n            }\n          ],\n          \"paragraphStyles\": [\n            {\n              \"alignment\": \"center\"\n            },\n            {\n              \"alignment\": \"justify\"\n            }\n          ]\n        }\n      }\n    ]\n  },\n  \"outputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"image\",\n  \"title\": \"example_value\",\n  \"code\": 1920,\n  \"details\": {\n    \"reason\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://image.adobe.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "41e04a97-747f-4517-91e8-eb0fb24f48be",
+    "name": "Adobe Photoshop Actions Text API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A cloud-based REST API that provides programmatic access to Photoshop's image editing capabilities without requiring a local installation. Part of Adobe Firefly Services, the API supports PSD document operations including layer editing, Smart Object replacement, text layer editing, rendition creation, and artboard management. It also provides AI-powered features such as background removal, mask creation, product crop, and depth blur. All operations are asynchronous, returning a polling URL to check job status.\n\nContact Support:\n Name: Adobe Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

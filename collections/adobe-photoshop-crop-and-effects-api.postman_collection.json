@@ -1,0 +1,789 @@
+{
+  "item": [
+    {
+      "id": "7af88883-aeb5-4489-bb69-4a64b7eaefb3",
+      "name": "Crop and Effects",
+      "description": {
+        "content": "Apply AI-powered product crop and depth blur effects to images.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0159bbc0-c87d-445e-9030-35e7592427a6",
+          "name": "Adobe Photoshop Smart Crop to Product Subject",
+          "request": {
+            "name": "Adobe Photoshop Smart Crop to Product Subject",
+            "description": {
+              "content": "Applies AI-powered smart cropping that identifies the main product or subject in an image and crops to keep it centered with configurable padding.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pie",
+                "psdService",
+                "productCrop"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"<string>\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"<string>\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"<string>\",\n      \"type\": \"<string>\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"<string>\",\n      \"type\": \"<string>\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"options\": {\n    \"padding\": \"<number>\",\n    \"unit\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "265462a1-4dcb-423c-af46-d052df977d0f",
+              "name": "Job accepted for asynchronous processing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pie",
+                    "psdService",
+                    "productCrop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    }\n  ],\n  \"options\": {\n    \"padding\": \"<number>\",\n    \"unit\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"self\": {\n      \"href\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e374c352-0e3c-479e-b93a-d5acf0a8b6d0",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pie",
+                    "psdService",
+                    "productCrop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    }\n  ],\n  \"options\": {\n    \"padding\": \"<number>\",\n    \"unit\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"image\",\n  \"title\": \"example_value\",\n  \"code\": 1920,\n  \"details\": {\n    \"reason\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96ebbbad-22d9-41b3-8b58-2ee802733112",
+              "name": "Authentication failed or token expired.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pie",
+                    "psdService",
+                    "productCrop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    }\n  ],\n  \"options\": {\n    \"padding\": \"<number>\",\n    \"unit\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"image\",\n  \"title\": \"example_value\",\n  \"code\": 1920,\n  \"details\": {\n    \"reason\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50fa08d3-11b9-44a8-9d70-97c8eda3333e",
+              "name": "Insufficient permissions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pie",
+                    "psdService",
+                    "productCrop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    }\n  ],\n  \"options\": {\n    \"padding\": \"<number>\",\n    \"unit\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"image\",\n  \"title\": \"example_value\",\n  \"code\": 1920,\n  \"details\": {\n    \"reason\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96a1a352-b5e4-4481-9b36-be754bdd7271",
+              "name": "Rate limit exceeded. Retry after the period in the retry-after header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pie",
+                    "psdService",
+                    "productCrop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    }\n  ],\n  \"options\": {\n    \"padding\": \"<number>\",\n    \"unit\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Seconds to wait before retrying.",
+                  "key": "retry-after",
+                  "value": "7749"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"image\",\n  \"title\": \"example_value\",\n  \"code\": 1920,\n  \"details\": {\n    \"reason\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2370aaa5-27a4-4736-b6f7-0a82b3f33b57",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pie",
+                    "psdService",
+                    "productCrop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    }\n  ],\n  \"options\": {\n    \"padding\": \"<number>\",\n    \"unit\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"image\",\n  \"title\": \"example_value\",\n  \"code\": 1920,\n  \"details\": {\n    \"reason\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c44e494-c825-4d0c-b59f-65cf8a9bd6ea",
+          "name": "Adobe Photoshop Apply Depth Blur Effect",
+          "request": {
+            "name": "Adobe Photoshop Apply Depth Blur Effect",
+            "description": {
+              "content": "Applies an AI-powered depth blur (bokeh) effect to an image, simulating a shallow depth of field. Configurable focal point, blur strength, focal range, grain, and haze parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pie",
+                "psdService",
+                "depthBlur"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"<string>\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"<string>\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"<string>\",\n      \"type\": \"<string>\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"<string>\",\n      \"storage\": \"<string>\",\n      \"type\": \"<string>\",\n      \"width\": \"<integer>\",\n      \"overwrite\": true\n    }\n  ],\n  \"options\": {\n    \"focalSelector\": \"<object>\",\n    \"focalDistance\": \"<number>\",\n    \"blurStrength\": \"<number>\",\n    \"focalRange\": \"<number>\",\n    \"grain\": \"<number>\",\n    \"haze\": \"<number>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "29fbf196-ca31-4aed-a9e7-c657211fb483",
+              "name": "Job accepted for asynchronous processing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pie",
+                    "psdService",
+                    "depthBlur"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    }\n  ],\n  \"options\": {\n    \"focalSelector\": \"<object>\",\n    \"focalDistance\": \"<number>\",\n    \"blurStrength\": \"<number>\",\n    \"focalRange\": \"<number>\",\n    \"grain\": \"<number>\",\n    \"haze\": \"<number>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"self\": {\n      \"href\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f3ebead2-f2f9-405e-b4b4-a46a527c85d1",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pie",
+                    "psdService",
+                    "depthBlur"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    }\n  ],\n  \"options\": {\n    \"focalSelector\": \"<object>\",\n    \"focalDistance\": \"<number>\",\n    \"blurStrength\": \"<number>\",\n    \"focalRange\": \"<number>\",\n    \"grain\": \"<number>\",\n    \"haze\": \"<number>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"image\",\n  \"title\": \"example_value\",\n  \"code\": 1920,\n  \"details\": {\n    \"reason\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "82f1769d-6b3d-498b-9cbe-77e2dcb9685e",
+              "name": "Authentication failed or token expired.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pie",
+                    "psdService",
+                    "depthBlur"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    }\n  ],\n  \"options\": {\n    \"focalSelector\": \"<object>\",\n    \"focalDistance\": \"<number>\",\n    \"blurStrength\": \"<number>\",\n    \"focalRange\": \"<number>\",\n    \"grain\": \"<number>\",\n    \"haze\": \"<number>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"image\",\n  \"title\": \"example_value\",\n  \"code\": 1920,\n  \"details\": {\n    \"reason\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53b23594-158f-4aff-b62e-581c6e5fb82d",
+              "name": "Insufficient permissions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pie",
+                    "psdService",
+                    "depthBlur"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    }\n  ],\n  \"options\": {\n    \"focalSelector\": \"<object>\",\n    \"focalDistance\": \"<number>\",\n    \"blurStrength\": \"<number>\",\n    \"focalRange\": \"<number>\",\n    \"grain\": \"<number>\",\n    \"haze\": \"<number>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"image\",\n  \"title\": \"example_value\",\n  \"code\": 1920,\n  \"details\": {\n    \"reason\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f57b441b-f9db-4165-abc4-641cffd1c95d",
+              "name": "Rate limit exceeded. Retry after the period in the retry-after header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pie",
+                    "psdService",
+                    "depthBlur"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    }\n  ],\n  \"options\": {\n    \"focalSelector\": \"<object>\",\n    \"focalDistance\": \"<number>\",\n    \"blurStrength\": \"<number>\",\n    \"focalRange\": \"<number>\",\n    \"grain\": \"<number>\",\n    \"haze\": \"<number>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Seconds to wait before retrying.",
+                  "key": "retry-after",
+                  "value": "7749"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"image\",\n  \"title\": \"example_value\",\n  \"code\": 1920,\n  \"details\": {\n    \"reason\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "01cc8926-1802-41b2-9b47-e47a9e004612",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pie",
+                    "psdService",
+                    "depthBlur"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    },\n    {\n      \"href\": \"https://image.adobe.io/example\",\n      \"storage\": \"external\",\n      \"type\": \"image/jpeg\",\n      \"width\": 1920,\n      \"overwrite\": true\n    }\n  ],\n  \"options\": {\n    \"focalSelector\": \"<object>\",\n    \"focalDistance\": \"<number>\",\n    \"blurStrength\": \"<number>\",\n    \"focalRange\": \"<number>\",\n    \"grain\": \"<number>\",\n    \"haze\": \"<number>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"image\",\n  \"title\": \"example_value\",\n  \"code\": 1920,\n  \"details\": {\n    \"reason\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://image.adobe.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "dc3b91dc-078e-43b7-bb02-c10cce7f0857",
+    "name": "Adobe Photoshop Actions Crop and Effects API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A cloud-based REST API that provides programmatic access to Photoshop's image editing capabilities without requiring a local installation. Part of Adobe Firefly Services, the API supports PSD document operations including layer editing, Smart Object replacement, text layer editing, rendition creation, and artboard management. It also provides AI-powered features such as background removal, mask creation, product crop, and depth blur. All operations are asynchronous, returning a polling URL to check job status.\n\nContact Support:\n Name: Adobe Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

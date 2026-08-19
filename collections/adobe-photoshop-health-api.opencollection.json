@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Adobe Photoshop Actions Health API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Adobe Photoshop Service Health Check",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://image.adobe.io/pie/psdService/hello"
+          },
+          "docs": "Returns a welcome message confirming the Photoshop API service is available."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
