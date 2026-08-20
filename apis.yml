@@ -20,6 +20,14 @@ description: Adobe Photoshop is the industry-standard image editing and digital 
   for workflow automation.
 url: https://raw.githubusercontent.com/api-evangelist/adobe-photoshop/refs/heads/main/apis.yml
 tags:
+- Ai Ml
+- Creative Cloud
+- Image Editing
+- Photoshop
+- Plugins
+- REST API
+- Scripting
+tags_raw:
 - AI/ML
 - Creative Cloud
 - Image Editing
@@ -38,6 +46,12 @@ apis:
 - aid: adobe-photoshop:firefly-services-sdk
   name: Adobe Firefly Services SDK for JavaScript
   tags:
+  - Client Library
+  - Node.js
+  - npm
+  - SDK
+  - TypeScript
+  tags_raw:
   - Client Library
   - Node.js
   - NPM
