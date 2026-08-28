@@ -13,8 +13,14 @@ info:
     the underlying OpenAPI.
   version: 1.0.0
 sourceDescriptions:
-- name: photoshopApi
-  url: ../openapi/adobe-photoshop-api-openapi-original.yml
+- name: backgroundRemovalApi
+  url: ../openapi/adobe-photoshop-background-removal-api-openapi.yml
+  type: openapi
+- name: cropAndEffectsApi
+  url: ../openapi/adobe-photoshop-crop-and-effects-api-openapi.yml
+  type: openapi
+- name: statusApi
+  url: ../openapi/adobe-photoshop-status-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: product-photo-pipeline

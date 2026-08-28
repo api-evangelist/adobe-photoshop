@@ -12,8 +12,14 @@ info:
     the flow can be read and executed without opening the underlying OpenAPI.
   version: 1.0.0
 sourceDescriptions:
-- name: photoshopApi
-  url: ../openapi/adobe-photoshop-api-openapi-original.yml
+- name: backgroundRemovalApi
+  url: ../openapi/adobe-photoshop-background-removal-api-openapi.yml
+  type: openapi
+- name: generativeApi
+  url: ../openapi/adobe-photoshop-generative-api-openapi.yml
+  type: openapi
+- name: statusApi
+  url: ../openapi/adobe-photoshop-status-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: generative-fill

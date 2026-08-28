@@ -11,8 +11,11 @@ info:
     so the flow can be read and executed without opening the underlying OpenAPI.
   version: 1.0.0
 sourceDescriptions:
-- name: photoshopApi
-  url: ../openapi/adobe-photoshop-api-openapi-original.yml
+- name: actionsApi
+  url: ../openapi/adobe-photoshop-actions-api-openapi.yml
+  type: openapi
+- name: statusApi
+  url: ../openapi/adobe-photoshop-status-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: action-json-document-create

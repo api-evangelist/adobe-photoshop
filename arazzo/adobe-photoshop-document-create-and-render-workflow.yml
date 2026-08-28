@@ -12,8 +12,14 @@ info:
     flow can be read and executed without opening the underlying OpenAPI.
   version: 1.0.0
 sourceDescriptions:
-- name: photoshopApi
-  url: ../openapi/adobe-photoshop-api-openapi-original.yml
+- name: documentOperationsApi
+  url: ../openapi/adobe-photoshop-document-operations-api-openapi.yml
+  type: openapi
+- name: renditionsApi
+  url: ../openapi/adobe-photoshop-renditions-api-openapi.yml
+  type: openapi
+- name: statusApi
+  url: ../openapi/adobe-photoshop-status-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: document-create-and-render
