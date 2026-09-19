@@ -143,6 +143,13 @@ apis:
   - Hybrid
   - Native Code
   - Performance
+  - Plugins
+  tags_raw:
+  - C++
+  - Filters
+  - Hybrid
+  - Native Code
+  - Performance
   - Plugin
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.example.com
@@ -163,6 +170,12 @@ apis:
 - aid: adobe-photoshop:cpp-plugin-sdk
   name: Adobe Photoshop C++ Plugin SDK
   tags:
+  - C++
+  - Desktop
+  - File Format
+  - Filters
+  - Native SDK
+  tags_raw:
   - C++
   - Desktop
   - File Formats
