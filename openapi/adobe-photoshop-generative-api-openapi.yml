@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Adobe Photoshop Actions Generative API
-  description: A cloud-based REST API that provides programmatic access to Photoshop's image editing capabilities without requiring a local installation. Part of Adobe Firefly Services, the API supports PSD document operations including layer editing, Smart Object replacement, text layer editing, rendition creation, and artboard management. It also provides AI-powered features such as background removal, mask creation, product crop, and depth blur. All operations are asynchronous, returning a polling URL to check job status.
+  title: Adobe Photoshop Generative API
+  description: A cloud-based REST API that provides programmatic access to Photoshop's image editing capabilities without requiring a local installation.
   version: 2.0.0
   contact:
     name: Adobe Developer Support
@@ -52,24 +52,6 @@ paths:
         dispatcher: FALLBACK
 components:
   responses:
-    InternalError:
-      description: Internal server error.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Forbidden:
-      description: Insufficient permissions.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication failed or token expired.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     AsyncJobAccepted:
       description: Job accepted for asynchronous processing.
       content:
@@ -86,8 +68,8 @@ components:
                       href:
                         type: string
                         description: URL to poll for job status.
-    BadRequest:
-      description: Invalid request parameters.
+    Unauthorized:
+      description: Authentication failed or token expired.
       content:
         application/json:
           schema:
@@ -99,6 +81,24 @@ components:
           schema:
             type: integer
           description: Seconds to wait before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: Insufficient permissions.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalError:
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request parameters.
       content:
         application/json:
           schema:

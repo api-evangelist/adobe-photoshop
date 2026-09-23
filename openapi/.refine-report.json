@@ -1,16 +1,7 @@
 {
   "provider": "adobe-photoshop",
   "sources": [
-    "adobe-photoshop-actions-api-openapi.yml",
-    "adobe-photoshop-background-removal-api-openapi.yml",
-    "adobe-photoshop-crop-and-effects-api-openapi.yml",
-    "adobe-photoshop-document-operations-api-openapi.yml",
-    "adobe-photoshop-generative-api-openapi.yml",
-    "adobe-photoshop-health-api-openapi.yml",
-    "adobe-photoshop-renditions-api-openapi.yml",
-    "adobe-photoshop-smart-objects-api-openapi.yml",
-    "adobe-photoshop-status-api-openapi.yml",
-    "adobe-photoshop-text-api-openapi.yml"
+    "_original/adobe-photoshop-api-openapi-original.yml"
   ],
   "outputs": [
     "adobe-photoshop-actions-api-openapi.yml",
@@ -27,6 +18,21 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "adobe-photoshop-api-openapi-original.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "adobe-photoshop-actions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "adobe-photoshop-background-removal-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "adobe-photoshop-crop-and-effects-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "adobe-photoshop-document-operations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "adobe-photoshop-generative-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "adobe-photoshop-health-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "adobe-photoshop-renditions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "adobe-photoshop-smart-objects-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "adobe-photoshop-status-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "adobe-photoshop-text-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
