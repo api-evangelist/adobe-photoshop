@@ -52,6 +52,30 @@ paths:
         dispatcher: FALLBACK
 components:
   responses:
+    InternalError:
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: Insufficient permissions.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication failed or token expired.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     AsyncJobAccepted:
       description: Job accepted for asynchronous processing.
       content:
@@ -68,12 +92,6 @@ components:
                       href:
                         type: string
                         description: URL to poll for job status.
-    Unauthorized:
-      description: Authentication failed or token expired.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     RateLimited:
       description: Rate limit exceeded. Retry after the period in the retry-after header.
       headers:
@@ -81,24 +99,6 @@ components:
           schema:
             type: integer
           description: Seconds to wait before retrying.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Forbidden:
-      description: Insufficient permissions.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    InternalError:
-      description: Internal server error.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Invalid request parameters.
       content:
         application/json:
           schema:

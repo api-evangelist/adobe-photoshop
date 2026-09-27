@@ -109,6 +109,58 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  responses:
+    InternalError:
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: Insufficient permissions.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication failed or token expired.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    AsyncJobAccepted:
+      description: Job accepted for asynchronous processing.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              _links:
+                type: object
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        description: URL to poll for job status.
+    RateLimited:
+      description: Rate limit exceeded. Retry after the period in the retry-after header.
+      headers:
+        retry-after:
+          schema:
+            type: integer
+          description: Seconds to wait before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
     PhotoshopActionsRequest:
       type: object
@@ -170,65 +222,6 @@ components:
           - dropbox
           description: Storage type for the input file.
           example: external
-    ErrorResponse:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Error type code.
-          example: image
-        title:
-          type: string
-          description: Human-readable error description.
-          example: example_value
-        code:
-          type: integer
-          description: HTTP status code.
-          example: 1920
-        details:
-          type: object
-          properties:
-            reason:
-              type: string
-            name:
-              type: string
-              description: Parameter name causing the error.
-    ActionJSONRequest:
-      type: object
-      required:
-      - options
-      - outputs
-      properties:
-        inputs:
-          type: array
-          items:
-            $ref: '#/components/schemas/StorageInput'
-        options:
-          type: object
-          required:
-          - actionJSON
-          properties:
-            actionJSON:
-              type: array
-              description: Array of Photoshop action descriptor objects.
-              items:
-                type: object
-                required:
-                - _obj
-                properties:
-                  _obj:
-                    type: string
-                    description: Photoshop action descriptor type.
-                additionalProperties: true
-            additionalImages:
-              type: array
-              description: Additional images for compositing, referenced in actionJSON as ACTION_JSON_OPTIONS_ADDITIONAL_IMAGES_0, etc.
-              items:
-                $ref: '#/components/schemas/StorageInput'
-        outputs:
-          type: array
-          items:
-            $ref: '#/components/schemas/StorageOutput'
     StorageOutput:
       type: object
       required:
@@ -267,58 +260,65 @@ components:
           description: Whether to overwrite existing files.
           default: true
           example: true
-  responses:
-    AsyncJobAccepted:
-      description: Job accepted for asynchronous processing.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              _links:
+    ActionJSONRequest:
+      type: object
+      required:
+      - options
+      - outputs
+      properties:
+        inputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageInput'
+        options:
+          type: object
+          required:
+          - actionJSON
+          properties:
+            actionJSON:
+              type: array
+              description: Array of Photoshop action descriptor objects.
+              items:
                 type: object
+                required:
+                - _obj
                 properties:
-                  self:
-                    type: object
-                    properties:
-                      href:
-                        type: string
-                        description: URL to poll for job status.
-    Unauthorized:
-      description: Authentication failed or token expired.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    RateLimited:
-      description: Rate limit exceeded. Retry after the period in the retry-after header.
-      headers:
-        retry-after:
-          schema:
-            type: integer
-          description: Seconds to wait before retrying.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Forbidden:
-      description: Insufficient permissions.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    InternalError:
-      description: Internal server error.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Invalid request parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+                  _obj:
+                    type: string
+                    description: Photoshop action descriptor type.
+                additionalProperties: true
+            additionalImages:
+              type: array
+              description: Additional images for compositing, referenced in actionJSON as ACTION_JSON_OPTIONS_ADDITIONAL_IMAGES_0, etc.
+              items:
+                $ref: '#/components/schemas/StorageInput'
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageOutput'
+    ErrorResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Error type code.
+          example: image
+        title:
+          type: string
+          description: Human-readable error description.
+          example: example_value
+        code:
+          type: integer
+          description: HTTP status code.
+          example: 1920
+        details:
+          type: object
+          properties:
+            reason:
+              type: string
+            name:
+              type: string
+              description: Parameter name causing the error.
   securitySchemes:
     BearerAuth:
       type: http

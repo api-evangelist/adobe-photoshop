@@ -141,6 +141,36 @@ paths:
         dispatcher: FALLBACK
 components:
   responses:
+    InternalError:
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: Insufficient permissions.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication failed or token expired.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Conflict:
+      description: File overwrite conflict.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     AsyncJobAccepted:
       description: Job accepted for asynchronous processing.
       content:
@@ -157,18 +187,6 @@ components:
                       href:
                         type: string
                         description: URL to poll for job status.
-    Unauthorized:
-      description: Authentication failed or token expired.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Conflict:
-      description: File overwrite conflict.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     RateLimited:
       description: Rate limit exceeded. Retry after the period in the retry-after header.
       headers:
@@ -180,30 +198,25 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    InternalError:
-      description: Internal server error.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Forbidden:
-      description: Insufficient permissions.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Invalid request parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    DocumentOperationsRequest:
+    LayerBounds:
+      type: object
+      properties:
+        bounds:
+          type: object
+          properties:
+            top:
+              type: number
+            left:
+              type: number
+            width:
+              type: number
+            height:
+              type: number
+    DocumentManifestRequest:
       type: object
       required:
       - inputs
-      - outputs
       properties:
         inputs:
           type: array
@@ -212,6 +225,161 @@ components:
         options:
           type: object
           properties:
+            thumbnails:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                  - image/png
+                  - image/jpeg
+                  description: Format for layer thumbnails.
+    ArtboardCreateRequest:
+      type: object
+      required:
+      - options
+      - outputs
+      properties:
+        options:
+          type: object
+          required:
+          - artboards
+          properties:
+            artboards:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: Artboard name.
+                  width:
+                    type: integer
+                    description: Artboard width in pixels.
+                  height:
+                    type: integer
+                    description: Artboard height in pixels.
+                  layers:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LayerOperation'
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageOutput'
+    TextContent:
+      type: object
+      properties:
+        content:
+          type: string
+          description: Text string content.
+          example: example_value
+        orientation:
+          type: string
+          enum:
+          - horizontal
+          - vertical
+          example: horizontal
+        characterStyles:
+          type: array
+          items:
+            type: object
+            properties:
+              fontPostScriptName:
+                type: string
+              size:
+                type: number
+              color:
+                type: object
+                properties:
+                  red:
+                    type: integer
+                  green:
+                    type: integer
+                  blue:
+                    type: integer
+              leading:
+                type: number
+              tracking:
+                type: number
+              syntheticBold:
+                type: boolean
+              syntheticItalic:
+                type: boolean
+              underline:
+                type: boolean
+              strikethrough:
+                type: boolean
+              from:
+                type: integer
+                description: Character range start index.
+              to:
+                type: integer
+                description: Character range end index.
+        paragraphStyles:
+          type: array
+          items:
+            type: object
+            properties:
+              alignment:
+                type: string
+                enum:
+                - left
+                - center
+                - right
+                - justify
+                - justifyLeft
+                - justifyCenter
+                - justifyRight
+    DocumentCreateRequest:
+      type: object
+      required:
+      - options
+      - outputs
+      properties:
+        options:
+          type: object
+          required:
+          - document
+          properties:
+            document:
+              type: object
+              required:
+              - width
+              - height
+              properties:
+                width:
+                  type: integer
+                  description: Document width in pixels.
+                height:
+                  type: integer
+                  description: Document height in pixels.
+                resolution:
+                  type: integer
+                  default: 72
+                  description: Document resolution in PPI.
+                fill:
+                  type: string
+                  enum:
+                  - white
+                  - transparent
+                  - backgroundColor
+                  default: white
+                mode:
+                  type: string
+                  enum:
+                  - rgb
+                  - cmyk
+                  - grayscale
+                  default: rgb
+                depth:
+                  type: integer
+                  enum:
+                  - 8
+                  - 16
+                  - 32
+                  default: 8
+                  description: Bit depth per channel.
             layers:
               type: array
               items:
@@ -327,218 +495,6 @@ components:
           - dropbox
           description: Storage type for the input file.
           example: external
-    TextContent:
-      type: object
-      properties:
-        content:
-          type: string
-          description: Text string content.
-          example: example_value
-        orientation:
-          type: string
-          enum:
-          - horizontal
-          - vertical
-          example: horizontal
-        characterStyles:
-          type: array
-          items:
-            type: object
-            properties:
-              fontPostScriptName:
-                type: string
-              size:
-                type: number
-              color:
-                type: object
-                properties:
-                  red:
-                    type: integer
-                  green:
-                    type: integer
-                  blue:
-                    type: integer
-              leading:
-                type: number
-              tracking:
-                type: number
-              syntheticBold:
-                type: boolean
-              syntheticItalic:
-                type: boolean
-              underline:
-                type: boolean
-              strikethrough:
-                type: boolean
-              from:
-                type: integer
-                description: Character range start index.
-              to:
-                type: integer
-                description: Character range end index.
-        paragraphStyles:
-          type: array
-          items:
-            type: object
-            properties:
-              alignment:
-                type: string
-                enum:
-                - left
-                - center
-                - right
-                - justify
-                - justifyLeft
-                - justifyCenter
-                - justifyRight
-    ArtboardCreateRequest:
-      type: object
-      required:
-      - options
-      - outputs
-      properties:
-        options:
-          type: object
-          required:
-          - artboards
-          properties:
-            artboards:
-              type: array
-              items:
-                type: object
-                properties:
-                  name:
-                    type: string
-                    description: Artboard name.
-                  width:
-                    type: integer
-                    description: Artboard width in pixels.
-                  height:
-                    type: integer
-                    description: Artboard height in pixels.
-                  layers:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/LayerOperation'
-        outputs:
-          type: array
-          items:
-            $ref: '#/components/schemas/StorageOutput'
-    DocumentManifestRequest:
-      type: object
-      required:
-      - inputs
-      properties:
-        inputs:
-          type: array
-          items:
-            $ref: '#/components/schemas/StorageInput'
-        options:
-          type: object
-          properties:
-            thumbnails:
-              type: object
-              properties:
-                type:
-                  type: string
-                  enum:
-                  - image/png
-                  - image/jpeg
-                  description: Format for layer thumbnails.
-    ErrorResponse:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Error type code.
-          example: image
-        title:
-          type: string
-          description: Human-readable error description.
-          example: example_value
-        code:
-          type: integer
-          description: HTTP status code.
-          example: 1920
-        details:
-          type: object
-          properties:
-            reason:
-              type: string
-            name:
-              type: string
-              description: Parameter name causing the error.
-    DocumentCreateRequest:
-      type: object
-      required:
-      - options
-      - outputs
-      properties:
-        options:
-          type: object
-          required:
-          - document
-          properties:
-            document:
-              type: object
-              required:
-              - width
-              - height
-              properties:
-                width:
-                  type: integer
-                  description: Document width in pixels.
-                height:
-                  type: integer
-                  description: Document height in pixels.
-                resolution:
-                  type: integer
-                  default: 72
-                  description: Document resolution in PPI.
-                fill:
-                  type: string
-                  enum:
-                  - white
-                  - transparent
-                  - backgroundColor
-                  default: white
-                mode:
-                  type: string
-                  enum:
-                  - rgb
-                  - cmyk
-                  - grayscale
-                  default: rgb
-                depth:
-                  type: integer
-                  enum:
-                  - 8
-                  - 16
-                  - 32
-                  default: 8
-                  description: Bit depth per channel.
-            layers:
-              type: array
-              items:
-                $ref: '#/components/schemas/LayerOperation'
-        outputs:
-          type: array
-          items:
-            $ref: '#/components/schemas/StorageOutput'
-    LayerBounds:
-      type: object
-      properties:
-        bounds:
-          type: object
-          properties:
-            top:
-              type: number
-            left:
-              type: number
-            width:
-              type: number
-            height:
-              type: number
     StorageOutput:
       type: object
       required:
@@ -577,6 +533,50 @@ components:
           description: Whether to overwrite existing files.
           default: true
           example: true
+    DocumentOperationsRequest:
+      type: object
+      required:
+      - inputs
+      - outputs
+      properties:
+        inputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageInput'
+        options:
+          type: object
+          properties:
+            layers:
+              type: array
+              items:
+                $ref: '#/components/schemas/LayerOperation'
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageOutput'
+    ErrorResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Error type code.
+          example: image
+        title:
+          type: string
+          description: Human-readable error description.
+          example: example_value
+        code:
+          type: integer
+          description: HTTP status code.
+          example: 1920
+        details:
+          type: object
+          properties:
+            reason:
+              type: string
+            name:
+              type: string
+              description: Parameter name causing the error.
   securitySchemes:
     BearerAuth:
       type: http
