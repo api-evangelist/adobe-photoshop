@@ -73,6 +73,12 @@ paths:
         dispatcher: FALLBACK
 components:
   responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     InternalError:
       description: Internal server error.
       content:
@@ -81,12 +87,6 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
     Unauthorized:
       description: Authentication failed or token expired.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Resource not found.
       content:
         application/json:
           schema:
@@ -101,6 +101,29 @@ components:
         type: string
         format: uuid
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Error type code.
+          example: image
+        title:
+          type: string
+          description: Human-readable error description.
+          example: example_value
+        code:
+          type: integer
+          description: HTTP status code.
+          example: 1920
+        details:
+          type: object
+          properties:
+            reason:
+              type: string
+            name:
+              type: string
+              description: Parameter name causing the error.
     JobStatusResponse:
       type: object
       properties:
@@ -157,29 +180,6 @@ components:
                 href:
                   type: string
                   description: URL to this status resource.
-    ErrorResponse:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Error type code.
-          example: image
-        title:
-          type: string
-          description: Human-readable error description.
-          example: example_value
-        code:
-          type: integer
-          description: HTTP status code.
-          example: 1920
-        details:
-          type: object
-          properties:
-            reason:
-              type: string
-            name:
-              type: string
-              description: Parameter name causing the error.
   securitySchemes:
     BearerAuth:
       type: http
