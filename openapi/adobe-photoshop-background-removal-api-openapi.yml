@@ -54,6 +54,18 @@ paths:
         dispatcher: FALLBACK
 components:
   responses:
+    QuotaExceeded:
+      description: Trial quota exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalError:
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     AsyncJobAccepted:
       description: Job accepted for asynchronous processing.
       content:
@@ -70,20 +82,14 @@ components:
                       href:
                         type: string
                         description: URL to poll for job status.
+    Forbidden:
+      description: Insufficient permissions.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     BadRequest:
       description: Invalid request parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    InternalError:
-      description: Internal server error.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    QuotaExceeded:
-      description: Trial quota exceeded.
       content:
         application/json:
           schema:
@@ -101,12 +107,6 @@ components:
           schema:
             type: integer
           description: Seconds to wait before retrying.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Forbidden:
-      description: Insufficient permissions.
       content:
         application/json:
           schema:

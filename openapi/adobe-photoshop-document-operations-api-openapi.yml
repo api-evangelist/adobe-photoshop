@@ -141,6 +141,136 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ArtboardCreateRequest:
+      type: object
+      required:
+      - options
+      - outputs
+      properties:
+        options:
+          type: object
+          required:
+          - artboards
+          properties:
+            artboards:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: Artboard name.
+                  width:
+                    type: integer
+                    description: Artboard width in pixels.
+                  height:
+                    type: integer
+                    description: Artboard height in pixels.
+                  layers:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LayerOperation'
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageOutput'
+    StorageInput:
+      type: object
+      required:
+      - href
+      - storage
+      properties:
+        href:
+          type: string
+          description: Pre-signed GET URL or Creative Cloud asset path.
+          example: https://image.adobe.io/example
+        storage:
+          type: string
+          enum:
+          - external
+          - adobe
+          - azure
+          - dropbox
+          description: Storage type for the input file.
+          example: external
+    DocumentOperationsRequest:
+      type: object
+      required:
+      - inputs
+      - outputs
+      properties:
+        inputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageInput'
+        options:
+          type: object
+          properties:
+            layers:
+              type: array
+              items:
+                $ref: '#/components/schemas/LayerOperation'
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageOutput'
+    DocumentCreateRequest:
+      type: object
+      required:
+      - options
+      - outputs
+      properties:
+        options:
+          type: object
+          required:
+          - document
+          properties:
+            document:
+              type: object
+              required:
+              - width
+              - height
+              properties:
+                width:
+                  type: integer
+                  description: Document width in pixels.
+                height:
+                  type: integer
+                  description: Document height in pixels.
+                resolution:
+                  type: integer
+                  default: 72
+                  description: Document resolution in PPI.
+                fill:
+                  type: string
+                  enum:
+                  - white
+                  - transparent
+                  - backgroundColor
+                  default: white
+                mode:
+                  type: string
+                  enum:
+                  - rgb
+                  - cmyk
+                  - grayscale
+                  default: rgb
+                depth:
+                  type: integer
+                  enum:
+                  - 8
+                  - 16
+                  - 32
+                  default: 8
+                  description: Bit depth per channel.
+            layers:
+              type: array
+              items:
+                $ref: '#/components/schemas/LayerOperation'
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageOutput'
     TextContent:
       type: object
       properties:
@@ -226,39 +356,6 @@ components:
                   - image/png
                   - image/jpeg
                   description: Format for layer thumbnails.
-    ArtboardCreateRequest:
-      type: object
-      required:
-      - options
-      - outputs
-      properties:
-        options:
-          type: object
-          required:
-          - artboards
-          properties:
-            artboards:
-              type: array
-              items:
-                type: object
-                properties:
-                  name:
-                    type: string
-                    description: Artboard name.
-                  width:
-                    type: integer
-                    description: Artboard width in pixels.
-                  height:
-                    type: integer
-                    description: Artboard height in pixels.
-                  layers:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/LayerOperation'
-        outputs:
-          type: array
-          items:
-            $ref: '#/components/schemas/StorageOutput'
     StorageOutput:
       type: object
       required:
@@ -297,25 +394,20 @@ components:
           description: Whether to overwrite existing files.
           default: true
           example: true
-    StorageInput:
+    LayerBounds:
       type: object
-      required:
-      - href
-      - storage
       properties:
-        href:
-          type: string
-          description: Pre-signed GET URL or Creative Cloud asset path.
-          example: https://image.adobe.io/example
-        storage:
-          type: string
-          enum:
-          - external
-          - adobe
-          - azure
-          - dropbox
-          description: Storage type for the input file.
-          example: external
+        bounds:
+          type: object
+          properties:
+            top:
+              type: number
+            left:
+              type: number
+            width:
+              type: number
+            height:
+              type: number
     ErrorResponse:
       type: object
       properties:
@@ -339,27 +431,6 @@ components:
             name:
               type: string
               description: Parameter name causing the error.
-    DocumentOperationsRequest:
-      type: object
-      required:
-      - inputs
-      - outputs
-      properties:
-        inputs:
-          type: array
-          items:
-            $ref: '#/components/schemas/StorageInput'
-        options:
-          type: object
-          properties:
-            layers:
-              type: array
-              items:
-                $ref: '#/components/schemas/LayerOperation'
-        outputs:
-          type: array
-          items:
-            $ref: '#/components/schemas/StorageOutput'
     LayerOperation:
       type: object
       properties:
@@ -448,84 +519,7 @@ components:
                   type: number
         text:
           $ref: '#/components/schemas/TextContent'
-    DocumentCreateRequest:
-      type: object
-      required:
-      - options
-      - outputs
-      properties:
-        options:
-          type: object
-          required:
-          - document
-          properties:
-            document:
-              type: object
-              required:
-              - width
-              - height
-              properties:
-                width:
-                  type: integer
-                  description: Document width in pixels.
-                height:
-                  type: integer
-                  description: Document height in pixels.
-                resolution:
-                  type: integer
-                  default: 72
-                  description: Document resolution in PPI.
-                fill:
-                  type: string
-                  enum:
-                  - white
-                  - transparent
-                  - backgroundColor
-                  default: white
-                mode:
-                  type: string
-                  enum:
-                  - rgb
-                  - cmyk
-                  - grayscale
-                  default: rgb
-                depth:
-                  type: integer
-                  enum:
-                  - 8
-                  - 16
-                  - 32
-                  default: 8
-                  description: Bit depth per channel.
-            layers:
-              type: array
-              items:
-                $ref: '#/components/schemas/LayerOperation'
-        outputs:
-          type: array
-          items:
-            $ref: '#/components/schemas/StorageOutput'
-    LayerBounds:
-      type: object
-      properties:
-        bounds:
-          type: object
-          properties:
-            top:
-              type: number
-            left:
-              type: number
-            width:
-              type: number
-            height:
-              type: number
   responses:
-    Conflict:
-      description: File overwrite conflict.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     AsyncJobAccepted:
       description: Job accepted for asynchronous processing.
       content:
@@ -542,8 +536,14 @@ components:
                       href:
                         type: string
                         description: URL to poll for job status.
-    InternalError:
-      description: Internal server error.
+    Conflict:
+      description: File overwrite conflict.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: Insufficient permissions.
       content:
         application/json:
           schema:
@@ -560,6 +560,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+    InternalError:
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     RateLimited:
       description: Rate limit exceeded. Retry after the period in the retry-after header.
       headers:
@@ -567,12 +573,6 @@ components:
           schema:
             type: integer
           description: Seconds to wait before retrying.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Forbidden:
-      description: Insufficient permissions.
       content:
         application/json:
           schema:

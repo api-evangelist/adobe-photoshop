@@ -76,20 +76,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    InternalError:
-      description: Internal server error.
+    Forbidden:
+      description: Insufficient permissions.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     BadRequest:
       description: Invalid request parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication failed or token expired.
       content:
         application/json:
           schema:
@@ -105,13 +99,38 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Forbidden:
-      description: Insufficient permissions.
+    InternalError:
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication failed or token expired.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    StorageInput:
+      type: object
+      required:
+      - href
+      - storage
+      properties:
+        href:
+          type: string
+          description: Pre-signed GET URL or Creative Cloud asset path.
+          example: https://image.adobe.io/example
+        storage:
+          type: string
+          enum:
+          - external
+          - adobe
+          - azure
+          - dropbox
+          description: Storage type for the input file.
+          example: external
     StorageOutput:
       type: object
       required:
@@ -150,25 +169,43 @@ components:
           description: Whether to overwrite existing files.
           default: true
           example: true
-    StorageInput:
+    ErrorResponse:
       type: object
-      required:
-      - href
-      - storage
       properties:
-        href:
+        type:
           type: string
-          description: Pre-signed GET URL or Creative Cloud asset path.
-          example: https://image.adobe.io/example
-        storage:
+          description: Error type code.
+          example: image
+        title:
           type: string
-          enum:
-          - external
-          - adobe
-          - azure
-          - dropbox
-          description: Storage type for the input file.
-          example: external
+          description: Human-readable error description.
+          example: example_value
+        code:
+          type: integer
+          description: HTTP status code.
+          example: 1920
+        details:
+          type: object
+          properties:
+            reason:
+              type: string
+            name:
+              type: string
+              description: Parameter name causing the error.
+    LayerBounds:
+      type: object
+      properties:
+        bounds:
+          type: object
+          properties:
+            top:
+              type: number
+            left:
+              type: number
+            width:
+              type: number
+            height:
+              type: number
     SmartObjectRequest:
       type: object
       required:
@@ -213,43 +250,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/StorageOutput'
-    ErrorResponse:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Error type code.
-          example: image
-        title:
-          type: string
-          description: Human-readable error description.
-          example: example_value
-        code:
-          type: integer
-          description: HTTP status code.
-          example: 1920
-        details:
-          type: object
-          properties:
-            reason:
-              type: string
-            name:
-              type: string
-              description: Parameter name causing the error.
-    LayerBounds:
-      type: object
-      properties:
-        bounds:
-          type: object
-          properties:
-            top:
-              type: number
-            left:
-              type: number
-            width:
-              type: number
-            height:
-              type: number
   securitySchemes:
     BearerAuth:
       type: http
