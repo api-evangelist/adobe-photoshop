@@ -122,3 +122,45 @@ plans:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - metered
+  - subscription
+  units:
+  - credit
+  - seat
+  plans:
+  - name: Photography Plan
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: Photoshop Single App
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: Creative Cloud All Apps (includes Photoshop)
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: Firefly Services Photoshop API
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - credit
+    periods:
+    - per-use
