@@ -54,6 +54,67 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    StorageOutput:
+      type: object
+      required:
+      - href
+      - storage
+      - type
+      properties:
+        href:
+          type: string
+          description: Pre-signed PUT URL or Creative Cloud asset path.
+          example: https://image.adobe.io/example
+        storage:
+          type: string
+          enum:
+          - external
+          - adobe
+          - azure
+          - dropbox
+          description: Storage type for the output file.
+          example: external
+        type:
+          type: string
+          enum:
+          - image/jpeg
+          - image/png
+          - image/tiff
+          - vnd.adobe.photoshop
+          description: Output file format.
+          example: image/jpeg
+        width:
+          type: integer
+          description: Optional output width in pixels for resizing.
+          example: 1920
+        overwrite:
+          type: boolean
+          description: Whether to overwrite existing files.
+          default: true
+          example: true
+    ErrorResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Error type code.
+          example: image
+        title:
+          type: string
+          description: Human-readable error description.
+          example: example_value
+        code:
+          type: integer
+          description: HTTP status code.
+          example: 1920
+        details:
+          type: object
+          properties:
+            reason:
+              type: string
+            name:
+              type: string
+              description: Parameter name causing the error.
     TextEditRequest:
       type: object
       required:
@@ -99,25 +160,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/StorageOutput'
-    StorageInput:
-      type: object
-      required:
-      - href
-      - storage
-      properties:
-        href:
-          type: string
-          description: Pre-signed GET URL or Creative Cloud asset path.
-          example: https://image.adobe.io/example
-        storage:
-          type: string
-          enum:
-          - external
-          - adobe
-          - azure
-          - dropbox
-          description: Storage type for the input file.
-          example: external
     TextContent:
       type: object
       properties:
@@ -182,16 +224,15 @@ components:
                 - justifyLeft
                 - justifyCenter
                 - justifyRight
-    StorageOutput:
+    StorageInput:
       type: object
       required:
       - href
       - storage
-      - type
       properties:
         href:
           type: string
-          description: Pre-signed PUT URL or Creative Cloud asset path.
+          description: Pre-signed GET URL or Creative Cloud asset path.
           example: https://image.adobe.io/example
         storage:
           type: string
@@ -200,52 +241,34 @@ components:
           - adobe
           - azure
           - dropbox
-          description: Storage type for the output file.
+          description: Storage type for the input file.
           example: external
-        type:
-          type: string
-          enum:
-          - image/jpeg
-          - image/png
-          - image/tiff
-          - vnd.adobe.photoshop
-          description: Output file format.
-          example: image/jpeg
-        width:
-          type: integer
-          description: Optional output width in pixels for resizing.
-          example: 1920
-        overwrite:
-          type: boolean
-          description: Whether to overwrite existing files.
-          default: true
-          example: true
-    ErrorResponse:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Error type code.
-          example: image
-        title:
-          type: string
-          description: Human-readable error description.
-          example: example_value
-        code:
-          type: integer
-          description: HTTP status code.
-          example: 1920
-        details:
-          type: object
-          properties:
-            reason:
-              type: string
-            name:
-              type: string
-              description: Parameter name causing the error.
   responses:
     InternalError:
       description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication failed or token expired.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: Insufficient permissions.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    RateLimited:
+      description: Rate limit exceeded. Retry after the period in the retry-after header.
+      headers:
+        retry-after:
+          schema:
+            type: integer
+          description: Seconds to wait before retrying.
       content:
         application/json:
           schema:
@@ -266,37 +289,14 @@ components:
                       href:
                         type: string
                         description: URL to poll for job status.
-    Conflict:
-      description: File overwrite conflict.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Forbidden:
-      description: Insufficient permissions.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     BadRequest:
       description: Invalid request parameters.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    RateLimited:
-      description: Rate limit exceeded. Retry after the period in the retry-after header.
-      headers:
-        retry-after:
-          schema:
-            type: integer
-          description: Seconds to wait before retrying.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication failed or token expired.
+    Conflict:
+      description: File overwrite conflict.
       content:
         application/json:
           schema:

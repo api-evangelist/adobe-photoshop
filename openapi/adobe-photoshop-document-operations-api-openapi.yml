@@ -141,48 +141,16 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ArtboardCreateRequest:
-      type: object
-      required:
-      - options
-      - outputs
-      properties:
-        options:
-          type: object
-          required:
-          - artboards
-          properties:
-            artboards:
-              type: array
-              items:
-                type: object
-                properties:
-                  name:
-                    type: string
-                    description: Artboard name.
-                  width:
-                    type: integer
-                    description: Artboard width in pixels.
-                  height:
-                    type: integer
-                    description: Artboard height in pixels.
-                  layers:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/LayerOperation'
-        outputs:
-          type: array
-          items:
-            $ref: '#/components/schemas/StorageOutput'
-    StorageInput:
+    StorageOutput:
       type: object
       required:
       - href
       - storage
+      - type
       properties:
         href:
           type: string
-          description: Pre-signed GET URL or Creative Cloud asset path.
+          description: Pre-signed PUT URL or Creative Cloud asset path.
           example: https://image.adobe.io/example
         storage:
           type: string
@@ -191,29 +159,26 @@ components:
           - adobe
           - azure
           - dropbox
-          description: Storage type for the input file.
+          description: Storage type for the output file.
           example: external
-    DocumentOperationsRequest:
-      type: object
-      required:
-      - inputs
-      - outputs
-      properties:
-        inputs:
-          type: array
-          items:
-            $ref: '#/components/schemas/StorageInput'
-        options:
-          type: object
-          properties:
-            layers:
-              type: array
-              items:
-                $ref: '#/components/schemas/LayerOperation'
-        outputs:
-          type: array
-          items:
-            $ref: '#/components/schemas/StorageOutput'
+        type:
+          type: string
+          enum:
+          - image/jpeg
+          - image/png
+          - image/tiff
+          - vnd.adobe.photoshop
+          description: Output file format.
+          example: image/jpeg
+        width:
+          type: integer
+          description: Optional output width in pixels for resizing.
+          example: 1920
+        overwrite:
+          type: boolean
+          description: Whether to overwrite existing files.
+          default: true
+          example: true
     DocumentCreateRequest:
       type: object
       required:
@@ -263,6 +228,50 @@ components:
                   - 32
                   default: 8
                   description: Bit depth per channel.
+            layers:
+              type: array
+              items:
+                $ref: '#/components/schemas/LayerOperation'
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageOutput'
+    ErrorResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Error type code.
+          example: image
+        title:
+          type: string
+          description: Human-readable error description.
+          example: example_value
+        code:
+          type: integer
+          description: HTTP status code.
+          example: 1920
+        details:
+          type: object
+          properties:
+            reason:
+              type: string
+            name:
+              type: string
+              description: Parameter name causing the error.
+    DocumentOperationsRequest:
+      type: object
+      required:
+      - inputs
+      - outputs
+      properties:
+        inputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageInput'
+        options:
+          type: object
+          properties:
             layers:
               type: array
               items:
@@ -335,102 +344,6 @@ components:
                 - justifyLeft
                 - justifyCenter
                 - justifyRight
-    DocumentManifestRequest:
-      type: object
-      required:
-      - inputs
-      properties:
-        inputs:
-          type: array
-          items:
-            $ref: '#/components/schemas/StorageInput'
-        options:
-          type: object
-          properties:
-            thumbnails:
-              type: object
-              properties:
-                type:
-                  type: string
-                  enum:
-                  - image/png
-                  - image/jpeg
-                  description: Format for layer thumbnails.
-    StorageOutput:
-      type: object
-      required:
-      - href
-      - storage
-      - type
-      properties:
-        href:
-          type: string
-          description: Pre-signed PUT URL or Creative Cloud asset path.
-          example: https://image.adobe.io/example
-        storage:
-          type: string
-          enum:
-          - external
-          - adobe
-          - azure
-          - dropbox
-          description: Storage type for the output file.
-          example: external
-        type:
-          type: string
-          enum:
-          - image/jpeg
-          - image/png
-          - image/tiff
-          - vnd.adobe.photoshop
-          description: Output file format.
-          example: image/jpeg
-        width:
-          type: integer
-          description: Optional output width in pixels for resizing.
-          example: 1920
-        overwrite:
-          type: boolean
-          description: Whether to overwrite existing files.
-          default: true
-          example: true
-    LayerBounds:
-      type: object
-      properties:
-        bounds:
-          type: object
-          properties:
-            top:
-              type: number
-            left:
-              type: number
-            width:
-              type: number
-            height:
-              type: number
-    ErrorResponse:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Error type code.
-          example: image
-        title:
-          type: string
-          description: Human-readable error description.
-          example: example_value
-        code:
-          type: integer
-          description: HTTP status code.
-          example: 1920
-        details:
-          type: object
-          properties:
-            reason:
-              type: string
-            name:
-              type: string
-              description: Parameter name causing the error.
     LayerOperation:
       type: object
       properties:
@@ -519,7 +432,106 @@ components:
                   type: number
         text:
           $ref: '#/components/schemas/TextContent'
+    DocumentManifestRequest:
+      type: object
+      required:
+      - inputs
+      properties:
+        inputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageInput'
+        options:
+          type: object
+          properties:
+            thumbnails:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                  - image/png
+                  - image/jpeg
+                  description: Format for layer thumbnails.
+    ArtboardCreateRequest:
+      type: object
+      required:
+      - options
+      - outputs
+      properties:
+        options:
+          type: object
+          required:
+          - artboards
+          properties:
+            artboards:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: Artboard name.
+                  width:
+                    type: integer
+                    description: Artboard width in pixels.
+                  height:
+                    type: integer
+                    description: Artboard height in pixels.
+                  layers:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LayerOperation'
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageOutput'
+    StorageInput:
+      type: object
+      required:
+      - href
+      - storage
+      properties:
+        href:
+          type: string
+          description: Pre-signed GET URL or Creative Cloud asset path.
+          example: https://image.adobe.io/example
+        storage:
+          type: string
+          enum:
+          - external
+          - adobe
+          - azure
+          - dropbox
+          description: Storage type for the input file.
+          example: external
+    LayerBounds:
+      type: object
+      properties:
+        bounds:
+          type: object
+          properties:
+            top:
+              type: number
+            left:
+              type: number
+            width:
+              type: number
+            height:
+              type: number
   responses:
+    InternalError:
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication failed or token expired.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     AsyncJobAccepted:
       description: Job accepted for asynchronous processing.
       content:
@@ -536,14 +548,19 @@ components:
                       href:
                         type: string
                         description: URL to poll for job status.
-    Conflict:
-      description: File overwrite conflict.
+    RateLimited:
+      description: Rate limit exceeded. Retry after the period in the retry-after header.
+      headers:
+        retry-after:
+          schema:
+            type: integer
+          description: Seconds to wait before retrying.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Forbidden:
-      description: Insufficient permissions.
+    Conflict:
+      description: File overwrite conflict.
       content:
         application/json:
           schema:
@@ -554,25 +571,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication failed or token expired.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    InternalError:
-      description: Internal server error.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    RateLimited:
-      description: Rate limit exceeded. Retry after the period in the retry-after header.
-      headers:
-        retry-after:
-          schema:
-            type: integer
-          description: Seconds to wait before retrying.
+    Forbidden:
+      description: Insufficient permissions.
       content:
         application/json:
           schema:

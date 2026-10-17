@@ -110,102 +110,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    PhotoshopActionsRequest:
-      type: object
-      required:
-      - inputs
-      - options
-      - outputs
-      properties:
-        inputs:
-          type: array
-          items:
-            $ref: '#/components/schemas/StorageInput'
-        options:
-          type: object
-          required:
-          - actions
-          properties:
-            actions:
-              type: array
-              items:
-                type: object
-                required:
-                - href
-                - storage
-                properties:
-                  href:
-                    type: string
-                    description: URL to the .atn Action file.
-                  storage:
-                    type: string
-                    enum:
-                    - external
-                    - adobe
-                    - azure
-                    - dropbox
-                  actionName:
-                    type: string
-                    description: Specific action name to run within the set.
-        outputs:
-          type: array
-          items:
-            $ref: '#/components/schemas/StorageOutput'
-    ActionJSONRequest:
-      type: object
-      required:
-      - options
-      - outputs
-      properties:
-        inputs:
-          type: array
-          items:
-            $ref: '#/components/schemas/StorageInput'
-        options:
-          type: object
-          required:
-          - actionJSON
-          properties:
-            actionJSON:
-              type: array
-              description: Array of Photoshop action descriptor objects.
-              items:
-                type: object
-                required:
-                - _obj
-                properties:
-                  _obj:
-                    type: string
-                    description: Photoshop action descriptor type.
-                additionalProperties: true
-            additionalImages:
-              type: array
-              description: Additional images for compositing, referenced in actionJSON as ACTION_JSON_OPTIONS_ADDITIONAL_IMAGES_0, etc.
-              items:
-                $ref: '#/components/schemas/StorageInput'
-        outputs:
-          type: array
-          items:
-            $ref: '#/components/schemas/StorageOutput'
-    StorageInput:
-      type: object
-      required:
-      - href
-      - storage
-      properties:
-        href:
-          type: string
-          description: Pre-signed GET URL or Creative Cloud asset path.
-          example: https://image.adobe.io/example
-        storage:
-          type: string
-          enum:
-          - external
-          - adobe
-          - azure
-          - dropbox
-          description: Storage type for the input file.
-          example: external
     StorageOutput:
       type: object
       required:
@@ -267,9 +171,122 @@ components:
             name:
               type: string
               description: Parameter name causing the error.
+    ActionJSONRequest:
+      type: object
+      required:
+      - options
+      - outputs
+      properties:
+        inputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageInput'
+        options:
+          type: object
+          required:
+          - actionJSON
+          properties:
+            actionJSON:
+              type: array
+              description: Array of Photoshop action descriptor objects.
+              items:
+                type: object
+                required:
+                - _obj
+                properties:
+                  _obj:
+                    type: string
+                    description: Photoshop action descriptor type.
+                additionalProperties: true
+            additionalImages:
+              type: array
+              description: Additional images for compositing, referenced in actionJSON as ACTION_JSON_OPTIONS_ADDITIONAL_IMAGES_0, etc.
+              items:
+                $ref: '#/components/schemas/StorageInput'
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageOutput'
+    PhotoshopActionsRequest:
+      type: object
+      required:
+      - inputs
+      - options
+      - outputs
+      properties:
+        inputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageInput'
+        options:
+          type: object
+          required:
+          - actions
+          properties:
+            actions:
+              type: array
+              items:
+                type: object
+                required:
+                - href
+                - storage
+                properties:
+                  href:
+                    type: string
+                    description: URL to the .atn Action file.
+                  storage:
+                    type: string
+                    enum:
+                    - external
+                    - adobe
+                    - azure
+                    - dropbox
+                  actionName:
+                    type: string
+                    description: Specific action name to run within the set.
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageOutput'
+    StorageInput:
+      type: object
+      required:
+      - href
+      - storage
+      properties:
+        href:
+          type: string
+          description: Pre-signed GET URL or Creative Cloud asset path.
+          example: https://image.adobe.io/example
+        storage:
+          type: string
+          enum:
+          - external
+          - adobe
+          - azure
+          - dropbox
+          description: Storage type for the input file.
+          example: external
   responses:
     InternalError:
       description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication failed or token expired.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    RateLimited:
+      description: Rate limit exceeded. Retry after the period in the retry-after header.
+      headers:
+        retry-after:
+          schema:
+            type: integer
+          description: Seconds to wait before retrying.
       content:
         application/json:
           schema:
@@ -290,31 +307,14 @@ components:
                       href:
                         type: string
                         description: URL to poll for job status.
-    Forbidden:
-      description: Insufficient permissions.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     BadRequest:
       description: Invalid request parameters.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    RateLimited:
-      description: Rate limit exceeded. Retry after the period in the retry-after header.
-      headers:
-        retry-after:
-          schema:
-            type: integer
-          description: Seconds to wait before retrying.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication failed or token expired.
+    Forbidden:
+      description: Insufficient permissions.
       content:
         application/json:
           schema:
