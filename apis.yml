@@ -39,7 +39,7 @@ description: Adobe Photoshop is the industry-standard image editing and digital 
   for workflow automation.
 url: https://raw.githubusercontent.com/api-evangelist/adobe-photoshop/refs/heads/main/apis.yml
 tags:
-- Ai Ml
+- Artificial Intelligence
 - Creative Cloud
 - Image Editing
 - Photoshop
@@ -54,6 +54,7 @@ tags_raw:
 - Plugins
 - REST API
 - Scripting
+- Ai Ml
 created: '2025-02-28'
 modified: '2026-06-20'
 specificationVersion: '0.23'
