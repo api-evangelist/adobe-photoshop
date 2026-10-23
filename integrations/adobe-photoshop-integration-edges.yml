@@ -1,0 +1,494 @@
+edges:
+- partner_name: 3M | VAS
+  app: 3M Visual Attention Software for Photoshop
+  apps:
+  - 3M Visual Attention Software for Photoshop
+  listing_count: 1
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://exchange.adobe.com/apps/cc/09df65ab/3m-visual-attention-software-for-photoshop
+  category: Adobe Exchange Creative Cloud listing (Photoshop)
+  products:
+  - Photoshop
+  partner_url: https://vas.3m.com
+  signal_note: Adobe Exchange listing (publisher website from the listing JSON the public browse page loads); listing
+    count and app names are context, never counted
+  detected_by: sweep-adobe-exchange.py
+  detected: '2026-10-23'
+  partner_held:
+    candidate: 3m
+    why: 'market-fit gate: partner''s own tags carry no creative / media / marketing / analytics / content / commerce
+      / e-sign / work-management term'
+- partner_name: Bending Spoons
+  app: Remini - AI Photo Enhancer
+  apps:
+  - Remini - AI Photo Enhancer
+  listing_count: 1
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://exchange.adobe.com/apps/cc/57ce87f0/remini---ai-photo-enhancer
+  category: Adobe Exchange Creative Cloud listing (Photoshop)
+  products:
+  - Photoshop
+  partner_url: https://bendingspoons.com
+  signal_note: Adobe Exchange listing (publisher website from the listing JSON the public browse page loads); listing
+    count and app names are context, never counted
+  detected_by: sweep-adobe-exchange.py
+  detected: '2026-10-23'
+  partner_held:
+    candidate: bending-spoons
+    why: 'market-fit gate: partner''s own tags carry no creative / media / marketing / analytics / content / commerce
+      / e-sign / work-management term'
+- partner_name: Bria AI
+  app: Bria AI plugin for Photoshop
+  apps:
+  - Bria AI plugin for Photoshop
+  listing_count: 1
+  partner: bria
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://exchange.adobe.com/apps/cc/92224702/bria-ai-plugin-for-photoshop
+  category: Adobe Exchange Creative Cloud listing (Photoshop)
+  products:
+  - Photoshop
+  partner_url: https://www.bria.ai
+  signal_note: Adobe Exchange listing (publisher website from the listing JSON the public browse page loads); listing
+    count and app names are context, never counted
+  detected_by: sweep-adobe-exchange.py
+  detected: '2026-10-23'
+- partner_name: Esri, Inc.
+  app: ArcGIS Maps for Adobe Creative Cloud
+  apps:
+  - ArcGIS Maps for Adobe Creative Cloud
+  listing_count: 1
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://exchange.adobe.com/apps/cc/108917/arcgis-maps-for-adobe-creative-cloud
+  category: Adobe Exchange Creative Cloud listing (Illustrator, Photoshop)
+  products:
+  - Illustrator
+  - Photoshop
+  partner_url: https://www.esri.com/en-us/arcgis/products/maps-for-adobecc/overview
+  signal_note: Adobe Exchange listing (publisher website from the listing JSON the public browse page loads); listing
+    count and app names are context, never counted
+  detected_by: sweep-adobe-exchange.py
+  detected: '2026-10-23'
+  partner_held:
+    candidate: esri
+    why: 'market-fit gate: partner''s own tags carry no creative / media / marketing / analytics / content / commerce
+      / e-sign / work-management term'
+- partner_name: Freepik Company S.L.
+  app: Mockup Baker Plugin
+  apps:
+  - Mockup Baker Plugin
+  listing_count: 1
+  partner: freepik
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://exchange.adobe.com/apps/cc/234a7e6c/mockup-baker-plugin
+  category: Adobe Exchange Creative Cloud listing (Photoshop)
+  products:
+  - Photoshop
+  partner_url: https://www.freepik.com/
+  signal_note: Adobe Exchange listing (publisher website from the listing JSON the public browse page loads); listing
+    count and app names are context, never counted
+  detected_by: sweep-adobe-exchange.py
+  detected: '2026-10-23'
+- partner_name: Hive.com
+  app: Hive for Photoshop
+  apps:
+  - Hive for Photoshop
+  listing_count: 1
+  partner: hive
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://exchange.adobe.com/apps/cc/bfbb5d45/hive-for-photoshop
+  category: Adobe Exchange Creative Cloud listing (Photoshop)
+  products:
+  - Photoshop
+  partner_url: https://hive.com
+  signal_note: Adobe Exchange listing (publisher website from the listing JSON the public browse page loads); listing
+    count and app names are context, never counted
+  detected_by: sweep-adobe-exchange.py
+  detected: '2026-10-23'
+- partner_name: iconik
+  app: iconik
+  apps:
+  - iconik
+  listing_count: 1
+  partner: iconik
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://exchange.adobe.com/apps/cc/100304/iconik
+  category: Adobe Exchange Creative Cloud listing (After Effects, Audition, Illustrator, Photoshop)
+  products:
+  - After Effects
+  - Audition
+  - Illustrator
+  - Photoshop
+  - Premiere Pro
+  partner_url: https://iconik.io
+  signal_note: Adobe Exchange listing (publisher website from the listing JSON the public browse page loads); listing
+    count and app names are context, never counted
+  detected_by: sweep-adobe-exchange.py
+  detected: '2026-10-23'
+- partner_name: Icons8.com
+  app: Icons8
+  apps:
+  - Icons8
+  listing_count: 1
+  partner: icons8
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://exchange.adobe.com/apps/cc/103891/icons8
+  category: Adobe Exchange Creative Cloud listing (Illustrator, Photoshop)
+  products:
+  - Illustrator
+  - Photoshop
+  partner_url: https://icons8.com
+  signal_note: Adobe Exchange listing (publisher website from the listing JSON the public browse page loads); listing
+    count and app names are context, never counted
+  detected_by: sweep-adobe-exchange.py
+  detected: '2026-10-23'
+- partner_name: Intuit Mailchimp
+  app: Mailchimp for Photoshop
+  apps:
+  - Mailchimp for Photoshop
+  listing_count: 1
+  partner: mailchimp
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://exchange.adobe.com/apps/cc/bd9e03f1/mailchimp-for-photoshop
+  category: Adobe Exchange Creative Cloud listing (Photoshop)
+  products:
+  - Photoshop
+  partner_url: https://mailchimp.com/
+  signal_note: Adobe Exchange listing (publisher website from the listing JSON the public browse page loads); listing
+    count and app names are context, never counted
+  detected_by: sweep-adobe-exchange.py
+  detected: '2026-10-23'
+- partner_name: Noun Project
+  app: 'Noun Project: 10 Million Human-Made Icons'
+  apps:
+  - 'Noun Project: 10 Million Human-Made Icons'
+  listing_count: 1
+  partner: noun-project
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://exchange.adobe.com/apps/cc/a792b711/noun-project:-10-million-human-made-icons
+  category: Adobe Exchange Creative Cloud listing (Photoshop)
+  products:
+  - Photoshop
+  partner_url: https://thenounproject.com/
+  signal_note: Adobe Exchange listing (publisher website from the listing JSON the public browse page loads); listing
+    count and app names are context, never counted
+  detected_by: sweep-adobe-exchange.py
+  detected: '2026-10-23'
+- partner_name: Optimizely North America Inc.
+  app: Optimizely for Photoshop
+  apps:
+  - Optimizely for Photoshop
+  listing_count: 1
+  partner: optimizely
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://exchange.adobe.com/apps/cc/af2a0cf9/optimizely-for-photoshop
+  category: Adobe Exchange Creative Cloud listing (Photoshop)
+  products:
+  - Photoshop
+  partner_url: https://www.optimizely.com
+  signal_note: Adobe Exchange listing (publisher website from the listing JSON the public browse page loads); listing
+    count and app names are context, never counted
+  detected_by: sweep-adobe-exchange.py
+  detected: '2026-10-23'
+- partner_name: 'Percolate: A Seismic Company'
+  app: Percolate Proof
+  apps:
+  - Percolate Proof
+  listing_count: 1
+  partner: percolate
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://exchange.adobe.com/apps/cc/103488/percolate-proof
+  category: Adobe Exchange Creative Cloud listing (After Effects, Illustrator, InCopy, InDesign)
+  products:
+  - After Effects
+  - Illustrator
+  - InCopy
+  - InDesign
+  - Photoshop
+  - Premiere Pro
+  partner_url: http://www.percolate.com
+  signal_note: Adobe Exchange listing (publisher website from the listing JSON the public browse page loads); listing
+    count and app names are context, never counted
+  detected_by: sweep-adobe-exchange.py
+  detected: '2026-10-23'
+- partner_name: Precisely
+  app: EngageOne Communicate
+  apps:
+  - EngageOne Communicate
+  listing_count: 1
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://exchange.adobe.com/apps/cc/101596/engageone-communicate
+  category: Adobe Exchange Creative Cloud listing (Photoshop)
+  products:
+  - Photoshop
+  partner_url: https://www.precisely.com/
+  signal_note: Adobe Exchange listing (publisher website from the listing JSON the public browse page loads); listing
+    count and app names are context, never counted
+  detected_by: sweep-adobe-exchange.py
+  detected: '2026-10-23'
+  partner_held:
+    candidate: precisely-apis
+    why: 'market-fit gate: partner''s own tags carry no creative / media / marketing / analytics / content / commerce
+      / e-sign / work-management term'
+- partner_name: remove.bg
+  app: remove.bg for Adobe Photoshop - Beta Version
+  apps:
+  - Remove.bg for Adobe Photoshop
+  - remove.bg for Adobe Photoshop - Beta Version
+  listing_count: 2
+  partner: remove-bg
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://exchange.adobe.com/apps/cc/6fddf582/remove.bg-for-adobe-photoshop---beta-version
+  category: Adobe Exchange Creative Cloud listing (Photoshop)
+  products:
+  - Photoshop
+  partner_url: https://www.remove.bg/
+  signal_note: Adobe Exchange listing (publisher website from the listing JSON the public browse page loads); listing
+    count and app names are context, never counted
+  detected_by: sweep-adobe-exchange.py
+  detected: '2026-10-23'
+- partner_name: Sirv Limited
+  app: Sirv for Photoshop
+  apps:
+  - Sirv for Photoshop
+  listing_count: 1
+  partner: sirv
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://exchange.adobe.com/apps/cc/b9825b02/sirv-for-photoshop
+  category: Adobe Exchange Creative Cloud listing (Photoshop)
+  products:
+  - Photoshop
+  partner_url: https://sirv.com/
+  signal_note: Adobe Exchange listing (publisher website from the listing JSON the public browse page loads); listing
+    count and app names are context, never counted
+  detected_by: sweep-adobe-exchange.py
+  detected: '2026-10-23'
+- partner_name: Sisense
+  app: Sisense for Adobe Photoshop
+  apps:
+  - Sisense for Adobe Photoshop
+  listing_count: 1
+  partner: sisense
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://exchange.adobe.com/apps/cc/cfe8a525/sisense-for-adobe-photoshop
+  category: Adobe Exchange Creative Cloud listing (Photoshop)
+  products:
+  - Photoshop
+  partner_url: https://www.sisense.com/
+  signal_note: Adobe Exchange listing (publisher website from the listing JSON the public browse page loads); listing
+    count and app names are context, never counted
+  detected_by: sweep-adobe-exchange.py
+  detected: '2026-10-23'
+- partner_name: Smartling
+  app: Smartling
+  apps:
+  - Smartling
+  - Smartling Plugin for Photoshop
+  listing_count: 2
+  partner: smartling
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://exchange.adobe.com/apps/cc/109048/smartling
+  category: Adobe Exchange Creative Cloud listing (Illustrator, InDesign, Photoshop)
+  products:
+  - Illustrator
+  - InDesign
+  - Photoshop
+  partner_url: https://smartling.com
+  signal_note: Adobe Exchange listing (publisher website from the listing JSON the public browse page loads); listing
+    count and app names are context, never counted
+  detected_by: sweep-adobe-exchange.py
+  detected: '2026-10-23'
+- partner_name: Smartsheet
+  app: Smartsheet Extension for Adobe Creative Cloud
+  apps:
+  - Smartsheet Extension for Adobe Creative Cloud
+  - Smartsheet for Adobe Photoshop
+  listing_count: 2
+  partner: smartsheet
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://exchange.adobe.com/apps/cc/103641/smartsheet-extension-for-adobe-creative-cloud
+  category: Adobe Exchange Creative Cloud listing (Illustrator, InDesign, Photoshop)
+  products:
+  - Illustrator
+  - InDesign
+  - Photoshop
+  partner_url: https://www.smartsheet.com/solutions/marketing
+  signal_note: Adobe Exchange listing (publisher website from the listing JSON the public browse page loads); listing
+    count and app names are context, never counted
+  detected_by: sweep-adobe-exchange.py
+  detected: '2026-10-23'
+- partner_name: Wasabi Technologies
+  app: Wasabi Hot Cloud Storage
+  apps:
+  - Wasabi Hot Cloud Storage
+  listing_count: 1
+  partner: wasabi
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://exchange.adobe.com/apps/cc/204210/wasabi-hot-cloud-storage
+  category: Adobe Exchange Creative Cloud listing (After Effects, Illustrator, Photoshop, Premiere Pro)
+  products:
+  - After Effects
+  - Illustrator
+  - Photoshop
+  - Premiere Pro
+  partner_url: https://wasabi.com/
+  signal_note: Adobe Exchange listing (publisher website from the listing JSON the public browse page loads); listing
+    count and app names are context, never counted
+  detected_by: sweep-adobe-exchange.py
+  detected: '2026-10-23'
+- partner_name: Wrike
+  app: Wrike Extension for Adobe Creative Cloud
+  apps:
+  - Wrike Extension for Adobe Creative Cloud
+  listing_count: 1
+  partner: wrike
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://exchange.adobe.com/apps/cc/100791/wrike-extension-for-adobe-creative-cloud
+  category: Adobe Exchange Creative Cloud listing (Illustrator, InDesign, Photoshop, Premiere Pro)
+  products:
+  - Illustrator
+  - InDesign
+  - Photoshop
+  - Premiere Pro
+  partner_url: https://wrike.com
+  signal_note: Adobe Exchange listing (publisher website from the listing JSON the public browse page loads); listing
+    count and app names are context, never counted
+  detected_by: sweep-adobe-exchange.py
+  detected: '2026-10-23'
+- partner_name: Zeplin
+  app: Zeplin
+  apps:
+  - Zeplin
+  listing_count: 1
+  partner: zeplin
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://exchange.adobe.com/apps/cc/3cec1235/zeplin
+  category: Adobe Exchange Creative Cloud listing (Photoshop)
+  products:
+  - Photoshop
+  partner_url: https://zeplin.io
+  signal_note: Adobe Exchange listing (publisher website from the listing JSON the public browse page loads); listing
+    count and app names are context, never counted
+  detected_by: sweep-adobe-exchange.py
+  detected: '2026-10-23'
+generated: '2026-10-23'
+method: searched
+source:
+- https://exchange.adobe.com/apps
+- https://exchange.adobe.com/apps/browse/ec
+- https://exchange.adobe.com/apps/browse/cc
+- https://exchange.adobe.com/robots.txt
+checked:
+- https://exchange.adobe.com/apps
+- https://exchange.adobe.com/apps/browse/cc
+- https://exchange.adobe.com/apps/browse/ec
+- https://exchange.adobe.com/robots.txt
