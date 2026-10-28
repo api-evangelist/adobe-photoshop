@@ -1,4 +1,4 @@
-# Adobe Photoshop (adobe-photoshop)
+# Adobe Photoshop
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,102 +64,286 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Adobe Photoshop is the industry-standard image editing and digital design application. Its developer platform offers a cloud-based REST API for programmatic image processing via Firefly Services, the UXP plugin framework for building desktop extensions, a C++ plugin SDK for native filters, and scripting interfaces for workflow automation.
+Adobe Photoshop is the industry-standard image editing and digital design application. Its developer platform offers a cloud-based REST API for programmatic image processing via Firefly Services, the UXP plugin framework for building desktop extensions with modern JavaScript, a C++ plugin SDK for native filters and file formats, and scripting interfaces for workflow automation.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/adobe-photoshop/refs/heads/main/apis.yml)
+**Areas:** Artificial Intelligence · Creative Cloud · Image Editing · Photoshop · Plugins · REST API · Scripting
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Adobe Photoshop on APIs.io
 
-## Tags:
+Everything profiled for Adobe Photoshop is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/adobe-photoshop/](https://apis.io/providers/adobe-photoshop/)** — or go straight to one of the APIs or properties below.
 
- - AI/ML, Creative Cloud, Image Editing, Photoshop, Plugins, REST API, Scripting
+### APIs (16)
 
-## Timestamps
+- [Adobe Firefly Services SDK for JavaScript](https://apis.io/apis/adobe-photoshop/firefly-services-sdk/) — A unified Node.js and TypeScript SDK that provides typed client libraries for accessing the Photoshop API and other Firefly Services. The PhotoshopClient…
+- [Adobe Photoshop UXP Plugin API](https://apis.io/apis/adobe-photoshop/uxp-plugin-api/) — The modern plugin development platform for Photoshop, replacing the legacy CEP framework. UXP (Unified Extensibility Platform) is powered by a V8 JavaScript…
+- [Adobe Photoshop UXP Scripting](https://apis.io/apis/adobe-photoshop/uxp-scripting/) — A modern scripting system for Photoshop that allows developers to execute standalone JavaScript files with the .psjs extension to automate tasks. Unlike…
+- [Adobe Photoshop UXP Hybrid Plugins](https://apis.io/apis/adobe-photoshop/uxp-hybrid-plugins/) — A specialized plugin type that combines UXP's JavaScript, HTML, and CSS plugin framework with native C++ code compiled as a .uxpaddon. This allows…
+- [Adobe Photoshop C++ Plugin SDK](https://apis.io/apis/adobe-photoshop/cpp-plugin-sdk/) — A C++ based SDK for building low-level native Photoshop plugins. The SDK enables developers to extend Photoshop in seven categories including filters…
+- [Adobe Photoshop ExtendScript Scripting API](https://apis.io/apis/adobe-photoshop/extendscript-scripting/) — The legacy scripting system based on ExtendScript, Adobe's implementation of ECMAScript 3. ExtendScript scripts use the .jsx file extension and can automate…
+- [Adobe Photoshop Actions API](https://apis.io/apis/adobe-photoshop/adobe-photoshop-actions-api/) — Execute Photoshop Action files (.atn) and Action JSON descriptors on images programmatically.
+- [Adobe Photoshop Background Removal API](https://apis.io/apis/adobe-photoshop/adobe-photoshop-background-removal-api/) — Remove backgrounds from images and create masks using AI-powered subject detection.
+- [Adobe Photoshop Crop and Effects API](https://apis.io/apis/adobe-photoshop/adobe-photoshop-crop-and-effects-api/) — Apply AI-powered product crop and depth blur effects to images.
+- [Adobe Photoshop Document Operations API](https://apis.io/apis/adobe-photoshop/adobe-photoshop-document-operations-api/) — Create, modify, and inspect PSD documents including layer editing, adjustments, and metadata retrieval.
+- [Adobe Photoshop Generative API](https://apis.io/apis/adobe-photoshop/adobe-photoshop-generative-api/) — Fill masked areas of images using generative AI capabilities.
+- [Adobe Photoshop Health API](https://apis.io/apis/adobe-photoshop/adobe-photoshop-health-api/) — Service health check endpoint.
+- [Adobe Photoshop Renditions API](https://apis.io/apis/adobe-photoshop/adobe-photoshop-renditions-api/) — Generate flat image renditions from PSD files in various formats including JPEG, PNG, and TIFF.
+- [Adobe Photoshop Smart Objects API](https://apis.io/apis/adobe-photoshop/adobe-photoshop-smart-objects-api/) — Replace and manage embedded Smart Object layers within PSD documents.
+- [Adobe Photoshop Status API](https://apis.io/apis/adobe-photoshop/adobe-photoshop-status-api/) — Poll for the status of asynchronous jobs.
+- [Adobe Photoshop Text API](https://apis.io/apis/adobe-photoshop/adobe-photoshop-text-api/) — Edit text layer content, character styles, and paragraph styles in PSD documents.
 
-- **Created:** 2025-02-28
-- **Modified:** 2026-04-17
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-7 APIs: Photoshop API (cloud REST), Firefly Services SDK, UXP Plugin API, UXP Scripting, UXP Hybrid Plugins, C++ Plugin SDK, ExtendScript Scripting.
+#### Arazzo workflows (12)
 
-See [apis.yml](apis.yml) for the complete API inventory.
+Multi-step workflows that chain operations into a business task.
 
-## Features
+- [Adobe Photoshop Run Action JSON Composite](https://apis.io/arazzos/adobe-photoshop/adobe-photoshop-action-json-composite-workflow/)
+- [Adobe Photoshop Create Document with Action JSON](https://apis.io/arazzos/adobe-photoshop/adobe-photoshop-action-json-document-create-workflow/)
+- [Adobe Photoshop Create Artboards and Render](https://apis.io/arazzos/adobe-photoshop/adobe-photoshop-artboard-create-workflow/)
+- [Adobe Photoshop Depth Blur](https://apis.io/arazzos/adobe-photoshop/adobe-photoshop-depth-blur-workflow/)
+- [Adobe Photoshop Create Document and Render](https://apis.io/arazzos/adobe-photoshop/adobe-photoshop-document-create-and-render-workflow/)
+- [Adobe Photoshop Generative Fill from a Generated Mask](https://apis.io/arazzos/adobe-photoshop/adobe-photoshop-generative-fill-workflow/)
+- [Adobe Photoshop Inspect and Edit Layers](https://apis.io/arazzos/adobe-photoshop/adobe-photoshop-layer-edit-workflow/)
+- [Adobe Photoshop Run Action File and Render](https://apis.io/arazzos/adobe-photoshop/adobe-photoshop-photoshop-action-batch-workflow/)
+- [Adobe Photoshop Product Photo Pipeline](https://apis.io/arazzos/adobe-photoshop/adobe-photoshop-product-photo-pipeline-workflow/)
+- [Adobe Photoshop Remove Background](https://apis.io/arazzos/adobe-photoshop/adobe-photoshop-remove-background-workflow/)
+- [Adobe Photoshop Smart Object Template Personalization](https://apis.io/arazzos/adobe-photoshop/adobe-photoshop-smart-object-template-workflow/)
+- [Adobe Photoshop Text Layer Personalization](https://apis.io/arazzos/adobe-photoshop/adobe-photoshop-text-layer-personalization-workflow/)
 
-| Name | Description |
-|------|-------------|
-| Cloud Image Processing | Process images in the cloud without local Photoshop installation. |
-| Background Removal | AI-powered automatic background removal and mask generation. |
-| PSD Document Editing | Create, read, and modify PSD files including layers and Smart Objects. |
-| Generative Fill | AI-powered content generation to fill, extend, or replace image regions. |
-| Smart Object Replacement | Replace embedded Smart Object content across PSD templates. |
-| Text Layer Editing | Modify text content, fonts, colors, and styling in PSD text layers. |
-| Photoshop Actions Execution | Run recorded Photoshop Actions on images in the cloud. |
-| UXP Plugin Framework | Build desktop plugins with modern JavaScript, HTML, CSS, and Spectrum UI. |
-| C++ Plugin SDK | Create native filters, file format support, and selection tools. |
-| ExtendScript Automation | Legacy scripting interface for batch processing and workflow automation. |
-| Product Crop | AI-powered automatic cropping to isolate product subjects. |
-| Depth Blur | Apply realistic depth-of-field blur effects using AI depth estimation. |
+#### AsyncAPI (1)
 
-## Use Cases
+Event-driven and webhook contracts.
 
-| Name | Description |
-|------|-------------|
-| Product Photography Automation | Automate background removal, product crop, and image enhancement for e-commerce. |
-| Template-Based Design Generation | Replace Smart Objects in PSD templates for personalized marketing materials. |
-| Batch Image Processing | Process thousands of images with consistent edits using the cloud API. |
-| Creative Workflow Plugins | Build UXP plugins that add custom panels and integrate with external services. |
-| Image Format Conversion | Convert between PSD, JPEG, PNG, TIFF, and other formats programmatically. |
-| Content-Aware Editing | Use generative fill and AI features to extend or enhance image content. |
-| Print Production Automation | Automate print-ready output with proper color spaces and bleed settings. |
-| DAM Integration | Connect digital asset management systems with Photoshop for automated processing. |
+- [Adobe Photoshop API Webhook Events](https://apis.io/asyncapis/adobe-photoshop/adobe-photoshop-api-asyncapi-original/)
 
-## Solutions
+#### Event channels (4)
 
-| Name | Description |
-|------|-------------|
-| Photoshop API (Firefly Services) | Cloud-based REST API for programmatic image processing at scale. |
-| Photoshop Desktop (UXP) | Modern plugin platform for extending Photoshop with JavaScript and HTML. |
-| Photoshop Desktop (C++ SDK) | Native plugin SDK for filters, file formats, and performance-critical extensions. |
-| Photoshop Scripting | Automation via UXP scripts (.psjs) or legacy ExtendScript (.jsx). |
+Individual events and webhooks the provider emits.
 
-## Artifacts
+- [photoshop/job/completed](https://apis.io/channels/adobe-photoshop/photoshop-job-completed/)
+- [photoshop/job/failed](https://apis.io/channels/adobe-photoshop/photoshop-job-failed/)
+- [sensei/job/completed](https://apis.io/channels/adobe-photoshop/sensei-job-completed/)
+- [sensei/job/failed](https://apis.io/channels/adobe-photoshop/sensei-job-failed/)
 
-### OpenAPI
+#### MCP servers (1)
 
-- [Adobe Photoshop API](openapi/adobe-photoshop-api-openapi-original.yml)
+Model Context Protocol servers that expose the API to agents.
 
-### AsyncAPI
+- [adobe-photoshop](https://apis.io/servers/adobe-photoshop/adobe-photoshop/)
 
-- [Adobe Photoshop API Events](asyncapi/adobe-photoshop-api-asyncapi-original.yml)
+#### Agentic access (1)
 
-### JSON Schema
+Which operations an agent can call, which act, and which need a human in the loop.
 
-16 standalone JSON Schema files in [json-schema/](json-schema/).
+- [Adobe Photoshop Agentic Access](https://apis.io/agentic-access/adobe-photoshop/adobe-photoshop-agentic-access/)
 
-### JSON Structure
+#### JSON Schema (16)
 
-16 JSON Structure files in [json-structure/](json-structure/).
+The data models the API reads and writes.
 
-### JSON-LD
+- [ActionJSONRequest](https://apis.io/schemas/adobe-photoshop/adobe-photoshop-api-action-json-request/)
+- [ArtboardCreateRequest](https://apis.io/schemas/adobe-photoshop/adobe-photoshop-api-artboard-create-request/)
+- [DepthBlurRequest](https://apis.io/schemas/adobe-photoshop/adobe-photoshop-api-depth-blur-request/)
+- [DocumentCreateRequest](https://apis.io/schemas/adobe-photoshop/adobe-photoshop-api-document-create-request/)
+- [DocumentManifestRequest](https://apis.io/schemas/adobe-photoshop/adobe-photoshop-api-document-manifest-request/)
+- [DocumentOperationsRequest](https://apis.io/schemas/adobe-photoshop/adobe-photoshop-api-document-operations-request/)
+- [FillMaskedAreasRequest](https://apis.io/schemas/adobe-photoshop/adobe-photoshop-api-fill-masked-areas-request/)
+- [PhotoshopActionsRequest](https://apis.io/schemas/adobe-photoshop/adobe-photoshop-api-photoshop-actions-request/)
+- [ProductCropRequest](https://apis.io/schemas/adobe-photoshop/adobe-photoshop-api-product-crop-request/)
+- [RemoveBackgroundRequest](https://apis.io/schemas/adobe-photoshop/adobe-photoshop-api-remove-background-request/)
+- [RenditionCreateRequest](https://apis.io/schemas/adobe-photoshop/adobe-photoshop-api-rendition-create-request/)
+- [SmartObjectRequest](https://apis.io/schemas/adobe-photoshop/adobe-photoshop-api-smart-object-request/)
+- [StorageInput](https://apis.io/schemas/adobe-photoshop/adobe-photoshop-api-storage-input/)
+- [StorageOutput](https://apis.io/schemas/adobe-photoshop/adobe-photoshop-api-storage-output/)
+- [TextEditRequest](https://apis.io/schemas/adobe-photoshop/adobe-photoshop-api-text-edit-request/)
+- [Adobe Photoshop UXP Plugin Manifest](https://apis.io/schemas/adobe-photoshop/adobe-photoshop-uxp-plugin-manifest/)
 
-- [Adobe Photoshop Context](json-ld/adobe-photoshop-context.jsonld) — 16 types, 28 properties
+#### JSON Structure (16)
 
-### Examples
+Data models expressed in JSON Structure.
 
-16 example JSON files in [examples/](examples/).
+- [Adobe Photoshop Api Action Json Request Structure](https://apis.io/json-structure/adobe-photoshop/adobe-photoshop-api-action-json-request-structure/)
+- [Adobe Photoshop Api Artboard Create Request Structure](https://apis.io/json-structure/adobe-photoshop/adobe-photoshop-api-artboard-create-request-structure/)
+- [Adobe Photoshop Api Depth Blur Request Structure](https://apis.io/json-structure/adobe-photoshop/adobe-photoshop-api-depth-blur-request-structure/)
+- [Adobe Photoshop Api Document Create Request Structure](https://apis.io/json-structure/adobe-photoshop/adobe-photoshop-api-document-create-request-structure/)
+- [Adobe Photoshop Api Document Manifest Request Structure](https://apis.io/json-structure/adobe-photoshop/adobe-photoshop-api-document-manifest-request-structure/)
+- [Adobe Photoshop Api Document Operations Request Structure](https://apis.io/json-structure/adobe-photoshop/adobe-photoshop-api-document-operations-request-structure/)
+- [Adobe Photoshop Api Fill Masked Areas Request Structure](https://apis.io/json-structure/adobe-photoshop/adobe-photoshop-api-fill-masked-areas-request-structure/)
+- [Adobe Photoshop Api Photoshop Actions Request Structure](https://apis.io/json-structure/adobe-photoshop/adobe-photoshop-api-photoshop-actions-request-structure/)
+- [Adobe Photoshop Api Product Crop Request Structure](https://apis.io/json-structure/adobe-photoshop/adobe-photoshop-api-product-crop-request-structure/)
+- [Adobe Photoshop Api Remove Background Request Structure](https://apis.io/json-structure/adobe-photoshop/adobe-photoshop-api-remove-background-request-structure/)
+- [Adobe Photoshop Api Rendition Create Request Structure](https://apis.io/json-structure/adobe-photoshop/adobe-photoshop-api-rendition-create-request-structure/)
+- [Adobe Photoshop Api Smart Object Request Structure](https://apis.io/json-structure/adobe-photoshop/adobe-photoshop-api-smart-object-request-structure/)
+- [Adobe Photoshop Api Storage Input Structure](https://apis.io/json-structure/adobe-photoshop/adobe-photoshop-api-storage-input-structure/)
+- [Adobe Photoshop Api Storage Output Structure](https://apis.io/json-structure/adobe-photoshop/adobe-photoshop-api-storage-output-structure/)
+- [Adobe Photoshop Api Text Edit Request Structure](https://apis.io/json-structure/adobe-photoshop/adobe-photoshop-api-text-edit-request-structure/)
+- [Adobe Photoshop Uxp Plugin Manifest Structure](https://apis.io/json-structure/adobe-photoshop/adobe-photoshop-uxp-plugin-manifest-structure/)
 
-## Vocabulary
+#### JSON-LD (1)
 
-- [Adobe Photoshop Vocabulary](vocabulary/adobe-photoshop-vocabulary.yaml) — 6 resources, 4 APIs, 4 domains, 4 personas
+Linked-data contexts for the provider's vocabulary.
 
-## Rules
+- [Adobe Photoshop Context](https://apis.io/jsonld/adobe-photoshop/adobe-photoshop-context/)
 
-- [Adobe Photoshop Spectral Rules](rules/adobe-photoshop-spectral-rules.yml) — 19 rules
+#### Vocabulary (1)
 
-## Maintainers
+The provider's domain terms, defined.
 
-**FN:** Kin Lane
+- [Adobe Photoshop Vocabulary](https://apis.io/vocabularies/adobe-photoshop/adobe-photoshop-vocabulary/)
 
-**Email:** kin@apievangelist.com
+#### Examples (16)
+
+Example requests and responses.
+
+- [Adobe Photoshop Api Action Json Request Example](https://apis.io/examples/adobe-photoshop/adobe-photoshop-api-action-json-request-example/)
+- [Adobe Photoshop Api Artboard Create Request Example](https://apis.io/examples/adobe-photoshop/adobe-photoshop-api-artboard-create-request-example/)
+- [Adobe Photoshop Api Depth Blur Request Example](https://apis.io/examples/adobe-photoshop/adobe-photoshop-api-depth-blur-request-example/)
+- [Adobe Photoshop Api Document Create Request Example](https://apis.io/examples/adobe-photoshop/adobe-photoshop-api-document-create-request-example/)
+- [Adobe Photoshop Api Document Manifest Request Example](https://apis.io/examples/adobe-photoshop/adobe-photoshop-api-document-manifest-request-example/)
+- [Adobe Photoshop Api Document Operations Request Example](https://apis.io/examples/adobe-photoshop/adobe-photoshop-api-document-operations-request-example/)
+- [Adobe Photoshop Api Fill Masked Areas Request Example](https://apis.io/examples/adobe-photoshop/adobe-photoshop-api-fill-masked-areas-request-example/)
+- [Adobe Photoshop Api Photoshop Actions Request Example](https://apis.io/examples/adobe-photoshop/adobe-photoshop-api-photoshop-actions-request-example/)
+- [Adobe Photoshop Api Product Crop Request Example](https://apis.io/examples/adobe-photoshop/adobe-photoshop-api-product-crop-request-example/)
+- [Adobe Photoshop Api Remove Background Request Example](https://apis.io/examples/adobe-photoshop/adobe-photoshop-api-remove-background-request-example/)
+- [Adobe Photoshop Api Rendition Create Request Example](https://apis.io/examples/adobe-photoshop/adobe-photoshop-api-rendition-create-request-example/)
+- [Adobe Photoshop Api Smart Object Request Example](https://apis.io/examples/adobe-photoshop/adobe-photoshop-api-smart-object-request-example/)
+- [Adobe Photoshop Api Storage Input Example](https://apis.io/examples/adobe-photoshop/adobe-photoshop-api-storage-input-example/)
+- [Adobe Photoshop Api Storage Output Example](https://apis.io/examples/adobe-photoshop/adobe-photoshop-api-storage-output-example/)
+- [Adobe Photoshop Api Text Edit Request Example](https://apis.io/examples/adobe-photoshop/adobe-photoshop-api-text-edit-request-example/)
+- [Adobe Photoshop Uxp Plugin Manifest Example](https://apis.io/examples/adobe-photoshop/adobe-photoshop-uxp-plugin-manifest-example/)
+
+#### Collections (20)
+
+Postman and Open Collection request collections.
+
+- [Adobe Photoshop Actions API](https://apis.io/collections/adobe-photoshop/open-adobe-photoshop-actions-api/)
+- [Adobe Photoshop Actions Background Removal API](https://apis.io/collections/adobe-photoshop/open-adobe-photoshop-background-removal-api/)
+- [Adobe Photoshop Actions Crop and Effects API](https://apis.io/collections/adobe-photoshop/open-adobe-photoshop-crop-and-effects-api/)
+- [Adobe Photoshop Actions Document Operations API](https://apis.io/collections/adobe-photoshop/open-adobe-photoshop-document-operations-api/)
+- [Adobe Photoshop Actions Generative API](https://apis.io/collections/adobe-photoshop/open-adobe-photoshop-generative-api/)
+- [Adobe Photoshop Actions Health API](https://apis.io/collections/adobe-photoshop/open-adobe-photoshop-health-api/)
+- [Adobe Photoshop Actions Renditions API](https://apis.io/collections/adobe-photoshop/open-adobe-photoshop-renditions-api/)
+- [Adobe Photoshop Actions Smart Objects API](https://apis.io/collections/adobe-photoshop/open-adobe-photoshop-smart-objects-api/)
+- [Adobe Photoshop Actions Status API](https://apis.io/collections/adobe-photoshop/open-adobe-photoshop-status-api/)
+- [Adobe Photoshop Actions Text API](https://apis.io/collections/adobe-photoshop/open-adobe-photoshop-text-api/)
+- [Adobe Photoshop Actions API](https://apis.io/collections/adobe-photoshop/postman-adobe-photoshop-actions-api/)
+- [Adobe Photoshop Actions Background Removal API](https://apis.io/collections/adobe-photoshop/postman-adobe-photoshop-background-removal-api/)
+- [Adobe Photoshop Actions Crop and Effects API](https://apis.io/collections/adobe-photoshop/postman-adobe-photoshop-crop-and-effects-api/)
+- [Adobe Photoshop Actions Document Operations API](https://apis.io/collections/adobe-photoshop/postman-adobe-photoshop-document-operations-api/)
+- [Adobe Photoshop Actions Generative API](https://apis.io/collections/adobe-photoshop/postman-adobe-photoshop-generative-api/)
+- [Adobe Photoshop Actions Health API](https://apis.io/collections/adobe-photoshop/postman-adobe-photoshop-health-api/)
+- [Adobe Photoshop Actions Renditions API](https://apis.io/collections/adobe-photoshop/postman-adobe-photoshop-renditions-api/)
+- [Adobe Photoshop Actions Smart Objects API](https://apis.io/collections/adobe-photoshop/postman-adobe-photoshop-smart-objects-api/)
+- [Adobe Photoshop Actions Status API](https://apis.io/collections/adobe-photoshop/postman-adobe-photoshop-status-api/)
+- [Adobe Photoshop Actions Text API](https://apis.io/collections/adobe-photoshop/postman-adobe-photoshop-text-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Adobe Photoshop Api Overlay](https://apis.io/overlays/adobe-photoshop/adobe-photoshop-api-overlay/)
+
+#### Governance rules (3)
+
+Spectral rulesets for the provider's contracts.
+
+- [Adobe Photoshop — asyncapi rules](https://apis.io/rules/adobe-photoshop/adobe-photoshop-asyncapi-spectral-rules/)
+- [Adobe Photoshop — jsonschema rules](https://apis.io/rules/adobe-photoshop/adobe-photoshop-jsonschema-spectral-rules/)
+- [Adobe Photoshop API Rules](https://apis.io/rules/adobe-photoshop/adobe-photoshop-spectral-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Adobe Photoshop Authentication](https://apis.io/security/adobe-photoshop/adobe-photoshop-authentication/)
+- [Adobe Photoshop Domain Security](https://apis.io/security/adobe-photoshop/adobe-photoshop-domain-security/)
+- [Adobe Photoshop Vulnerability Disclosure](https://apis.io/security/adobe-photoshop/adobe-photoshop-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Adobe Photoshop Plans Pricing](https://apis.io/plans/adobe-photoshop/adobe-photoshop-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Adobe Photoshop Rate Limits](https://apis.io/rate-limits/adobe-photoshop/adobe-photoshop-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Adobe Photoshop Finops](https://apis.io/finops/adobe-photoshop/adobe-photoshop-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.adobe.com/products/photoshop.html)
+- [Documentation](https://developer.adobe.com/firefly-services/docs/photoshop/)
+- [Getting started](https://developer.adobe.com/firefly-services/docs/photoshop/getting_started/)
+- [API reference](https://developer.adobe.com/firefly-services/docs/photoshop/api/)
+- [Blog](https://blog.developer.adobe.com/)
+- [Security](https://helpx.adobe.com/security/products/photoshop.html)
+- [Terms of service](https://www.adobe.com/legal/terms.html)
+- [Privacy policy](https://www.adobe.com/privacy/policy.html)
+- [Status](https://status.adobe.com/)
+
+## API Evangelist rating
+
+**Kin Score 50.7** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 70.7 |
+| Contract governance | 18.2 |
+| Operational transparency | 52.6 |
+| Developer ergonomics | 46.4 |
+| Access clarity | 28.9 |
+
+**Agent readiness 40.5** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | verified |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 28.2** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/adobe-photoshop/](https://apis.io/providers/adobe-photoshop/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Adobe Photoshop: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/adobe-photoshop/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
