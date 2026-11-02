@@ -1,0 +1,166 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Adobe Photoshop
+providerId: adobe-photoshop
+created: '2026-05-04'
+# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
+# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
+method: generated
+modified: '2026-05-05'
+reconciled: false
+tags:
+  - Photo
+  - Image Editing
+  - Design
+  - Creative Cloud
+  - Generative AI
+notes: >-
+  Adobe Photoshop is sold via the Photography plan, as a Creative Cloud
+  Single App, or as part of Creative Cloud All Apps. There is also a
+  Firefly Services Photoshop API (server-side image generation, generative
+  fill, expand) priced via generative credits. Public list prices were not
+  retrievable via WebFetch and are deferred to adobe.com.
+description: >-
+  Adobe Photoshop is the flagship image-editing app sold as a Creative
+  Cloud subscription. The "API" surface comprises (1) the Photoshop UXP /
+  scripting plug-in environment for desktop automation and (2) the
+  Firefly Services Photoshop API for server-side image generation and
+  manipulation.
+sources:
+  - https://www.adobe.com/products/photoshop/plans.html
+  - https://developer.adobe.com/firefly-services/docs/photoshop/
+plans:
+  - id: adobe-photoshop-photography
+    name: Photography Plan
+    type: subscription
+    description: >-
+      Photoshop + Lightroom bundle for photographers, with 20GB or 1TB
+      cloud-storage variants.
+    entries:
+      - label: Photography seat
+        name: photography_seat
+        type: subscription
+        metric: seat
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: see https://www.adobe.com/creativecloud/photography.html
+        userMultiplied: true
+    elements:
+      - name: Adobe Photoshop
+      - name: Adobe Lightroom (and Lightroom Classic)
+      - name: 20GB or 1TB cloud storage
+      - name: Adobe Fonts
+  - id: adobe-photoshop-single-app
+    name: Photoshop Single App
+    type: subscription
+    description: >-
+      Per-seat monthly or annual subscription to Photoshop desktop +
+      iPad app, including 100GB cloud storage.
+    entries:
+      - label: Photoshop seat (Single App)
+        name: photoshop_single_app
+        type: subscription
+        metric: seat
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: see https://www.adobe.com/products/photoshop/plans.html
+        userMultiplied: true
+    elements:
+      - name: Photoshop desktop
+      - name: Photoshop on iPad
+      - name: 100GB cloud storage
+      - name: Adobe Fonts
+      - name: Generative credits (limited)
+  - id: adobe-photoshop-all-apps
+    name: Creative Cloud All Apps (includes Photoshop)
+    type: subscription
+    description: >-
+      Bundled access to the full Creative Cloud suite including Photoshop.
+    entries:
+      - label: All Apps seat
+        name: all_apps_seat
+        type: subscription
+        metric: seat
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: see https://www.adobe.com/creativecloud/plans.html
+        userMultiplied: true
+    elements:
+      - name: All Creative Cloud apps
+      - name: 100GB cloud storage
+      - name: Adobe Fonts
+      - name: Generative credits
+  - id: adobe-photoshop-firefly-api
+    name: Firefly Services Photoshop API
+    type: usage-based
+    description: >-
+      Server-side image manipulation API (generative fill, expand,
+      remove, smart object) priced via generative credits.
+    entries:
+      - label: Generative credit (Photoshop API)
+        name: photoshop_api_credit
+        type: metered
+        metric: credit
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: see https://developer.adobe.com/firefly-services/docs/photoshop/
+        userMultiplied: false
+    elements:
+      - name: Generative fill API
+      - name: Generative expand API
+      - name: Remove background API
+      - name: Smart object replace API
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - metered
+  - subscription
+  units:
+  - credit
+  - seat
+  plans:
+  - name: Photography Plan
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: Photoshop Single App
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: Creative Cloud All Apps (includes Photoshop)
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: Firefly Services Photoshop API
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - credit
+    periods:
+    - per-use
